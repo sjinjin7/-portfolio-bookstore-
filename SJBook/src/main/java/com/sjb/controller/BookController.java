@@ -40,7 +40,7 @@ public class BookController {
 	}
 	@RequestMapping("/loginMain")
 	public void loginGET() throws Exception{
-		
+		System.out.println("loginMain");
 	}
 	
 	@RequestMapping("/search")

@@ -100,27 +100,21 @@ public class MemberController {
 	
 	
 	@RequestMapping(value="login", method=RequestMethod.POST)
-	public String loginPOST(HttpServletRequest request,MemberVO vo, RedirectAttributes rttr)throws Exception{
-		
-		HttpSession session = request.getSession();
+	public void loginPOST(MemberVO vo, Model model)throws Exception{
 		
 		System.out.println("vo작동" + vo);
 		MemberVO lvo = memberservice.memberLogin(vo);
 		System.out.println("로그인vo"+lvo);
-		if(lvo==null) {
-			//String msg = "사용자 id 도는 비밀번호를 잘못 입력하였습니다.";
-			int result = 0;
-			rttr.addFlashAttribute("result", result);
-			return "redirect:/loginMain";
-		}
-		System.out.println("new login success");
-		session.setAttribute("member", lvo);
 		
+		model.addAttribute("memberVO", lvo);
 		
-		
-		return "redirect:/main";
 	}
 	
+	@RequestMapping(value="login", method=RequestMethod.GET)
+	public String loginGET()throws Exception{
+	
+		return "redirect:/main";
+	}
 	
 	
 	
