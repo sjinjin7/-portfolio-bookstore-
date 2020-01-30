@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.sjb.mapper.BookMapper">
+
+	<!-- 제품 전체 리스트 -->
+  <select id="bookList" resultType="com.sjb.model.BookVO">
+  
+  	select * from sjb_book;
+  
+  </select>
+  
+  <!-- 제품 전체 리스트 페이징 -->
+<select id="bookListPaging" resultType="com.sjb.model.BookVO">
+	
+  		select * 
+		from(select @rownum:=@rownum+1 as rownum, productID, title, 
+			authorID, (select authorName from sjb_author where sjb_book.authorID=sjb_author.authorID) as authorName, 
+			publisher, cateCode, (select cateName from sjb_bcate where sjb_book.cateCode=sjb_bcate.cateCode) as cateName,
+			bookCover, publeYear, likeStar, bookReply, bookPrice, discountRate, bookInfo, contents,
+			introImage,regdate,boardRegdate,modDate,bookStock
+		 	from (select @rownum:=0) as rownum, sjb_book 
+		<if test="keyword != null">
+			where title like concat ('%',#{keyword},'%') 
+		</if>
+			order by productID desc ) sjb_book 
+		<![CDATA[	
+			where rownum >(#{pageNum}-1)*#{amount} and rownum<=#{pageNum}*#{amount} ;
+		]]>
+	
+
+ </select>
+  
+  
+  <!-- 제품 상세 -->
+   <select id="bookDetail" resultType="com.sjb.model.BookVO">
+  
+ 	select * from sjb_book where productID =#{productID}
+  
+  </select>
+  <!-- 제품 등록 -->
+  <insert id="bookEnroll">
+    <selectKey resultType="int" keyProperty="productID" order="BEFORE">
+        SELECT MAX(productID)+1 FROM sjb_book        
+    </selectKey> 
+  
+	insert into 
+	SJB_Book(title, authorID, Publisher, CateCode, BookCover, PubleYear, BookPrice, DiscountRate, BookInfo, Contents,  IntroImage, BookStock) 
+	values(#{title}, #{authorID},#{publisher}, #{cateCode}, #{bookCover}, #{publeYear}, #{bookPrice}, #{discountRate}, #{bookInfo}, #{contents}, #{introImage}, #{bookStock});
+  </insert>
+  
+ <!-- 테스트 -->
+ <insert id="intest">
+insert into SJB_Book(title,publisher) values(#{title}, #{publisher});
+ </insert>
+	
+ <!-- 제품 내용 수정 -->	
+	<update id="bookModify">
+	 update SJB_Book
+	 set title=#{title},
+	     Publisher=#{publisher},
+	     authorID=#{authorID},
+	     CateCode=#{cateCode},
+	     BookCover=#{bookCover},
+	 	 PubleYear=#{publeYear},
+	 	 BookPrice=#{bookPrice},
+	 	 DiscountRate=#{discountRate},
+	 	 BookInfo=#{bookInfo},
+	 	 Contents=#{contents},
+	 	 IntroImage=#{introImage},
+	 	 BookStock=#{bookStock}
+	 where productID = #{productID}
+	     
+	</update>
+	<!-- 제품 내용 삭제 -->
+	<delete id="bookDel">
+		delete from SJB_Book where productID = #{productID};
+	</delete>
+	<!-- 제품 갯수  -->
+	<select id="bookCount" resultType="int">
+		
+			select count(*) from SJB_Book
+		
+		<if test="keyword != null">
+		where title like concat('%',#{keyword},'%')
+		</if>
+	</select>
+	
+	
+	  
+  
+  </mapper>

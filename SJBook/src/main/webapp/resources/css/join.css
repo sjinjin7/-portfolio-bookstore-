@@ -1,0 +1,411 @@
+@charset "UTF-8";
+*{
+	margin:0;
+	padding:0;
+}
+#wrap{
+	width:600px;
+	height:1500px;
+	margin:auto;
+	//background-color:green;
+}
+
+#top_logo{
+	height:126px;
+	padding-top: 24px;
+	overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+	
+}
+
+
+
+#top{
+	
+	//background-color: green;
+	
+}
+#top_1{
+	height: 110px;
+	//background-color: red;
+	overflow:hidden;
+}
+
+#top_1 h3{
+	margin-top: 10px;
+}
+#top_1_id{
+	
+	border: 1px solid black;
+	height:31px;
+	padding: 10px 14px;
+}
+#top_1_id input{
+	width:100%;
+	height:100%;
+	border:none;
+}
+#top_1_id_re{
+	weight:100%;
+	//background-color: purple;
+}
+
+
+#top_2 h3{
+	margin-top: 20px;
+}
+#top_2_pw{
+	
+	border: 1px solid black;
+	height:31px;
+	padding: 10px 14px;
+}
+#top_2_pw input{
+	width:100%;
+	height:100%;
+	border:none;
+}
+
+#top_2_pw_re{
+	weight:100%;
+	//background-color: purple;
+}
+#top_2_pwc{
+	
+	border: 1px solid black;
+	height:31px;
+	padding: 10px 14px;
+}
+#top_2_pwc input{
+	width:100%;
+	height:100%;
+	border:none;
+}
+#top_2_pwc_re{
+	weight:100%;
+	//background-color: purple;
+}
+
+
+#top_2{
+	height: 220px;
+	//background-color: yellow;
+}
+
+
+#mid{
+	
+	//height:400px;
+	//background-color: blue;
+}
+#mid_name{
+	height: 110px;
+	//background-color: red;
+	overflow:hidden;
+}
+#mid_name h3{
+	margin-top: 10px;
+}
+#mid_birth{
+	
+}
+#mid_birth h3{
+	margin-bottom: 4px;
+}
+#mid_birth_in{
+	height:55px;
+	clear:both;
+	overflow: hidden;
+}
+#mid_birth_in_yy{
+	border: 1px solid black;
+	height:33px;
+	width : 162px;
+	float:left;
+	padding: 10px 14px;
+}
+#mid_birth_in_yy input{
+	width:100%;
+	height:100%;
+	border:none;
+}
+#mid_birth_in_mm{
+	border: 1px solid black;
+	height:33px;
+	width : 162px;
+	margin-left: 9px;
+	float:left;
+	padding: 10px 14px;
+}
+#mid_birth_in_mm select{
+	width:100%;
+	height:100%;
+	border:none;
+}
+#mid_birth_in_dd{
+	border: 1px solid black;
+	height:33px;
+	width : 162px;
+	margin-left: 9px;
+	float:left;
+	padding: 10px 14px;
+}
+#mid_birth_in_dd input{
+	width:100%;
+	height:100%;
+	border:none;
+}
+
+#mid_gender{
+	height: 75px;
+}
+#mid_gender h3{
+	margin-top: 10px;
+}
+#mid_gender_in{
+	border: 1px solid black;
+	height: 31px;
+	width: 570px;
+	padding: 10px 14px;
+}
+#mid_gender_in input{
+	width:100%;
+	height:100%;
+	border:none;
+}
+
+
+#mid_phon{
+	height: 75px;
+}
+#mid_phon h3{
+	margin-top: 20px;
+}
+#mid_phon_in{
+	border: 1px solid black;
+	height: 31px;
+	width: 570px;
+	padding: 10px 14px;
+	
+}
+#mid_phon_in input{
+	width:100%;
+	height:100%;
+	border:none;
+}
+
+/* #mid_phon_in_a{
+	border: 1px solid black;
+	height:33px;
+	width : 162px;
+	float:left;
+	padding: 10px 14px;
+}
+#mid_phon_in_a input{
+	width:100%;
+	height:100%;
+	border:none;
+}
+#mid_phon_in_b{
+	border: 1px solid black;
+	height:33px;
+	width : 162px;
+	float:left;
+	padding: 10px 14px;
+	margin-left: 10px;
+}
+#mid_phon_in_b input{
+	width:100%;
+	height:100%;
+	border:none;
+	
+}
+#mid_phon_in_c{
+	border: 1px solid black;
+	height:33px;
+	width : 162px;
+	float:left;
+	padding: 10px 14px;
+	margin-left: 10px;
+}
+#mid_phon_in_c input{
+	width:100%;
+	height:100%;
+	border:none;
+	
+} */
+
+
+#mid_mail{
+	//height:175px;
+	//clear:both;
+}
+#mid_mail h3{
+	margin-top: 20px;
+}
+
+#mid_mail_in{
+	border: 1px solid black;
+	height: 31px;
+	width: 570px;
+	padding: 10px 14px;
+}
+
+#mid_mail_in input{
+	width:100%;
+	height:100%;
+	border:none;
+}
+#mid_mail_check{
+	
+	border: 1px solid black;
+	height: 31px;
+	width: 570px;
+	padding: 10px 14px;
+	margin-top: 10px;
+}
+#mid_mail_check{
+	border: 1px solid black;
+	height:33px;
+	width : 364px;
+	float:left;
+	padding: 10px 14px;
+}
+
+#mid_mail_check input{
+	width:100%;
+	height:100%;
+	border:none;	
+}
+
+#mid_mail_check_button{
+	border: 1px solid black;
+	height:33px;
+	width : 162px;
+	float:left;
+	padding: 10px 14px;
+	margin-left: 10px;
+	margin-top: 10px;
+	background-color: green;
+	cursor: pointer;
+	
+}
+#mid_mail_clear{
+	clear:both;
+}
+
+#join_button{
+	margin-top:30px;
+	border: 1px solid black;
+	height:50px;
+	//padding: 10px 14px;
+	
+	text-align: center;
+}
+#join_button button{
+	cursor:pointer;
+	width:100%;
+	height:100%;
+ 	background-color: green;
+ 	border:none;
+}
+
+#bot{
+	margin-top: 15px;
+	
+}
+
+#bot_add{
+	
+	
+}
+
+#bot_add_in1{
+	clear:both;
+	height:35px;
+}
+
+
+#bot_add_in1_in{
+	border: 1px solid black;
+	height:33px;
+	width : 364px;
+	float:left;
+	padding: 10px 14px;
+	background-color: #EAEAEA;
+}
+
+#bot_add_in1_in input{
+	width:100%;
+	height:100%;
+	border:none;
+	background-color: #EAEAEA;		
+}
+
+#bot_add_in1_button{
+	cursor:pointer;
+	border: 1px solid black;
+	height:33px;
+	width : 162px;
+	float:right;
+	padding: 10px 14px;
+	margin-left: 10px;
+	background-color: green;
+	
+}
+
+#bot_add_in2{
+	border: 1px solid black;
+	height: 31px;
+	width: 570px;
+	padding: 10px 14px;
+	margin-top: 10px;
+	background-color: #EAEAEA;
+}
+#bot_add_in2 input{
+	width:100%;
+	height:100%;
+	border:none;
+	background-color: #EAEAEA;	
+}
+
+
+#bot_add_in3{
+	border: 1px solid black;
+	height: 31px;
+	width: 570px;
+	padding: 10px 14px;
+	margin-top: 10px;
+}
+
+#bot_add_in3 input{
+	width:100%;
+	height:100%;
+	border:none;
+}
+
+#{
+	
+	
+}
+#clearfix{
+	clear:both;
+	
+}
+
+
+.ps_box_disable{
+	background-color:#ebebe4;
+}
+.ps_box{
+	
+}
+
+.correct{
+	color: green;
+}
+.incorrect{
+	color: red;
+}

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.sjb.mapper.MemberMapper">
+ 
+ <!-- 회원등록 -->
+ <insert id="memberEnroll">
+ 
+ insert into sjb_member(memberId, memberPs, memberName, memberGender, memberPhon, birthY, birthM, birthD, memberEmail, memberAdmin, memberAddr1, memberAddr2, memberAddr3) 
+ values(#{memberId}, #{memberPw},#{memberName},#{memberGender}, #{memberPhone}, #{birthY},#{birthM},#{birthD}, #{memberEmail}, 0, #{memberAddr1}, #{memberAddr2}, #{memberAddr3});
+ 
+ </insert>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ </mapper>
