@@ -97,6 +97,13 @@ public class BookController {
 		
 	}
 	
+	@RequestMapping("detail")
+	public String detailGET(int num, Model model) throws Exception{
+		System.out.println("제품 상세(detailGET....) 실행");
+		model.addAttribute("bd", bookservice.bookDetail(num));
+		return "detail";
+	}
+	
 	
 	
 	
