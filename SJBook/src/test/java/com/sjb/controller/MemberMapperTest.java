@@ -16,7 +16,7 @@ public class MemberMapperTest {
 	@Autowired
 	private MemberMapper membermapper;
 	
-	
+	/*
 	@Test
 	public void memberEnroll() throws Exception{
 		MemberVO member = new MemberVO();
@@ -24,9 +24,17 @@ public class MemberMapperTest {
 		member.setMemberPw("test1");
 		member.setMemberEmail("ssss@sss");
 		membermapper.memberEnroll(member);
-		
+	}
+	*/
+	@Test
+	public void memberLogin() throws Exception{
+		MemberVO member = new MemberVO();
+		member.setMemberId("admin");
+		member.setMemberPw("admin");
+		membermapper.memberLogin(member);
 		
 		
 	}
+	
 	
 }

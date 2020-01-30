@@ -3,15 +3,19 @@ package com.sjb.controller;
 import java.util.Random;
 
 import javax.mail.internet.MimeMessage;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.sjb.model.MemberVO;
 import com.sjb.service.MemberService;
@@ -20,6 +24,7 @@ import com.sjb.service.MemberService;
 @RequestMapping("/member")
 public class MemberController {
 
+	//private static final String LOGIN = "login";
 	
 	@Autowired
 	private MemberService memberservice;
@@ -94,7 +99,27 @@ public class MemberController {
 	}
 	
 	
-	
+	@RequestMapping(value="login", method=RequestMethod.POST)
+	public String loginPOST(HttpServletRequest request,MemberVO vo, RedirectAttributes rttr)throws Exception{
+		
+		HttpSession session = request.getSession();
+		
+		System.out.println("vo작동" + vo);
+		MemberVO lvo = memberservice.memberLogin(vo);
+		System.out.println("로그인vo"+lvo);
+		if(lvo==null) {
+			//String msg = "사용자 id 도는 비밀번호를 잘못 입력하였습니다.";
+			int result = 0;
+			rttr.addFlashAttribute("result", result);
+			return "redirect:/loginMain";
+		}
+		System.out.println("new login success");
+		session.setAttribute("member", lvo);
+		
+		
+		
+		return "redirect:/main";
+	}
 	
 	
 	

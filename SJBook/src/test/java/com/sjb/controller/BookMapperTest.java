@@ -24,7 +24,7 @@ public class BookMapperTest {
 	
 	//@Autowired BookService bs;
 	
-	/*
+	
 	@Test
 	public void bookList() throws Exception{
 		
@@ -32,7 +32,7 @@ public class BookMapperTest {
 		
 		
 	}
-*/
+
 	/*
 	@Test
 	public void detail() throws Exception{
@@ -41,7 +41,7 @@ public class BookMapperTest {
 		//System.out.println(""+bookMapper.bookDetail(1));
 		
 	}*/
-	
+/*
 	@Test
 	public void enroll() throws Exception{
 		BookVO book = new BookVO();
@@ -60,7 +60,7 @@ public class BookMapperTest {
 		bookMapper.bookEnroll(book);
 		
 	}
-	
+*/	
 	/*@Test
 	public void intest() throws Exception{
 		BookVO book = new BookVO();

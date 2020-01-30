@@ -20,7 +20,7 @@
 	<div id="top_mini">
 		<div id="top_mini_1">
 			<ul>
-				<li>로그인</li>
+				<li>로그인${member.memberId}</li>
 				<li>장바구니</li>
 				<li>고객센터</li>
 				<li>주문배송</li>

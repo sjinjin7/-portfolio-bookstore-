@@ -6,7 +6,7 @@ public class MemberVO {
 	private String memberId;
 	
 	//비밀번호
-	private String memberPw;
+	private String memberPs;
 	
 	//이름
 	private String memberName;
@@ -51,11 +51,11 @@ public class MemberVO {
 	}
 
 	public String getMemberPw() {
-		return memberPw;
+		return memberPs;
 	}
 
 	public void setMemberPw(String memberPw) {
-		this.memberPw = memberPw;
+		this.memberPs = memberPw;
 	}
 
 	public String getMemberName() {
@@ -164,7 +164,7 @@ public class MemberVO {
 
 	@Override
 	public String toString() {
-		return "MemberVO [memberId=" + memberId + ", memberPw=" + memberPw + ", memberName=" + memberName
+		return "MemberVO [memberId=" + memberId + ", memberPw=" + memberPs + ", memberName=" + memberName
 				+ ", memberGender=" + memberGender + ", memberPhone=" + memberPhone + ", birthY=" + birthY + ", birthM="
 				+ birthM + ", birthD=" + birthD + ", memberEmail=" + memberEmail + ", memberAdmin=" + memberAdmin
 				+ ", memberAddr1=" + memberAddr1 + ", memberAddr2=" + memberAddr2 + ", memberAddr3=" + memberAddr3
