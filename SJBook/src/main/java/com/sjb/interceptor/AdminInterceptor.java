@@ -6,17 +6,15 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.servlet.FlashMap;
-import org.springframework.web.servlet.FlashMapManager;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.web.servlet.support.RequestContextUtils;
 
-public class LoginInterceptor extends HandlerInterceptorAdapter{
+import com.sjb.model.MemberVO;
+
+public class AdminInterceptor extends HandlerInterceptorAdapter{
 
 	private static final String LOGIN = "member";
-	private static final Logger logger = LoggerFactory.getLogger(LoginInterceptor.class);
+	private static final Logger logger = LoggerFactory.getLogger(AdminInterceptor.class);
 	
 	/*
 	 * preHandle : 컨트롤러가 호출되기 전에 실행 postHandle : 컨트롤러가 실행된 후에 실행 afterComplete : 뷰에서
@@ -28,10 +26,14 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception{
 		System.out.println("post handle...........");
-		FlashMap flashMap = new FlashMap();
-		FlashMapManager flashMapManager = RequestContextUtils.getFlashMapManager(request);
-		flashMapManager.saveOutputFlashMap(flashMap, request, response);
+		//FlashMap flashMap = new FlashMap();
+		//FlashMapManager flashMapManager = RequestContextUtils.getFlashMapManager(request);
+		//flashMapManager.saveOutputFlashMap(flashMap, request, response);
 		
+		
+		
+		
+		/*
 		HttpSession session = request.getSession();
 		
 		Object lvo = modelAndView.getModel().get("memberVO");
@@ -41,7 +43,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 			int result = 0;
 			//rttr.addFlashAttribute("result", result);
 			System.out.println("resut전3333 : " + result);
-			flashMap.put("result", result);
+			//flashMap.put("result", result);
 			System.out.println("resut후3333 : " + result);
 			response.sendRedirect("/loginMain");//로그인 성공한 후 메인페이지로 이동.
 			//response.sendRedirect("/loginMain");
@@ -53,7 +55,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 		
 		response.sendRedirect(request.getContextPath() +"/main");
 		}
-		
+		*/
 		
 		
 		
@@ -71,6 +73,40 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception{
 		System.out.println("pre handle...........");
 		
+		/*
+		HttpSession session = request.getSession();
+		
+		MemberVO lvo = (MemberVO) session.getAttribute(LOGIN);
+		logger.info("!!!lvo : " + lvo);
+		logger.info("!!!lvo.getmemberId : " + lvo.getMemberAdmin());
+		if(lvo.getMemberAdmin() != 1) {
+			response.sendRedirect("main");
+			return false;
+		}
+		response.sendRedirect("/admin/list");
+		return true;
+		*/
+
+		HttpSession session = request.getSession();
+		
+		MemberVO lvo = (MemberVO) session.getAttribute(LOGIN);
+		logger.info("!!!lvo : " + lvo);
+		logger.info("!!!lvo.getmemberId : " + lvo.getMemberAdmin());
+		if(lvo.getMemberAdmin() == 1) {
+			//response.sendRedirect("/admin/list");
+			return true;
+		}
+
+		response.sendRedirect("/main");
+		return false;		
+		
+		
+		
+		
+		
+		
+		
+		/*
 		HttpSession session = request.getSession();
 		if(session.getAttribute(LOGIN) != null) {
 			logger.info("clear login data before");
@@ -78,11 +114,11 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 			session.removeAttribute(LOGIN);
 			
 		}
+		*/
 		
 		
 		
 		
-		return true;
 		
 		
 	}

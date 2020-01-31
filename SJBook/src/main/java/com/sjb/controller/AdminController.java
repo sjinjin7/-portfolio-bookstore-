@@ -57,6 +57,13 @@ public class AdminController {
 		model.addAttribute("list",bookservice.bookList());
 	}
 	*/
+	@RequestMapping(value="/enterAdmin", method=RequestMethod.GET)
+	public void enterAdmin() throws Exception{
+		logger.info("enterAdmin진입");
+	}
+	
+	
+	
 	@RequestMapping(value="/list", method=RequestMethod.GET)
 	public void listGET(Criteria cri, Model model) throws Exception{
 		int total = bookservice.bookCount(cri);

@@ -27,13 +27,20 @@
 		class="org.springframework.web.multipart.support.StandardServletMultipartResolver"></beans:bean>
 	
 		<beans:bean id="loginInterceptor" class="com.sjb.interceptor.LoginInterceptor"></beans:bean>
+		<beans:bean id="AdminInterceptor" class="com.sjb.interceptor.AdminInterceptor"></beans:bean>
 		<interceptors>
 			<interceptor>
 				<mapping path="/member/login"/>
-				
-				
 				<beans:ref bean="loginInterceptor"/>
 			</interceptor>
+			<interceptor>
+				<!-- <mapping path="/admin/enterAdmin"/> -->
+				<mapping path="/admin/**"/>
+				<beans:ref bean="AdminInterceptor"/>
+			</interceptor>			
+			
+			
+			
 		</interceptors>
 	
 	<context:component-scan base-package="com.sjb.controller" />

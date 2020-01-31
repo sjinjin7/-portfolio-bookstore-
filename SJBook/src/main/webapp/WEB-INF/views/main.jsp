@@ -12,15 +12,28 @@
   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
   crossorigin="anonymous"></script>
 <script src="resources/js/main.js" type="text/javascript"></script>
+
+<link rel="stylesheet" type="text/css" href="resources/css/slick.css"/>
+<!-- <link rel="stylesheet" type="text/css" href="resources/css/slick-theme.css"/> -->
+<script type="text/javascript" src="resources/js/slick.js"></script>
+
+
 </head>
 <body>
 <div id="wrap">
-	<div id="top_ad"><img src="resources/img/top_ad.png"> </div>
+	<div id="top_ad"><img src="resources/img/top_ad.png">
+	
+	 
+	</div>
 	
 	
 	<div id="top_mini">
 		<div id="top_mini_1">
 			<ul>
+				<li><a href="/admin/list">관리자페이지</li>
+				<c:if test="${member.memberAdmin == 1}">
+				<li><a href="/admin/enterAdmin">관리자페이지</li>
+				</c:if>
 				<c:if test="${member != null}">
 				<li><strong>${member.memberName}</strong>님 환영합니다</li>
 				<li><a id="logout">로그아웃</a></li>
@@ -142,7 +155,14 @@
 	
 		
 	<div id="main">
-		<div id="main1"><h1>main1</h1></div>
+		<div id="main1">
+			<div><img src="http://image.kyobobook.co.kr/ink/images/prom/2020/banner/200123/bnN_01.jpg"> </div>
+			<div><img src="http://image.kyobobook.co.kr/ink/images/prom/2020/banner/200129/bnG_w01.jpg"> </div>
+			<div><img src="http://image.kyobobook.co.kr/ink/images/prom/2020/book/200108_ebs/bnD_w01.jpg"> </div>
+			<div><img src="http://image.kyobobook.co.kr/ink/images/prom/2020/banner/200123/bnN_03.jpg"> </div>
+			<div><img src="http://image.kyobobook.co.kr/ink/images/prom/2020/banner/200123/bnN_02.jpg"> </div>
+			<div><img src="http://image.kyobobook.co.kr/ink/images/prom/2020/banner/200123/bnN_01.jpg"> </div>
+		</div>
 		<div id="main2">
 			<div id="main2_1"></div>
 		</div>

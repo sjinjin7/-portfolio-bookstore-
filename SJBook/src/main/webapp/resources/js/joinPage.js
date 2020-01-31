@@ -20,6 +20,7 @@ function join_click(result){
 	var emailcheck = false;
 	var addresscheck = false;
 
+	
 $(document).ready(function(){
 	// 인증번호받기
 	
