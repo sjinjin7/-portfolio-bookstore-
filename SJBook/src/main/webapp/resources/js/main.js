@@ -32,6 +32,24 @@ $(document).ready(function(){
 	});
 	
 	
+/*	
+ 	//로그아웃 ajax 기능 구현
+	$("#logout").click(function(){
+		//alert("버튼연결");
+		$.ajax({
+			type:"POST",
+			url : "member/logout",
+			success:function(data){
+				
+				alert("로그아웃 되었습니다.");
+				document.location.reload();
+				//document 또는 self 를 사용하면됨
+				//self.location.reload();
+				
+			}
+		});//ajax 끝
+	});//function 끝
+	*/
 });
 
 

@@ -6,6 +6,8 @@ import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -17,15 +19,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.sjb.interceptor.LoginInterceptor;
 import com.sjb.model.MemberVO;
 import com.sjb.service.MemberService;
 
 @Controller
 @RequestMapping("/member")
 public class MemberController {
-
-	//private static final String LOGIN = "login";
 	
+	private static final String LOGIN = "member";
+	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
+
 	@Autowired
 	private MemberService memberservice;
 	@Autowired
@@ -116,7 +120,24 @@ public class MemberController {
 		return "redirect:/main";
 	}
 	
-	
+	@RequestMapping(value="logout", method=RequestMethod.POST)
+	@ResponseBody
+	public void logoutGET(HttpServletRequest request)throws Exception{
+		HttpSession session = request.getSession();
+		
+		logger.info("logout실행");
+		//세션에 저장된 값제거
+		logger.info("session제거");
+		session.removeAttribute(LOGIN);
+		//서버에서 현재 세션을 제거
+		logger.info("서버에서 session제거");
+		session.invalidate();
+		
+		
+		
+		
+		
+	}
 	
 	
 	

@@ -15,7 +15,7 @@ import org.springframework.web.servlet.support.RequestContextUtils;
 
 public class LoginInterceptor extends HandlerInterceptorAdapter{
 
-	private static final String LOGIN = "login";
+	private static final String LOGIN = "member";
 	private static final Logger logger = LoggerFactory.getLogger(LoginInterceptor.class);
 	
 	/*
@@ -48,7 +48,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 			
 		}else {
 		System.out.println("new login success");
-		session.setAttribute("member", lvo);
+		session.setAttribute(LOGIN, lvo);
 		System.out.println("lvo값 : "+lvo);
 		
 		response.sendRedirect(request.getContextPath() +"/main");
