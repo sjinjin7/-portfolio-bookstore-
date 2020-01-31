@@ -304,6 +304,12 @@
 	
 	text-align: center;
 }
+join_button:active{
+	border: 1px solid aqua;
+	
+}
+
+
 #join_button button{
 	cursor:pointer;
 	width:100%;

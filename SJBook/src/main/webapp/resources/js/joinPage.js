@@ -11,8 +11,14 @@ function join_click(result){
 	
 }
 */
-
-
+	var idcheck = false;
+	var pwcheck = false;
+	var pwckcheck = false;
+	var namecheck = false;
+	var birthcheck = false;
+	var gendercheck = false;
+	var emailcheck = false;
+	var addresscheck = false;
 
 $(document).ready(function(){
 	// 인증번호받기
@@ -84,13 +90,7 @@ $(document).ready(function(){
 	
 	
 	
-	//가입하기 버튼
-		//alert("연결");
-	$("button[type='submit']").click(function(){
-		//alert("클릭");
-		$("form[id='form1']").attr("action","/member/join");
-		$("form[id='form1']").submit();
-	});
+	
 	
 	//생년월일 한곳으로 합치기
 	
@@ -102,6 +102,21 @@ $(document).ready(function(){
 		
 		$("#memberBith").val(birth1+'-' + birth2 +'-' + birth3);	
 	});
+	
+	
+	
+	
+	//가입하기 버튼 빈칸 유효성검사(최종)
+	
+	//alert("연결");
+	$("button[type='submit']").click(function(){
+	//alert("클릭");
+	$("form[id='form1']").attr("action","/member/join");
+	$("form[id='form1']").submit();
+});
+	
+	
+	
 	
 	
 });

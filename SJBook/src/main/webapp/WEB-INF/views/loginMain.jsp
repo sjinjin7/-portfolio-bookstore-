@@ -25,10 +25,12 @@
 	<div id="main_middle">
 		<div id="main_middle_1">
 			<div id="main_id"><input type="text" name="memberId"></div>
+			<span id="id_check">아이디를 입력해주세요.</span>
 			<div id="main_pw"><input type="password" name="memberPw"></div>
+			<span id="pw_check">비밀번호를 입력해주세요.</span>
 			<!-- <div id="main_button"> -->
 				<!-- <a href="member/login"> <h1>로그인</h1> </a> -->
-				<input type="submit" value="로그인">
+				<input type="submit" value="로그인" id="login_btn">
 			<!-- </div> -->
 			<c:if test="${result == 0}">
 			<div id="loginWarn"><strong>사용자 ID</strong> 또는 <strong>비밀번호</strong>를 잘못 입력하셨습니다.</div>
