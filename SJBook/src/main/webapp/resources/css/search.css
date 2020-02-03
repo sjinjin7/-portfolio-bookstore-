@@ -287,7 +287,7 @@ img{
 	margin-left: 20%;
 }
 #table_info{
-	width: 50%;
+	width: 45%;
 }
 
 .title .category{
@@ -344,18 +344,65 @@ strong{
 }
 
 #table_info3{
-	width: 15%;
+	width: 20%;
 }
 #table_info3 .check{
-	width: 88px;
+	width: 150px;
 	margin : 0 auto 10px;
 	text-align: left;
 	font-size: 13px;
 }
+.btn_count{
+	display : inline-block;
+	vertical-align:middle;
+	height:29px;
+	position : relative;
+	font-size: 14px;
+	padding-right: 15px;
+	padding-left: 10px;
+}
+.btn_count>label>input{
+	text-align : center;
+	font-size:11px;
+	//border-color : #c6c6c6;
+	height : 27px;
+	width: 60px;
+	border : 1px solid #c6c6c6;
+	margin-left: 10px;
+	
+}
+.btn_count .btn_plus{
+	position : absolute;
+	top : 0;
+	right:0;
+	border : 1px solid #c6c6c6;
+	width:13px;
+	height:13px;
+	font-size:0;
+	color:transparent;
+	background: url(https://simage.kyobobook.co.kr/ink/images/common/icon_quantity_up.gif) no-repeat;
+	padding-left: 1px;
+	cursor: pointer;
+}
+
+.btn_count .btn_minus{
+	position : absolute;
+	bottom : 0;
+	right:0;
+	border : 1px solid #c6c6c6;
+	width:13px;
+	height:13px;
+	font-size:0;
+	color:transparent;
+	background: url(https://simage.kyobobook.co.kr/ink/images/common/icon_quantity_down.gif) no-repeat;
+	padding-left: 1px;
+	cursor: pointer;
+}
+
 
 
 #table_info3 .button{
-	width: 88px;
+	width: 150px;
 	margin: 0 auto;
 }
 
@@ -387,14 +434,16 @@ strong{
 	margin-top: 4px;
 	padding : 3px 4px 2px;
 	
-	height: 13px;
-	font-size: 11px !important;
-	line-height:13px;
+	height: 25px;
+	line-height:25px;
+	font-size: 15px !important;
 	font-weight: normal;
 	font-family: 'dotum',sans-serif;
 	text-decoration: none !important;
 	text-align: center;
 	transition: all .2s;	
+	font-weight:bolder;
+	
 	
 	background-image: none;
 	background-color: #5e6b9f !important;
@@ -407,14 +456,16 @@ strong{
 	margin-top: 4px;
 	padding : 3px 4px 2px;
 	
-	height: 13px;
-	font-size: 11px !important;
-	line-height:13px;
+	height: 25px;
+	line-height:25px;
+	font-size: 15px !important;
 	font-weight: normal;
 	font-family: 'dotum',sans-serif;
 	text-decoration: none !important;
 	text-align: center;
 	transition: all .2s;
+	font-weight:bolder;
+	
 	
 	background-image: none;
 	background-color: #7b8ed1 !important;

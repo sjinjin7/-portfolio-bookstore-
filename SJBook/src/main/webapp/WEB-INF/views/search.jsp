@@ -157,38 +157,10 @@
 							
 							<tr>
 								<td id="table_image${i}" class="table_image" >
-									<input type="hidden" class="productID" value="${book.productID}">
+									<input type="hidden" id="productId${i}" class="productID" value="${book.productID}">
 									이미지
 								</td>
-								<script>
-								$(document).ready(function(){
-									//alert("연결");
-									
-									(function(){
-										var productID = $("#table_image${i} input").val();
-										//alert(productID);
-										$.getJSON("getBcover",{productID:productID}, function(arr){
-											console.log(arr);
-											
-											var str = "";
-											$(arr).each(function(i, attach){
-											
-												var fileCallPath = encodeURIComponent(attach.uploadPath + "/s_"+attach.uuid + "_"+attach.fileName);
-												
-												str += "<img src='display?fileName="+fileCallPath+"'>";
-												
-												return false;
-											});
-											
-											$("#table_image${i}").html(str);
-											
-										});// end getJSON
-										
-									})();// end function
-									
-								});
 								
-								</script>
 								<td id="table_info">
 									<div class="title">
 										<a href="detail?num=${book.productID}">
@@ -217,21 +189,78 @@
 									
 								</td>
 								<td id="table_info3">
-									<!-- <div class="check">
-										<input type="checkbox" name="indexCnt" value="1" class="checkbox" title="이 상품을 선택">
+									<div class="check">
+										<!-- <input type="checkbox" name="indexCnt" value="1" class="checkbox" title="이 상품을 선택"> -->
 										<span class="btn_count">
-											<label>수량 <input type="text" name="qty" value="1" maxlength="3" class="input_style02"></label>
-											<a href="javascript:onChangeUp(document.searchFrm5, '0')" class="btn_plus">수량 더하기</a>
-											<a href="javascript:onChangeDown(document.searchFrm5, '0')" class="btn_minus">수량 빼기</a>
+											<label><strong>수량</strong>  
+												<input type="text" name="qty" value="1" maxlength="3" id="qty${i}" class="input_style02" name="cartStock">
+											</label>
+											<a class="btn_plus" id="btn_plus${i}">수량 더하기</a>
+											<a class="btn_minus" id="btn_minus${i}">수량 빼기</a>
+											
 										</span>
-									</div> -->
+									</div>
+									
 									<div class="button">
-										<a href="javascript:goAddCartChk(document.searchFrm5, 'iframecart', 0);" class="btn_blue">장바구니 담기</a>
+										<input type="hidden" id="productId${i}" class="productID" value="${book.productID}">
+										<a href="javascript:cartEnroll('${i}');" class="btn_blue">장바구니 담기</a>
 										<a href="javascript:goDirectOrder(document.searchFrm5, 0);" class="btn_blue2">바로구매</a>
-										<a href="javascript:goAddWishOneSrc(document.searchFrm5,0);" class="btn_small">보관함 담기</a>
+										<!-- <a href="javascript:goAddWishOneSrc(document.searchFrm5,0);" class="btn_small">보관함 담기</a> -->
 									</div>
 								</td>
 							</tr>
+							<script>
+								$(document).ready(function(){
+									//alert("연결");
+									// 이미지 불러오기
+									(function(){
+										var productID = $("#table_image${i} input").val();
+										//alert(productID);
+										$.getJSON("getBcover",{productID:productID}, function(arr){
+											console.log(arr);
+											
+											var str = "";
+											$(arr).each(function(i, attach){
+											
+												var fileCallPath = encodeURIComponent(attach.uploadPath + "/s_"+attach.uuid + "_"+attach.fileName);
+												
+												str += "<img src='display?fileName="+fileCallPath+"'>";
+												
+												return false;
+											});
+											
+											$("#table_image${i}").html(str);
+											
+										});// end getJSON
+										
+									})();// end function
+								 	
+									//문제점 - 아래에 버튼을 눌럿을시 화면이 위로올라감(해결)
+									//다른방법 - a링크 자바스크립트로 태움
+									//수량 증가
+										$("#btn_plus${i}").on('click', function(e){
+											var value = parseInt($('#qty${i}').val());
+											value = value + 1;
+											$('#qty${i}').val(value);
+			
+			
+										});
+									//수량 감소
+										$("#btn_minus${i}").on('click', function(e){
+											var value = parseInt($('#qty${i}').val());
+											value = value - 1;
+											if(value <= 0){
+												return;
+											}
+											
+											$('#qty${i}').val(value);
+			
+			
+										});										
+									 
+								});
+								
+								</script>
 							<c:set var="i" value="${i+1}"></c:set>
 						</c:forEach>
 							<tr>

@@ -5,8 +5,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.util.List;
 
-import org.mybatis.logging.LoggerFactory;
-import org.slf4j.Logger;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -20,9 +20,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sjb.model.BookCoverVO;
+import com.sjb.model.CartVO;
 import com.sjb.model.Criteria;
+import com.sjb.model.MemberVO;
 import com.sjb.model.PageVO;
 import com.sjb.service.BookService;
+import com.sjb.service.CartService;
 
 @Controller
 public class BookController {
@@ -31,6 +34,9 @@ public class BookController {
 	
 	@Autowired
 	private BookService bookservice;
+	
+	@Autowired
+	private CartService cartservice;
 
 	//private static final Logger log = LoggerFactory.getLogger(BookController.class);
 	
@@ -103,6 +109,38 @@ public class BookController {
 		model.addAttribute("bd", bookservice.bookDetail(num));
 		return "detail";
 	}
+	
+
+	@RequestMapping(value = "addEnroll", method = RequestMethod.POST)
+	@ResponseBody 
+	public String  addCartPOST(CartVO cart, HttpSession session) throws Exception{
+		
+		System.out.println("addEnroll 진입");
+		
+		String result = "false";
+		
+		MemberVO member = (MemberVO)session.getAttribute("member");
+		System.out.println(member);
+		
+		if(member != null) { 
+			cart.setMemberId(member.getMemberId());
+			cartservice.cartenroll(cart); 
+			result = "true"; 
+		}
+		/*
+		 * 
+		 * 
+		 * MemberVO member = (MemberVO)session.getAttribute("member");
+		 * 
+		 * 
+		 * 
+		 */
+		System.out.println(result);
+		return result;
+	}
+	
+	
+	
 	
 	
 	

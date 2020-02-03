@@ -30,9 +30,8 @@
 	<div id="top_mini">
 		<div id="top_mini_1">
 			<ul>
-				<li><a href="/admin/list">관리자페이지</li>
 				<c:if test="${member.memberAdmin == 1}">
-				<li><a href="/admin/enterAdmin">관리자페이지</li>
+				<li><a href="/admin/list">관리자페이지</li>
 				</c:if>
 				<c:if test="${member != null}">
 				<li><strong>${member.memberName}</strong>님 환영합니다</li>
@@ -161,7 +160,7 @@
 			<div><img src="http://image.kyobobook.co.kr/ink/images/prom/2020/book/200108_ebs/bnD_w01.jpg"> </div>
 			<div><img src="http://image.kyobobook.co.kr/ink/images/prom/2020/banner/200123/bnN_03.jpg"> </div>
 			<div><img src="http://image.kyobobook.co.kr/ink/images/prom/2020/banner/200123/bnN_02.jpg"> </div>
-			<div><img src="http://image.kyobobook.co.kr/ink/images/prom/2020/banner/200123/bnN_01.jpg"> </div>
+			
 		</div>
 		<div id="main2">
 			<div id="main2_1"></div>
