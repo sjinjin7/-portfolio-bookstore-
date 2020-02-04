@@ -54,7 +54,7 @@
 				<c:if test="${member == null}">
 				<li>로그인</li>
 				</c:if>
-				<li>장바구니</li>
+				<li><a href="cart">장바구니</a></li>
 				<li>고객센터</li>
 				<li>주문배송</li>
 			</ul>

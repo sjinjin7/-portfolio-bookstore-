@@ -15,7 +15,7 @@
 </head>
 <body>
 
-<h1>login</h1>
+<!-- <h1>login</h1> -->
 
 <div id="wrap">
 	<div id="top_logo">

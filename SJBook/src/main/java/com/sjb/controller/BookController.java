@@ -139,7 +139,10 @@ public class BookController {
 		return result;
 	}
 	
-	
+	@RequestMapping(value = "cart", method = RequestMethod.GET)
+	public void cartGET() throws Exception{
+		
+	}
 	
 	
 	

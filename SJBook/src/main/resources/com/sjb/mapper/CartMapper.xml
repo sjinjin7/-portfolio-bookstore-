@@ -10,6 +10,18 @@
 	insert into sjb_cart(productId, memberId, cartStock, addDate ) values(#{productId}, #{memberId}, #{cartStock}, sysdate());
  </insert>
 
-	  
+
+<select id="cartList" resultType="com.sjb.model.CartListVO">
+        select @rownum:=@rownum+1 as rownum, 
+        sjb_cart.productId, memberId, cartStock, addDate , title, 
+			authorID, (select authorName from sjb_author where sjb_book.authorID=sjb_author.authorID) as authorName, 
+			publisher, cateCode, (select cateName from sjb_bcate where sjb_book.cateCode=sjb_bcate.cateCode) as cateName,
+			bookCover, publeYear, likeStar, bookReply, bookPrice, discountRate, bookInfo, contents,
+			introImage,regdate,boardRegdate,modDate,bookStock
+        from (select @rownum:=0) as rownum, sjb_cart 
+        join sjb_book
+        on sjb_cart.productId = sjb_book.productID
+        where sjb_cart.productId = #{productId};	  
+</select>
   
   </mapper>

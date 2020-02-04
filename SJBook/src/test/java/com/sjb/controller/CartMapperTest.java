@@ -7,6 +7,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.sjb.mapper.CartMapper;
+import com.sjb.model.CartListVO;
 import com.sjb.model.CartVO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -15,7 +16,7 @@ public class CartMapperTest {
 	
 	@Autowired
 		private CartMapper cartmapper;
-	
+	/*
 	@Test
 	public void cartenroll() throws Exception{
 		CartVO cart = new CartVO();
@@ -25,6 +26,18 @@ public class CartMapperTest {
 		cart.setProductId(4);
 		
 		cartmapper.cartEnroll(cart);
+		
+		
+	}
+	*/
+	@Test
+	public void cartList() throws Exception{
+		//CartListVO cart = new CartListVO();
+		
+		
+		cartmapper.cartList(4);
+		
+		
 		
 		
 	}

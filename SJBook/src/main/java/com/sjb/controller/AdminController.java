@@ -228,7 +228,7 @@ public class AdminController {
 					coverVO.setImage(true);
 					
 					FileOutputStream thumbnail = new FileOutputStream(new File(uploadPath, "s_" + uploadFileName));
-					
+					System.out.println("aa"+thumbnail);
 					Thumbnailator.createThumbnail(multipartFile.getInputStream(), thumbnail, 100, 100);
 					
 					thumbnail.close();
