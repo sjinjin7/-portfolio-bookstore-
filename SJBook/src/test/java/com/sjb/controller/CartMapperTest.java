@@ -35,7 +35,7 @@ public class CartMapperTest {
 		//CartListVO cart = new CartListVO();
 		
 		
-		cartmapper.cartList(4);
+		cartmapper.cartList("test1");
 		
 		
 		

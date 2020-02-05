@@ -11,5 +11,5 @@ public interface CartService {
 	public void cartenroll(CartVO cart) throws Exception;
 	
 	// 장바구니 리스트
-	public List<CartListVO> cartList(int productId) throws Exception;
+	public List<CartListVO> cartList(String memberId) throws Exception;
 }

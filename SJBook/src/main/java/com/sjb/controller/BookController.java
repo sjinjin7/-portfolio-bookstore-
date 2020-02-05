@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sjb.model.BookCoverVO;
+import com.sjb.model.CartListVO;
 import com.sjb.model.CartVO;
 import com.sjb.model.Criteria;
 import com.sjb.model.MemberVO;
@@ -140,8 +141,15 @@ public class BookController {
 	}
 	
 	@RequestMapping(value = "cart", method = RequestMethod.GET)
-	public void cartGET() throws Exception{
+	public String cartGET(HttpSession session, Model model) throws Exception{
+		MemberVO member = (MemberVO) session.getAttribute("member");
+		String memberId = member.getMemberId();
+		System.out.println("memberId"+ memberId);
+		System.out.println("list" + cartservice.cartList(memberId));
+		List<CartListVO> list = cartservice.cartList(memberId);
+		model.addAttribute("clist",list);
 		
+		return "cart";
 	}
 	
 	

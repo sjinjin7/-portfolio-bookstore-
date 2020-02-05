@@ -22,9 +22,9 @@ public class CartServiceImpl implements CartService {
 	}
 
 	@Override
-	public List<CartListVO> cartList(int productId) throws Exception {
+	public List<CartListVO> cartList(String memberId) throws Exception {
 		
-		return cartmapper.cartList(productId);
+		return cartmapper.cartList(memberId);
 	}
 
 }

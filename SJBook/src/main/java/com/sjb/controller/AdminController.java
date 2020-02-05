@@ -160,7 +160,7 @@ public class AdminController {
 		
 		try {
 			String contentType = Files.probeContentType(file.toPath());
-			
+			System.out.println(contentType);
 			return contentType.startsWith("image");
 		} catch(IOException e) {
 			e.printStackTrace();			
@@ -220,7 +220,7 @@ public class AdminController {
 				coverVO.setUuid(uuid.toString());
 				coverVO.setUploadPath(uploadFolderPath);
 				
-				
+				System.out.println(saveFile);
 				
 				//check image type file  => make thumbnail
 				if(checkImageType(saveFile)) {
@@ -229,6 +229,7 @@ public class AdminController {
 					
 					FileOutputStream thumbnail = new FileOutputStream(new File(uploadPath, "s_" + uploadFileName));
 					System.out.println("aa"+thumbnail);
+					System.out.println("bb : " +multipartFile.getInputStream());
 					Thumbnailator.createThumbnail(multipartFile.getInputStream(), thumbnail, 100, 100);
 					
 					thumbnail.close();

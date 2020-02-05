@@ -21,7 +21,7 @@
         from (select @rownum:=0) as rownum, sjb_cart 
         join sjb_book
         on sjb_cart.productId = sjb_book.productID
-        where sjb_cart.productId = #{productId};	  
+        where sjb_cart.memberId = #{memberId};	  
 </select>
   
   </mapper>

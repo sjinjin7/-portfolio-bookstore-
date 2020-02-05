@@ -90,7 +90,56 @@
 	
 	<div id="nav_main">
 		<div id="nav_main_1">
-			
+			<div id="nav_main_1_cart">
+				<div id="nav_main_1_cart_check"><input type="checkbox"><h1>SJBook 배송</h1></div>
+				<div id="nav_main_1_cart_info">	
+					<table>
+						<%-- <c:set var="i" value="0"/>
+						<c:forEach items="${clist}" var="cart">
+						</c:forEach> --%>
+						<thead>
+						<tr id="firstrow">
+							<td id="c_product_info">상품정보</td>
+							<td id="c_price">판매가</td>
+							<td id="c_amount">수량</td>
+							<td id="c_sum">합계</td>
+							<td id="c_selection">선택</td>
+						</tr>
+						</thead>
+						<tbody>
+						<tr>
+							<td id="r_cproduct_info">상품정보</td>
+							<td id="r_cprice">판매가</td>
+							<td id="r_camount">수량</td>
+							<td id="r_csum">합계</td>
+							<td id="r_cselection">선택</td>
+						</tr>
+						</tbody>
+						
+					</table>
+				</div>	
+			</div>
+			<div><input type="checkbox"><h1>전체선택</h1></div>
+			<div>
+				<table>
+					<tr>
+						<td>상품금액</td>
+						<td>배송비</td>
+						<td>결제 예정금액</td>
+						<td>적립예정</td>
+					</tr>
+					<tr>
+						<td>상품금액</td>
+						<td>배송비</td>
+						<td>결제 예정금액</td>
+						<td>적립예정</td>
+					</tr>
+				</table>
+			</div>
+			<div>
+				<a>결제하기</a>
+			</div>
+		
 			<div id="side_right_ad"><h1>side right 63 362</h1></div>
 			<div id="side_left_ad"><h1>side left85 703</h1></div>
 		</div>

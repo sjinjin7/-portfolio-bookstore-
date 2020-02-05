@@ -9,7 +9,7 @@ public interface CartMapper {
 
 	public void cartEnroll(CartVO cart) throws Exception;
 	
-	public List<CartListVO> cartList(int productId) throws Exception;
+	public List<CartListVO> cartList(String memberId) throws Exception;
 	
 	
 }
