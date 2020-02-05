@@ -30,6 +30,7 @@
 	<div id="top_mini">
 		<div id="top_mini_1">
 			<ul>
+				<li><a href="/admin/list">관리자페이지</li>
 				<c:if test="${member.memberAdmin == 1}">
 				<li><a href="/admin/list">관리자페이지</li>
 				</c:if>
@@ -67,7 +68,7 @@
 		<div id="top_1">
 			<div id="top_1_logo">
 				<div id="top_1_logo_1">
-					<img src="resources/img/logo.png">
+					<a href="main"><img src="resources/img/logo.png"></a>
 				</div>
 			</div>
 			<div id="top_1_selection">
@@ -154,30 +155,70 @@
 	
 		
 	<div id="main">
-		<div id="main1">
-			<div><img src="http://image.kyobobook.co.kr/ink/images/prom/2020/banner/200123/bnN_01.jpg"> </div>
-			<div><img src="http://image.kyobobook.co.kr/ink/images/prom/2020/banner/200129/bnG_w01.jpg"> </div>
-			<div><img src="http://image.kyobobook.co.kr/ink/images/prom/2020/book/200108_ebs/bnD_w01.jpg"> </div>
-			<div><img src="http://image.kyobobook.co.kr/ink/images/prom/2020/banner/200123/bnN_03.jpg"> </div>
-			<div><img src="http://image.kyobobook.co.kr/ink/images/prom/2020/banner/200123/bnN_02.jpg"> </div>
+		<div id="main_container">
+			<div id="main1">
+				<div><img src="http://image.kyobobook.co.kr/ink/images/prom/2020/banner/200123/bnN_01.jpg"> </div>
+				<div><img src="http://image.kyobobook.co.kr/ink/images/prom/2020/banner/200129/bnG_w01.jpg"> </div>
+				<div><img src="http://image.kyobobook.co.kr/ink/images/prom/2020/book/200108_ebs/bnD_w01.jpg"> </div>
+				<div><img src="http://image.kyobobook.co.kr/ink/images/prom/2020/banner/200123/bnN_03.jpg"> </div>
+				<div><img src="http://image.kyobobook.co.kr/ink/images/prom/2020/banner/200123/bnN_02.jpg"> </div>
+				
+			</div>
+			<div id="main2">
+				<div id="main2_1"></div>
+			</div>
+			<div id="main3">
+				<div id="main3_1"></div>
+			</div>
+			<div id="side_right_ad"><h1>side right 63 362</h1></div>
+			<div id="side_left_ad"><h1>side left85 703</h1></div>
 			
 		</div>
-		<div id="main2">
-			<div id="main2_1"></div>
-		</div>
-		<div id="main3">
-			<div id="main3_1"></div>
-		</div>
 	</div>
 	
 	
-	<div id="footer"><h1>footer</h1></div>
+	<div id="footer_nav">
+		<div id="footer_nav_container">
+			<ul>
+				<li>회사소개</li>
+				<span class="line">|</span>
+				<li>이용약관</li>
+				<span class="line">|</span>
+				<li>고객센터</li>
+				<span class="line">|</span>
+				<li>광고문의</li>
+				<span class="line">|</span>
+				<li>채용정보</li>
+				<span class="line">|</span>
+			</ul>
+		</div>
+	</div>
+	
+	<div id="footer">
+		<div id="footer_container">
+			
+			<div id="footer_left">
+				<img src="resources/img/mlogo.png">
+			</div>
+			<div id="footer_right">
+				(주) SJBook  울산광역시 삼산동 그린아카데미  대표이사 : OOO
+				<br>
+				사업자등록번호 : ooo-oo-ooooo
+				<br>
+				<strong>대표전화 : oooo-oooo(발신자 부담전화)</strong>
+				<br>
+				<br>
+				COPYRIGHT(C) <strong>SJBook</strong>	ALL RIGHTS RESERVED.
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
 
 
 	
-	<div id="side_left_ad"><h1>side left85 703</h1></div>
+	
 	</div>
 
-	<div id="side_right_ad"><h1>side right 63 362</h1></div>
+	
 </body>
 </html>
