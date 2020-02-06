@@ -13,7 +13,7 @@
 
 <select id="cartList" resultType="com.sjb.model.CartListVO">
         select @rownum:=@rownum+1 as rownum, 
-        sjb_cart.productId, memberId, cartStock, addDate , title, 
+        cartId, sjb_cart.productId,  memberId, cartStock, addDate , title, 
 			authorID, (select authorName from sjb_author where sjb_book.authorID=sjb_author.authorID) as authorName, 
 			publisher, cateCode, (select cateName from sjb_bcate where sjb_book.cateCode=sjb_bcate.cateCode) as cateName,
 			bookCover, publeYear, likeStar, bookReply, bookPrice, discountRate, bookInfo, contents,
@@ -23,5 +23,11 @@
         on sjb_cart.productId = sjb_book.productID
         where sjb_cart.memberId = #{memberId};	  
 </select>
+
+<delete id="cartDelete">
+		delete from sjb_cart where cartId = #{cartId} and memberId = #{memberId};
+</delete>
+
+
   
   </mapper>

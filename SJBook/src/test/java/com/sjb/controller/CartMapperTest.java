@@ -30,18 +30,26 @@ public class CartMapperTest {
 		
 	}
 	*/
+	
+	/*
 	@Test
 	public void cartList() throws Exception{
 		//CartListVO cart = new CartListVO();
 		
-		
 		cartmapper.cartList("test1");
 		
+	}
+	*/
+	
+	@Test
+	public void cartDelete() throws Exception{
+		CartVO cart = new CartVO();
+		cart.setMemberId("test1");
+		cart.setcartId(3);
 		
-		
+		cartmapper.cartDelete(cart);
 		
 	}
-	
 	
 	
 

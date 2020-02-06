@@ -221,30 +221,16 @@ a{
 	height : 180px;
 	border-bottom: 1px solid #e7e7e7;
 }
-/* 
-#nav_main_1_cart_info table tr{
-	
-	height: 180px;
-	
+
+#r_cproduct_check{
+	width: 6%;
 }
-#nav_main_1_cart_info table td{
-	
-	padding : 15px 0 11px;
-	//vertical-align: top;
-	border-top: 1px solid #e7e7e7;
-	
+#r_cproduct_image{
+	width: 12%;
 }
-#nav_main_1_cart_info thead{
-	height:100px; 
+#r_cproduct_info{
+	width: 22%;
 }
-
- */
-
-
-
-
-
-
 
 
 

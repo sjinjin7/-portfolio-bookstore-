@@ -17,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sjb.model.BookCoverVO;
@@ -152,6 +153,33 @@ public class BookController {
 		return "cart";
 	}
 	
+	
+	@RequestMapping(value="deleteCart", method = RequestMethod.POST)
+	@ResponseBody
+	public String deleteCart(HttpSession session, @RequestParam(value="chkbox[]") List<String> chkArr, CartVO cart)throws Exception{
+		
+		System.out.println("delete cart");
+		
+		MemberVO member = (MemberVO)session.getAttribute("member");
+		String memberId = member.getMemberId();
+		
+		String result = "0";
+		int cartId = 0;
+		
+		if(member != null) {
+			cart.setMemberId(memberId);
+			
+			for(String i : chkArr) {
+				cartId = Integer.parseInt(i);
+				cart.setcartId(cartId);
+				cartservice.cartDelete(cart);
+			}
+			result = "1";
+		}
+		
+		
+		return result;
+	}
 	
 	
 	

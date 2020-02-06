@@ -4,6 +4,8 @@ import java.util.List;
 
 public class CartListVO {
 
+	private int cartId;
+	
 	private int productId;
 	
 	private String memberId;
@@ -191,6 +193,14 @@ public class CartListVO {
 	}
 
 	public int getSellprice() {
+		double salePrice = (double)this.bookPrice*(((double)this.discountRate)/100);
+		/*System.out.println("aa"+(double)this.bookPrice);
+		System.out.println("bb"+((double)this.discountRate)/100);
+		System.out.println("세일가격 : " + salePrice);
+		System.out.println("bookPrice2===>"+getBookPrice());
+		System.out.println(this.bookPrice);
+		System.out.println(this.discountRate);*/
+		sellprice = this.bookPrice-(int)salePrice;
 		return sellprice;
 	}
 
@@ -254,17 +264,27 @@ public class CartListVO {
 		this.bookStock = bookStock;
 	}
 
+	public int getCartId() {
+		return cartId;
+	}
+
+	public void setCartId(int cartId) {
+		this.cartId = cartId;
+	}
+
 	@Override
 	public String toString() {
-		return "cartListVO [memberId=" + memberId + ", cartStock=" + cartStock + ", addDate=" + addDate + ", productId="
-				+ productId + ", title=" + title + ", authorID=" + authorID + ", authorName=" + authorName
-				+ ", publisher=" + publisher + ", cateCode=" + cateCode + ", cateName=" + cateName + ", bookCover="
-				+ bookCover + ", bCover=" + bCover + ", publeYear=" + publeYear + ", likeStar=" + likeStar
-				+ ", bookReply=" + bookReply + ", bookPrice=" + bookPrice + ", discountRate=" + discountRate
+		return "CartListVO [cartId=" + cartId + ", productId=" + productId + ", memberId=" + memberId + ", cartStock="
+				+ cartStock + ", addDate=" + addDate + ", title=" + title + ", authorID=" + authorID + ", authorName="
+				+ authorName + ", publisher=" + publisher + ", cateCode=" + cateCode + ", cateName=" + cateName
+				+ ", bookCover=" + bookCover + ", bCover=" + bCover + ", publeYear=" + publeYear + ", likeStar="
+				+ likeStar + ", bookReply=" + bookReply + ", bookPrice=" + bookPrice + ", discountRate=" + discountRate
 				+ ", sellprice=" + sellprice + ", bookInfo=" + bookInfo + ", contents=" + contents + ", introImage="
 				+ introImage + ", regdate=" + regdate + ", boardRegdate=" + boardRegdate + ", modDate=" + modDate
 				+ ", bookStock=" + bookStock + "]";
 	}
+
+
 	
 	
 	

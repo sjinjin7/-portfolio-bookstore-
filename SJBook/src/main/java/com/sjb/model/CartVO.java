@@ -3,7 +3,7 @@ package com.sjb.model;
 public class CartVO {
 	
 	//카트 번호(기본키)
-	private String cartId; 
+	private int cartId; 
 	//제품 번호(외부연결)
 	private int productId;
 	//회원 번호(외부연결)
@@ -12,10 +12,10 @@ public class CartVO {
 	private int cartStock;
 	//등록날짜
 	private String addDate;
-	public String getcartId() {
+	public int getcartId() {
 		return cartId;
 	}
-	public void setcartId(String cartId) {
+	public void setcartId(int cartId) {
 		this.cartId = cartId;
 	}
 	public int getProductId() {

@@ -91,7 +91,53 @@
 	<div id="nav_main">
 		<div id="nav_main_1">
 			<div id="nav_main_1_cart">
-				<div id="nav_main_1_cart_check"><input type="checkbox"><h1>SJBook 배송</h1></div>
+				<div id="nav_main_1_cart_check" class="allCheck">
+					<input type="checkbox" name="allCheck" id="allCheck"><h1>SJBook 배송</h1>
+					<script>
+					//모두체크
+					$("#allCheck").click(function(){
+						var check = $('#allCheck').prop("checked");
+						if(check){
+							$(".chkBox").prop("checked", true);
+						} else{
+							$(".chkBox").prop("checked", false);
+						}
+					});
+					
+					
+					</script>
+				</div>
+				<div id="del_btn">
+					<button type="button" class="selectDelete_btn">전체삭제</button>
+					<script>
+						$(".selectDelete_btn").click(function(){
+							var confirm_val = confirm("전체 삭제하시겠습니까?");
+							
+							if(confirm_val){
+								var checkArr = new Array();
+								$("input[class='chkBox']:checked").each(function(){
+									checkArr.push($(this).attr("data-cartId"));
+								});//종료 input선택자
+								
+								$.ajax({
+									url : "deleteCart",
+									type : "post",
+									data : {chkbox : checkArr},
+									success : function(result){
+										if(result == 1){
+											location.href = "cart";	
+										} else{
+											alert(result)
+											alert("삭제 실패")
+										}
+									}
+								});
+								
+							}//종료 if
+						});//종료 click 
+					</script>
+				</div>
+				
 				<div id="nav_main_1_cart_info">	
 					<table>
 						<%-- <c:set var="i" value="0"/>
@@ -99,7 +145,7 @@
 						</c:forEach> --%>
 						<thead>
 						<tr id="firstrow">
-							<td id="c_product_info">상품정보</td>
+							<td id="c_product_info"colspan="3">상품정보</td>
 							<td id="c_price">판매가</td>
 							<td id="c_amount">수량</td>
 							<td id="c_sum">합계</td>
@@ -107,13 +153,78 @@
 						</tr>
 						</thead>
 						<tbody>
-						<tr>
-							<td id="r_cproduct_info">상품정보</td>
-							<td id="r_cprice">판매가</td>
-							<td id="r_camount">수량</td>
-							<td id="r_csum">합계</td>
-							<td id="r_cselection">선택</td>
-						</tr>
+							<c:set var="i" value="0"/>
+							<c:forEach items="${clist}" var="clist">
+								<tr>
+									<td id="r_cproduct_check">
+									<input type="checkbox" name="chkBox" class="chkBox" data-cartId="${clist.cartId}">
+									체크
+									<script>
+										$(".chkBox").click(function(){
+											$("#allCheck").prop("checked", false);
+										});
+									</script>
+									</td>
+									<td id="r_cproduct_image">이미지</td>
+									<td id="r_cproduct_info">
+										<div class="title">
+											<a>
+												<span class="category">[${clist.cateName}]</span>
+												<strong> ${clist.title} </strong>
+											</a>
+										</div>
+										<div class="author">
+											<a>${clist.authorName}</a> 지음 
+											<span class="line">|</span>
+											<a> ${clist.publisher}</a>
+											<span class="line">|</span>
+											${clist.publeYear}
+										
+										</div>
+										<div class="likeStar">평점 : ${clist.cateName}</div>
+									</td>
+									<td id="r_cprice">판매가 :	<fmt:formatNumber value="${clist.sellprice}" pattern="#,###"/>    </td>
+									<td id="r_camount">수량 : ${clist.cartStock}</td>
+									<c:set var="clist_sum_price" value="${clist.sellprice * clist.cartStock}" />
+									<td id="r_csum">합계 : <fmt:formatNumber value="${clist_sum_price}" pattern="#,###"/></td>
+									<td id="r_cselection" class="delete">
+										<button type="button" class="delete_${i}_btn" data-cartId="${clist.cartId}">선택삭제</button>
+										<script>
+											$(".delete_${i}_btn").click(function(){
+												var confirm_val = confirm("삭제하시겠습니까?");
+												
+												if(confirm_val){
+													var checkArr = new Array();
+													
+														checkArr.push($(this).attr("data-cartId"));
+													
+													
+													$.ajax({
+														url : "deleteCart",
+														type : "post",
+														data : {chkbox : checkArr},
+														success : function(result){
+															if(result == 1){
+																location.href = "cart";	
+															} else{
+																alert(result)
+																alert("삭제 실패")
+															}
+														}
+													});
+												}
+												
+												
+											});
+										
+										</script>
+										<a>바로구매</a>
+										<br>
+										<a>삭제</a>
+									</td>
+								</tr>
+							<c:set var="i" value="${i+1}"></c:set>
+							</c:forEach>
 						</tbody>
 						
 					</table>
@@ -134,6 +245,7 @@
 						<td>결제 예정금액</td>
 						<td>적립예정</td>
 					</tr>
+					
 				</table>
 			</div>
 			<div>

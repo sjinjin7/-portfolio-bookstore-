@@ -27,4 +27,10 @@ public class CartServiceImpl implements CartService {
 		return cartmapper.cartList(memberId);
 	}
 
+	@Override
+	public void cartDelete(CartVO cart) throws Exception {
+		cartmapper.cartDelete(cart);
+		
+	}
+
 }
