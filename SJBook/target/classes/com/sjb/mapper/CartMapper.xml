@@ -29,5 +29,11 @@
 </delete>
 
 
+<update id="stockChange">
+	
+	update sjb_cart set cartStock = #{cartStock} where cartId = #{cartId};
+
+</update>
+
   
   </mapper>

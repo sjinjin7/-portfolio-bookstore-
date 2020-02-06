@@ -33,4 +33,10 @@ public class CartServiceImpl implements CartService {
 		
 	}
 
+	@Override
+	public void stockChange(CartVO cart) throws Exception {
+		cartmapper.stockChange(cart); 
+		
+	}
+
 }

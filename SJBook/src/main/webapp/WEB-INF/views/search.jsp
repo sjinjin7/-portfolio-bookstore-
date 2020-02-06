@@ -195,7 +195,7 @@
 										<!-- <input type="checkbox" name="indexCnt" value="1" class="checkbox" title="이 상품을 선택"> -->
 										<span class="btn_count">
 											<label><strong>수량</strong>  
-												<input type="text" name="qty" value="1" maxlength="3" id="qty${i}" class="input_style02" name="cartStock">
+												<input type="text" name="qty" value="1" maxlength="3" id="qty${i}" class="input_style02" name="cartStock" readonly="readonly">
 											</label>
 											<a class="btn_plus" id="btn_plus${i}">수량 더하기</a>
 											<a class="btn_minus" id="btn_minus${i}">수량 빼기</a>

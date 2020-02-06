@@ -15,4 +15,7 @@ public interface CartService {
 	
 	// 장바구니 삭제
 	public void cartDelete(CartVO cart) throws Exception;
+	
+	// 장바구니 수량 변경
+	public void stockChange(CartVO cart) throws Exception;
 }

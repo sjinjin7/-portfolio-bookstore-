@@ -184,7 +184,68 @@
 										<div class="likeStar">평점 : ${clist.cateName}</div>
 									</td>
 									<td id="r_cprice">판매가 :	<fmt:formatNumber value="${clist.sellprice}" pattern="#,###"/>    </td>
-									<td id="r_camount">수량 : ${clist.cartStock}</td>
+									<td id="r_camount">수량 : 
+										<input type="hidden"value="${clist.cartStock}" maxlength="3" id="origin_qty${i}">
+										<input type="text" name="qty" value="${clist.cartStock}" maxlength="3" id="qty${i}" class="input_style02" name="cartStock" readonly="readonly">
+										<a class="btn_plus" id="btn_plus${i}">수량 더하기</a>
+										<a class="btn_minus" id="btn_minus${i}">수량 빼기</a>
+										<br>
+										<button class="change_btn">수량변경</button>
+										<script>
+											$(document).ready(function(){
+												//수량변경 버튼
+													$('.change_btn').click(function(){
+														var cartStock = $("#qty${i}").val();
+														var origin = $("origin_#qty${i}").val();
+														var cartId = ${clist.cartId};
+														if(cartStock != origin){
+														
+															$.ajax({
+																url : "stockChange",
+																type : "post",
+																data : {cartStock : cartStock, cartId:cartId},
+																success : function(result){
+																	if(result == 1){
+																		location.href = "cart";	
+																	} else{
+																		alert(result)
+																		alert("변경 실패")
+																	}
+																}
+															});
+															
+															
+														}
+														
+														
+														
+													});
+												
+												
+												//수량 증가
+												$("#btn_plus${i}").on('click', function(e){
+													var value = parseInt($('#qty${i}').val());
+													value = value + 1;
+													$('#qty${i}').val(value);
+					
+					
+												});
+												//수량 감소
+												$("#btn_minus${i}").on('click', function(e){
+													var value = parseInt($('#qty${i}').val());
+													value = value - 1;
+													if(value <= 0){
+														return;
+													}
+													
+													$('#qty${i}').val(value);
+					
+					
+												});	
+											});
+										
+										</script>
+									</td>
 									<c:set var="clist_sum_price" value="${clist.sellprice * clist.cartStock}" />
 									<td id="r_csum">합계 : <fmt:formatNumber value="${clist_sum_price}" pattern="#,###"/></td>
 									<td id="r_cselection" class="delete">

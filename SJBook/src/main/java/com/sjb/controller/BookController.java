@@ -181,6 +181,25 @@ public class BookController {
 		return result;
 	}
 	
+	@RequestMapping(value="stockChange", method=RequestMethod.POST)
+	@ResponseBody
+	public String stockChange(HttpSession session,CartVO cart) throws Exception{
+		
+		System.out.println("Stock Change");
+		MemberVO member = (MemberVO)session.getAttribute("member");
+		String result = "0";
+		
+		if(member != null) {
+			cartservice.stockChange(cart);
+			
+			result = "1";
+		}
+		
+		
+		return result;
+	}
+	
+	
 	
 	
 	

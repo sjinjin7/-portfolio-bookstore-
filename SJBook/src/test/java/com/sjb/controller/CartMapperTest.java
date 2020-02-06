@@ -41,6 +41,8 @@ public class CartMapperTest {
 	}
 	*/
 	
+	
+	/*
 	@Test
 	public void cartDelete() throws Exception{
 		CartVO cart = new CartVO();
@@ -48,6 +50,18 @@ public class CartMapperTest {
 		cart.setcartId(3);
 		
 		cartmapper.cartDelete(cart);
+		
+	}
+	
+	*/
+	@Test
+	public void stockChange() throws Exception{
+		CartVO cart = new CartVO();
+		
+		cart.setcartId(11);
+		cart.setCartStock(11);
+		
+		cartmapper.stockChange(cart);
 		
 	}
 	
