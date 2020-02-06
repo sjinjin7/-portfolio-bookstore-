@@ -235,6 +235,26 @@ a{
 
 
 
+/* 결제부분 */
+#nav_main_1_result_info table{
+	width: 100%;
+	border-collapse: collapse;
+}
+#nav_main_1_result_info>table>thead>tr{
+	height : 80px;
+	border-top: 1px solid black;
+	border-bottom: 1px solid #e7e7e7;
+	background: #fbfbfb;
+}
+
+#nav_main_1_result_info>table>tbody>tr{
+	height : 180px;
+	border-bottom: 1px solid #e7e7e7;
+}
+
+
+
+
 
 
 

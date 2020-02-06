@@ -98,8 +98,10 @@
 					$("#allCheck").click(function(){
 						var check = $('#allCheck').prop("checked");
 						if(check){
+							alert($('.chkBox').length);
 							$(".chkBox").prop("checked", true);
 						} else{
+							alert($('.chkBox').length);
 							$(".chkBox").prop("checked", false);
 						}
 					});
@@ -127,7 +129,7 @@
 										if(result == 1){
 											location.href = "cart";	
 										} else{
-											alert(result)
+											alert(result);
 											alert("삭제 실패")
 										}
 									}
@@ -154,10 +156,13 @@
 						</thead>
 						<tbody>
 							<c:set var="i" value="0"/>
+							<c:set var="priceTotal"  value="0"/>
+							<c:set var="bookKinds" value="0"/>
+							<c:set var="bookAmount" value="0"/>
 							<c:forEach items="${clist}" var="clist">
 								<tr>
 									<td id="r_cproduct_check">
-									<input type="checkbox" name="chkBox" class="chkBox" data-cartId="${clist.cartId}">
+									<input type="checkbox" id="chkBox${i}" name="chkBox" class="chkBox" data-cartId="${clist.cartId}">
 									체크
 									<script>
 										$(".chkBox").click(function(){
@@ -208,7 +213,7 @@
 																	if(result == 1){
 																		location.href = "cart";	
 																	} else{
-																		alert(result)
+																		alert(result);
 																		alert("변경 실패")
 																	}
 																}
@@ -280,41 +285,93 @@
 										
 										</script>
 										<a>바로구매</a>
+										
 										<br>
 										<a>삭제</a>
 									</td>
 								</tr>
+							<input type="hidden" id="priceTotal${i}" value="${clist_sum_price}">
+							<input type="hidden" id="bookAmount${i}" value="${clist.cartStock}">
+							
 							<c:set var="i" value="${i+1}"></c:set>
+							<c:set var="priceTotal"  value="${priceTotal + clist_sum_price}"/>
+							<c:set var="bookKinds" value="${bookKinds+1}"/>
+							<c:set var="bookAmount" value="${bookAmount + clist.cartStock}"/>
 							</c:forEach>
 						</tbody>
 						
 					</table>
 				</div>	
 			</div>
-			<div><input type="checkbox"><h1>전체선택</h1></div>
-			<div>
-				<table>
-					<tr>
-						<td>상품금액</td>
-						<td>배송비</td>
-						<td>결제 예정금액</td>
-						<td>적립예정</td>
-					</tr>
-					<tr>
-						<td>상품금액</td>
-						<td>배송비</td>
-						<td>결제 예정금액</td>
-						<td>적립예정</td>
-					</tr>
-					
-				</table>
+			<div id="nav_main_1_result">
+				<div id="nav_main_1_result_head">
+					<input type="checkbox"><h1>전체선택</h1>
+				</div>
+				<div id="nav_main_1_result_info">
+					<table>
+						<thead>
+							<tr>
+								<td>상품금액/<span id="bookKinds"></span>종(<span id="bookAmount"></span>개)</td>
+								<td>배송비</td>
+								<td>결제 예정금액</td>
+								<td>적립예정</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<h1><span id="priceTotal"></span></h1>
+								</td>
+								<td>배송비</td> <!-- 가격따른 차등 --> 
+								<td>결제 예정금액</td>
+								<td>적립예정</td>
+							</tr>
+						</tbody>
+						
+					</table>
+				</div>
+				<div id="nav_main_1_result_btn">
+					<a>결제하기</a>
+				</div>
 			</div>
-			<div>
-				<a>결제하기</a>
-			</div>
-		
 			<div id="side_right_ad"><h1>side right 63 362</h1></div>
 			<div id="side_left_ad"><h1>side left85 703</h1></div>
+			<script>
+								
+									//체크 변경시 체크한 것만 종합하기
+									
+									$("input[type='checkbox']").change(function(){
+										//체크박수 갯수
+										var totalCount = $('.chkBox').length;
+										//가격총합
+										var priceTotal = 0;
+										//책 종류 수
+										var bookKinds = 0;
+										//책 총 갯수
+										var bookAmount = 0;	
+										
+										for(var i = 0; i < totalCount; i++){
+											if($("#chkBox"+i).is(":checked")){
+												//alert("aaaaaa="+$("#priceTotal"+i).val());
+												priceTotal = parseInt(priceTotal) + parseInt($("#priceTotal"+i).val());
+												bookKinds = bookKinds + 1;
+												bookAmount = parseInt(bookAmount) + parseInt($("#bookAmount"+i).val());	
+											}
+										}
+										
+										//alert("bbbb="+priceTotal);	
+ 										//alert(bookKinds);
+										//alert(bookAmount);
+										$("#priceTotal").html(priceTotal);
+										$("#bookKinds").html(bookKinds);
+										$("#bookAmount").html(bookAmount);
+										
+										
+									});		
+									
+								
+							
+							</script>	
 		</div>
 	</div>
 	
