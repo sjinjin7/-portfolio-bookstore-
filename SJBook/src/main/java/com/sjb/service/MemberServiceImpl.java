@@ -26,4 +26,10 @@ public class MemberServiceImpl implements MemberService {
 		
 	}
 
+	@Override
+	public MemberVO importInfo(String memberId) throws Exception {
+		 
+		return membermapper.importInfo(memberId);
+	}
+
 }

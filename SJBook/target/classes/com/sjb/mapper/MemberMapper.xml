@@ -18,6 +18,9 @@
  	
  </select>
  
+ <select id="importInfo" resultType="com.sjb.model.MemberVO">
+ 	select * from sjb_member where memberId= #{memberId};
+ </select>
 
  
  

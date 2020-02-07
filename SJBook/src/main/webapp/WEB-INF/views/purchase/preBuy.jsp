@@ -8,14 +8,17 @@
 <head>
 <meta charset="UTF-8">
 <title>Welcome! SJBook Store!</title>
-<link rel="stylesheet" href="resources/css/cart.css">
+<link rel="stylesheet" href="../resources/css/preBuy.css">
 <script
   src="https://code.jquery.com/jquery-3.4.1.js"
   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
   crossorigin="anonymous"></script>
-<script src="resources/js/cart.js" type="text/javascript"></script>
+<script src="../resources/js/preBuy.js" type="text/javascript"></script>
+
+<!-- <script src="../resources/js/detail.js" type="text/javascript"></script> -->
 </head>
 <body>
+<%-- <h1>${memberinfo.memberId}</h1> --%>
 <div id="wrap">
 	<div id="top_mini">
 		<div id="top_mini_1">
@@ -52,7 +55,7 @@
 		<div id="top_1">
 			<div id="top_1_logo">
 				<div id="top_1_logo_1">
-					<a href="main"><img src="resources/img/logo.png"></a>
+					<a href="main"><img src="../resources/img/logo.png"></a>
 				</div>
 			</div>
 			<div id="top_1_selection">
@@ -74,7 +77,7 @@
 				</div>
 			</div>
 			<div id="top_1_login">
-				<div id="top_1_login_button"><a href="loginMain"><h1>SJB로그인</h1></a></div>
+				<div id="top_1_login_button"><a href="/loginMain"><h1>SJB로그인</h1></a></div>
 			</div>
 		</div>
 	</div>
@@ -83,7 +86,7 @@
 	
 	<div id="sub_top">
 		<div id="sub_top_1">
-			<img src="../resources/img/top_cart.PNG">
+			<img src="../resources/img/top_buy.PNG">
 		</div>
 	</div>
 	
@@ -159,7 +162,7 @@
 							<c:set var="priceTotal"  value="0"/>
 							<c:set var="bookKinds" value="0"/>
 							<c:set var="bookAmount" value="0"/>
-							<c:forEach items="${clist}" var="clist">
+							<c:forEach items="${buylist}" var="clist">
 								<tr>
 									<td id="r_cproduct_check">
 									<input type="checkbox" id="chkBox${i}" name="chkBox" class="chkBox" data-cartId="${clist.cartId}">
@@ -453,7 +456,7 @@
 		<div id="footer_container">
 			
 			<div id="footer_left">
-				<img src="resources/img/mlogo.png">
+				<img src="../resources/img/mlogo.png">
 			</div>
 			<div id="footer_right">
 				(주) SJBook  울산광역시 삼산동 그린아카데미  대표이사 : OOO

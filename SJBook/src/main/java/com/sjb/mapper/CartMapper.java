@@ -14,7 +14,8 @@ public interface CartMapper {
 	public void cartDelete(CartVO cart) throws Exception;
 	//장바구니 수량 변경
 	public void stockChange(CartVO cart) throws Exception;
-	
+	// 장바구니 선택 리스트
+	public CartListVO buyList(int cartId) throws Exception;
 	
 	
 	

@@ -39,4 +39,10 @@ public class CartServiceImpl implements CartService {
 		
 	}
 
+	@Override
+	public CartListVO buyList(int cartId) throws Exception {
+		
+		return cartmapper.buyList(cartId);
+	}
+
 }

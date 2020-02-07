@@ -6,9 +6,10 @@ public interface MemberService {
 
 	//회원가입
 	public void enrollMember(MemberVO member) throws Exception;
-	
+	//로그인
 	public MemberVO memberLogin(MemberVO member) throws Exception;
-	
+	//회원정보 가져오기
+	public MemberVO importInfo(String memberId) throws Exception;
 	
 	
 }
