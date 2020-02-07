@@ -98,10 +98,10 @@
 					$("#allCheck").click(function(){
 						var check = $('#allCheck').prop("checked");
 						if(check){
-							alert($('.chkBox').length);
+							//alert($('.chkBox').length);
 							$(".chkBox").prop("checked", true);
 						} else{
-							alert($('.chkBox').length);
+							//alert($('.chkBox').length);
 							$(".chkBox").prop("checked", false);
 						}
 					});
@@ -273,7 +273,7 @@
 															if(result == 1){
 																location.href = "cart";	
 															} else{
-																alert(result)
+																alert(result);
 																alert("삭제 실패")
 															}
 														}
@@ -319,19 +319,32 @@
 						</thead>
 						<tbody>
 							<tr>
-								<td>
+								<td id="result_info_price">
 									<h1><span id="priceTotal"></span></h1>
 								</td>
-								<td>배송비</td> <!-- 가격따른 차등 --> 
-								<td>결제 예정금액</td>
-								<td>적립예정</td>
+								<td id="result_info_ship">
+									<div id="result_info_ship_wrap">
+										배송비
+										<div id="result_info_plus">+</div>
+										<h1><span id="ship_price"></span></h1>
+										<div id="result_info_equal">=</div>
+									</div>
+								</td> <!-- 가격따른 차등 --> 
+								<td id="result_info_total">	
+									결제 예정금액 : 
+									<h1><span id="final_total"></span></h1>
+								</td>
+								<td id="result_info_point">
+									적립예정
+									<h1><span id="expectancy_price"></span></h1>
+								</td>
 							</tr>
 						</tbody>
 						
 					</table>
 				</div>
 				<div id="nav_main_1_result_btn">
-					<a>결제하기</a>
+					<div><strong>결제하기</strong></div>
 				</div>
 			</div>
 			<div id="side_right_ad"><h1>side right 63 362</h1></div>
@@ -349,26 +362,47 @@
 										var bookKinds = 0;
 										//책 총 갯수
 										var bookAmount = 0;	
+										//배송비
+										var shipprice = 0;
+										//총가격(제품 + 배송비)
+										var total = 0;
+										//적립포인트
+										var pointTotal = 0;
 										
 										for(var i = 0; i < totalCount; i++){
 											if($("#chkBox"+i).is(":checked")){
 												//alert("aaaaaa="+$("#priceTotal"+i).val());
+												var point = 0;
 												priceTotal = parseInt(priceTotal) + parseInt($("#priceTotal"+i).val());
 												bookKinds = bookKinds + 1;
-												bookAmount = parseInt(bookAmount) + parseInt($("#bookAmount"+i).val());	
+												bookAmount = parseInt(bookAmount) + parseInt($("#bookAmount"+i).val());
+												point = priceTotal * 0.05;
+												pointTotal = pointTotal + point;
 											}
 										}
 										
 										//alert("bbbb="+priceTotal);	
  										//alert(bookKinds);
 										//alert(bookAmount);
+										
 										$("#priceTotal").html(priceTotal);
 										$("#bookKinds").html(bookKinds);
 										$("#bookAmount").html(bookAmount);
+										if(priceTotal>=10000){
+											shipprice = 0;
+											$("#ship_price").html(0);
+										} else{
+											shipprice = 2000;
+											$("#ship_price").html(2000);	
+										}
+										 total = priceTotal + shipprice;
+										 $("#final_total").html(total);
+										 /* point = priceTotal * 0.05; */
+										 $("#expectancy_price").html(pointTotal);
 										
 										
 									});		
-									
+								
 								
 							
 							</script>	
