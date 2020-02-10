@@ -194,7 +194,8 @@ a{
 /* 구매자 정보 */
 
 #mian_buy_info{
-	padding: 20px 0;	
+	padding: 20px 0;
+	margin-top : 50px;	
 }
 
 #mian_buy_info>table{
@@ -203,7 +204,7 @@ a{
     border-bottom-width: 1px;
     border-bottom-style:solid;
     border-top-style:solid;
-    width : 70%;
+    width : 100%;
     margin : auto;
     border-collapse: collapse;
     /* border: black 1px solid; */
@@ -229,6 +230,7 @@ a{
 /* 배송정보 */
 #main_buy_addr{
 	width: 100%;
+	margi-top : 50px;
 }
 #main_buy_addr_button{
 	width: 100%;
@@ -253,20 +255,61 @@ a{
 	border-width: 1px 1px 0px 1px;
 	border-style : solid;
 	border-color: black;
+	cursor: pointer;
 	
 }
 
+/* 저장주소 */
+#main_buy_addr{
+	margin-top : 50px;
+}
+
+#main_buy_addr_info1{
+	border-bottom: 1px solid #ddd;
+	padding : 15px 20px;
+}
+
+#main_buy_addr_info1_2{
+	padding-top : 15px;
+}
+
+#main_buy_addr_info1_3{
+	padding-top : 15px;
+}
+
+
+/* 직접입력 */
+#main_buy_addr_info2{
+	border-bottom: 1px solid #ddd;
+	padding : 0 20px 15px 20px;
+	display:none;
+}
+#main_buy_addr_info2 td,th{
+	padding-top: 15px;
+}
+
+
+
+
+
+
+
+
 
 /* 구매품 리스트 */
+#main_list{
+	margin-top:50px;
+}
 #main_list>table{
 	width: 100%;
-	border-bottom: black solid 2px;
+	border-bottom: #ddd solid 2px;
 	border-top: black solid 2px;
 }
 #main_list>table>thead>tr{
 	
     border-bottom: 1px solid #e7e7e7;
     background: #fbfbfb;
+    height : 50px;
 }
 #main_list>table>tbody>tr{
 	border-bottom: 1px solid #e7e7e7;
@@ -287,7 +330,30 @@ main_list_head_col2{
 }
 .main_list_col3{
 	width : 40%;
+	text-align: center;
 }
+
+/* 할인적립 */
+#main_buy_point{
+	
+	margin-top : 50px;
+}
+#main_buy_point>table{
+	width: 100%;
+	height : 130px;
+	border-top: solid black 2px;
+	border-bottom: solid #ddd 1px;
+}
+#main_buy_point>table>tr>th{
+	border-right : 1px solid #ddd;
+    background-color: #fbfbfb;	
+}
+
+/* 결제수탄 선택 */
+#main_buy{
+	margin-top : 50px;
+}
+
 
 
 /* 최종결제 div */
@@ -301,7 +367,9 @@ main_list_head_col2{
 	border : black 1px solid;
 	
 }
-
+#main_right ul{
+	list-style: none;
+}
 
 
 

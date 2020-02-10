@@ -114,17 +114,23 @@
 				<div id="main_buy_addr_button">
 					<ul>
 						<li>
-							<a class="addr_button">저장 주소</a>
+							<a class="addr_button1">저장 주소</a>
 						</li>
 						<li>
-							<a>직접입력</a>
+							<a class="addr_button2">직접입력</a>
 						</li>
 					</ul>				
 				</div>
 				<div id="main_buy_addr_info1">
-					이름 : 김서진
-					<br>
-					주소 : 울산광역시
+					<div id="main_buy_addr_info1_1">
+						받는 사람 : 김서진
+					</div>
+					<div id="main_buy_addr_info1_2">
+						주소 : (ooo-ooo) 울산 울주군 범서읍
+					</div>
+					<div id="main_buy_addr_info1_3">
+						휴대전화  : 
+					</div>
 					
 				</div>
 				<div id="main_buy_addr_info2">
@@ -135,9 +141,10 @@
 						</colgroup>
 						<tr>
 							<th>
-								이름
+								받는이
 							</th>
 							<td>
+								<input type="text">
 							</td>
 						</tr>
 						<tr>
@@ -145,13 +152,19 @@
 								휴대전화
 							</th>
 							<td>
+								<input type="text">-<input type="text">-<input type="text">
 							</td>
 						</tr>
 						<tr>
 							<th>
-								주소
+								주소록
 							</th>
 							<td>
+								<input type="text"> <button>주소록</button>
+								<br>
+								<input type="text">
+								<br>
+								<input type="text">
 							</td>
 						</tr>
 					</table>
@@ -182,7 +195,9 @@
 								제목						
 							</td>
 							<td class="main_list_col3">
-								판매가							
+								<strong>18,000</strong>원 <span> | </span> 수량 1개
+								<div>18,000원</div>
+								<div>[10%↓ +1,000원<span>P</span>]</div>							
 							</td>
 						</tr>
 						<%-- <c:set var="i" value="${i+1}"/> 
@@ -193,6 +208,17 @@
 			</div>
 			<div id="main_buy_point">
 				<h1>할인적립</h1>
+				<table>
+					<tr>
+						<th>사용가능 포인트</th>
+						<td>
+							<span>2,170</span>원
+							<input type="text">원
+							<button>모두사용</button>
+							
+						</td>
+					</tr>
+				</table>
 			</div>
 			<div id="main_buy">
 				<h1>결제정보</h1>
@@ -202,17 +228,31 @@
 		
 		</div>
 		<div id="main_right">
-			<div id="final_buy_date">
-				<h1>배송일정</h1>
-			</div>
 			<div id="final_buy_info">
-				<h1>상품금액</h1>
+				<ul>
+					<li>
+						상품금액
+					</li>
+					<li>
+						배송비
+					</li>
+					<li>
+						선물포장
+					</li>
+					<li>
+						할인금액
+					</li>
+					<li>
+						최종 결제금액
+					</li>
+				
+				</ul>
 			</div>
 			<div id="final_buy_point">
-				<h1>포인트</h1>
+				<input type="checkbox">주문내역 확인 동의
 			</div>
 			<div id="final_buy_button">	
-				<h1>결제 버튼</h1>
+				<button>결제하기</button>
 			</div>
 		</div>
 		<div class="clearfix"></div>

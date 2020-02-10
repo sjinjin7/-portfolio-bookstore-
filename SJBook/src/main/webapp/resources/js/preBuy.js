@@ -86,6 +86,25 @@ $(document).ready(function(){
 	
 	
 	
+	// 배송정보 성택
+		// 저장주소
+		$(".addr_button1").click(function(){
+			
+			$("#main_buy_addr_info1").css("display", "block");
+			$("#main_buy_addr_info2").css("display","none")
+		});
+	
+	
+		// 직접입력
+		$(".addr_button2").click(function(){
+			
+			$("#main_buy_addr_info1").css("display", "none");
+			$("#main_buy_addr_info2").css("display","block");
+		})
+	
+	
+	
+	
 
 });
 

@@ -50,6 +50,11 @@ public class BookVO {
 	
 	private int bookStock;
 	
+	private int bookPoint;
+	
+	private int discountPrice;
+	
+	
 	private MultipartFile filename;
 
 	public int getProductID() {
@@ -228,6 +233,24 @@ public class BookVO {
 	public void setFilename(MultipartFile filename) {
 		this.filename = filename;
 	}
+	
+	
+
+	public int getBookPoint() {
+		return bookPoint;
+	}
+
+	public void setBookPoint(int bookPoint) {
+		this.bookPoint = bookPoint;
+	}
+
+	public int getDiscountPrice() {
+		return discountPrice;
+	}
+
+	public void setDiscountPrice(int discountPrice) {
+		this.discountPrice = discountPrice;
+	}
 
 	public int getSellprice() {
 		double salePrice = (double)this.bookPrice*(((double)this.discountRate)/100);
@@ -253,8 +276,11 @@ public class BookVO {
 				+ likeStar + ", bookReply=" + bookReply + ", bookPrice=" + bookPrice + ", discountRate=" + discountRate
 				+ ", sellprice=" + sellprice + ", bookInfo=" + bookInfo + ", contents=" + contents + ", introImage="
 				+ introImage + ", regdate=" + regdate + ", boardRegdate=" + boardRegdate + ", modDate=" + modDate
-				+ ", bookStock=" + bookStock + ", filename=" + filename + "]";
+				+ ", bookStock=" + bookStock + ", bookPoint=" + bookPoint + ", discountPrice=" + discountPrice
+				+ ", filename=" + filename + "]";
 	}
+
+
 
 	
 	

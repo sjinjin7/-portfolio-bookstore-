@@ -55,6 +55,10 @@ public class CartListVO {
 	private String modDate;
 	
 	private int bookStock;
+	
+	private int bookPoint;
+	
+	private int discountPrice;
 
 	public String getMemberId() {
 		return memberId;
@@ -272,6 +276,25 @@ public class CartListVO {
 		this.cartId = cartId;
 	}
 
+	
+	
+	
+	public int getBookPoint() {
+		return bookPoint;
+	}
+
+	public void setBookPoint(int bookPoint) {
+		this.bookPoint = bookPoint;
+	}
+
+	public int getDiscountPrice() {
+		return discountPrice;
+	}
+
+	public void setDiscountPrice(int discountPrice) {
+		this.discountPrice = discountPrice;
+	}
+
 	@Override
 	public String toString() {
 		return "CartListVO [cartId=" + cartId + ", productId=" + productId + ", memberId=" + memberId + ", cartStock="
@@ -281,8 +304,9 @@ public class CartListVO {
 				+ likeStar + ", bookReply=" + bookReply + ", bookPrice=" + bookPrice + ", discountRate=" + discountRate
 				+ ", sellprice=" + sellprice + ", bookInfo=" + bookInfo + ", contents=" + contents + ", introImage="
 				+ introImage + ", regdate=" + regdate + ", boardRegdate=" + boardRegdate + ", modDate=" + modDate
-				+ ", bookStock=" + bookStock + "]";
+				+ ", bookStock=" + bookStock + ", bookPoint=" + bookPoint + ", discountPrice=" + discountPrice + "]";
 	}
+
 
 
 	
