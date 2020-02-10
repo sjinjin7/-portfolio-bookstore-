@@ -200,6 +200,11 @@ public class BookController {
 	}
 	
 	
+	@RequestMapping("/purchase/preBuy")
+	public void testpage() throws Exception{
+		
+	}
+	
 	
 	
 	

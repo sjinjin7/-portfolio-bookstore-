@@ -90,350 +90,138 @@
 		</div>
 	</div>
 	
-	
-	<div id="nav_main">
-		<div id="nav_main_1">
-			<div id="nav_main_1_cart">
-				<div id="nav_main_1_cart_check" class="allCheck">
-					<input type="checkbox" name="allCheck" id="allCheck"><h1>SJBook 배송</h1>
-					<script>
-					//모두체크
-					$("#allCheck").click(function(){
-						var check = $('#allCheck').prop("checked");
-						if(check){
-							//alert($('.chkBox').length);
-							$(".chkBox").prop("checked", true);
-						} else{
-							//alert($('.chkBox').length);
-							$(".chkBox").prop("checked", false);
-						}
-					});
+	<div id="main_wrap">
+		<div id="main_left">
+			<div id="mian_buy_info">
+				<table>
+					<colgroup>
+						<col width = "30%">
+						<col width = "*">	
+					</colgroup>
+					<tr>
+						<th id="col1">
+							주문자 
+						</th>
+						<td id="col2">
+							이름 <span>|</span> 연락처 <span>|</span> 이메일
+						</td>
+					</tr>
 					
+				</table>
+			</div>
+			<div id="main_buy_addr">
+				<h1>배송정보</h1>
+				<div id="main_buy_addr_button">
+					<ul>
+						<li>
+							<a class="addr_button">저장 주소</a>
+						</li>
+						<li>
+							<a>직접입력</a>
+						</li>
+					</ul>				
+				</div>
+				<div id="main_buy_addr_info1">
+					이름 : 김서진
+					<br>
+					주소 : 울산광역시
 					
-					</script>
 				</div>
-				<div id="del_btn">
-					<button type="button" class="selectDelete_btn">전체삭제</button>
-					<script>
-						$(".selectDelete_btn").click(function(){
-							var confirm_val = confirm("전체 삭제하시겠습니까?");
-							
-							if(confirm_val){
-								var checkArr = new Array();
-								$("input[class='chkBox']:checked").each(function(){
-									checkArr.push($(this).attr("data-cartId"));
-								});//종료 input선택자
-								
-								$.ajax({
-									url : "deleteCart",
-									type : "post",
-									data : {chkbox : checkArr},
-									success : function(result){
-										if(result == 1){
-											location.href = "cart";	
-										} else{
-											alert(result);
-											alert("삭제 실패")
-										}
-									}
-								});
-								
-							}//종료 if
-						});//종료 click 
-					</script>
-				</div>
-				
-				<div id="nav_main_1_cart_info">	
+				<div id="main_buy_addr_info2">
 					<table>
-						<%-- <c:set var="i" value="0"/>
-						<c:forEach items="${clist}" var="cart">
-						</c:forEach> --%>
-						<thead>
-						<tr id="firstrow">
-							<td id="c_product_info"colspan="3">상품정보</td>
-							<td id="c_price">판매가</td>
-							<td id="c_amount">수량</td>
-							<td id="c_sum">합계</td>
-							<td id="c_selection">선택</td>
+						<colgroup>
+							<col width="40%">
+							<col width="*">
+						</colgroup>
+						<tr>
+							<th>
+								이름
+							</th>
+							<td>
+							</td>
 						</tr>
-						</thead>
-						<tbody>
-							<c:set var="i" value="0"/>
-							<c:set var="priceTotal"  value="0"/>
-							<c:set var="bookKinds" value="0"/>
-							<c:set var="bookAmount" value="0"/>
-							<c:forEach items="${buylist}" var="clist">
-								<tr>
-									<td id="r_cproduct_check">
-									<input type="checkbox" id="chkBox${i}" name="chkBox" class="chkBox" data-cartId="${clist.cartId}">
-									<input type="hidden" id="cartId${i}" value="${clist.cartId}">
-									체크
-									<script>
-										$(".chkBox").click(function(){
-											$("#allCheck").prop("checked", false);
-										});
-									</script>
-									</td>
-									<td id="r_cproduct_image">이미지</td>
-									<td id="r_cproduct_info">
-										<div class="title">
-											<a>
-												<span class="category">[${clist.cateName}]</span>
-												<strong> ${clist.title} </strong>
-											</a>
-										</div>
-										<div class="author">
-											<a>${clist.authorName}</a> 지음 
-											<span class="line">|</span>
-											<a> ${clist.publisher}</a>
-											<span class="line">|</span>
-											${clist.publeYear}
-										
-										</div>
-										<div class="likeStar">평점 : ${clist.cateName}</div>
-									</td>
-									<td id="r_cprice">판매가 :	<fmt:formatNumber value="${clist.sellprice}" pattern="#,###"/>    </td>
-									<td id="r_camount">수량 : 
-										<input type="hidden"value="${clist.cartStock}" maxlength="3" id="origin_qty${i}">
-										<input type="text" name="qty" value="${clist.cartStock}" maxlength="3" id="qty${i}" class="input_style02" name="cartStock" readonly="readonly">
-										<a class="btn_plus" id="btn_plus${i}">수량 더하기</a>
-										<a class="btn_minus" id="btn_minus${i}">수량 빼기</a>
-										<br>
-										<button class="change_btn">수량변경</button>
-										<script>
-											$(document).ready(function(){
-												//수량변경 버튼
-													$('.change_btn').click(function(){
-														var cartStock = $("#qty${i}").val();
-														var origin = $("origin_#qty${i}").val();
-														var cartId = ${clist.cartId};
-														if(cartStock != origin){
-														
-															$.ajax({
-																url : "stockChange",
-																type : "post",
-																data : {cartStock : cartStock, cartId:cartId},
-																success : function(result){
-																	if(result == 1){
-																		location.href = "cart";	
-																	} else{
-																		alert(result);
-																		alert("변경 실패")
-																	}
-																}
-															});
-															
-															
-														}
-														
-														
-														
-													});
-												
-												
-												//수량 증가
-												$("#btn_plus${i}").on('click', function(e){
-													var value = parseInt($('#qty${i}').val());
-													value = value + 1;
-													$('#qty${i}').val(value);
-					
-					
-												});
-												//수량 감소
-												$("#btn_minus${i}").on('click', function(e){
-													var value = parseInt($('#qty${i}').val());
-													value = value - 1;
-													if(value <= 0){
-														return;
-													}
-													
-													$('#qty${i}').val(value);
-					
-					
-												});	
-											});
-										
-										</script>
-									</td>
-									<c:set var="clist_sum_price" value="${clist.sellprice * clist.cartStock}" />
-									<td id="r_csum">합계 : <fmt:formatNumber value="${clist_sum_price}" pattern="#,###"/></td>
-									<td id="r_cselection" class="delete">
-										<button type="button" class="delete_${i}_btn" data-cartId="${clist.cartId}">선택삭제</button>
-										<script>
-											$(".delete_${i}_btn").click(function(){
-												var confirm_val = confirm("삭제하시겠습니까?");
-												
-												if(confirm_val){
-													var checkArr = new Array();
-													
-														checkArr.push($(this).attr("data-cartId"));
-													
-													
-													$.ajax({
-														url : "deleteCart",
-														type : "post",
-														data : {chkbox : checkArr},
-														success : function(result){
-															if(result == 1){
-																location.href = "cart";	
-															} else{
-																alert(result);
-																alert("삭제 실패")
-															}
-														}
-													});
-												}
-												
-												
-											});
-										
-										</script>
-										<a>바로구매</a>
-										
-										<br>
-										<a>삭제</a>
-									</td>
-								</tr>
-							<input type="hidden" id="priceTotal${i}" value="${clist_sum_price}">
-							<input type="hidden" id="bookAmount${i}" value="${clist.cartStock}">
-							
-							<c:set var="i" value="${i+1}"></c:set>
-							<c:set var="priceTotal"  value="${priceTotal + clist_sum_price}"/>
-							<c:set var="bookKinds" value="${bookKinds+1}"/>
-							<c:set var="bookAmount" value="${bookAmount + clist.cartStock}"/>
-							</c:forEach>
-						</tbody>
-						
+						<tr>
+							<th>
+								휴대전화
+							</th>
+							<td>
+							</td>
+						</tr>
+						<tr>
+							<th>
+								주소
+							</th>
+							<td>
+							</td>
+						</tr>
 					</table>
-				</div>	
+				</div>
 			</div>
-			<div id="nav_main_1_result">
-				<div id="nav_main_1_result_head">
-					<input type="checkbox"><h1>전체선택</h1>
-				</div>
-				<form id="buy_form" method="post">
-				<div id="nav_main_1_result_info">
-					
-					<div id="nav_main_1_result_info_hidden"></div>
-					<table>
-						<thead>
-							<tr>
-								<td>상품금액/<span id="bookKinds"></span>종(<span id="bookAmount"></span>개)</td>
-								<td>배송비</td>
-								<td>결제 예정금액</td>
-								<td>적립예정</td>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td id="result_info_price">
-									<h1><span id="priceTotal"></span></h1>
-								</td>
-								<td id="result_info_ship">
-									<div id="result_info_ship_wrap">
-										배송비
-										<div id="result_info_plus">+</div>
-										<h1><span id="ship_price"></span></h1>
-										<div id="result_info_equal">=</div>
-									</div>
-								</td> <!-- 가격따른 차등 --> 
-								<td id="result_info_total">	
-									결제 예정금액 : 
-									<h1><span id="final_total"></span></h1>
-								</td>
-								<td id="result_info_point">
-									적립예정
-									<h1><span id="expectancy_price"></span></h1>
-								</td>
-							</tr>
-						</tbody>
-						
-					</table>
-					
-				</div>
-				</form>
-				<div id="nav_main_1_result_btn">
-					<a href="javascript:buy_btn();"><strong>결제하기</strong></a>
-				</div>
+			<div id="main_list">
+				<h1>주문상품</h1>
+				<table>
+					<thead>
+						<tr id="firstrow">
+							<td class="main_list_head_col1" colspan="2">
+								상품정보
+							</td>
+							<td class="main_list_head_col2">
+								판매가
+							</td>
+						</tr>
+					</thead>
+					<tbody>
+						<%-- <c:set var="i" value="0"/> 
+						<c:forEach items="${buylist}" var="list"> --%> 
+						<tr>
+							<td class="main_list_col1" >
+								이미지
+							</td>
+							<td class="main_list_col2">
+								<%-- ${list.title} --%>
+								제목						
+							</td>
+							<td class="main_list_col3">
+								판매가							
+							</td>
+						</tr>
+						<%-- <c:set var="i" value="${i+1}"/> 
+						</c:forEach> --%>
+					</tbody>
 				
+				</table>
 			</div>
-			<div id="side_right_ad"><h1>side right 63 362</h1></div>
-			<div id="side_left_ad"><h1>side left85 703</h1></div>
-			
-			<script>
-								
-									//체크 변경시 체크한 것만 종합하기
-									
-									$("input[type='checkbox']").change(function(){
-										//체크박수 갯수
-										var totalCount = $('.chkBox').length;
-										//가격총합
-										var priceTotal = 0;
-										//책 종류 수
-										var bookKinds = 0;
-										//책 총 갯수
-										var bookAmount = 0;	
-										//배송비
-										var shipprice = 0;
-										//총가격(제품 + 배송비)
-										var total = 0;
-										//적립포인트
-										var pointTotal = 0;
-										//cartlist번호 값을 가진 input생성
-										var str = "";
-										for(var i = 0; i < totalCount; i++){
-											if($("#chkBox"+i).is(":checked")){
-												//alert("aaaaaa="+$("#priceTotal"+i).val());
-												var cartId = $('#cartId'+i).val();
-												var point = 0;
-												priceTotal = parseInt(priceTotal) + parseInt($("#priceTotal"+i).val());
-												bookKinds = bookKinds + 1;
-												bookAmount = parseInt(bookAmount) + parseInt($("#bookAmount"+i).val());
-												point = priceTotal * 0.05;
-												pointTotal = pointTotal + point;
-												str += "<input type='hidden' name='cartId' value='"+cartId+"'>";
-											}
-										}
-										
-										//alert("bbbb="+priceTotal);	
- 										//alert(bookKinds);
-										//alert(bookAmount);
-										
-										$("#priceTotal").html(priceTotal);
-										$("#bookKinds").html(bookKinds);
-										$("#bookAmount").html(bookAmount);
-										if(priceTotal>=10000){
-											shipprice = 0;
-											$("#ship_price").html(0);
-										} else{
-											shipprice = 2000;
-											$("#ship_price").html(2000);	
-										}
-										 total = priceTotal + shipprice;
-										 $("#final_total").html(total);
-										 /* point = priceTotal * 0.05; */
-										 $("#expectancy_price").html(pointTotal);
-										$("#nav_main_1_result_info_hidden").html(str);
-										
-									});		
-								
-								
-							
-							</script>	
+			<div id="main_buy_point">
+				<h1>할인적립</h1>
+			</div>
+			<div id="main_buy">
+				<h1>결제정보</h1>
+			</div>
+		
+		
+		
 		</div>
+		<div id="main_right">
+			<div id="final_buy_date">
+				<h1>배송일정</h1>
+			</div>
+			<div id="final_buy_info">
+				<h1>상품금액</h1>
+			</div>
+			<div id="final_buy_point">
+				<h1>포인트</h1>
+			</div>
+			<div id="final_buy_button">	
+				<h1>결제 버튼</h1>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+	
 	</div>
 	
-
-
-
-		
-	<div id="main">
-		<div id="main2">
-			
-		
-		</div>
-
-	</div>
+	
+	
+	
 	
 	<div id="footer_nav">
 		<div id="footer_nav_container">
