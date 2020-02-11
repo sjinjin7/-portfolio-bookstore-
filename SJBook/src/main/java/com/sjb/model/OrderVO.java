@@ -1,5 +1,8 @@
 package com.sjb.model;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class OrderVO {
 
 	//주문번호
@@ -40,6 +43,14 @@ public class OrderVO {
 	
 	//배송완료 날짜
 	private String clearDate;
+	
+	//카트번호
+	private List<Integer> cartId;
+	
+	//제품상세
+	private List<OrderDetailVO> oDetail;
+	
+	
 	
 	public int getOrderId() {
 		return orderId;
@@ -145,14 +156,33 @@ public class OrderVO {
 		this.clearDate = clearDate;
 	}
 
+	public List<OrderDetailVO> getoDetail() {
+		return oDetail;
+	}
+
+	public void setoDetail(List<OrderDetailVO> oDetail) {
+		this.oDetail = oDetail;
+	}
+
+	public List<Integer> getCartId() {
+		return cartId;
+	}
+
+	public void setCartId(List<Integer> cartId) {
+		this.cartId = cartId;
+	}
+
 	@Override
 	public String toString() {
 		return "OrderVO [orderId=" + orderId + ", memberId=" + memberId + ", orderRec=" + orderRec + ", memberAddr1="
 				+ memberAddr1 + ", memberAddr2=" + memberAddr2 + ", memberAddr3=" + memberAddr3 + ", orderPhone="
 				+ orderPhone + ", orderDate=" + orderDate + ", shipPrice=" + shipPrice + ", totalPrice=" + totalPrice
-				+ ", orderState=" + orderState + ", shipDate=" + shipDate + ", clearDate=" + clearDate + "]";
+				+ ", orderState=" + orderState + ", shipDate=" + shipDate + ", clearDate=" + clearDate + ", cartId="
+				+ cartId + ", oDetail=" + oDetail + "]";
 	}
 
+	
+	
 	
 	
 	

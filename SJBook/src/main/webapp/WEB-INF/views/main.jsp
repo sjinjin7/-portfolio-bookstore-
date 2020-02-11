@@ -30,7 +30,8 @@
 	<div id="top_mini">
 		<div id="top_mini_1">
 			<ul>
-				<li><a href="/purchase/preBuy">테스트페이지</li>
+				<li><a href="/buyTest">테스트페이지</li>
+				<!-- <li><a href="/purchase/preBuy">테스트페이지</li> -->
 				<c:if test="${member.memberAdmin == 1}">
 				<li><a href="/admin/list">관리자페이지</li>
 				</c:if>

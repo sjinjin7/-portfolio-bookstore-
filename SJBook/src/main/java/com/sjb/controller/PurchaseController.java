@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.sjb.model.CartListVO;
 import com.sjb.model.MemberVO;
+import com.sjb.model.OrderVO;
 import com.sjb.service.CartService;
 import com.sjb.service.MemberService;
+import com.sjb.service.PurchaseService;
 
 @Controller
 @RequestMapping("/purchase")
@@ -28,6 +30,9 @@ public class PurchaseController {
 	
 	@Autowired
 	private MemberService memberservice;
+	
+	@Autowired
+	private PurchaseService buyservice;
 	
 	
 	private static final Logger logger = LoggerFactory.getLogger(PurchaseController.class);
@@ -65,6 +70,23 @@ public class PurchaseController {
 		}
 
 
+	}
+	
+	
+	@RequestMapping(value="/buy", method=RequestMethod.POST)
+	public void bookBuy(OrderVO order) throws Exception{
+		System.out.println("데이터진입");
+		System.out.println(order);
+		//System.out.println(order.getoDetail().get(0));
+		
+		
+		if(order.getoDetail() != null) {
+			order.getoDetail().forEach(attach -> logger.info(""+attach));
+			order.getCartId().forEach(cart -> logger.info(""+ cart));
+			//logger.info("book.getbCover()"+book.getbCover());
+			//System.out.println("book.getbCover()"+book.getbCover());
+			buyservice.bookBuy(order);
+		}
 	}
 	
 	

@@ -205,7 +205,10 @@ public class BookController {
 		
 	}
 	
-	
+	@RequestMapping("/buyTest")
+	public void testpage2() throws Exception{
+		
+	}	
 	
 	
 }

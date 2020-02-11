@@ -35,7 +35,7 @@ public class PurchaseMapperTest {
 	}
 	*/
 	
-	
+	/*
 	@Test
 	public void orderDetail() throws Exception{
 		OrderDetailVO detail = new OrderDetailVO();
@@ -46,7 +46,15 @@ public class PurchaseMapperTest {
 		pmapper.bookPurchaseDetail(detail);
 		
 	}
+	*/
 	
+	@Test
+	public void cartDelete() throws Exception{
+		int cartId = 29;
+		//String memberId = "test5";
+		
+		pmapper.cartDelete(cartId);
+	}
 	
 	
 	

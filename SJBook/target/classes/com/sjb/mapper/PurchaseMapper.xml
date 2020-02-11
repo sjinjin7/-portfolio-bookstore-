@@ -8,6 +8,11 @@
   
  <!-- 주문 등록 -->
  <insert id="bookPurchase">
+     <selectKey resultType="int" keyProperty="orderId" order="BEFORE">
+        SELECT MAX(orderId)+1 FROM sjb_order        
+    </selectKey> 
+ 
+ 
 		insert into sjb_order(memberId, orderRec, memberAddr1, memberAddr2, memberAddr3, orderPhone, orderDate, shipPrice, totalPrice, orderState)
         values(#{memberId}, #{orderRec}, #{memberAddr1}, #{memberAddr2}, #{memberAddr3}, #{orderPhone}, sysdate(), #{shipPrice}, #{totalPrice}, 0);
  </insert>
@@ -18,5 +23,10 @@
 	insert into sjb_order_detail(orderId, productId, amount) values(#{orderId}, #{productId}, #{amount});
 	
 </insert>
+<!-- 주문제품 장바구니 삭제 -->
+<delete id="cartDelete">
+		delete from sjb_cart where cartId = #{cartId};
+</delete>
+
 
   </mapper>
