@@ -61,17 +61,8 @@ public class PurchaseController {
 		if( !list.isEmpty() ) {
 		model.addAttribute("buylist",list);
 		System.out.println("list성공?>?" + list);
-		
 		System.out.println(list.get(2));
 		}
-		
-		/*
-		System.out.println("for문 건니뜀");
-		model.addAttribute("buylist",list);
-		System.out.println("list성공?>?" + list);
-		System.out.println(list.get(2));
-		*/
-
 
 
 	}

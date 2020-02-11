@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.sjb.mapper.PurchaseMapper">
+
+  
+  
+ <!-- 주문 등록 -->
+ <insert id="bookPurchase">
+		insert into sjb_order(memberId, orderRec, memberAddr1, memberAddr2, memberAddr3, orderPhone, orderDate, shipPrice, totalPrice, orderState)
+        values(#{memberId}, #{orderRec}, #{memberAddr1}, #{memberAddr2}, #{memberAddr3}, #{orderPhone}, sysdate(), #{shipPrice}, #{totalPrice}, 0);
+ </insert>
+
+<!-- 주문 상세 등록 -->
+<insert id="bookPurchaseDetail">
+	
+	insert into sjb_order_detail(orderId, productId, amount) values(#{orderId}, #{productId}, #{amount});
+	
+</insert>
+
+  </mapper>
