@@ -41,7 +41,13 @@ public class MemberVO {
 	
 	//정보 수정 날짜
 	private String modDate;
-
+	
+	//가상 화폐
+	private int money;
+	
+	//포인트
+	private int point;
+	
 	public String getMemberId() {
 		return memberId;
 	}
@@ -162,16 +168,31 @@ public class MemberVO {
 		this.modDate = modDate;
 	}
 
+	public int getMoney() {
+		return money;
+	}
+
+	public void setMoney(int money) {
+		this.money = money;
+	}
+
+	public int getPoint() {
+		return point;
+	}
+
+	public void setPoint(int point) {
+		this.point = point;
+	}
+
 	@Override
 	public String toString() {
-		return "MemberVO [memberId=" + memberId + ", memberPw=" + memberPs + ", memberName=" + memberName
+		return "MemberVO [memberId=" + memberId + ", memberPs=" + memberPs + ", memberName=" + memberName
 				+ ", memberGender=" + memberGender + ", memberPhone=" + memberPhone + ", birthY=" + birthY + ", birthM="
 				+ birthM + ", birthD=" + birthD + ", memberEmail=" + memberEmail + ", memberAdmin=" + memberAdmin
 				+ ", memberAddr1=" + memberAddr1 + ", memberAddr2=" + memberAddr2 + ", memberAddr3=" + memberAddr3
-				+ ", regDate=" + regDate + ", modDate=" + modDate + "]";
+				+ ", regDate=" + regDate + ", modDate=" + modDate + ", money=" + money + ", point=" + point + "]";
 	}
 
-	
 	
 	
 

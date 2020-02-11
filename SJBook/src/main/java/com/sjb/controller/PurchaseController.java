@@ -60,8 +60,9 @@ public class PurchaseController {
 		
 		model.addAttribute("buylist",list);
 		System.out.println("list성공?>?" + list);
+		if( !list.isEmpty() ) {
 		System.out.println(list.get(2));
-		
+		}
 		
 	}
 	

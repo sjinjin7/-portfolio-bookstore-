@@ -175,165 +175,37 @@ a{
 }
 
 
-
-
-
-
-#nav_main{
-	margin-top: 20px;
-}
-
-#nav_main_1{
+/* 메인 */
+#main_wrap{
 	width: 1411px;
-	margin: auto;
-	position:relative;
+	//height : 2000px;
+	margin : auto;
+	//background-color: grey;	
+	position : relative;
+	/* overflow : hidden; */
 }
-
-
-#nav_main_1_cart_info table{
-	width: 100%;
-	border-collapse: collapse;
-}
-#nav_main_1_cart_info>table>thead>tr{
-	height : 80px;
-	border-top: 1px solid black;
-	border-bottom: 1px solid #e7e7e7;
-	background: #fbfbfb;
-}
-#c_product_info{
-	width: 40%;
-}
-#c_price{
-	width : 15%;
-}
-#c_amount{
-	width : 15%;
-}
-#c_sum{
-	width : 15%;
-}
-#c_selection{
-	width : 15%;
-}
-
-
-#nav_main_1_cart_info>table>tbody>tr{
-	height : 180px;
-	border-bottom: 1px solid #e7e7e7;
-}
-
-#r_cproduct_check{
-	width: 6%;
-}
-#r_cproduct_image{
-	width: 12%;
-}
-#r_cproduct_info{
-	width: 22%;
-}
-
-
-
-
-/* 결제부분 */
-#nav_main_1_result_info table{
-	width: 100%;
-	border-collapse: collapse;
-}
-#nav_main_1_result_info>table>thead>tr{
-	height : 80px;
-	border-top: 1px solid black;
-	border-bottom: 1px solid #e7e7e7;
-	background: #fbfbfb;
-}
-
-#nav_main_1_result_info>table>tbody>tr{
-	height : 180px;
-	border-bottom: 1px solid #e7e7e7;
-}
-#nav_main_1_result_info>table>tbody>tr>td{
-	text-align: center;
-}
-
-#result_info_ship_wrap{
-	position:relative;
-}
-
-#result_info_plus{
-	position: absolute;
-	height:28px;
-	width: 28px;
-	left : 0;
-	background-color: blue;
-	color: white;
-	border-radius: 20px;
-	top:40%;
-}
-#result_info_equal{
-	position: absolute;
-	height:28px;
-	width: 28px;
-	right : 0;
-	background-color: blue;
-	color: white;
-	border-radius: 20px;
-	top:40%;
-}
-
-
-
-
-
-
-
-
-
-
-
-/* 결제하기버튼 */
-#nav_main_1_result_btn>a{
-	width: 280px;
-	height: 50px;
-	padding-top:5px;
-	margin-left:140px;
-	margin-top:15px;
-	background-color:blue;
-	text-align: center;
-	/* border-radius:10px; */
-	vertical-align: center;
-	line-height: 50px;
-	color: white;
-	font-family: "dotum";
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#main{
-	width: 100%;
-	//background-color:grey;
-}
-
-
-#main2{
-	width: 100%;
-		
-	//background-color:blue;	
+#main_left{
+	width:875px;
+	//height : 500px;
+	float : left;
 	
 }
+
+
+/* 최종결제 div */
+ #main_right{
+	width: 536px;
+	//height : 500px;
+	position : absolute;
+	right : 0;
+	top : 0;
+	//background-color : blue;
+	border : black 1px solid;
+	
+}
+
+
+
 
 
 

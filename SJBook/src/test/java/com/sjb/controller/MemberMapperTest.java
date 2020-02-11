@@ -30,7 +30,7 @@ public class MemberMapperTest {
 	public void memberLogin() throws Exception{
 		MemberVO member = new MemberVO();
 		member.setMemberId("admin");
-		member.setMemberPw("admin");
+		//member.setMemberPw("admin");
 		membermapper.memberLogin(member);
 		
 		

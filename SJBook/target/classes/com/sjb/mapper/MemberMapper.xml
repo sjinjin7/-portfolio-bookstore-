@@ -7,14 +7,14 @@
  <!-- 회원등록 -->
  <insert id="memberEnroll">
  
- insert into sjb_member(memberId, memberPs, memberName, memberGender, memberPhon, birthY, birthM, birthD, memberEmail, memberAdmin, memberAddr1, memberAddr2, memberAddr3) 
- values(#{memberId}, #{memberPs},#{memberName},#{memberGender}, #{memberPhone}, #{birthY},#{birthM},#{birthD}, #{memberEmail}, 0, #{memberAddr1}, #{memberAddr2}, #{memberAddr3});
+ insert into sjb_member(memberId, memberPs, memberName, memberGender, memberPhon, birthY, birthM, birthD, memberEmail, memberAdmin, memberAddr1, memberAddr2, memberAddr3, point, money) 
+ values(#{memberId}, #{memberPs},#{memberName},#{memberGender}, #{memberPhone}, #{birthY},#{birthM},#{birthD}, #{memberEmail}, 0, #{memberAddr1}, #{memberAddr2}, #{memberAddr3}, #{point}, #{money});
  
  </insert>
 
  <select id="memberLogin" resultType="com.sjb.model.MemberVO">
  	
- 	select memberId, memberName, memberAdmin  from sjb_member where memberId = #{memberId} and memberPs = #{memberPs};
+ 	select memberId, memberName, memberAdmin, point, money  from sjb_member where memberId = #{memberId} and memberPs = #{memberPs};
  	
  </select>
  
