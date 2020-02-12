@@ -38,6 +38,10 @@ cartID
 <input type="text" name="cartId"><br>
 <input type="text" name="cartId"><br>
 
+
+point/money
+<input type="text" name="usePoint">
+<input type="text" name="totalPrice">
 <input type="submit">
 </form>
 </body>

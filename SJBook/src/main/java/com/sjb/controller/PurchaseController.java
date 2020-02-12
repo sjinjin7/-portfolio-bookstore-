@@ -47,6 +47,7 @@ public class PurchaseController {
 		String memberId = member.getMemberId();
 		member = memberservice.importInfo(memberId);
 		model.addAttribute("memberinfo",member);
+		System.out.println("member : "+member);
 		
 		
 		List<CartListVO> list = new ArrayList<CartListVO>(); 
@@ -66,7 +67,7 @@ public class PurchaseController {
 		if( !list.isEmpty() ) {
 		model.addAttribute("buylist",list);
 		System.out.println("list성공?>?" + list);
-		System.out.println(list.get(2));
+		
 		}
 
 

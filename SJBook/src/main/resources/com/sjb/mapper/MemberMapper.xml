@@ -7,7 +7,7 @@
  <!-- 회원등록 -->
  <insert id="memberEnroll">
  
- insert into sjb_member(memberId, memberPs, memberName, memberGender, memberPhon, birthY, birthM, birthD, memberEmail, memberAdmin, memberAddr1, memberAddr2, memberAddr3) 
+ insert into sjb_member(memberId, memberPs, memberName, memberGender, memberPhone, birthY, birthM, birthD, memberEmail, memberAdmin, memberAddr1, memberAddr2, memberAddr3) 
  values(#{memberId}, #{memberPs},#{memberName},#{memberGender}, #{memberPhone}, #{birthY},#{birthM},#{birthD}, #{memberEmail}, 0, #{memberAddr1}, #{memberAddr2}, #{memberAddr3});
  
  </insert>

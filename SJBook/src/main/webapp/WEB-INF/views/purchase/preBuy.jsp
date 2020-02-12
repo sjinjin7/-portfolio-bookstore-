@@ -93,6 +93,7 @@
 	<div id="main_wrap">
 		<div id="main_left">
 			<div id="mian_buy_info">
+				<h1>구매자 정보</h1>
 				<table>
 					<colgroup>
 						<col width = "30%">
@@ -103,7 +104,7 @@
 							주문자 
 						</th>
 						<td id="col2">
-							이름 <span>|</span> 연락처 <span>|</span> 이메일
+							${memberinfo.memberName} <span>|</span> ${memberinfo.memberPhone } <span>|</span> ${memberinfo.memberEmail }
 						</td>
 					</tr>
 					
@@ -123,23 +124,23 @@
 				</div>
 				<div id="main_buy_addr_info1">
 					<div id="main_buy_addr_info1_1">
-						받는 사람 : 김서진
+						받는 사람 : ${memberinfo.memberName} 
 					</div>
 					<div id="main_buy_addr_info1_2">
-						주소 : (ooo-ooo) 울산 울주군 범서읍
+						주소 : (${memberinfo.memberAddr1}) ${memberinfo.memberAddr2} ${memberinfo.memberAddr3} 
 					</div>
 					<div id="main_buy_addr_info1_3">
-						휴대전화  : 
+						휴대전화  : ${memberinfo.memberPhone }
 					</div>
 					
 				</div>
 				<div id="main_buy_addr_info2">
 					<table>
 						<colgroup>
-							<col width="40%">
+							<col width="30%">
 							<col width="*">
 						</colgroup>
-						<tr>
+						<tr class="receiver_row_name">
 							<th>
 								받는이
 							</th>
@@ -147,7 +148,7 @@
 								<input type="text">
 							</td>
 						</tr>
-						<tr>
+						<tr class="receiver_row_phone">
 							<th>
 								휴대전화
 							</th>
@@ -155,7 +156,7 @@
 								<input type="text">-<input type="text">-<input type="text">
 							</td>
 						</tr>
-						<tr>
+						<tr class="receiver_row_addr">
 							<th>
 								주소록
 							</th>

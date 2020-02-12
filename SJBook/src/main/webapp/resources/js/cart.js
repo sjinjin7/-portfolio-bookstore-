@@ -113,8 +113,13 @@ $(document).ready(function(){
 	
 	function buy_btn(){
 		//alert("클릭");
-		$("#buy_form").attr("action","/purchase/preBuy");
-		$("#buy_form").submit();
+		if($('#hidden_cartId').val() != null){
+			$("#buy_form").attr("action","/purchase/preBuy");
+			$("#buy_form").submit();
+		} else{
+			alert("구매할 책을 선택해주세요.")
+		}
+		
 	}
 	
 	

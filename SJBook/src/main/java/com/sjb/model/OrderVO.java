@@ -35,6 +35,12 @@ public class OrderVO {
 	//총가격
 	private int totalPrice;
 	
+	//사용포인트
+	private int usePoint;
+	
+	//구매로 인한 획득 포인트
+	private int getPoint;
+	
 	//주문 상태
 	private int orderState;
 	
@@ -171,15 +177,34 @@ public class OrderVO {
 	public void setCartId(List<Integer> cartId) {
 		this.cartId = cartId;
 	}
+	
+
+	public int getUsePoint() {
+		return usePoint;
+	}
+
+	public void setUsePoint(int usePoint) {
+		this.usePoint = usePoint;
+	}
+
+	public int getGetPoint() {
+		return getPoint;
+	}
+
+	public void setGetPoint(int getPoint) {
+		this.getPoint = getPoint;
+	}
 
 	@Override
 	public String toString() {
 		return "OrderVO [orderId=" + orderId + ", memberId=" + memberId + ", orderRec=" + orderRec + ", memberAddr1="
 				+ memberAddr1 + ", memberAddr2=" + memberAddr2 + ", memberAddr3=" + memberAddr3 + ", orderPhone="
 				+ orderPhone + ", orderDate=" + orderDate + ", shipPrice=" + shipPrice + ", totalPrice=" + totalPrice
-				+ ", orderState=" + orderState + ", shipDate=" + shipDate + ", clearDate=" + clearDate + ", cartId="
-				+ cartId + ", oDetail=" + oDetail + "]";
+				+ ", usePoint=" + usePoint + ", getPoint=" + getPoint + ", orderState=" + orderState + ", shipDate="
+				+ shipDate + ", clearDate=" + clearDate + ", cartId=" + cartId + ", oDetail=" + oDetail + "]";
 	}
+
+	
 
 	
 	

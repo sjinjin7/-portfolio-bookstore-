@@ -28,5 +28,25 @@
 		delete from sjb_cart where cartId = #{cartId};
 </delete>
 
+<!-- 주문제품 구입비용 차감 -->
+
+<update id="deductionMoney">
+	update sjb_member set money = money - #{totalPrice}
+	
+	, point = point + #{getPoint}
+	 
+	<if test="usePoint != null">
+	
+		- #{usePoint}
+		
+	</if>
+	
+	where memberId = #{memberId};
+</update>
+
+<!-- 주문제품 제고 차감 -->
+<update id="deductionStock">
+	update sjb_book set BookStock = BookStock - #{amount} where ProductID = #{productId};
+</update>
 
   </mapper>

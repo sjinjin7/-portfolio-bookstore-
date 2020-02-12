@@ -13,4 +13,10 @@ public interface PurchaseMapper {
 	
 	//주문한 카트 id 삭제
 	public void cartDelete(int cartId);
+	
+	//주문상품 비용 차감(돈, 포인트)
+	public void deductionMoney(OrderVO order);
+	
+	//주문 상품 재고 차감
+	public void deductionStock(OrderDetailVO order);
 }

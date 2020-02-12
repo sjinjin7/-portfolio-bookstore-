@@ -8,6 +8,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.sjb.mapper.PurchaseMapper;
 import com.sjb.model.OrderDetailVO;
+import com.sjb.model.OrderVO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
@@ -47,14 +48,38 @@ public class PurchaseMapperTest {
 		
 	}
 	*/
-	
+	/*
 	@Test
 	public void cartDelete() throws Exception{
 		int cartId = 29;
 		//String memberId = "test5";
-		
 		pmapper.cartDelete(cartId);
 	}
+	*/
+	
+	
+	
+	@Test
+	public void deduction() throws Exception{
+		OrderVO order = new OrderVO();
+		order.setTotalPrice(10000);
+		order.setGetPoint(200);
+		order.setUsePoint(500);
+		order.setmemberId("test5");
+		pmapper.deductionMoney(order);
+	}
+	
+	/*
+	@Test
+	public void dedcutionStock() throws Exception{
+		OrderDetailVO detail = new OrderDetailVO();
+		detail.setProductId(154);
+		detail.setAmount(25);
+		pmapper.deductionStock(detail);
+		
+	}
+	*/	
+	
 	
 	
 	

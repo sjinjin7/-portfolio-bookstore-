@@ -92,7 +92,7 @@
 		<div id="nav_main_1">
 			<div id="nav_main_1_cart">
 				<div id="nav_main_1_cart_check" class="allCheck">
-					<input type="checkbox" name="allCheck" id="allCheck"><h1>SJBook 배송</h1>
+					<input type="checkbox" name="allCheck" id="allCheck">전체선택 
 					<script>
 					//모두체크
 					$("#allCheck").click(function(){
@@ -161,15 +161,15 @@
 							<c:set var="bookAmount" value="0"/>
 							<c:forEach items="${clist}" var="clist">
 								<tr>
-									<td id="r_cproduct_check">
-									<input type="checkbox" id="chkBox${i}" name="chkBox" class="chkBox" data-cartId="${clist.cartId}">
-									<input type="hidden" id="cartId${i}" value="${clist.cartId}">
-									체크
-									<script>
-										$(".chkBox").click(function(){
-											$("#allCheck").prop("checked", false);
-										});
-									</script>
+										<td id="r_cproduct_check">
+										<input type="checkbox" id="chkBox${i}" name="chkBox" class="chkBox" data-cartId="${clist.cartId}">
+										<input type="hidden" id="cartId${i}" value="${clist.cartId}">
+										체크
+										<script>
+											$(".chkBox").click(function(){
+												$("#allCheck").prop("checked", false);
+											});
+										</script>
 									</td>
 									<td id="r_cproduct_image">이미지</td>
 									<td id="r_cproduct_info">
@@ -189,14 +189,18 @@
 										</div>
 										<div class="likeStar">평점 : ${clist.cateName}</div>
 									</td>
-									<td id="r_cprice">판매가 :	<fmt:formatNumber value="${clist.sellprice}" pattern="#,###"/>    </td>
+									<td id="r_cprice">판매가 :	<fmt:formatNumber value="${clist.sellprice}" pattern="#,###"/> 원    </td>
 									<td id="r_camount">수량 : 
 										<input type="hidden"value="${clist.cartStock}" maxlength="3" id="origin_qty${i}">
-										<input type="text" name="qty" value="${clist.cartStock}" maxlength="3" id="qty${i}" class="input_style02" name="cartStock" readonly="readonly">
-										<a class="btn_plus" id="btn_plus${i}">수량 더하기</a>
-										<a class="btn_minus" id="btn_minus${i}">수량 빼기</a>
+										<div class="qty_change">
+											<input type="text" name="qty" value="${clist.cartStock}" maxlength="3" id="qty${i}" class="input_style02" name="cartStock" readonly="readonly">
+											<a class="btn_plus" id="btn_plus${i}">수량 더하기</a>
+											<a class="btn_minus" id="btn_minus${i}">수량 빼기</a>
+										</div>
 										<br>
+										<div class="change_btn_wrap">
 										<button class="change_btn">수량변경</button>
+										</div>
 										<script>
 											$(document).ready(function(){
 												//수량변경 버튼
@@ -255,7 +259,7 @@
 									<c:set var="clist_sum_price" value="${clist.sellprice * clist.cartStock}" />
 									<td id="r_csum">합계 : <fmt:formatNumber value="${clist_sum_price}" pattern="#,###"/></td>
 									<td id="r_cselection" class="delete">
-										<button type="button" class="delete_${i}_btn" data-cartId="${clist.cartId}">선택삭제</button>
+										<button type="button" id="delete_btn" class="delete_${i}_btn" data-cartId="${clist.cartId}">선택삭제</button>
 										<script>
 											$(".delete_${i}_btn").click(function(){
 												var confirm_val = confirm("삭제하시겠습니까?");
@@ -285,10 +289,8 @@
 											});
 										
 										</script>
-										<a>바로구매</a>
 										
-										<br>
-										<a>삭제</a>
+										
 									</td>
 								</tr>
 							<input type="hidden" id="priceTotal${i}" value="${clist_sum_price}">
@@ -305,9 +307,9 @@
 				</div>	
 			</div>
 			<div id="nav_main_1_result">
-				<div id="nav_main_1_result_head">
+				<!-- <div id="nav_main_1_result_head">
 					<input type="checkbox"><h1>전체선택</h1>
-				</div>
+				</div> -->
 				<form id="buy_form" method="post">
 				<div id="nav_main_1_result_info">
 					
@@ -324,23 +326,22 @@
 						<tbody>
 							<tr>
 								<td id="result_info_price">
-									<h1><span id="priceTotal"></span></h1>
+									<h1><span id="priceTotal"></span></h1><h3>원</h3>
 								</td>
 								<td id="result_info_ship">
 									<div id="result_info_ship_wrap">
-										배송비
+										
 										<div id="result_info_plus">+</div>
 										<h1><span id="ship_price"></span></h1>
-										<div id="result_info_equal">=</div>
+										<div id="result_info_equal">=</div><h3>원</h3>
 									</div>
 								</td> <!-- 가격따른 차등 --> 
 								<td id="result_info_total">	
-									결제 예정금액 : 
-									<h1><span id="final_total"></span></h1>
+									<h1><span id="final_total"></span></h1><h3>원</h3>
 								</td>
 								<td id="result_info_point">
-									적립예정
-									<h1><span id="expectancy_price"></span></h1>
+									
+									<h1><span id="expectancy_price"></span></h1><h3>포인트</h3>
 								</td>
 							</tr>
 						</tbody>
@@ -388,7 +389,7 @@
 												bookAmount = parseInt(bookAmount) + parseInt($("#bookAmount"+i).val());
 												point = priceTotal * 0.05;
 												pointTotal = pointTotal + point;
-												str += "<input type='hidden' name='cartId' value='"+cartId+"'>";
+												str += "<input type='hidden' id='hidden_cartId' name='cartId' value='"+cartId+"'>";
 											}
 										}
 										
