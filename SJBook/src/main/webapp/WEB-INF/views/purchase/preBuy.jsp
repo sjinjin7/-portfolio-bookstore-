@@ -115,10 +115,10 @@
 				<div id="main_buy_addr_button">
 					<ul>
 						<li>
-							<a class="addr_button1">저장 주소</a>
+							<a class="addr_button1" id="addr_button_save">저장 주소</a>
 						</li>
 						<li>
-							<a class="addr_button2">직접입력</a>
+							<a class="addr_button2" id="addr_button_insert">직접입력</a>
 						</li>
 					</ul>				
 				</div>
@@ -161,11 +161,11 @@
 								주소록
 							</th>
 							<td>
-								<input type="text"> <button>주소록</button>
+								<input id="receiver_row_addr_input1" type="text"> <button>주소록</button>
 								<br>
-								<input type="text">
+								<input id="receiver_row_addr_input2" type="text">
 								<br>
-								<input type="text">
+								<input id="receiver_row_addr_input3" type="text">
 							</td>
 						</tr>
 					</table>
@@ -185,24 +185,43 @@
 						</tr>
 					</thead>
 					<tbody>
-						<%-- <c:set var="i" value="0"/> 
-						<c:forEach items="${buylist}" var="list"> --%> 
+						<c:set var="i" value="0"/> 
+						<!-- 가격 총합 -->
+						<c:set var="finalTotalPrice" value="0"/>
+						<!-- 받을 예정인 포인트 총합 -->
+						<c:set var="finalTotalPoint" value="0"/>
+						<c:forEach items="${buylist}" var="list"> 
 						<tr>
 							<td class="main_list_col1" >
 								이미지
 							</td>
 							<td class="main_list_col2">
-								<%-- ${list.title} --%>
+								${list.title}
 								제목						
 							</td>
 							<td class="main_list_col3">
-								<strong>18,000</strong>원 <span> | </span> 수량 1개
-								<div>18,000원</div>
-								<div>[10%↓ +1,000원<span>P</span>]</div>							
+								<!-- 각 제품의 할인된가격 총합 -->
+								<c:set var="discountPrice" value="0"/>
+								<!-- 할인된가격 * 수량 -->
+								<c:set var="discountPriceStock" value="0"/>
+								<!-- 받을 포인트 -->
+								<c:set var="point" value="0"/>
+								
+								<c:set var="discountPrice" value="${list.bookPrice*((100-list.discountRate)/100) } "/>
+								<c:set var="discountPriceStock" value="${discountPrice * list.cartStock }"/>
+								
+								<c:set var="point" value="${list.bookPrice * 0.05 }"/>
+								 
+								<strong>${discountPriceStock }</strong>원 <span> | </span> 수량 ${list.cartStock}개
+								<div>${discountPrice}</div> 
+								<div>[ ${list.discountRate} %↓ + ${point}원<span>P</span>]</div>			
+								<c:set var="finalTotalPrice" value="${finalTotalPrice + discountPriceStock}"/>
+						
+								<c:set var="finalTotalPoint" value="${finalTotalPoint + point}"/>				
 							</td>
 						</tr>
-						<%-- <c:set var="i" value="${i+1}"/> 
-						</c:forEach> --%>
+						<c:set var="i" value="${i+1}"/> 
+						</c:forEach>
 					</tbody>
 				
 				</table>
@@ -232,10 +251,10 @@
 			<div id="final_buy_info">
 				<ul>
 					<li>
-						상품금액
+						상품금액 : ${finalTotalPrice}
 					</li>
 					<li>
-						배송비
+						배송비 : ${finalTotalPoint}
 					</li>
 					<li>
 						선물포장
@@ -250,6 +269,10 @@
 				</ul>
 			</div>
 			<div id="final_buy_point">
+				적립 예정 포인트 :  <fmt:formatNumber value="${finalTotalPoint}" pattern="#,###" />
+
+			</div>
+			<div id="final_buy_check">
 				<input type="checkbox">주문내역 확인 동의
 			</div>
 			<div id="final_buy_button">	

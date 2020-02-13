@@ -92,6 +92,8 @@ $(document).ready(function(){
 			
 			$("#main_buy_addr_info1").css("display", "block");
 			$("#main_buy_addr_info2").css("display","none")
+			$("#addr_button_save").attr("class", "addr_button1")
+			$("#addr_button_insert").attr("class", "addr_button2")
 		});
 	
 	
@@ -100,6 +102,8 @@ $(document).ready(function(){
 			
 			$("#main_buy_addr_info1").css("display", "none");
 			$("#main_buy_addr_info2").css("display","block");
+			$("#addr_button_save").attr("class", "addr_button2")
+			$("#addr_button_insert").attr("class", "addr_button1")
 		})
 	
 	

@@ -7,7 +7,9 @@ label,input,select{
 	vertical-align: middle;
 }
 
-
+h1{
+	padding-bottom: 13px;
+}
 a{
 	text-decoration: none;
 	clolr: #666;
@@ -220,10 +222,11 @@ a{
     line-height: 40px;
 }
 #col2{
-	padding-left: 10px;
+	//padding-left: 10px;
+	text-align: center;
 }
 #col2>span{
-	magin: 0 5px;
+	margin: 0 8px;
 }
 
 
@@ -236,6 +239,18 @@ a{
 	width: 100%;
 	//background-color: grey;
 }
+.addr_button1{
+	padding-top: 3px;
+	background-color: white;
+}
+.addr_button2{
+	background-color: #fbfbfb;
+    color: #9a9a9a;
+    border: 1px solid #dadada;
+}
+
+
+
 
 #main_buy_addr_button>ul{
 	height : 50px;
@@ -256,6 +271,9 @@ a{
 	border-style : solid;
 	border-color: black;
 	cursor: pointer;
+	font-size: 20px;
+    font-weight: bold;
+    font-family: 'Malgun Gothic','Apple SD Gothic Neo','Dotum','Sans-Serif';
 	
 }
 
@@ -266,7 +284,7 @@ a{
 
 #main_buy_addr_info1{
 	border-bottom: 1px solid #ddd;
-	padding : 15px 20px;
+	padding : 40px 20px;
 }
 
 #main_buy_addr_info1_2{
@@ -281,16 +299,31 @@ a{
 /* 직접입력 */
 #main_buy_addr_info2{
 	border-bottom: 1px solid #ddd;
-	padding : 0 20px 15px 20px;
+	padding : 40px 0;
 	display:none;
 }
 #main_buy_addr_info2 td,th{
-	padding-top: 15px;
+	text-align: left;
+    padding-left: 20px;
+    padding-bottom: 5px;
+}
+	
 }
 
-
-
-
+#main_buy_addr_info2 input{
+	height : 30px;
+}
+/* 
+#receiver_row_addr_input1{
+	margin-bottom: 5px;	
+}
+#receiver_row_addr_input1{
+	margin-bottom: 5px;
+}
+#receiver_row_addr_input1{
+	
+}
+ */
 
 
 
@@ -369,6 +402,28 @@ main_list_head_col2{
 }
 #main_right ul{
 	list-style: none;
+}
+
+
+
+
+
+#final_buy_point{
+	border-top: 1px solid #ddd;
+}
+
+#final_buy_point{
+	padding: 20px 20px;
+	border-top: 1px solid #ddd;
+}
+#final_buy_check{
+	padding: 20px 20px;
+	border-top: 1px solid #ddd;
+}
+#final_buy_button{
+	padding: 20px 20px;
+	
+	border-top: 1px solid #ddd;
 }
 
 
