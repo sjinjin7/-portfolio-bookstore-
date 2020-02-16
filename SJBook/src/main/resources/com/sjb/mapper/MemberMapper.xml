@@ -14,7 +14,7 @@
 
  <select id="memberLogin" resultType="com.sjb.model.MemberVO">
  	
- 	select memberId, memberName, memberAdmin  from sjb_member where memberId = #{memberId} and memberPs = #{memberPs};
+ 	select memberId, memberName, memberAdmin,money, point  from sjb_member where memberId = #{memberId} and memberPs = #{memberPs};
  	
  </select>
  

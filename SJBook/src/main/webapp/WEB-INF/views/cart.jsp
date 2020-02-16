@@ -19,32 +19,9 @@
 <div id="wrap">
 	<div id="top_mini">
 		<div id="top_mini_1">
-			<ul>
-				<c:if test="${member != null}">
-				<li><strong>${member.memberName}</strong>님 환영합니다</li>
-				<li><a id="logout">로그아웃</a></li>
-				<script>
-						$(document).ready(function(){
-							$("#logout").click(function(){
-								$.ajax({
-									type:"POST",
-									url : "member/logout",
-									success:function(data){
-										alert("로그아웃 되었습니다.");
-										document.location.reload();
-									}
-								});//ajax 끝
-							});//function 끝
-						});
-				</script>
-				</c:if>
-				<c:if test="${member == null}">
-				<li>로그인</li>
-				</c:if>
-				<li>장바구니</li>
-				<li>고객센터</li>
-				<li>주문배송</li>
-			</ul>
+			<jsp:include page="include/top_mini.jsp">
+				<jsp:param name="member" value="${member}" />
+			</jsp:include>
 		</div>
 	</div>
 	<!-- 상단부(로고, 검색창, 로그인창) -->
@@ -52,7 +29,7 @@
 		<div id="top_1">
 			<div id="top_1_logo">
 				<div id="top_1_logo_1">
-					<a href="main"><img src="resources/img/logo.png"></a>
+					<a href="/main"><img src="resources/img/logo.png"></a>
 				</div>
 			</div>
 			<div id="top_1_selection">
@@ -74,7 +51,9 @@
 				</div>
 			</div>
 			<div id="top_1_login">
-				<div id="top_1_login_button"><a href="loginMain"><h1>SJB로그인</h1></a></div>
+				<jsp:include page="include/top_login.jsp">
+					<jsp:param name="member" value="${member}" />
+				</jsp:include>
 			</div>
 		</div>
 	</div>
@@ -84,6 +63,7 @@
 	<div id="sub_top">
 		<div id="sub_top_1">
 			<img src="../resources/img/top_cart.PNG">
+			<p>장바구니</p>
 		</div>
 	</div>
 	
@@ -355,8 +335,12 @@
 				</div>
 				
 			</div>
-			<div id="side_right_ad"><h1>side right 63 362</h1></div>
-			<div id="side_left_ad"><h1>side left85 703</h1></div>
+			<div id="side_right_ad">
+				<jsp:include page="include/rightSideAd.jsp"></jsp:include>
+			</div>
+			<div id="side_left_ad">
+				<jsp:include page="include/leftSideAd.jsp"></jsp:include>
+			</div>
 			
 			<script>
 								

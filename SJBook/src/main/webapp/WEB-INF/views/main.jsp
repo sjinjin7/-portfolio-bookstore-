@@ -21,15 +21,21 @@
 </head>
 <body>
 <div id="wrap">
-	<div id="top_ad"><img src="resources/img/top_ad.png">
-	
+	<div id="top_ad">
+		<div class="top_ad_right"></div>
+		
+		<div id="top_ad_img">
+			<img src="http://image.kyobobook.co.kr/dwas/images/prom/banner/2020/02/13/bnC_pc_ink_950x65.jpg">
+			<button onclick="jQuery('#top_ad').slideUp();"><img src="resources/img/close_button.gif"></button>
+		</div>
+		
 	 
 	</div>
 	
 	
 	<div id="top_mini">
 		<div id="top_mini_1">
-			<ul>
+<%-- 			<ul>
 				<li><a href="/buyTest">테스트페이지</li>
 				<!-- <li><a href="/purchase/preBuy">테스트페이지</li> -->
 				<c:if test="${member.memberAdmin == 1}">
@@ -59,7 +65,10 @@
 				<li><a href="cart">장바구니</a></li>
 				<li>고객센터</li>
 				<li>주문배송</li>
-			</ul>
+			</ul> --%>
+			<jsp:include page="include/top_mini.jsp">
+				<jsp:param name="member" value="${member}" />
+			</jsp:include>			
 		</div>
 	</div>
 	
@@ -91,7 +100,9 @@
 				</div>
 			</div>
 			<div id="top_1_login">
-				<div id="top_1_login_button"><a href="loginMain"><h1>SJB로그인</h1></a></div>
+				<jsp:include page="include/top_login.jsp">
+					<jsp:param name="member" value="${member}" />
+				</jsp:include>	
 			</div>
 		</div>
 	</div>
@@ -171,8 +182,12 @@
 			<div id="main3">
 				<div id="main3_1"></div>
 			</div>
-			<div id="side_right_ad"><h1>side right 63 362</h1></div>
-			<div id="side_left_ad"><h1>side left85 703</h1></div>
+			<div id="side_right_ad">
+				<jsp:include page="include/rightSideAd.jsp"></jsp:include>
+			</div>
+			<div id="side_left_ad">
+				<jsp:include page="include/leftSideAd.jsp"></jsp:include>
+			</div>
 			
 		</div>
 	</div>

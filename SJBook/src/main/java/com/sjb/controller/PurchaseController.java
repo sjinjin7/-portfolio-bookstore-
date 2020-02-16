@@ -80,7 +80,7 @@ public class PurchaseController {
 		System.out.println(order);
 		//System.out.println(order.getoDetail().get(0));
 		
-		
+		/*
 		if(order.getoDetail() != null) {
 			order.getoDetail().forEach(attach -> logger.info(""+attach));
 			order.getCartId().forEach(cart -> logger.info(""+ cart));
@@ -88,6 +88,7 @@ public class PurchaseController {
 			//System.out.println("book.getbCover()"+book.getbCover());
 			buyservice.bookBuy(order);
 		}
+		*/
 	}
 	
 	

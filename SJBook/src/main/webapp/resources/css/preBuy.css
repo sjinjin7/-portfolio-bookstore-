@@ -38,20 +38,7 @@ a{
 	//background-color:#BCE55C;
 	clear:both;
 }
-#top_mini_1 ul{
-	float:right;
-	list-style:none;
-	position:relative;
-	padding-top:10px;
-}
 
-#top_mini_1 ul li{
-	display:inline;
-	width: 45px;
-	height: 19px;
-	padding: 10px 9px 0 10px;
-	
-}
 #top{
 	width: 100%;
 	height:100px;
@@ -138,20 +125,6 @@ a{
 	float:right;
 	//background-color:#B7F0B1;
 }
-#top_1_login_button{
-	width: 280px;
-	height: 50px;
-	padding-top:5px;
-	margin-left:140px;
-	margin-top:15px;
-	background-color:green;
-	text-align: center;
-	border-radius:10px;
-}
-#top_1_login_button a{
-	width:100%;
-	height:100%;
-}
 
 
 
@@ -167,7 +140,6 @@ a{
 	text-align: center;
 	position : relative
 }
-
 #sub_top_1>img{
 	position : absolute;
 	width: 100%;
@@ -175,6 +147,17 @@ a{
 	left:0;
 	top:0;
 }
+#sub_top_1>p{
+	position: absolute;
+    color: white;
+    line-height: 96px;
+    font-size: 67px;
+    font-weight: bold;
+    margin-left: 35px;
+}
+
+
+
 
 
 /* 메인 */
@@ -282,7 +265,7 @@ a{
 	margin-top : 50px;
 }
 
-#main_buy_addr_info1{
+.main_buy_addr_info1{
 	border-bottom: 1px solid #ddd;
 	padding : 40px 20px;
 }
@@ -297,10 +280,10 @@ a{
 
 
 /* 직접입력 */
-#main_buy_addr_info2{
+.main_buy_addr_info2{
 	border-bottom: 1px solid #ddd;
 	padding : 40px 0;
-	display:none;
+	//display:none;
 }
 #main_buy_addr_info2 td,th{
 	text-align: left;
@@ -308,22 +291,43 @@ a{
     padding-bottom: 5px;
 }
 	
-}
+
 
 #main_buy_addr_info2 input{
+	//display : inline-block;
 	height : 30px;
+	padding : 10px;
 }
-/* 
+.receiver_row_phone input{
+	width : 380px;
+}
+.receiver_row_addr>td>a:hover {
+    background-color: gray;
+}
+.receiver_row_addr>td>a{
+	width: 100px;
+    height: 47px;
+    font-size: 18px;
+    margin-left: 88px;
+    border: 1px solid black;
+    display: inline-block;
+    line-height: 45px;
+    text-align: center;
+    font-weight: bold;
+    background-color: lightgray;
+}
+}
 #receiver_row_addr_input1{
 	margin-bottom: 5px;	
 }
-#receiver_row_addr_input1{
+#receiver_row_addr_input2{
 	margin-bottom: 5px;
+	width : 380px;
 }
-#receiver_row_addr_input1{
-	
+#receiver_row_addr_input3{
+	width : 380px;
 }
- */
+ 
 
 
 
@@ -337,6 +341,8 @@ a{
 	width: 100%;
 	border-bottom: #ddd solid 2px;
 	border-top: black solid 2px;
+	border-collapse: collapse;
+	
 }
 #main_list>table>thead>tr{
 	
@@ -347,6 +353,9 @@ a{
 #main_list>table>tbody>tr{
 	border-bottom: 1px solid #e7e7e7;
 	height : 110px;
+}
+#main_list>table>tbody>tr{
+	border-top : 1px solid #e7e7e7r;
 }
 .main_list_head_col1{
 	width :60%;	
@@ -404,13 +413,35 @@ main_list_head_col2{
 	list-style: none;
 }
 
+#final_buy_info{
+	padding : 15px 20px;
+	
+}
+#final_buy_info>ul>li{
+	margin-top: 13px;
+}
+#label{
+	float : left;
+}
+#label_result{
+	float : right;
+}
+.total_li{
+	border-top : 1px solid #ddd;
+	padding-top : 20px;
+}
 
-
-
-
+.total_li strong>#number{
+	font-size: 30px;
+	color : red;
+}
 #final_buy_point{
 	border-top: 1px solid #ddd;
 }
+#point_btn2{
+	display : none;
+}
+
 
 #final_buy_point{
 	padding: 20px 20px;
@@ -532,3 +563,7 @@ main_list_head_col2{
 .clearfix{
 	clear:both;
 }
+#save{
+	display : none;
+}
+

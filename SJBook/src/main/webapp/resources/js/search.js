@@ -112,7 +112,18 @@ $(document).ready(function(){
 		
 	}
 	
+	
+/*스크롤 최상단*/	
+function scroll_Top(){
+	$('html').scrollTop(0);
+}
+/*스크롤 최하단*/
+function scroll_Bottom(){
+	$("html").scrollTop($(document).height());
+};
 
+
+	
 
 
 /*

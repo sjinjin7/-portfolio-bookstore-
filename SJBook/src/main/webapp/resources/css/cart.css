@@ -36,20 +36,7 @@ a{
 	//background-color:#BCE55C;
 	clear:both;
 }
-#top_mini_1 ul{
-	float:right;
-	list-style:none;
-	position:relative;
-	padding-top:10px;
-}
 
-#top_mini_1 ul li{
-	display:inline;
-	width: 45px;
-	height: 19px;
-	padding: 10px 9px 0 10px;
-	
-}
 #top{
 	width: 100%;
 	height:100px;
@@ -136,20 +123,7 @@ a{
 	float:right;
 	//background-color:#B7F0B1;
 }
-#top_1_login_button{
-	width: 280px;
-	height: 50px;
-	padding-top:5px;
-	margin-left:140px;
-	margin-top:15px;
-	background-color:green;
-	text-align: center;
-	border-radius:10px;
-}
-#top_1_login_button a{
-	width:100%;
-	height:100%;
-}
+
 
 
 
@@ -165,7 +139,6 @@ a{
 	text-align: center;
 	position : relative
 }
-
 #sub_top_1>img{
 	position : absolute;
 	width: 100%;
@@ -173,7 +146,14 @@ a{
 	left:0;
 	top:0;
 }
-
+#sub_top_1>p{
+	position: absolute;
+    color: white;
+    line-height: 96px;
+    font-size: 67px;
+    font-weight: bold;
+    margin-left: 35px;
+}
 
 
 
@@ -582,7 +562,7 @@ input[type='checkbox']{
 
 #side_left_ad{
 	width:85px;
-	height:703px;
+	//height:703px;
 	position: absolute;
 	top : 0;
 	left : -85px;
@@ -593,12 +573,12 @@ input[type='checkbox']{
 }
 
 #side_right_ad{
-	width:63px;
+	width:65px;
 	height:362px;
 	position: absolute;
 	top : 0;
-	right : -63px;
-	background-color: black;
+	right : -65px;
+	//background-color: black;
 }
 .clearfix{
 	clear:both;
