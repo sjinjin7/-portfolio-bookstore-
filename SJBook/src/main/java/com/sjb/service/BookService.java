@@ -2,6 +2,7 @@ package com.sjb.service;
 
 import java.util.List;
 
+import com.sjb.model.AuthorVO;
 import com.sjb.model.BookCoverVO;
 import com.sjb.model.BookVO;
 import com.sjb.model.Criteria;
@@ -27,5 +28,9 @@ public interface BookService {
 	
 	//첨부파일 productID알아내기
 	public List<BookCoverVO> getBCover(int productID);
+	
+	//작가등록
+	public void authrEnroll(AuthorVO author) throws Exception;
+
 	
 }

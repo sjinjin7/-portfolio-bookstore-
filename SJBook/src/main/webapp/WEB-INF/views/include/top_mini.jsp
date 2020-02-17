@@ -6,7 +6,8 @@
 				<!-- <li><a href="/buyTest">테스트페이지</li> -->
 				<!-- <li><a href="/purchase/preBuy">테스트페이지</li> -->
 				<c:if test="${member.memberAdmin == 1}">
-					<li><a href="/admin/list">관리자페이지</li>
+					<!-- <li><a href="/admin/list">관리자페이지</li> -->
+					<li><a href="/admin/main">관리자페이지</li>
 				</c:if>
 				<c:if test="${member != null}">
 					<li><strong>${member.memberName}</strong>님 환영합니다</li>

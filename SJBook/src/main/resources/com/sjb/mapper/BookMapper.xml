@@ -89,8 +89,10 @@ insert into SJB_Book(title,publisher) values(#{title}, #{publisher});
 		where title like concat('%',#{keyword},'%')
 		</if>
 	</select>
-	
-	
+	<!-- 작가등록 -->
+	<insert id="authorEnroll">
+		insert into sjb_author(AuthorName, AuthorIntro) values(#{authorName},#{authorIntro});
+	</insert>
 	  
   
   </mapper>

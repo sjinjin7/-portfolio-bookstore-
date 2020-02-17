@@ -168,6 +168,7 @@
 		
 	<div id="main">
 		<div id="main_container">
+		
 			<div id="main1">
 				<div><img src="http://image.kyobobook.co.kr/ink/images/prom/2020/banner/200123/bnN_01.jpg"> </div>
 				<div><img src="http://image.kyobobook.co.kr/ink/images/prom/2020/banner/200129/bnG_w01.jpg"> </div>
@@ -176,6 +177,7 @@
 				<div><img src="http://image.kyobobook.co.kr/ink/images/prom/2020/banner/200123/bnN_02.jpg"> </div>
 				
 			</div>
+			
 			<div id="main2">
 				<div id="main2_1"></div>
 			</div>

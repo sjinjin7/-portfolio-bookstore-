@@ -31,9 +31,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.sjb.model.AttachFileDTO;
+import com.sjb.model.AuthorVO;
 import com.sjb.model.BookCoverVO;
 import com.sjb.model.BookVO;
 import com.sjb.model.Criteria;
@@ -432,8 +431,20 @@ public class AdminController {
 		
 	}
 	
-	
-	
+	@RequestMapping(value="/main", method=RequestMethod.GET)
+	public void mainGET() throws Exception{
+		
+	}
+
+	/* 작가등록 */
+	@RequestMapping(value="/authorEnroll", method=RequestMethod.GET)
+	public void authorEnrollGET() throws Exception{
+		
+	}
+	@RequestMapping(value="/authorEnroll", method=RequestMethod.POST)
+	public void authorEnrollPOST(AuthorVO author) throws Exception{
+		bookservice.authrEnroll(author);
+	}
 	
 	
 	

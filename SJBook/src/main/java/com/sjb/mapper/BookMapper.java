@@ -2,6 +2,7 @@ package com.sjb.mapper;
 
 import java.util.List;
 
+import com.sjb.model.AuthorVO;
 import com.sjb.model.BookVO;
 import com.sjb.model.Criteria;
 
@@ -31,5 +32,7 @@ public interface BookMapper {
 	// 제품 갯수
 	public int bookCount(Criteria cri) throws Exception; 
 	
+	//작가등록
+	public void authorEnroll(AuthorVO author) throws Exception;
 	
 }

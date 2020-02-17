@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.sjb.controller.AdminController;
 import com.sjb.mapper.BookMapper;
 import com.sjb.mapper.CoverMapper;
+import com.sjb.model.AuthorVO;
 import com.sjb.model.BookCoverVO;
 import com.sjb.model.BookVO;
 import com.sjb.model.Criteria;
@@ -87,6 +88,13 @@ public class BookServiceImpl implements BookService {
 	public List<BookCoverVO> getBCover(int productID) {
 		logger.info("get BCover list by productID : " + productID);
 		return covermapper.findByProductID(productID);
+	}
+
+	@Override
+	public void authrEnroll(AuthorVO author) throws Exception {
+		
+		bookmapper.authorEnroll(author);
+		
 	}
 
 

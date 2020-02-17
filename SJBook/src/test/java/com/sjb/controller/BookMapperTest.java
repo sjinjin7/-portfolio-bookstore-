@@ -2,17 +2,14 @@ package com.sjb.controller;
 
 import java.util.List;
 
-import org.apache.log4j.Logger;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-
-import com.sjb.model.Criteria;
-import com.sjb.service.BookService;
 import com.sjb.mapper.BookMapper;
+import com.sjb.model.AuthorVO;
 import com.sjb.model.BookVO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -24,7 +21,7 @@ public class BookMapperTest {
 	
 	//@Autowired BookService bs;
 	
-	
+	/*
 	@Test
 	public void bookList() throws Exception{
 		
@@ -32,7 +29,7 @@ public class BookMapperTest {
 		
 		
 	}
-
+	*/
 	/*
 	@Test
 	public void detail() throws Exception{
@@ -102,6 +99,15 @@ public class BookMapperTest {
 	}
 	*/
 	
+	
+	/* 작가등록 test */
+	@Test
+	public void authorEnrollTest() throws Exception{
+		AuthorVO vo = new AuthorVO();
+		vo.setAuthorName("스테스트");
+		vo.setAuthorIntro("자바에서 테스트");
+		bookMapper.authorEnroll(vo);
+	}
 	
 	
 	

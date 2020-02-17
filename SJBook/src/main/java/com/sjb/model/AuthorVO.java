@@ -2,51 +2,41 @@ package com.sjb.model;
 
 public class AuthorVO {
 
-	private int AuthorID;
+	private int authorID;
 	
-	private String AuthorName;
+	private String authorName;
 	
-	private int AuthorProduc;
-	
-	private String AuthorIntro;
+	private String authorIntro;
 
 	public int getAuthorID() {
-		return AuthorID;
+		return authorID;
 	}
 
 	public void setAuthorID(int authorID) {
-		AuthorID = authorID;
+		this.authorID = authorID;
 	}
 
 	public String getAuthorName() {
-		return AuthorName;
+		return authorName;
 	}
 
 	public void setAuthorName(String authorName) {
-		AuthorName = authorName;
-	}
-
-	public int getAuthorProduc() {
-		return AuthorProduc;
-	}
-
-	public void setAuthorProduc(int authorProduc) {
-		AuthorProduc = authorProduc;
+		this.authorName = authorName;
 	}
 
 	public String getAuthorIntro() {
-		return AuthorIntro;
+		return authorIntro;
 	}
 
 	public void setAuthorIntro(String authorIntro) {
-		AuthorIntro = authorIntro;
+		this.authorIntro = authorIntro;
 	}
 
 	@Override
 	public String toString() {
-		return "AuthorVO [AuthorID=" + AuthorID + ", AuthorName=" + AuthorName + ", AuthorProduc=" + AuthorProduc
-				+ ", AuthorIntro=" + AuthorIntro + "]";
+		return "AuthorVO [authorID=" + authorID + ", authorName=" + authorName + ", authorIntro=" + authorIntro + "]";
 	}
+
 	
 	
 	

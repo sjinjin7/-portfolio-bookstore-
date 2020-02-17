@@ -21,6 +21,7 @@ a{
 }
 /* 1920 1200 1024 968 */
 #wrap{
+	
 	width:1920px;
 	//background-color: #CCC;
 	//position:relative;
@@ -107,11 +108,15 @@ a{
 }
 
 #top_1_logo_1{
-	width: 180px;
+/* 	width: 180px;
 	height:80px;
 	float:left;
 	margin: 10px;
-	//background-color:#9FC93C;
+	//background-color:#9FC93C; */
+	width: 295px;
+    height: 99px;
+    float: left;
+    background-color: #9FC93C;
 }
 #top_1_logo_1 img{
 	width : 100%;
@@ -220,6 +225,7 @@ nav ul div{
 	left:0;
 	border-radius: 0 0 10px 10px / 0 0 10px 10px ;
 	//padding: 10px;
+	z-index: 1;
 }
 nav li:hover{
 	background: #74867d;
@@ -263,7 +269,7 @@ nav li>a{
 	
 	background-color:orange;	
 	position:relative;	
-	z-index: -99999;
+	/* z-index: -99999; */
 }
 #main1>div{
 	width:100%;
@@ -435,7 +441,7 @@ left:50%;
 	margin-right:715px;
 	right:960px;
 	background-color: black;
-	z-index: 99999;
+	/* z-index: 99999; */
 }
 /* #side_left_ad_1{
 	width : 85px;
