@@ -36,6 +36,7 @@
 			<interceptor>
 				<!-- <mapping path="/admin/enterAdmin"/> -->
 				<mapping path="/admin/**"/>
+				<exclude-mapping path="/admin/authorSearch"/>
 				<beans:ref bean="AdminInterceptor"/>
 			</interceptor>			
 			

@@ -35,4 +35,9 @@ public interface BookMapper {
 	//작가등록
 	public void authorEnroll(AuthorVO author) throws Exception;
 	
+	// 작가 명수
+	public int authorCount(Criteria cri) throws Exception;
+	
+	//작가 리스트(페이징처리)
+	public List<AuthorVO> authorListPaging(Criteria cri) throws Exception;
 }

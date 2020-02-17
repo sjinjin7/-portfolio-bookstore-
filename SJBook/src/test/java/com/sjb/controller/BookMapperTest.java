@@ -10,7 +10,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.sjb.mapper.BookMapper;
 import com.sjb.model.AuthorVO;
-import com.sjb.model.BookVO;
+import com.sjb.model.Criteria;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
@@ -101,6 +101,7 @@ public class BookMapperTest {
 	
 	
 	/* 작가등록 test */
+	/*
 	@Test
 	public void authorEnrollTest() throws Exception{
 		AuthorVO vo = new AuthorVO();
@@ -108,8 +109,27 @@ public class BookMapperTest {
 		vo.setAuthorIntro("자바에서 테스트");
 		bookMapper.authorEnroll(vo);
 	}
+	*/
+	/*
+	//작겨명수
+	@Test
+	public void authorCountTest() throws Exception{
+		Criteria vo =  new Criteria();
+		bookMapper.authorCount(vo);
+		
+		
+		
+	}
+	*/
 	
-	
+	//작가 리스트 페이징
+	@Test 
+	public void authorListPagingTest() throws Exception{
+		Criteria vo =  new Criteria();
+		vo.setKeyword("테");
+		List<AuthorVO> list = bookMapper.authorListPaging(vo);
+		System.out.println(" 페이징 처리 = " +list);
+	}
 	
 	
 	

@@ -111,7 +111,7 @@ public class AdminController {
 		
 		
 		
-		return "redirect:list";
+		return "redirect:/admin/main";
 		//return null;
 	}
 	
@@ -444,6 +444,25 @@ public class AdminController {
 	@RequestMapping(value="/authorEnroll", method=RequestMethod.POST)
 	public void authorEnrollPOST(AuthorVO author) throws Exception{
 		bookservice.authrEnroll(author);
+	}
+	
+	/* 제품 등록 */
+	@RequestMapping(value="/bookEnroll", method=RequestMethod.GET)
+	public void bookEnrollGET() throws Exception{
+		
+	}
+	
+	/* 작가등록 팝업창 페이지 */
+	@RequestMapping(value="/authorSearch", method=RequestMethod.GET)
+	public void authorSearchGET(Criteria cri, Model model) throws Exception{
+		int total = bookservice.authorCount(cri);
+		PageVO pv = new PageVO(cri, total);
+		logger.info("keyword = : " + cri.getKeyword());
+		logger.info("total = " + total);
+		
+		model.addAttribute("list",bookservice.authorListPaging(cri));
+		model.addAttribute("page",pv);
+		
 	}
 	
 	

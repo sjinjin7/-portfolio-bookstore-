@@ -97,6 +97,18 @@ public class BookServiceImpl implements BookService {
 		
 	}
 
+	@Override
+	public int authorCount(Criteria cri) throws Exception {
+		
+		return bookmapper.authorCount(cri);
+	}
+
+	@Override
+	public List<AuthorVO> authorListPaging(Criteria cri) throws Exception {
+		
+		return bookmapper.authorListPaging(cri);
+	}
+
 
 
 }

@@ -93,6 +93,31 @@ insert into SJB_Book(title,publisher) values(#{title}, #{publisher});
 	<insert id="authorEnroll">
 		insert into sjb_author(AuthorName, AuthorIntro) values(#{authorName},#{authorIntro});
 	</insert>
-	  
+	<!-- 작가 명수 -->
+	<select id="authorCount" resultType="int">
+		
+			select count(*) from SJB_author
+		
+		<if test="keyword != null">
+		where authorID like concat('%',#{keyword},'%')
+		</if>
+	</select>  
+	<!-- 작가 검색 페이징 -->
+	<select id="authorListPaging" resultType="com.sjb.model.AuthorVO">
+	
+  		select * 
+		from(select @rownum:=@rownum+1 as rownum, authorID, AuthorName, AuthorIntro
+		 	from (select @rownum:=0) as rownum, sjb_author 
+		<if test="keyword != null">
+			where AuthorName like concat ('%',#{keyword},'%') 
+		</if>
+			order by authorID desc ) sjb_author 
+		<![CDATA[	
+			where rownum >(#{pageNum}-1)*#{amount} and rownum<=#{pageNum}*#{amount} ;
+		]]>
+	
+
+ </select>
+	
   
   </mapper>
