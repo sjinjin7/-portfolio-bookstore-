@@ -12,7 +12,8 @@ public class BookCoverVO {
 	private boolean image;
 	// 제품번호
 	private int productID;
-	
+	// 기존저장되어있는 저장물인지 판단 (1 기존 0 새로운)
+	private int judgment;
 	
 	public String getFileName() {
 		return fileName;
@@ -45,10 +46,16 @@ public class BookCoverVO {
 	public void setProductID(int productID) {
 		this.productID = productID;
 	}
+	public int getJudgment() {
+		return judgment;
+	}
+	public void setJudgment(int judgment) {
+		this.judgment = judgment;
+	}
 	@Override
 	public String toString() {
 		return "BookCoverVO [fileName=" + fileName + ", uploadPath=" + uploadPath + ", uuid=" + uuid + ", image="
-				+ image + ", productID=" + productID + "]";
+				+ image + ", productID=" + productID + ", judgment=" + judgment + "]";
 	}
 	
 	

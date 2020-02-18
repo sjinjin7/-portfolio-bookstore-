@@ -38,4 +38,6 @@ public interface BookService {
 	//작가 리스트 페이징
 	public List<AuthorVO> authorListPaging(Criteria cri) throws Exception;
 	
+	//수정페이지에서 업로드물 삭제
+	public void modifyDeleteFile(String uuid);
 }

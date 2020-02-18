@@ -27,7 +27,7 @@ $(document).ready(function(){
 		dPrice = bPrice * ((100-dRate)/100);
 		dPoint = dPrice * 0.05;
 		dPoint = Math.round(dPoint/10) * 10;
-		$('#sellprice').val(dPrice);
+		$('#discountPrice').val(dPrice);
 		$('#bookPoint').val(dPoint);
 		}
 	});
@@ -50,7 +50,7 @@ $(document).ready(function(){
 		dPrice = bPrice * ((100-dRate)/100);
 		dPoint = dPrice * 0.05;
 		dPoint = Math.round(dPoint/10) * 10;
-		$('#sellprice').val(dPrice);
+		$('#discountPrice').val(dPrice);
 		$('#bookPoint').val(dPoint);
 		}
 	});
@@ -133,6 +133,7 @@ $(document).ready(function(){
 				 str += "<input type='hidden' name='bCover[" + i + "].uuid' value='" + obj.uuid +"'>";
 				 str += "<input type='hidden' name='bCover[" + i + "].uploadPath' value='" +obj.uploadPath+"'>";
 				 str += "<input type='hidden' name='bCover[" + i + "].image' value='" +obj.image+"'>";
+				 str += "<input type='hidden' name='bCover[" + i + "].judgment' value='1'>";
 				 
 			 }else{
 				 
@@ -184,12 +185,13 @@ $(document).ready(function(){
 		 
 			var targetFile = $(this).data("file");
 			var type = $(this).data("type");
+			var uuid = $(this).data("uuid");
 			
 			var targetLi = $(this).closest("li");
 			
 			$.ajax({
-				url : 'deleteFile',
-				data : {fileName: targetFile, type:type},
+				url : 'modifyDeleteFile',
+				data : {fileName: targetFile, type:type, uuid:uuid},
 				dataType:'text',
 				type:'POST',
 					success: function(result){
@@ -223,12 +225,30 @@ $(document).ready(function(){
 					
 					//image type
 					if(attach.fileType=1){
-						var fileCallPath = encodeURIComponent(attach.uploadPath + "/s_"+attach.uuid + "_"+attach.fileName);
+						/*var fileCallPath = encodeURIComponent(attach.uploadPath + "/s_"+attach.uuid + "_"+attach.fileName);
 						
 						str += "<li data-path='" + attach.uploadPath+"' data-uuid='"+attach.uuid+"' data-filename='"+attach.fileName+"' data-type='" + attach.image+"'><div>";
 						str += "<img src='display?fileName="+fileCallPath+"'>";
 						str += "</div>";
-						str += "</li>";
+						str += "</li>";*/
+						 var fileCallPath = encodeURIComponent(attach.uploadPath + "/s_"+attach.uuid + "_"+attach.fileName);
+						 
+						 str += "<li data-path='"+attach.uploadPath+"'";
+						 str += " data-uuid='"+attach.uuid+"' data-filename='"+attach.fileName+"' data-type='" + attach.image+"' data-type='"+attach.image+"'"; 
+						 str += "><div>";
+						 str += "<span> " + attach.fileName + "</span>";
+						 str += "<button type='button' data-file=\'"+fileCallPath+"\' data-type = 'image' data-uuid='"+attach.uuid +"' class='btn btn-warning btn-circle'  ><i class='fa fa-times'>x</i></button><br>";
+						 str += "<img src = 'display?fileName=" + fileCallPath + "'>";
+						 str += "</div>";
+						 str += "</li>";
+						 
+						 	
+						 console.dir(attach);
+						 
+						 str += "<input type='hidden' name='mCover[" + i + "].fileName' value='" +attach.fileName +"'>";
+						 str += "<input type='hidden' name='mCover[" + i + "].uuid' value='" + attach.uuid +"'>";
+						 str += "<input type='hidden' name='mCover[" + i + "].uploadPath' value='" +attach.uploadPath+"'>";
+						 str += "<input type='hidden' name='mCover[" + i + "].image' value='" +attach.image+"'>";
 						
 					} else{
 						
@@ -328,8 +348,9 @@ function checkExtension(fileName, fileSize){
 /*제품 등록 버튼*/
 function modify_btn(){
 
-		$("#bookDetail_form").attr("action","/admin/bookModify");
-		$("#bookDetail_form").submit();
+		$("#modify_form").attr("action","/admin/modify");
+		$("#modify_form").submit();
+		alert("수정되었습니다.");
 
 }
 

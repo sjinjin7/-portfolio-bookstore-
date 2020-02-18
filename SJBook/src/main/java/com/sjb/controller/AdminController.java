@@ -47,6 +47,8 @@ public class AdminController {
 	
 	@Autowired
 	private BookService bookservice;
+	
+	
 
 	private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
 	/*
@@ -121,16 +123,7 @@ public class AdminController {
 		model.addAttribute("bd", bookservice.bookDetail(num));
 	}
 	
-	@RequestMapping(value = "/modify", method=RequestMethod.POST)
-	public String modifyPOST(@RequestParam("num")int num, BookVO book) throws Exception{
-		System.out.println("BookVO="+book);
-		System.out.println("글수정시작");
-		book.setProductID(num);
-		System.out.println("BookVO(수정후)="+book);
-		bookservice.bookModify(book);
-		System.out.println("글수정완료");
-		return "redirect:list";
-	}
+	
 	@RequestMapping(value = "/delete", method=RequestMethod.GET)
 	public String deleteGET(@RequestParam("num")int num) throws Exception{
 		logger.info("deleteGET......");
@@ -473,6 +466,77 @@ public class AdminController {
 	}
 	
 	
+	/* 제품 정보 수정 페이지*/
+	@RequestMapping(value="/bookModify", method=RequestMethod.POST)
+	public void bookModifyPOST(BookVO vo, Model model) throws Exception{
+		
+		int productID = vo.getProductID();
+		System.out.println("id = " + productID);
+		model.addAttribute("bm", bookservice.bookDetail(productID));
+	}
+	
+	
+	// 제품 정보 수정 페이지에서의 업로드물삭제
+	@RequestMapping(value="/modifyDeleteFile", method=RequestMethod.POST)
+	@ResponseBody
+	public ResponseEntity<String> modifyDeleteFile(String fileName, String type, String uuid){
+		System.out.println("uuid = " + uuid);
+		//기존 저장되어있던 업로드물
+		if(uuid !=null) {
+			System.out.println("쿼리실행");
+			bookservice.modifyDeleteFile(uuid);
+		}
+		
+		
+		logger.info("deleteFile: " + fileName);
+		
+		File file;
+		
+		try {
+			file = new File("C:\\upload\\" + URLDecoder.decode(fileName, "UTF-8"));
+			
+			file.delete();
+			
+			if(type.contentEquals("image")) {
+				String largeFileName = file.getAbsolutePath().replace("s_", "");
+				
+				logger.info("largeFileName: " + largeFileName);
+				
+				file = new File(largeFileName);
+				
+				file.delete();
+			}
+			
+			
+			
+			
+			
+		}catch(UnsupportedEncodingException e) {
+			e.printStackTrace();
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+		
+		
+		
+		return new ResponseEntity<String>("deleted", HttpStatus.OK);
+	}
+	
+	//제품 정보 수정
+	@RequestMapping(value = "/modify", method=RequestMethod.POST)
+	public String modifyPOST(BookVO book) throws Exception{
+		System.out.println(book);
+		
+		if(book.getbCover() != null) {
+			System.out.println("aaaaaa");
+			book.getbCover().forEach(attach -> logger.info(""+attach));
+			//logger.info("book.getbCover()"+book.getbCover());
+			//System.out.println("book.getbCover()"+book.getbCover());
+			
+		}
+		
+		bookservice.bookModify(book);
+		return "redirect:/admin/main";
+	}
 	
 	
 }

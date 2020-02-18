@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
-public class BookVO {
+public class ModifyDTO {
 
 	private int productID;
 	
@@ -22,8 +22,11 @@ public class BookVO {
 	
 	private String bookCover;
 	
-	//업로드 
+	//새로 추가한 업로드
 	private List<BookCoverVO> bCover;
+	
+	//기존 업로드 
+	private List<BookCoverVO> mCover;
 	
 	private String publeYear;
 	
@@ -146,6 +149,16 @@ public class BookVO {
 
 	public void setbCover(List<BookCoverVO> bCover) {
 		this.bCover = bCover;
+	}
+
+
+	public List<BookCoverVO> getmCover() {
+		return mCover;
+	}
+
+
+	public void setmCover(List<BookCoverVO> mCover) {
+		this.mCover = mCover;
 	}
 
 
@@ -311,22 +324,19 @@ public class BookVO {
 
 	@Override
 	public String toString() {
-		return "BookVO [productID=" + productID + ", title=" + title + ", authorID=" + authorID + ", authorName="
+		return "ModifyDTO [productID=" + productID + ", title=" + title + ", authorID=" + authorID + ", authorName="
 				+ authorName + ", publisher=" + publisher + ", cateCode=" + cateCode + ", cateName=" + cateName
-				+ ", bookCover=" + bookCover + ", bCover=" + bCover + ", publeYear=" + publeYear + ", likeStar="
-				+ likeStar + ", bookReply=" + bookReply + ", bookPrice=" + bookPrice + ", discountRate=" + discountRate
-				+ ", sellprice=" + sellprice + ", bookInfo=" + bookInfo + ", contents=" + contents + ", introImage="
-				+ introImage + ", regdate=" + regdate + ", boardRegdate=" + boardRegdate + ", modDate=" + modDate
-				+ ", bookStock=" + bookStock + ", bookPoint=" + bookPoint + ", discountPrice=" + discountPrice
-				+ ", filename=" + filename + "]";
+				+ ", bookCover=" + bookCover + ", bCover=" + bCover + ", mCover=" + mCover + ", publeYear=" + publeYear
+				+ ", likeStar=" + likeStar + ", bookReply=" + bookReply + ", bookPrice=" + bookPrice + ", discountRate="
+				+ discountRate + ", sellprice=" + sellprice + ", bookInfo=" + bookInfo + ", contents=" + contents
+				+ ", introImage=" + introImage + ", regdate=" + regdate + ", boardRegdate=" + boardRegdate
+				+ ", modDate=" + modDate + ", bookStock=" + bookStock + ", bookPoint=" + bookPoint + ", discountPrice="
+				+ discountPrice + ", filename=" + filename + "]";
 	}
 
 	
 	
 	
-
 	
-	
-
 	
 }

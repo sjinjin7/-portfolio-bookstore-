@@ -70,14 +70,13 @@ insert into SJB_Book(title,publisher) values(#{title}, #{publisher});
 	     Publisher=#{publisher},
 	     authorID=#{authorID},
 	     CateCode=#{cateCode},
-	     BookCover=#{bookCover},
-	 	 PubleYear=#{publeYear},
+	     PubleYear=#{publeYear},
 	 	 BookPrice=#{bookPrice},
 	 	 DiscountRate=#{discountRate},
-	 	 BookInfo=#{bookInfo},
 	 	 Contents=#{contents},
-	 	 IntroImage=#{introImage},
-	 	 BookStock=#{bookStock}
+	 	 BookStock=#{bookStock},
+	 	 BookPoint=#{bookPoint}, 
+	 	 DiscountPrice=#{discountPrice}
 	 where productID = #{productID}
 	     
 	</update>

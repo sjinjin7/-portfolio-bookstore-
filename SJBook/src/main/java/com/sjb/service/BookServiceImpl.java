@@ -67,6 +67,13 @@ public class BookServiceImpl implements BookService {
 	public void bookModify(BookVO book) throws Exception {
 		
 		bookmapper.bookModify(book);
+		System.out.println("aaaaaaaaaa");
+		book.getbCover().forEach(attach ->{
+			if(attach.getJudgment() == 1) {
+			attach.setProductID(book.getProductID());
+			covermapper.coverEnroll(attach);
+			}
+		});
 		
 	}
 	@Transactional
@@ -108,7 +115,16 @@ public class BookServiceImpl implements BookService {
 		
 		return bookmapper.authorListPaging(cri);
 	}
+	
+	//수정페이지 업로드물 삭제
+	@Override
+	public void modifyDeleteFile(String uuid) {
+		covermapper.coverDelete(uuid);
+		
+	}
 
+	
+	
 
 
 }
