@@ -27,7 +27,7 @@ $(document).ready(function(){
 		dPrice = bPrice * ((100-dRate)/100);
 		dPoint = dPrice * 0.05;
 		dPoint = Math.round(dPoint/10) * 10;
-		$('#discountPrice').val(dPrice);
+		$('#sellprice').val(dPrice);
 		$('#bookPoint').val(dPoint);
 		}
 	});
@@ -50,7 +50,7 @@ $(document).ready(function(){
 		dPrice = bPrice * ((100-dRate)/100);
 		dPoint = dPrice * 0.05;
 		dPoint = Math.round(dPoint/10) * 10;
-		$('#discountPrice').val(dPrice);
+		$('#sellprice').val(dPrice);
 		$('#bookPoint').val(dPoint);
 		}
 	});
@@ -206,6 +206,96 @@ $(document).ready(function(){
 	
 	
 
+	  
+	  
+	  //이미지 보이기
+	  (function(){
+			
+			//var productID = $(".uploadResult input").val();
+			var productID = $(".uploadResult input").val();
+			
+			$.getJSON("getBcoverList", {productID: productID}, function(arr){
+				console.log(arr)
+				
+				var str = "";
+				
+				$(arr).each(function(i, attach){
+					
+					//image type
+					if(attach.fileType=1){
+						var fileCallPath = encodeURIComponent(attach.uploadPath + "/s_"+attach.uuid + "_"+attach.fileName);
+						
+						str += "<li data-path='" + attach.uploadPath+"' data-uuid='"+attach.uuid+"' data-filename='"+attach.fileName+"' data-type='" + attach.image+"'><div>";
+						str += "<img src='display?fileName="+fileCallPath+"'>";
+						str += "</div>";
+						str += "</li>";
+						
+					} else{
+						
+						str += "<li data-path='"+attach.uploadPath+"' data-uuid='"+attach.uuid+"'data-filename='"+attach.fileName+"' data-type='"+attach.fileType+"'><div>";
+						str += "<span>"+attach.fileName+"</span><br/>";
+						str += "<img src='../resources/img/attach.png'>";
+						str += "</div>";
+						str += "</li>";
+						
+					}
+					
+					
+					
+				});
+				
+				$(".uploadResult ul").html(str);
+				
+				
+			}); // end getjson
+			
+			
+		})();// end function
+		
+		
+		//이미지 클릭시 확대
+		$(".uploadResult").on("click","li",function(e){
+			
+			console.log("view image");
+			
+			var liobj=$(this);
+			
+			//var path=encodeURIComponent(liobj.data("path")+"/"+liobj.data("uuid")+"_"+liobj.data("filename"));
+			var path=encodeURIComponent(liobj.data("path")+"//"+liobj.data("uuid")+"_"+liobj.data("filename"));
+			
+			
+			if(liobj.data("type")==1){
+				showImage(path.replace(new RegExp(/\\/g),"/"));
+			} else{
+				//download
+				self.location="/download?fileName="+path;
+				
+			}
+			
+		});
+		
+		//임지 클릭시 닫기
+		$(".bigPictureWrapper").on("click", function(e){
+			$(".bigPicture").animate({width:'0%',height:'0%'},1000);
+			setTimeout(function(){
+				$('.bigPictureWrapper').hide();
+			});
+		});
+		
+		
+		
+		
+		
+		// 이미지 클릭시 원본파일 보여주기
+		function showImage(fileCallPath){
+			
+			//alert(fileCallPath);
+			
+			$(".bigPictureWrapper").css("display","flex").show();
+			
+			$(".bigPicture").html("<img src='display?fileName="+fileCallPath+"'>").animate({width:'100%', height: '100%'}, 1000);
+			
+		}
 	
 });
 
@@ -238,8 +328,8 @@ function checkExtension(fileName, fileSize){
 function enroll_btn(){
 	//alert("클릭");
 	//if($('#hidden_cartId').val() != null){
-		$("#bookEnroll_form").attr("action","/admin/enroll");
-		$("#bookEnroll_form").submit();
+		$("#bookDetail_form").attr("action","/admin/enroll");
+		$("#bookDetail_form").submit();
 	/*	
 	} else{
 		alert("구매할 책을 선택해주세요.")
@@ -257,3 +347,11 @@ function authorr_search(){
 		window.open(popUrl, "작가 검색", popOption);
 	
 }
+
+
+
+
+
+
+
+

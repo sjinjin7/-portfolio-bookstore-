@@ -6,12 +6,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Welcome! SJBook Store!</title>
-<link rel="stylesheet" href="../resources/css/admin/bookEnroll.css">
+<link rel="stylesheet" href="../resources/css/admin/bookDetail.css">
 <script
   src="https://code.jquery.com/jquery-3.4.1.js"
   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
   crossorigin="anonymous"></script>
-<script src="../resources/js/admin/bookEnroll.js" type="text/javascript"></script>
+<script src="../resources/js/admin/bookDetail.js" type="text/javascript"></script>
 <script src="../resources/ckeditor/ckeditor.js"></script>
 
 
@@ -91,21 +91,23 @@
 			<div id="main_content_wrap">
 				<div id="main_content">
 					<div id="main_content_subject">
-						<p>상품 등록</p>
+						<p>상품 상세</p>
 					</div>
-					<form id="bookEnroll_form" method="post">
+					<!-- <form id="bookEnroll_form" method="post"> -->
 						<div id="main_content_1">
-							<span id="main_content_1_1">책제목</span> <strong>:</strong>   <input type="text" name="title">
+							<span id="main_content_1_1">책제목</span> <strong>:</strong>   
+							<input type="text" name="title" value="${bd.title }" readonly="readonly">
 							<br>
-							<span id="main_content_1_1">출판사</span> <strong>:</strong>   <input type="text" name="publisher">
+							<span id="main_content_1_1">출판사</span> <strong>:</strong>   
+							<input type="text" name="publisher" value="${bd.publisher}" readonly="readonly">
 							<br>
 							<span id="main_content_1_1">작가</span> <strong>:</strong>   
-							<input type="text" id="authorName" readonly="readonly">
-							<input type="hidden" name="authorID" id="authorId">
-							<a id="author_btn" href="javascript:authorr_search()">작가 검색</a>
+							<input type="text" id="authorName" readonly="readonly" value="${bd.authorName}" required="required">
+							<input type="hidden" name="authorID" id="authorId" value="${bd.authorID}">
+							<!-- <a id="author_btn" href="javascript:authorr_search()">작가 검색</a> -->
 							<br>
 							<span id="main_content_1_1">책 재고</span> <strong>:</strong>   
-							<input type="text" name="bookStock"> 개
+							<input type="text" name="bookStock" value="${bd.bookStock }" readonly="readonly"> 개
 							<br>
 							<span id="main_content_1_1">카테고리</span> <strong>:</strong>   
 							<select name="cateCode">
@@ -139,27 +141,33 @@
 								<option value="028">잡지</option>
 								<option value="029">만화</option>
 							</select>
+							<script>
+							(function(){
+								$("option[value='${bd.cateCode}']").attr("selected","true");
+								
+							})();
+							
+							</script>
 							<br>
 							<span id="main_content_1_1">출판일</span> <strong>:</strong>   
-							<input type="text" name="publeYear">
-							<br>
-							<p>! 책가격과 할인율 순서로 입력하여주세요.</p>
+							<input type="text" name="publeYear" value="${bd.publeYear}">
+							
 							<br>
 							<span id="main_content_1_1">책가격</span> <strong>:</strong>   
-							<input type="text" name="bookPrice" id="bookPrice" value="0"> 원 
+							<input type="text" name="bookPrice" id="bookPrice" value="${bd.bookPrice }"> 원 
 							
 							<br>
 							<span id="main_content_1_1">할인율</span> <strong>:</strong>   
-							<input type="text" name="discountRate" id="discountRate" value="0"> %
+							<input type="text" name="discountRate" id="discountRate" value="${bd.discountRate}"> %
 							<br>
 							<span id="main_content_1_1">할인가격(실제판매가격)</span> <strong>:</strong>   
-							<input type="text" name="discountPrice" id="discountPrice" readonly="readonly">
+							<input type="text" name="sellprice" id="sellprice" readonly="readonly" value="${bd.discountPrice}">
 							<br>
 							<span id="main_content_1_1">적립 포인트</span> <strong>:</strong>   
-							<input type="text" name="bookPoint" id="bookPoint" readonly="readonly">
+							<input type="text" name="bookPoint" id="bookPoint" readonly="readonly" value="${bd.bookPoint }">
 							<br>
 							<span id="main_content_1_1">내용</span> <strong>:</strong>   
-							<textarea rows="" cols="" id="contents" name="contents"></textarea>
+							<textarea rows="" cols="" id="contents" name="contents" readonly="readonly">${bd.contents}</textarea>
 							<script>
 								var ckeditor_config = {
 										resize_enaleb : false,
@@ -168,30 +176,36 @@
 										height : 450
 								}
 								
-								
+							
 								CKEDITOR.replace("contents", ckeditor_config);
 							</script>
 						</div>
 						<div id="main_content_2"> 
 							<span id="main_content_1_2">책커버</span> :<br>
-							<input type="file" name='uploadFile' multiple id="inputFile">
+							<!-- <input type="file" name='uploadFile' multiple id="inputFile"> -->
 							<div class='uploadResult'>
+								<input type="hidden" value="${bd.productID}">
 								<ul>
 								
 								</ul>
 							</div>
 							<div id="button_wrap">
-								<a href="javascript:enroll_btn()">제품등록</a>
+								<a href="modify">정보 수정</a>
 							</div>
 						</div>
-					</form>
+					<!-- </form> -->
 				</div>		
 			</div>
 			<div class="clearfix">
 			</div>
 		</div>
 	</div>
-	
+
+<!-- 이미지확대 -->
+<div class = 'bigPictureWrapper'>
+	<div class='bigPicture'>
+	</div>
+</div>	
 		
 
 	

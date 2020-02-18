@@ -19,7 +19,7 @@
 			authorID, (select authorName from sjb_author where sjb_book.authorID=sjb_author.authorID) as authorName, 
 			publisher, cateCode, (select cateName from sjb_bcate where sjb_book.cateCode=sjb_bcate.cateCode) as cateName,
 			bookCover, publeYear, likeStar, bookReply, bookPrice, discountRate, bookInfo, contents,
-			introImage,regdate,boardRegdate,modDate,bookStock
+			introImage,regdate,boardRegdate,modDate,bookStock, BookPoint, DiscountPrice
 		 	from (select @rownum:=0) as rownum, sjb_book 
 		<if test="keyword != null">
 			where title like concat ('%',#{keyword},'%') 
@@ -36,7 +36,12 @@
   <!-- 제품 상세 -->
    <select id="bookDetail" resultType="com.sjb.model.BookVO">
   
- 	select * from sjb_book where productID =#{productID}
+ 	select productID, title, 
+			authorID, (select authorName from sjb_author where sjb_book.authorID=sjb_author.authorID) as authorName, 
+			publisher, cateCode, (select cateName from sjb_bcate where sjb_book.cateCode=sjb_bcate.cateCode) as cateName,
+			bookCover, publeYear, likeStar, bookReply, bookPrice, discountRate, bookInfo, contents,
+			introImage,regdate,boardRegdate,modDate,bookStock, BookPoint, DiscountPrice
+			 from sjb_book where productID =#{productID}
   
   </select>
   <!-- 제품 등록 -->
@@ -46,8 +51,8 @@
     </selectKey> --> 
   
 	insert into 
-	SJB_Book(title, authorID, Publisher, CateCode, BookCover, PubleYear, BookPrice, DiscountRate, BookInfo, Contents,  IntroImage, BookStock) 
-	values(#{title}, #{authorID},#{publisher}, #{cateCode}, #{bookCover}, #{publeYear}, #{bookPrice}, #{discountRate}, #{bookInfo}, #{contents}, #{introImage}, #{bookStock});
+	SJB_Book(title, authorID, Publisher, CateCode, BookCover, PubleYear, BookPrice, DiscountRate, BookInfo, Contents,  IntroImage, BookStock, BookPoint, DiscountPrice) 
+	values(#{title}, #{authorID},#{publisher}, #{cateCode}, #{bookCover}, #{publeYear}, #{bookPrice}, #{discountRate}, #{bookInfo}, #{contents}, #{introImage}, #{bookStock}, #{bookPoint}, #{discountPrice});
 	<selectKey resultType="int" keyProperty="productID" order="AFTER">
         SELECT LAST_INSERT_ID()        
     </selectKey> 

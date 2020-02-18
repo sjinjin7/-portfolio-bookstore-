@@ -19,9 +19,9 @@
 a{
 	text-decoration: none;
 }
- a:link { color: red; text-decoration: none;}
- a:visited { color: black; text-decoration: none;}
- a:hover { 
+ #main_nav a:link { color: red; text-decoration: none;}
+ #main_nav a:visited { color: black; text-decoration: none;}
+ #main_nav a:hover { 
  color: black; 
  text-decoration: none;
  background-color: #e9e9e9;
@@ -279,24 +279,142 @@ a{
     margin-left: 30px;
 }
 
-/* 메인 테이블 */
-table{
-    width: 1050px;
-    margin: auto;
-    border: 1px solid black;
-    border-collapse: collapse;	
+#main_content_1{
+	width : 1000px;
+	//height : 980px;
+	//background-color: orange;
+	margin : auto;
 }
-thead>tr {
-    height: 65px;
-    text-align: center;
+#main_content_1_1{
+	font-size: 29px;
     font-weight: bold;
-    border-bottom: 1px solid black;
+    display: inline-block;
+    margin-top: 28px;
 }
-tbody>tr {
-    height: 66px;
+#main_content_1_2{
+	font-size: 29px;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 28px;
+    margin-bottom: 20px;
+}
+#main_content_1>input{
+	width: 200px;
+    height: 30px;
+    padding: 4px 15px;
+    font-size: 25px;
+}
+#main_content_1 strong{
+	margin : 0 10px;
+}
+
+/* 작가 검색버튼 */
+#author_btn{
+	margin-left: 34px;
+    font-family: dotum;
+    background-color: #333;
+    display: inline-block;
+    width: 91px;
+    height: 30px;
     text-align: center;
-    border-bottom: #ff2121;
+    line-height: 30px;
+    font-weight: bold;
+    border-radius: 3px;
+    color: white;
 }
+
+/* 카트게로 select */
+select{
+	width: 200px;
+    height: 46px;
+    padding: 4px 15px;
+    font-size: 25px;
+}
+
+/* inpput File css */
+#inputFile{
+	width : 400px;
+	
+}
+
+
+
+/* 파일 넣는 div */
+#main_content_2{
+	width : 1000px;
+	//height : 980px;
+	//background-color: orange;
+	margin : auto;
+}
+
+
+/* 업로드 결과물 */
+.uploadResult{
+	padding-top: 30px;
+    text-align: center;
+}
+.uploadResult>ul{
+	list-style: none;
+}
+.uploadResult>ul>li{
+	display: inline-block;
+	margin-right: 30px;
+	padding: 10px;
+	align-content: center;
+	text-align: center;
+}
+.uploadResult ul li img{
+	width : 150px;
+}
+
+/* 확대 부분 */
+.bigPictureWrapper{
+	position: absolute;
+	display: none;
+	justify-content: center;
+	align-items:center;
+	top:0%;
+	width:100%;
+	height: 3600px;
+	background-color: gray;
+	z-index: 100;
+	background:rgba(255,255,255,0.5);
+}
+.bigPicture{
+	position: relative;
+	display:flex;
+	justify-content: center;
+	align-items: center;
+}
+.bigPicture imf{
+	width:600px;
+}
+
+
+
+
+
+/* 버튼부븐 */
+#button_wrap{
+    padding-top: 90px;
+    padding-bottom: 130px;
+    text-align: center;
+	
+}
+#button_wrap>a{
+	width: 240px;
+    height: 70px;
+    font-size: 36px;
+    font-weight: bold;
+    background-color: #e9e9e9;
+    color: #333;
+    display: inline-block;
+    line-height: 67px;
+}
+
+
+
+
 
 
 

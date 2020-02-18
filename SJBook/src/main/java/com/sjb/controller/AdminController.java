@@ -81,7 +81,8 @@ public class AdminController {
 	public String detailGEt(@RequestParam("num")int num,Model model) throws Exception {
 		logger.info("제품상세(detailGET.........) 실행");
 		model.addAttribute("bd", bookservice.bookDetail(num));
-		return "admin/detail";
+		/* return "admin/detail"; */
+		return "/admin/bookDetail";
 		
 	}
 
@@ -432,8 +433,14 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/main", method=RequestMethod.GET)
-	public void mainGET() throws Exception{
+	public void mainGET(Criteria cri, Model model) throws Exception{
+		int total = bookservice.bookCount(cri);
+		PageVO pv = new PageVO(cri, total);
+		logger.info("keyword = : " + cri.getKeyword());
+		logger.info("total = " + total);
 		
+		model.addAttribute("list",bookservice.bookListPaging(cri));
+		model.addAttribute("page",pv);
 	}
 
 	/* 작가등록 */

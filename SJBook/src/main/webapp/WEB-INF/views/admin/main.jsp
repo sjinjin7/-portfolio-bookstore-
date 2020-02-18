@@ -81,6 +81,7 @@
 					<ul>
 						<li id="main_nav_1"><a href="/admin/main">상품 목록</a></li>
 						<li id="main_nav_2"><a href="/admin/bookEnroll">상품 등록</a></li>
+						<li id="main_nav_3"><a href="/admin/authorList">작가 목록</a></li>
 						<li id="main_nav_3"><a href="/admin/authorEnroll">작가 등록</a></li>
 						<li id="main_nav_4"><a href="/admin/authorEnroll">주문 목록</a></li>
 					</ul>
@@ -92,28 +93,45 @@
 					<div id="main_content_subject">
 						<p>상품 목록</p>
 					</div>
-					<form id="authorEnroll_form" method="post">
-						<div id="main_content_1">
-							<span id="main_content_1_1">작가등록</span> : <input type="text" name="authorName">
-							<br>
-							<span id="main_content_1_2">작가소개</span> :<br>
-							<textarea rows="" cols="" id="authorIntro" name="authorIntro"></textarea>
-							<script>
-								var ckeditor_config = {
-										resize_enaleb : false,
-										enterMode : CKEDITOR.ENTER_BR,
-										shiftEnterMode : CKEDITOR.ENTER_P,
-										height : 450
-								}
-								
-								
-								CKEDITOR.replace("authorIntro", ckeditor_config);
-							</script> 
-							<div id="button_wrap">
-								<a href="javascript:enroll_btn()">작가등록</a>
-							</div>
-						</div>
-					</form>
+					<div id="main_content_1">
+						<table>
+							<thead>
+							
+								<tr>
+									<td id="td_name">상품이름</td>
+									<td id="td_author">작가</td>
+									<td id="td_year">출판년도</td>
+									<td id="td_stock">재고</td>
+								</tr>
+							
+							</thead>
+							<tbody>
+							<c:set var="i" value="0"/>
+							<c:forEach items="${list}" var="list">
+								<tr>
+									<td><a href="detail?num=${list.productID}">${list.title}</a></td>
+									<td>${list.authorName}</td>
+									<td>${list.publeYear}</td>
+									<td>${list.bookStock}</td>
+								</tr>
+							<c:set var="i" value="${i+1}"/>
+							</c:forEach>
+							<tr>
+								<td colspan="4"> 
+									<c:if test="${page.prev}">
+						                <a href="/admin/main?pageNum=${page.startPage-1}&amount=${page.cri.amount}&keyword=${page.cri.keyword}">이전</a>
+						            </c:if>
+						            <c:forEach var="num" begin="${page.startPage}" end="${page.endPage}" >
+						                  			<a href="/admin/main?pageNum=${num}&amount=${page.cri.amount}&keyword=${page.cri.keyword}">${num}</a>
+						            </c:forEach>
+						            <c:if test="${page.next}">
+						               <a href="/admin/main?pageNum=${page.endPage+1}&amount=${page.cri.amount}&keyword=${page.cri.keyword}">다음</a>
+						            </c:if>
+								</td>
+							</tr>
+							</tbody>
+						</table>
+					</div>
 				</div>		
 			</div>
 			<div class="clearfix">
@@ -121,8 +139,7 @@
 		</div>
 	</div>
 	
-		
-
+	
 	
 	
 	<div id="footer_nav">

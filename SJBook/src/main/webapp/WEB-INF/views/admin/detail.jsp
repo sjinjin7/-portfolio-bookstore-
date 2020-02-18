@@ -133,7 +133,7 @@ table{
 
 
 							<div class='uploadResult'>
-							<input type="hidden" value=${bd.productID}>
+							<input type="hidden" value="${bd.productID}">
 								<ul>
 								
 								</ul>
