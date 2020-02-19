@@ -26,7 +26,7 @@ public class PurchaseServiceImpl implements PurchaseService{
 		});
 		System.out.println("주문상세 등록 완료");
 		System.out.println("cartId  :   "+ order.getCartId().get(0));
-		System.out.println("cartId  :   "+ order.getCartId().get(1));
+		/* System.out.println("cartId  :   "+ order.getCartId().get(1)); */
 		System.out.println("memberId  :   "+ order.getmemberId());
 		// 장바구니 삭제
 		order.getCartId().forEach(cartId ->{

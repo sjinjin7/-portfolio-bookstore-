@@ -21,8 +21,13 @@
  <select id="importInfo" resultType="com.sjb.model.MemberVO">
  	select * from sjb_member where memberId= #{memberId};
  </select>
-
  
+ 
+ <!-- 구매 완료후 session 리셋 -->
+  <select id="reSession" resultType="com.sjb.model.MemberVO">
+ 	
+ 	select memberId, memberName, memberAdmin,money, point  from sjb_member where memberId = #{memberId}
+ </select>
  
  
  

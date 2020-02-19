@@ -32,4 +32,10 @@ public class MemberServiceImpl implements MemberService {
 		return membermapper.importInfo(memberId);
 	}
 
+	@Override
+	public MemberVO reSession(String memberId) throws Exception {
+		// TODO Auto-generated method stub
+		return membermapper.reSession(memberId);
+	}
+
 }

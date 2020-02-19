@@ -162,14 +162,14 @@
 									<!-- 받을 포인트 -->
 									<c:set var="point" value="0"/>
 									
-									<c:set var="discountPrice" value="${list.bookPrice*((100-list.discountRate)/100) } "/>
-									<c:set var="discountPriceStock" value="${discountPrice * list.cartStock }"/>
+									<c:set var="discountPrice" value="${list.discountPrice} "/>
+									<c:set var="discountPriceStock" value="${list.discountPrice * list.cartStock }"/>
 									
-									<c:set var="point" value="${list.bookPrice * 0.05 }"/>
+									<c:set var="point" value="${list.bookPoint*list.cartStock}"/>
 									 
-									<strong>${discountPriceStock }</strong>원 <span> | </span> 수량 ${list.cartStock}개
-									<div>${discountPrice}</div> 
-									<div>[ ${list.discountRate} %↓ + ${point}원<span>P</span>]</div>			
+									<strong>${list.discountPrice}</strong>원 <span> | </span> 수량 ${list.cartStock}개
+									<div>${list.discountPrice * list.cartStock}</div> 
+									<div>[ ${list.discountRate} %↓ + ${list.bookPoint}원<span>P</span>]</div>			
 									<c:set var="finalTotalPrice" value="${finalTotalPrice + discountPriceStock}"/>
 							
 									<c:set var="finalTotalPoint" value="${finalTotalPoint + point}"/>				
@@ -212,6 +212,7 @@
 						<li class="totalPrice">
 							<span id="label">상품금액</span> <span id="label_result">${finalTotalPrice}원</span>
 							<input type="hidden" id="titalPriceInput"value="${finalTotalPrice }">
+							<input type="hidden" id="totalPrice" name="totalPrice" value="${finalTotalPrice }">
 							<div class="clearfix"></div> 
 						</li>
 						<li class="shipPrice">
@@ -230,14 +231,14 @@
 						</li>
 						<li class="sale_price">
 							<span id="label">할인금액</span>  <span id="label_result"><span id="number"></span>원</span>
-							<input type="hidden" id="sale_priceInput" name="usePoint">
+							<input type="hidden" id="sale_priceInput" name="usePoint" value="0">
 							<div class="clearfix"></div> 
 						</li>
 						<li class="total_li">
 							<c:set var="finalTotalPrice" value="${finalTotalPrice+shipPrice }"/>
 							<strong id="label">최종 결제금액</strong> <strong id="label_result"><span id="number">${finalTotalPrice}</span>원</strong>
 							<fmt:parseNumber value="${finalTotalPrice}" integerOnly="true" var="finalTotalPrice" />
-							<input type="hidden" id="totalPrice" name="totalPrice" value="${finalTotalPrice }">
+							
 							<div class="clearfix"></div> 
 						</li>
 					
@@ -245,7 +246,7 @@
 				</div>
 				<div id="final_buy_point">
 					<span id="label">적립 예정 포인트</span> :  <span id="label_result"><fmt:formatNumber value="${finalTotalPoint}" pattern="#,###" /></span>
-	
+					<input type="hidden" name="getPoint" value="${finalTotalPoint}">
 				</div>
 				<div id="final_buy_check">
 					<input type="checkbox">주문내역 확인 동의

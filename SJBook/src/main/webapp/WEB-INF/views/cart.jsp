@@ -144,6 +144,7 @@
 										<td id="r_cproduct_check">
 										<input type="checkbox" id="chkBox${i}" name="chkBox" class="chkBox" data-cartId="${clist.cartId}">
 										<input type="hidden" id="cartId${i}" value="${clist.cartId}">
+										<input type="hidden" id="point${i}" value="${clist.bookPoint}.">
 										체크
 										<script>
 											$(".chkBox").click(function(){
@@ -377,7 +378,7 @@
 												priceTotal = parseInt(priceTotal) + parseInt($("#priceTotal"+i).val());
 												bookKinds = bookKinds + 1;
 												bookAmount = parseInt(bookAmount) + parseInt($("#bookAmount"+i).val());
-												point = priceTotal * 0.05;
+												point = parseInt($("#point"+i).val()) * parseInt($("#bookAmount"+i).val());
 												pointTotal = pointTotal + point;
 												str += "<input type='hidden' id='hidden_cartId' name='cartId' value='"+cartId+"'>";
 											}
@@ -391,6 +392,9 @@
 										$("#bookKinds").html(bookKinds);
 										$("#bookAmount").html(bookAmount);
 										if(priceTotal>=10000){
+											shipprice = 0;
+											$("#ship_price").html(0);
+										} else if(priceTotal == null || priceTotal == 0){
 											shipprice = 0;
 											$("#ship_price").html(0);
 										} else{

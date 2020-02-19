@@ -31,9 +31,9 @@
 <!-- 주문제품 구입비용 차감 -->
 
 <update id="deductionMoney">
-	update sjb_member set money = money - #{totalPrice}
+	update sjb_member set money = money - #{totalPrice} - #{shipPrice}
 	
-	, point = point - #{shipPrice} + #{getPoint}
+	, point = point  + #{getPoint}
 	 
 	<if test="usePoint != null">
 	

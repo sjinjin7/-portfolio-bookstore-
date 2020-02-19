@@ -368,7 +368,7 @@ input[type='checkbox']{
 	border-bottom: 1px solid #e7e7e7;
 }
 #nav_main_1_result_info>table>tbody>tr>td{
-	text-align: right;
+	text-align: center;
 	padding-right: 30px;
 }
 /* 

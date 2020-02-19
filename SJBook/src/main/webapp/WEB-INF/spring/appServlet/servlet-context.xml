@@ -28,6 +28,7 @@
 	
 		<beans:bean id="loginInterceptor" class="com.sjb.interceptor.LoginInterceptor"></beans:bean>
 		<beans:bean id="AdminInterceptor" class="com.sjb.interceptor.AdminInterceptor"></beans:bean>
+		<beans:bean id="ReSessionInterceptor" class="com.sjb.interceptor.ReSessionInterceptor"></beans:bean>
 		<interceptors>
 			<interceptor>
 				<mapping path="/member/login"/>
@@ -38,7 +39,11 @@
 				<mapping path="/admin/**"/>
 				<exclude-mapping path="/admin/authorSearch"/>
 				<beans:ref bean="AdminInterceptor"/>
-			</interceptor>			
+			</interceptor>	
+			<interceptor>
+				<mapping path="/purchase/buy"/>
+				<beans:ref bean="ReSessionInterceptor"/>
+			</interceptor>		
 			
 			
 			
