@@ -40,4 +40,14 @@ public interface BookService {
 	
 	//수정페이지에서 업로드물 삭제
 	public void modifyDeleteFile(String uuid);
+	
+	//작가 상세
+	public AuthorVO authorDetail(int authorID) throws Exception;
+	
+	//작가 수정
+	public void authorModify(AuthorVO author) throws Exception;
+	
+	//작가 삭재ㅔ
+	public void authorDel(int authorID) throws Exception;
+	
 }

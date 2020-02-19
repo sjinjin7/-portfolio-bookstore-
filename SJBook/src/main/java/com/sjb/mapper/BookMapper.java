@@ -40,4 +40,15 @@ public interface BookMapper {
 	
 	//작가 리스트(페이징처리)
 	public List<AuthorVO> authorListPaging(Criteria cri) throws Exception;
+	
+	//작가 상세
+	public AuthorVO authorDetail(int authorID) throws Exception;
+	
+	//작가 수정
+	public void authorModify(AuthorVO author) throws Exception;
+	
+	//작가 삭제
+	public void authorDel(int authorID) throws Exception;
+	
+	
 }

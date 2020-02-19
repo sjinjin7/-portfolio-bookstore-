@@ -19,7 +19,7 @@
 a{
 	text-decoration: none;
 }
- a:link { color: red; text-decoration: none;}
+ a:link { color: black; text-decoration: none;}
  a:visited { color: black; text-decoration: none;}
  a:hover { 
  color: black; 
@@ -285,6 +285,7 @@ table{
     margin: auto;
     border: 1px solid black;
     border-collapse: collapse;	
+    margin-top : 20px;
 }
 thead>tr {
     height: 65px;
@@ -298,6 +299,23 @@ tbody>tr {
     border-bottom: #ff2121;
 }
 
+/* 제품 검색 */
+#book_searchBox{
+	width: 1050px;
+    margin: auto;
+}
+.book_keyword_box{
+	text-align: center;
+}
+.book_keyword{
+	width: 225px;
+    height: 40px;
+    margin: 30px 0;
+}
+.book_key_btn{
+	width: 100px;
+    height: 45px;
+}
 
 
 

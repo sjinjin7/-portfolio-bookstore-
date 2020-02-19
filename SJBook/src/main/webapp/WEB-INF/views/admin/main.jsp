@@ -131,6 +131,16 @@
 							</tr>
 							</tbody>
 						</table>
+						<div id="book_searchBox">
+								<form action="/admin/main" method="get">				
+									
+									<div class="book_keyword_box">
+										<input type="text" name="keyword" class="book_keyword">
+										<input type="submit" value="검색" class="book_key_btn">
+									</div>
+								</form>
+						</div>
+						
 					</div>
 				</div>		
 			</div>

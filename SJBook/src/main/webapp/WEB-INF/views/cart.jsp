@@ -169,7 +169,13 @@
 										</div>
 										<div class="likeStar">평점 : ${clist.cateName}</div>
 									</td>
-									<td id="r_cprice">판매가 :	<fmt:formatNumber value="${clist.sellprice}" pattern="#,###"/> 원    </td>
+									<td id="r_cprice">
+										정상가 :  <fmt:formatNumber value="${clist.bookPrice}" pattern="#,###"/> 원  
+										<br>
+										판매가 :	<fmt:formatNumber value="${clist.discountPrice}" pattern="#,###"/> 원    
+										<br>
+										포인트 :  <fmt:formatNumber value="${clist.bookPoint}" pattern="#,###"/> 원
+									</td>
 									<td id="r_camount">수량 : 
 										<input type="hidden"value="${clist.cartStock}" maxlength="3" id="origin_qty${i}">
 										<div class="qty_change">

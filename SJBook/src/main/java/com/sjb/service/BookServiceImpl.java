@@ -123,8 +123,23 @@ public class BookServiceImpl implements BookService {
 		
 	}
 
+	@Override
+	public AuthorVO authorDetail(int authorID) throws Exception {
+		
+		return bookmapper.authorDetail(authorID);
+	}
+
 	
-	
+	@Override
+	public void authorModify(AuthorVO author) throws Exception{
+		bookmapper.authorModify(author);
+	}
+
+	@Override
+	public void authorDel(int authorID) throws Exception {
+		bookmapper.authorDel(authorID);
+		
+	}
 
 
 }

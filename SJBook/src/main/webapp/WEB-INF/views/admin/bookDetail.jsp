@@ -194,6 +194,7 @@
 								<%-- <input type="hidden" name="prodcutID" value="${bd.productID}"> --%>
 	
 								<a href="javascript:modify_btn()">정보 수정</a>
+								<a href="javascript:delete_btn()">삭제</a>
 							</div>
 						</div>
 					</form>

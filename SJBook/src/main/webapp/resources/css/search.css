@@ -262,13 +262,14 @@ a{
 #main2_1 table td{
 	
 	padding : 15px 0 11px;
-	//vertical-align: top;
+	
 	border-top: 1px solid #e7e7e7;
 	
 }
 
 
-#table_image{
+.table_image{
+	text-align : center;
 	width: 15%;
 }
 

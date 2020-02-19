@@ -6,12 +6,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Welcome! SJBook Store!</title>
-<link rel="stylesheet" href="../resources/css/admin/authorList.css">
+<link rel="stylesheet" href="../resources/css/admin/authorDetail.css">
 <script
   src="https://code.jquery.com/jquery-3.4.1.js"
   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
   crossorigin="anonymous"></script>
-<script src="../resources/js/admin/authorList.js" type="text/javascript"></script>
+<script src="../resources/js/admin/authorDetail.js" type="text/javascript"></script>
 <script src="../resources/ckeditor/ckeditor.js"></script>
 
 
@@ -47,7 +47,7 @@
 			</div>
 			<div id="top_1_selection">
 				<div id="top_1_selection_1">
-					<form action="search" method="get">				
+					<form action="/search" method="get">				
 					<div id="top_1_selection_1_search">
 						
 							<%-- <input type="hidden" name="pageNum" value="${page.cri.getPageNum()}">
@@ -91,67 +91,32 @@
 			<div id="main_content_wrap">
 				<div id="main_content">
 					<div id="main_content_subject">
-						<p>작가 목록</p>
+						<p>작가 등록</p>
 					</div>
-					<div id="main_content_1">
-						<table>
-							<colgroup>
-								<col width="30%">
-								<col width="30%">
-								<col width="*%">
-							</colgroup>
-							<thead>
-								<tr>
-									<td>이미지</td>
-									<td>작가</td>
-									<td>작가 소개</td>
-								</tr>
-							</thead>
-							<tbody>
-								<c:set value="0" var="i"></c:set>
-								<c:forEach items="${list}" var="list">
-									<tr id="tr_main">
-										<td> 서비스 준비중입니다.</td>
-										<td><a href="authorDetail?authorID=${list.authorID}">${list.authorName}</a></td>
-										<td>
-											<div id="td_authorIntro${i}">${list.authorIntro }</div>
-											<script>
-											 (function(){
-												 var str = $("#td_authorIntro${i}").text().substring(0,80);
-													$("#td_authorIntro${i}").html(str+"..."); 
-											 })();
-											</script>
-										</td>
-									</tr>
-								<c:set value="${i+1}" var="i"></c:set>
-								</c:forEach>
-								<tr>
-									<td colspan="3">
-										<c:if test="${page.prev}">
-							                <a href="/admin/authorList?pageNum=${page.startPage-1}&amount=${page.cri.amount}&keyword=${page.cri.keyword}">이전</a>
-							            </c:if>
-							            <c:forEach var="num" begin="${page.startPage}" end="${page.endPage}" >
-							                  			<a href="/admin/authorList?pageNum=${num}&amount=${page.cri.amount}&keyword=${page.cri.keyword}">${num}</a>
-							            </c:forEach>
-							            <c:if test="${page.next}">
-							               <a href="/admin/authorList?pageNum=${page.endPage+1}&amount=${page.cri.amount}&keyword=${page.cri.keyword}">다음</a>
-							            </c:if>
-									</td>
-								</tr>
-							</tbody>
-							
-						</table>
-					</div>
-					<!-- 작가검색 -->
-					<div id="author_searchBox">
-							<form action="/admin/authorList" method="get">				
+					<form id="authorDetail_form">
+						<div id="main_content_1">
+							<input type="hidden" name="authorID" value="${author.authorID}">
+							<span id="main_content_1_1">작가등록</span> : <input type="text" name="authorName" value="${author.authorName}" readonly="readonly">
+							<br>
+							<span id="main_content_1_2">작가소개</span> :<br>
+							<textarea rows="" cols="" id="authorIntro" name="authorIntro" readonly="readonly">${author.authorIntro}</textarea>
+							<script>
+								var ckeditor_config = {
+										resize_enaleb : false,
+										enterMode : CKEDITOR.ENTER_BR,
+										shiftEnterMode : CKEDITOR.ENTER_P,
+										height : 450
+								}
 								
-								<div class="author_keyword_box">
-									<input type="text" name="keyword" class="author_keyword">
-									<input type="submit" value="검색" class="author_key_btn">
-								</div>
-							</form>
-					</div>
+								
+								CKEDITOR.replace("authorIntro", ckeditor_config);
+							</script> 
+							<div id="button_wrap">
+								<a href="javascript:modify_btn()">작가 수정</a>
+								<a href="javascript:delete_btn()">삭제</a>
+							</div>
+						</div>
+					</form>
 				</div>		
 			</div>
 			<div class="clearfix">

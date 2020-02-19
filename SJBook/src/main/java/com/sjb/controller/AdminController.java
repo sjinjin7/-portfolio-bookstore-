@@ -538,5 +538,60 @@ public class AdminController {
 		return "redirect:/admin/main";
 	}
 	
+	//작가목록
+	@RequestMapping(value="/authorList", method=RequestMethod.GET)
+	public void authorListGET(Criteria cri, Model model) throws Exception{
+		int total = bookservice.authorCount(cri);
+		PageVO pv = new PageVO(cri, total);
+		logger.info("keyword = : " + cri.getKeyword());
+		logger.info("total = " + total);
+		
+		model.addAttribute("list",bookservice.authorListPaging(cri));
+		model.addAttribute("page",pv);
+	}
+	
+	//작가 상세
+	@RequestMapping(value="/authorDetail", method=RequestMethod.GET)
+	public void authorDetailGET(int authorID, Model model) throws Exception{
+		model.addAttribute("author", bookservice.authorDetail(authorID));
+	}
+	
+	//작가 수정페이지
+	@RequestMapping(value="/authorModify", method=RequestMethod.GET)
+	public void authorModifyGET(AuthorVO vo, Model model) throws Exception{
+		int authorID = vo.getAuthorID();
+		model.addAttribute("author", bookservice.authorDetail(authorID));
+		
+	}
+	//작가 수정
+	@RequestMapping(value="/authorModify", method=RequestMethod.POST)
+	public String authorModifyPOST(AuthorVO vo, Model model) throws Exception{
+		
+		bookservice.authorModify(vo);
+		
+		return "redirect:/admin/authorList";
+	}
+	
+	//제품 삭제
+	@RequestMapping(value="/bookDelete", method=RequestMethod.POST)
+	public String bookDeletePOST(BookVO vo) throws Exception{
+		
+		int productID = vo.getProductID();
+		bookservice.bookDel(productID);
+		
+		return "redirect:/admin/main";
+	}
+	
+	
+	//작가 삭제
+		@RequestMapping(value="/authorDelete", method=RequestMethod.POST)
+		public String authorDeletePOST(AuthorVO vo) throws Exception{
+			
+			int authorID = vo.getAuthorID();
+			bookservice.authorDel(authorID);
+			
+			return "redirect:/admin/authorList";
+		}
+		
 	
 }

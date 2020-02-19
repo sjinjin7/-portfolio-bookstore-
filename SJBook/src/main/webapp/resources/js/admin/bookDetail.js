@@ -333,6 +333,13 @@ function modify_btn(){
 
 }
 
+/*제품 삭제 버튼*/
+function delete_btn(){
+
+		$("#bookDetail_form").attr("action","/admin/bookDelete");
+		$("#bookDetail_form").submit();
+
+}
 
 
 

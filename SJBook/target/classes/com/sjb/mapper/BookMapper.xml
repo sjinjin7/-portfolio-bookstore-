@@ -123,5 +123,29 @@ insert into SJB_Book(title,publisher) values(#{title}, #{publisher});
 
  </select>
 	
+	<!-- 작가상세 -->
+	<select id="authorDetail" resultType="com.sjb.model.AuthorVO">
+	
+		select * from SJB_author where AuthorID = #{authorID};
+	
+	</select>
+	
+	<!-- 작가 정보 수정 -->
+	<update id="authorModify">
+	
+	update sjb_author
+	set AuthorName = #{authorName},
+	AuthorIntro = #{authorIntro}
+	where authorID = #{authorID};
+	
+	</update>
+	
+	<!-- 작가 삭제 -->
+	<delete id="authorDel">
+		delete from SJB_author where authorID = #{authorID};
+	</delete>
+	
+	
+	
   
   </mapper>

@@ -163,8 +163,8 @@
 										<del> <fmt:formatNumber value="${book.bookPrice}" pattern="#,###"/> 원</del>
 									</div>
 									
-									<div class="sell_price"><strong><fmt:formatNumber value="${book.sellprice}" pattern="#,###"/> 원</strong> [${book.discountRate}% ↓] </div>
-									<c:set  var="point" value="${book.sellprice*0.05}"></c:set>
+									<div class="sell_price"><strong><fmt:formatNumber value="${book.discountPrice}" pattern="#,###"/> 원</strong> [${book.discountRate}% ↓] </div>
+									<c:set  var="point" value="${book.bookPoint}"></c:set>
 									<div class="point">포인트 : <fmt:formatNumber value="${point}" pattern="#,###"/>
 									</div>
 									
