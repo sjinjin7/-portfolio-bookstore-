@@ -234,6 +234,8 @@ a{
 }
 
 
+
+/* 평점/리뷰 */
 #detail_reply_container{
 	width: 1200px;
 	overflow: hidden;
@@ -241,10 +243,7 @@ a{
 	margin: auto;
 	background-color: grey;
 }
-#detail_reply_container>table{
-	width:100%;
-	border: 1px solid black;
-}
+
 #book_reply{
 	widt:100%;
 	height:100px;

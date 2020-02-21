@@ -26,8 +26,11 @@ import com.sjb.model.CartVO;
 import com.sjb.model.Criteria;
 import com.sjb.model.MemberVO;
 import com.sjb.model.PageVO;
+import com.sjb.model.ReplyCriteria;
+import com.sjb.model.ReplyVO;
 import com.sjb.service.BookService;
 import com.sjb.service.CartService;
+import com.sjb.service.ReplyService;
 
 @Controller
 public class BookController {
@@ -40,6 +43,8 @@ public class BookController {
 	@Autowired
 	private CartService cartservice;
 
+	@Autowired
+	private ReplyService replyservice;
 	//private static final Logger log = LoggerFactory.getLogger(BookController.class);
 	
 	@RequestMapping("/main")
@@ -111,6 +116,20 @@ public class BookController {
 		model.addAttribute("bd", bookservice.bookDetail(num));
 		return "detail";
 	}
+	//상품 상세 리뷰(댓글 및 평점)
+	@RequestMapping(value="detail/replyList", method = RequestMethod.GET)
+	@ResponseBody
+	public List<ReplyVO> replyListGET(int productID) throws Exception{
+		
+		ReplyCriteria cri = new ReplyCriteria();
+		cri.setProductID(productID);
+		
+		List<ReplyVO> list = replyservice.replyListPaging(cri);
+		
+		return list;
+	}
+	
+	
 	
 
 	@RequestMapping(value = "addEnroll", method = RequestMethod.POST)

@@ -112,12 +112,54 @@
 	
 	<div id="detail_reply">
 		<div id="detail_reply_container">
-			<table>
-				<tr>
-					<td>평점</td><td>리뷰</td>
-				</tr>
-			</table>
-			<div id="book_reply">댓글</div>
+			<div id="detail_reply_container_subject"><span>평점/리뷰</span></div>
+			<div id="book_reply">
+				<ul>
+				
+				</ul>
+			</div>
+			<script>
+			//상품 댓글 띄우기
+			//var productID = ${bd.productID};
+			$.getJSON("/detail/replyList"+"?productID=${bd.productID}", function(data){
+				var str="";
+				
+				$(data).each(function(i, obj){
+					console.log("i="+i)
+					console.log(obj);
+					
+					str += "<li data-productID='" + obj.productID +"'>"
+					str	+= "<div class='userInfo'>"
+					str	+= "<span class='userID'>" + obj.memberID + "</span>"
+					str	+= "<span class='date'>" + obj.repDate + "</span>"
+					str	+= "</div>"
+					str	+= "<div class='replyContent'>" + obj. repCon + "</div>"
+					str	+= "</li>";
+					
+					
+				});
+				$('#book_reply>ul').html(str);
+				
+			});
+			
+			
+			</script>
+			
+			<!-- 댓글쓰기 -->
+			<c:if test="${member == null}">
+				<div>
+					로그인 안됨
+				</div>
+				
+			</c:if>
+			
+			<c:if test="${member != null}">
+				<div>
+					로그인됨
+				</div>
+			</c:if>
+			
+			
 		</div>
 	</div>
 	

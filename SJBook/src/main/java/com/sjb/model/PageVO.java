@@ -19,6 +19,7 @@ public class PageVO {
 		this.total=total;
 		
 		// 페이징의 끝번호를 알 수 있게 계산
+		// 끝 페이지번호 = Math.ceil( 현재페이지 / 페이지 번호의 갯수) * 페이지 번호의 갯수
 		this.endPage=(int)(Math.ceil(cri.getPageNum()/10.0))*10;
 		this.startPage=this.endPage-9;
 		int realEnd=(int)(Math.ceil((total*1.0)/cri.getAmount()));
