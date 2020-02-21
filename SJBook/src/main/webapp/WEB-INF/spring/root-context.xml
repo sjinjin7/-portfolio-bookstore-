@@ -56,6 +56,12 @@
 		 </property>
 	</bean>
 	
+	<bean id="transactionManager"
+			class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="datasource"></property>	
+	</bean>
+	<tx:annotation-driven/>
+	
 	<mybatis-spring:scan base-package="com.sjb.mapper"/>
 	<!-- <context:component-scan base-package="com.sjb.mapper"></context:component-scan> -->
 	<context:component-scan base-package="com.sjb.service"></context:component-scan>	

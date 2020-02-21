@@ -133,9 +133,14 @@
 					str	+= "<span class='userID'>" + obj.memberID + "</span>"
 					str	+= "<span class='date'>" + obj.repDate + "</span>"
 					str	+= "</div>"
+					str += "<div class='like'><span class='likeRating'>"+ obj.likeRating+"</span></div>"
 					str	+= "<div class='replyContent'>" + obj. repCon + "</div>"
-					str	+= "</li>";
 					
+					str += "<div class='replyFooter'>"
+					str += "<button type='button' class='modify' data-repNum='" + obj.repNum + "'>수정</button>"
+					str += "<button type='button' class='delete' data-repNum='" + obj.repNum + "'>삭제</button>"
+					str += "</div>"
+					str	+= "</li>";
 					
 				});
 				$('#book_reply>ul').html(str);

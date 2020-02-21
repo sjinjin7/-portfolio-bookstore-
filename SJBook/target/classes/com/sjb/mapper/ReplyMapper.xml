@@ -12,7 +12,7 @@
   
   </insert>
   
-  
+  <!-- 댓글 리스트 페이징 -->
   <select id="replyListPaging" resultType="com.sjb.model.ReplyVO">
   
 	  select * from (
@@ -31,4 +31,24 @@
 
 
   </select>
+  
+  <!-- 댓글 삭제 혹은 수정 전 아이디 체크 -->
+  <select id="replyUserCheck"  resultType="string">
+  
+  	select memberId from sjb_reply where repNum = #{repNum}
+  
+  </select>
+  
+  <!-- 댓글 삭제 -->
+  <delete id="replyDelete">
+  	
+  	delete from sjb_reply where repNum = #{repNUm} and  memberId = #{memberId};	
+  	
+  </delete>
+  
+  
+  
+  
+  
+  
   </mapper>

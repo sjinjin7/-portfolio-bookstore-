@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.sjb.mapper.PurchaseMapper;
 import com.sjb.model.OrderVO;
@@ -13,6 +14,7 @@ public class PurchaseServiceImpl implements PurchaseService{
 	@Autowired
 	PurchaseMapper buymapper;
 	
+	@Transactional
 	@Override
 	public void bookBuy(OrderVO order) throws Exception {
 		System.out.println("서비스진입");
