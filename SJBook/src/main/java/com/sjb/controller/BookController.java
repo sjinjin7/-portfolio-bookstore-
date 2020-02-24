@@ -230,4 +230,84 @@ public class BookController {
 	}	
 	
 	
+	
+	//댓글삭제
+	@RequestMapping(value = "/detail/deleteReply", method = RequestMethod.POST)	
+	@ResponseBody
+	public String deleteReplyPOST(ReplyVO reply, HttpSession session) throws Exception {
+		
+		String result = "fail";
+		
+		MemberVO member = (MemberVO)session.getAttribute("member");
+		String memberId =replyservice.replyUserCheck(reply);
+		
+		System.out.println("memberr id = " + memberId);
+		System.out.println("member = " + member );
+		System.out.println("시작전");
+		
+			if(member.getMemberId().equals(memberId)) {
+				System.out.println("member.getMemberId().equals(memberId) 진입");
+				reply.setMemberID(memberId);
+				replyservice.replyDelete(reply);
+				
+				  result = "success";
+			}
+		System.out.println("return값 = " + result);
+		
+		return result;
+	}
+
+	//댓글 등록
+	@RequestMapping(value="/detail/registReply", method = RequestMethod.POST)
+	@ResponseBody
+	public void registReplyPOST(ReplyVO reply, HttpSession session) throws Exception{
+		
+		System.out.println("productID = " + reply.getProductID());
+		System.out.println("likeRating = " + reply.getLikeRating());
+		System.out.println("repCon = " + reply.getRepCon());
+		
+		MemberVO member = (MemberVO)session.getAttribute("member");
+		reply.setMemberID(member.getMemberId());
+		//댓글 등록
+		replyservice.replyInsert(reply);
+		//  제품 평균 평점 업데이트
+		replyservice.replyUpdate(reply);
+		
+	}
+	
+	
+	@RequestMapping(value="/detail/modifyReply", method = RequestMethod.POST)
+	@ResponseBody
+	public String modifyReplyPOST(ReplyVO reply, HttpSession session) throws Exception{
+		System.out.println("productID " + reply.getProductID());
+		
+		String result = "false";
+		MemberVO member = (MemberVO)session.getAttribute("member");
+		String memberId =replyservice.replyUserCheck(reply);
+		
+		System.out.println("memberr id = " + memberId);
+		System.out.println("member = " + member );
+		System.out.println("시작전");
+		
+		if(member.getMemberId().equals(memberId)) {
+			System.out.println("member.getMemberId().equals(memberId) 진입");
+			reply.setMemberID(memberId);
+			//댓글 수정
+			replyservice.replyModify(reply);
+			// 제품 평균 평점 업데이트
+			replyservice.replyUpdate(reply);
+			
+			  result = "success";
+		}
+	System.out.println("return값 = " + result);
+	
+		
+		
+		
+		
+		return result;
+	}
+	
+	
+	
 }

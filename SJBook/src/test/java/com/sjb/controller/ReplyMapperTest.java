@@ -33,7 +33,7 @@ public class ReplyMapperTest {
 		
 	}
 	*/
-	
+	/*
 	@Test
 	public void replyListPagingTest() throws Exception{
 		ReplyCriteria cri = new ReplyCriteria();
@@ -43,5 +43,50 @@ public class ReplyMapperTest {
 		List<ReplyVO> list = mapper.replyListPaging(cri);
 		
 	}
+	*/
+	/*
+	@Test
+	public void replyavg() throws Exception{
+		ReplyVO reply = new ReplyVO();
+		
+		reply.setProductID(173);
+		float a = mapper.replyAvg(reply);
+		
+	}
+	*/
+	
+	/*
+	@Test
+	public void replyUpdate() throws Exception{
+		ReplyVO reply = new ReplyVO();
+		reply.setProductID(173);
+		reply.setLikeRating((float) 3.5);
+		
+		mapper.replyUpdate(reply);
+		
+	}
+	*/
+	
+	@Test
+	public void replyVodify() throws Exception{
+		ReplyVO reply = new ReplyVO();
+		reply.setMemberID("test5");
+		reply.setRepNum(2);
+		reply.setRepCon("java에서 수정 테스트");
+		reply.setLikeRating(3);
+		
+		mapper.replyModify(reply);
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }

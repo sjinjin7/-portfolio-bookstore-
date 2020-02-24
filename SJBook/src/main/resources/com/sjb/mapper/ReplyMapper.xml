@@ -42,13 +42,32 @@
   <!-- 댓글 삭제 -->
   <delete id="replyDelete">
   	
-  	delete from sjb_reply where repNum = #{repNUm} and  memberId = #{memberId};	
+  	delete from sjb_reply where repNum = #{repNum} and  memberId = #{memberID};	
   	
   </delete>
   
+  <!-- 제품 평점 평균 -->
   
+  <select id="replyAvg" resultType ="float">
   
+  select avg(likeRating)from sjb_reply where productID = #{productID};
   
+  </select>
+  
+  <!-- 제품 평점 평균 업데이트하기 -->
+  
+  <update id="replyUpdate">
+  
+  update sjb_book set LikeStar = #{likeRating} where productID = #{productID};
+  
+  </update>
+  
+  <!-- 댓글/리뷰 수정 -->
+  <update id="replyModify">
+  
+  update sjb_reply set repCon = #{repCon}, likeRating = #{likeRating} where repNum = #{repNum} and memberID = #{memberID};
+  
+  </update>
   
   
   </mapper>

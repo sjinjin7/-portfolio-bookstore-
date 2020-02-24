@@ -241,20 +241,48 @@ a{
 	overflow: hidden;
 	//height:50px;
 	margin: auto;
-	background-color: grey;
+	/* background-color: grey; */
 }
+
+#detail_reply_container_subject{
+	background-color: #7b8ed1;
+    height: 35px;
+    line-height: 34px;
+    font-weight: bold;
+    color: white;
+    font-size: 20px;
+    padding-left: 17px;
+}
+
 
 #book_reply{
 	widt:100%;
-	height:100px;
+	//height:100px;
 	background-color: yellow;
 }
 
 
+#replyWarning_subject{
+	background-color: #7b8ed1;
+    height: 35px;
+    line-height: 34px;
+    font-weight: bold;
+    color: white;
+    font-size: 20px;
+    padding-left: 17[x];
+}
 
 
 
-
+#replyRegist_subject{
+    background-color: #7b8ed1;
+    height: 35px;
+    line-height: 34px;
+    font-weight: bold;
+    color: white;
+    font-size: 20px;
+    padding-left: 35px;
+}
 
 
 
@@ -380,3 +408,52 @@ a{
 .clearfix{
 	clear:both;
 }
+
+
+.mark{
+    background: url('http://miuu227.godohosting.com/images/icon/ico_review.png') no-repeat -52px 0;
+    background-size: auto 100%;
+    width: 15px;
+    height: 30px;
+    float:left;
+    text-indent: -9999px;
+    cursor: pointer;
+}
+.mark2{
+    background: url('http://miuu227.godohosting.com/images/icon/ico_review.png') no-repeat right 0;
+    background-size: auto 100%;
+    width: 15px;
+    height: 30px;
+    float:left;
+    text-indent: -9999px;
+    cursor: pointer;
+}
+.mark.on{background-position:0 0;}
+.mark2.on{background-position:-15px 0;}
+
+
+#replyModifyWrapper{
+	position:relative; 
+	z-index:1;
+	display : none;
+}
+#replyModifyWrapper_background{
+	position:fixed; top:0; 
+	
+	left:0; 
+	width:100%; 
+	height:100%; 
+	background:rgba(0, 0, 0, 0.8); 
+	z-index:-1; 
+}
+#replyModifyWrapper_content{
+position:fixed; 
+top:20%; 
+left:calc(50% - 250px); 
+width:500px; 
+height:250px; 
+padding:20px 10px; 
+background:#fff; 
+border:2px solid #666;
+}
+
