@@ -9,8 +9,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.sjb.mapper.BookMapper;
-import com.sjb.model.AuthorVO;
-import com.sjb.model.Criteria;
+import com.sjb.model.BookVO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
@@ -122,6 +121,8 @@ public class BookMapperTest {
 	}
 	*/
 	
+	/*
+	
 	//작가 리스트 페이징
 	@Test 
 	public void authorListPagingTest() throws Exception{
@@ -130,8 +131,22 @@ public class BookMapperTest {
 		List<AuthorVO> list = bookMapper.authorListPaging(vo);
 		System.out.println(" 페이징 처리 = " +list);
 	}
+	*/
 	
+	/*
+	//출간일 순 select
+	@Test
+	public void dateSelectTest() throws Exception{
+		List<BookVO> list = bookMapper.dateSelect();
+		
+	}
+	*/
 	
+	//평점 순 select
+	@Test
+	public void likeSelectTest() throws Exception{
+		List<BookVO> list = bookMapper.likeSelect();
+	}
 	
 	
 	

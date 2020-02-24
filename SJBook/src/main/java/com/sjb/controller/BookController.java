@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sjb.model.BookCoverVO;
+import com.sjb.model.BookVO;
 import com.sjb.model.CartListVO;
 import com.sjb.model.CartVO;
 import com.sjb.model.Criteria;
@@ -48,7 +49,10 @@ public class BookController {
 	//private static final Logger log = LoggerFactory.getLogger(BookController.class);
 	
 	@RequestMapping("/main")
-	public void mainGET() throws Exception{
+	public void mainGET(Model model) throws Exception{
+		BookVO day = new BookVO();
+		
+		
 		
 	}
 	@RequestMapping("/loginMain")

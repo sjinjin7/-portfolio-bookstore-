@@ -50,4 +50,12 @@ public interface BookService {
 	//작가 삭재ㅔ
 	public void authorDel(int authorID) throws Exception;
 	
+	//출간일 순 select
+	public List<BookVO> dateSelect() throws Exception;
+	
+	//평점 순 select
+	public List<BookVO> likeSelect() throws Exception;
+	
+	
+	
 }

@@ -145,6 +145,27 @@ insert into SJB_Book(title,publisher) values(#{title}, #{publisher});
 		delete from SJB_author where authorID = #{authorID};
 	</delete>
 	
+	<!-- 출간일 순 select -->
+	<select id="dateSelect" resultType="com.sjb.model.BookVO">
+		select productID, title, 
+			authorID, (select authorName from sjb_author where sjb_book.authorID=sjb_author.authorID) as authorName, 
+			publisher, cateCode, (select cateName from sjb_bcate where sjb_book.cateCode=sjb_bcate.cateCode) as cateName,
+			bookCover, publeYear, likeStar, bookReply, bookPrice, discountRate, bookInfo, contents,
+			introImage,regdate,boardRegdate,modDate,bookStock, BookPoint, DiscountPrice
+		from sjb_book order by PubleYear desc limit 12; 
+	</select>
+	
+	<!-- 평점순 select -->
+	<select id="likeSelect" resultType="com.sjb.model.BookVO">
+		select productID, title, 
+			authorID, (select authorName from sjb_author where sjb_book.authorID=sjb_author.authorID) as authorName, 
+			publisher, cateCode, (select cateName from sjb_bcate where sjb_book.cateCode=sjb_bcate.cateCode) as cateName,
+			bookCover, publeYear, likeStar, bookReply, bookPrice, discountRate, bookInfo, contents,
+			introImage,regdate,boardRegdate,modDate,bookStock, BookPoint, DiscountPrice
+		from sjb_book order by likeStar desc limit 12; 
+	</select>
+	
+	
 	
 	
   

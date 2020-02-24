@@ -50,5 +50,10 @@ public interface BookMapper {
 	//작가 삭제
 	public void authorDel(int authorID) throws Exception;
 	
+	//출간일순 select
+	public List<BookVO> dateSelect() throws Exception;
+	
+	//평점순 select
+	public List<BookVO> likeSelect() throws Exception;
 	
 }

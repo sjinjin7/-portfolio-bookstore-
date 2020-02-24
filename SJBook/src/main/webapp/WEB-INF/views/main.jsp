@@ -178,12 +178,38 @@
 				
 			</div>
 			
+			
+			<!-- 신간순 -->
 			<div id="main2">
-				<div id="main2_1"></div>
+				<div id="main2_1">
+					<div id="example" class="main2_1_box">
+						<div class="main2_1_box_img">
+							이미지
+						</div>
+						<div class="main2_1_box_con">
+							책정보
+						</div>
+					</div>
+					<div id="example1" class="main2_1_box">b</div>
+					<div id="example2" class="main2_1_box">c</div>
+					<div id="example3" class="main2_1_box">d</div>
+					<div id="example4" class="main2_1_box">e</div>
+					<div id="example5" class="main2_1_box">f</div>
+					<div id="example6" class="main2_1_box">g</div>
+					<div id="example7" class="main2_1_box">h</div>
+					<div class="clearfix"></div>
+				</div>
+				
 			</div>
+			
+			<!-- 평점순 -->
 			<div id="main3">
 				<div id="main3_1"></div>
 			</div>
+			
+			
+			
+			<!-- 사이드광고 -->
 			<div id="side_right_ad">
 				<jsp:include page="include/rightSideAd.jsp"></jsp:include>
 			</div>

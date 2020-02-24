@@ -280,7 +280,7 @@ nav li>a{
 	height:10%%;
 }
 
-.slick-arrow{ 
+#main1 .slick-arrow{ 
 	z-index: 2; /* prev버튼은 위치 이동시 이미지 뒤로 숨겨짐 */ 
 	position:absolute; /* 원하는 위치에 지정 */ 
 	top: 50%; 
@@ -288,17 +288,17 @@ nav li>a{
 	height: 50px; 
 	transform: translateY(-25px); 
 	}
-.slick-prev.slick-arrow{ /* prev 이전 */ 
+#main1 .slick-prev.slick-arrow{ /* prev 이전 */ 
 left: 0; 
 }
-.slick-next.slick-arrow{ /* next 다음 */ right: 0; } /* 아래점 */ 
-.slick-dots{ 
+#main1 .slick-next.slick-arrow{ /* next 다음 */ right: 0; } /* 아래점 */ 
+#main1 .slick-dots{ 
 text-align: center; 
 position : absolute;
 bottom:5%;
 left:50%;
 } 
-.slick-dots li{ display: inline-block; margin: 0 5px; }
+#main1 .slick-dots li{ display: inline-block; margin: 0 5px; }
 
 
 
@@ -308,20 +308,49 @@ left:50%;
 #main2{
 	width: 100%;
 		height:431px;
-	//background-color:blue;	
+	//background-color:blue;
+	margin-top: 30px;	
 	
 }
 #main2_1{
 	width: 1411px;
 	height:431px;
 	margin: auto;
-	background-color:#B2EBF4;
+	background-color:blue;
+	position : relative;
 }
+
+.main2_1_box{
+	width : 342px;
+	height : 100%;
+	display: inline-block;
+	background-color: gray;
+	margin-left: 5px;
+	overflow: hidden;
+}
+.main2_1_box_img{
+	width : 320px;
+	height : 80%;
+	background-color: red;
+	margin: auto;
+	
+}
+.main2_1_box_con{
+	width : 320px;
+	height : 20%;
+	background-color: yellow;
+	margin : auto;
+}
+
+
+
+
 
 #main3{
 	width: 100%;
 		height:431px;
 	//background-color:red;	
+	margin-top: 30px;
 	
 }
 #main3_1{

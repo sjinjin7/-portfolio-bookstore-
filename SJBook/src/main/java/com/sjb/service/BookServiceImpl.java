@@ -141,5 +141,19 @@ public class BookServiceImpl implements BookService {
 		
 	}
 
+	//출간일순 select
+	@Override
+	public List<BookVO> dateSelect() throws Exception {
+		
+		return bookmapper.dateSelect();
+	}
+
+	// 평점 순 select
+	@Override
+	public List<BookVO> likeSelect() throws Exception {
+		// TODO Auto-generated method stub
+		return bookmapper.likeSelect();
+	}
+
 
 }
