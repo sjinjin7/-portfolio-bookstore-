@@ -108,6 +108,131 @@ $(document).ready(function(){
 	
 	
 	
+	//출간일 순 select
+	//오른쪽 버튼1
+	$('.ds_right_btn').on("click",function(){
+		//lert("연")
+		
+		for(var i=0; i < 4; i++){
+			$('#main2_1_box'+i).css("display","none");
+		}
+		for(var i=4; i < 8 ; i++){
+			$('#main2_1_box'+i).css("display","inline-block");
+		}
+		$('.ds_left_btn').css("display", "inline-block");
+		$(this).css("display", "none");
+		$('.ds_right_btn2').css("display", "inline-block");
+	});
+	//오른쪽 버튼2	
+	$('.ds_right_btn2').on("click",function(){
+		//lert("연")
+		
+		for(var i=4; i < 8; i++){
+			$('#main2_1_box'+i).css("display","none");
+		}
+		for(var i=8; i < 12 ; i++){
+			$('#main2_1_box'+i).css("display","inline-block");
+		}
+		$('.ds_left_btn').css("display", "none");
+		$('.ds_left_btn2').css("display", "inline-block");
+		$(this).css("display", "none");
+		
+	});
+	//왼쪽 버튼2	
+	$('.ds_left_btn2').on("click",function(){
+		//lert("연")
+		
+		for(var i=8; i < 12; i++){
+			$('#main2_1_box'+i).css("display","none");
+		}
+		for(var i=4; i < 8 ; i++){
+			$('#main2_1_box'+i).css("display","inline-block");
+		}
+		$(this).css("display", "none");
+		$('.ds_left_btn').css("display", "inline-block");
+		$('.ds_right_btn2').css("display", "inline-block");
+	});
+	//왼쪽 버튼2	
+	$('.ds_left_btn').on("click",function(){
+		//lert("연")
+		
+		for(var i=4; i < 8; i++){
+			$('#main2_1_box'+i).css("display","none");
+		}
+		for(var i=0; i < 4 ; i++){
+			$('#main2_1_box'+i).css("display","inline-block");
+		}
+		$(this).css("display", "none");
+		$('.ds_right_btn').css("display", "inline-block");
+		$('.ds_right_btn2').css("display", "none");
+	});
+	
+	
+	//평점 순 select
+	//오른쪽 버튼1
+	$('.ls_right_btn').on("click",function(){
+		//lert("연")
+		
+		for(var i=0; i < 4; i++){
+			$('#main3_1_box'+i).css("display","none");
+		}
+		for(var i=4; i < 8 ; i++){
+			$('#main3_1_box'+i).css("display","inline-block");
+		}
+		$('.ls_left_btn').css("display", "inline-block");
+		$(this).css("display", "none");
+		$('.ls_right_btn2').css("display", "inline-block");
+	});
+	//오른쪽 버튼2	
+	$('.ls_right_btn2').on("click",function(){
+		//lert("연")
+		
+		for(var i=4; i < 8; i++){
+			$('#main3_1_box'+i).css("display","none");
+		}
+		for(var i=8; i < 12 ; i++){
+			$('#main3_1_box'+i).css("display","inline-block");
+		}
+		$('.ls_left_btn').css("display", "none");
+		$('.ls_left_btn2').css("display", "inline-block");
+		$(this).css("display", "none");
+		
+	});
+	//왼쪽 버튼2	
+	$('.ls_left_btn2').on("click",function(){
+		//lert("연")
+		
+		for(var i=8; i < 12; i++){
+			$('#main3_1_box'+i).css("display","none");
+		}
+		for(var i=4; i < 8 ; i++){
+			$('#main3_1_box'+i).css("display","inline-block");
+		}
+		$(this).css("display", "none");
+		$('.ls_left_btn').css("display", "inline-block");
+		$('.ls_right_btn2').css("display", "inline-block");
+	});
+	//왼쪽 버튼2	
+	$('.ls_left_btn').on("click",function(){
+		//lert("연")
+		
+		for(var i=4; i < 8; i++){
+			$('#main3_1_box'+i).css("display","none");
+		}
+		for(var i=0; i < 4 ; i++){
+			$('#main3_1_box'+i).css("display","inline-block");
+		}
+		$(this).css("display", "none");
+		$('.ls_right_btn').css("display", "inline-block");
+		$('.ls_right_btn2').css("display", "none");
+	});
+	
+	
+		
+	
+	
+	
+	
 });
 
 

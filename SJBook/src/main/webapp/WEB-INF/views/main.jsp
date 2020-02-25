@@ -114,39 +114,39 @@
 				<ul class="domestic"><a href="search" >국내도서</a>
 					<div>
 						<ul class="search_1">
-							<li><a href="#">소설</a></li>
-							<li><a href="#">시/에세이</a></li>
-							<li><a href="#">경제/경영</a></li>
-							<li><a href="#">자기계발</a></li>
-							<li><a href="#">인문</a></li>
-							<li><a href="#">역사/문화</a></li>
-							<li><a href="#">종교</a></li>
-							<li><a href="#">정치/사회</a></li>
-							<li><a href="#">예술/대중문화</a></li>
-							<li><a href="#">과학</a></li>
-							<li><a href="#">기술/공학</a></li>
-							<li><a href="#">컴퓨터/IT</a></li>
+							<li><a >소설</a></li>
+							<li><a >시/에세이</a></li>
+							<li><a >경제/경영</a></li>
+							<li><a >자기계발</a></li>
+							<li><a >인문</a></li>
+							<li><a >역사/문화</a></li>
+							<li><a >종교</a></li>
+							<li><a >정치/사회</a></li>
+							<li><a >예술/대중문화</a></li>
+							<li><a >과학</a></li>
+							<li><a >기술/공학</a></li>
+							<li><a >컴퓨터/IT</a></li>
 						</ul>
 						<ul class="search_2">
-							<li><a href="#">유아(0~7세)</a></li>
-							<li><a href="#">어린이(초등)</a></li>
-							<li><a href="#">어린이전집</a></li>
-							<li><a href="#">어린이영어</a></li>
-							<li><a href="#">청소년</a></li>
-							<li><a href="#">초등참고서</a></li>
-							<li><a href="#">중/고등참고서</a></li>
-							<li><a href="#">대학교재</a></li>
-							<li><a href="#">취업/수험서</a></li>
-							<li><a href="#">외국어</a></li>
-							<li><a href="#">가정/육아</a></li>
-							<li><a href="#">건강</a></li>
+							<li><a >유아(0~7세)</a></li>
+							<li><a >어린이(초등)</a></li>
+							<li><a >어린이전집</a></li>
+							<li><a >어린이영어</a></li>
+							<li><a >청소년</a></li>
+							<li><a >초등참고서</a></li>
+							<li><a >중/고등참고서</a></li>
+							<li><a >대학교재</a></li>
+							<li><a >취업/수험서</a></li>
+							<li><a >외국어</a></li>
+							<li><a >가정/육아</a></li>
+							<li><a >건강</a></li>
 						</ul>
 						<ul class="search_3">
-							<li><a href="#">여행</a></li>
-							<li><a href="#">요리</a></li>
-							<li><a href="#">취미/실용/스포츠</a></li>
-							<li><a href="#">잡지</a></li>
-							<li><a href="#">만화</a></li>
+							<li><a >여행</a></li>
+							<li><a >요리</a></li>
+							<li><a >취미/실용/스포츠</a></li>
+							<li><a >잡지</a></li>
+							<li><a >만화</a></li>
 						</ul>
 					</div>
 				</ul>
@@ -182,29 +182,136 @@
 			<!-- 신간순 -->
 			<div id="main2">
 				<div id="main2_1">
-					<div id="example" class="main2_1_box">
-						<div class="main2_1_box_img">
-							이미지
+					<div id="main2_1_subject">신간</div>
+					<c:set value="0" var="i"></c:set>
+					<c:forEach items="${ds}" var="list">
+					<a href="detail?num=${list.productID}">
+					<div id="main2_1_box${i }" class="main2_1_box">
+						<div id="main2_1_box_img${i }" class="main2_1_box_img">
+						<input type="hidden" id="productID${i }" value="${list.productID}">
+			 				<script>
+							/* 시간순 이미지 띄우기 */
+							(function(){
+								var productID = $("#productID${i}").val();
+								
+								//alert(productID);
+								$.getJSON("getBcover",{productID:productID}, function(arr){
+									console.log(arr);
+									
+									var str = "";
+									$(arr).each(function(i, attach){
+									
+										var fileCallPath = encodeURIComponent(attach.uploadPath + "/"+attach.uuid + "_"+attach.fileName);
+										
+										str += "<img src='/display?fileName="+fileCallPath+"'>";
+										
+										return false;
+									});
+									
+									$("#main2_1_box_img${i }").html(str);
+									
+								});// end getJSON
+								
+							})();// end function							
+							
+							
+							</script>
 						</div>
 						<div class="main2_1_box_con">
-							책정보
+							<span class="main2_1_box_con_cate">${list.cateName}</span>
+							<br>
+							<span class="main2_1_box_con_title">${list.title }</span>
+							<br>
+							<span class="main2_1_box_con_year">${list.publeYear}</span>
+							
 						</div>
 					</div>
-					<div id="example1" class="main2_1_box">b</div>
-					<div id="example2" class="main2_1_box">c</div>
-					<div id="example3" class="main2_1_box">d</div>
-					<div id="example4" class="main2_1_box">e</div>
-					<div id="example5" class="main2_1_box">f</div>
-					<div id="example6" class="main2_1_box">g</div>
-					<div id="example7" class="main2_1_box">h</div>
+					</a>
+					<c:set var="i" value="${i+1}"></c:set>
+					</c:forEach>
+					
 					<div class="clearfix"></div>
+					<div class="ds_left_btn"> < </div>
+					<div class="ds_left_btn2"> < </div>
+					<div class="ds_right_btn"> > </div>
+					<div class="ds_right_btn2"> > </div>
 				</div>
 				
 			</div>
 			
 			<!-- 평점순 -->
 			<div id="main3">
-				<div id="main3_1"></div>
+				<div id="main3_1">
+				 	<div id="main3_1_subject">평점 추천</div>
+					<c:set value="0" var="i"></c:set>
+					<c:forEach items="${ls}" var="list">
+					<a href="detail?num=${list.productID}">
+					<div id="main3_1_box${i }" class="main3_1_box">
+						<div id="main3_1_box_img${i }" class="main3_1_box_img">
+						<input type="hidden" id="ls_productID${i }" value="${list.productID}">
+			 				<script>
+							/* 시간순 이미지 띄우기 */
+							(function(){
+								var productID = $("#ls_productID${i}").val();
+								
+								//alert(productID);
+								$.getJSON("getBcover",{productID:productID}, function(arr){
+									console.log(arr);
+									
+									var str = "";
+									$(arr).each(function(i, attach){
+									
+										var fileCallPath = encodeURIComponent(attach.uploadPath + "/"+attach.uuid + "_"+attach.fileName);
+										
+										str += "<img src='/display?fileName="+fileCallPath+"'>";
+										
+										return false;
+									});
+									
+									$("#main3_1_box_img${i }").html(str);
+									
+								});// end getJSON
+								
+							})();// end function							
+							
+							
+							</script>
+						</div>
+						<div class="main3_1_box_con">
+							<span class="main3_1_box_con_cate">${list.cateName}</span>
+							<br>
+							<span class="main3_1_box_con_title">${list.title }</span>
+							<br>
+							<%-- <span class="main3_1_box_con_like">평점 : <strong>${list.likeStar}</strong></span> --%>
+							<div class="likeStar_section" id="likeStar_section${i }">
+								<span  class="mark on" id="star0">0.5점</span>
+								<span  class="mark2 on" id="star1">1점</span>
+								<span  class="mark " id="star2">1.5점</span>
+								<span  class="mark2 " id="star3">2점</span>
+								<span  class="mark " id="star4">2.5점</span>
+								<span  class="mark2 " id="star5">3점</span>
+								<span  class="mark " id="star6">3.5</span>
+								<span  class="mark2 " id="star7">4점</span>
+								<span  class="mark " id="star8">4.5점</span>
+								<span  class="mark2 " id="star9">5점</span>
+				
+								<input type="hidden" id="likeStar${i }" value="${list.likeStar }">	
+							</div>
+
+							
+						</div>
+					</div>
+					</a>
+					<c:set var="i" value="${i+1}"></c:set>
+					</c:forEach>
+					
+					<div class="clearfix"></div>
+					<div class="ls_left_btn"> < </div>
+					<div class="ls_left_btn2"> < </div>
+					<div class="ls_right_btn"> > </div>
+					<div class="ls_right_btn2"> > </div>				 
+				 
+				</div>
 			</div>
 			
 			
@@ -262,7 +369,26 @@
 	
 	
 	</div>
-
+<script>
+function starView(){
+	for(var i =0; i < 12; i++){
+		
+			var idx = $('#likeStar'+i).val();
+			//alert(i+"번재 idx"+ idx);
+			idx = parseFloat(idx);
+			
+			if(idx-0.5<0){
+				idx = 0;
+			} else{
+				idx = (idx-0.5)/0.5;	
+			}
+			//alert(idx);
+			
+			$('#likeStar_section' +i).find('#star'+idx).addClass('on').prevAll('span').addClass('on');				
+	}
+}
+starView();
+</script>
 	
 </body>
 </html>

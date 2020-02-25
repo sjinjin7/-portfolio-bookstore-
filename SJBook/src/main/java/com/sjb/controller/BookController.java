@@ -50,7 +50,8 @@ public class BookController {
 	
 	@RequestMapping("/main")
 	public void mainGET(Model model) throws Exception{
-		BookVO day = new BookVO();
+		model.addAttribute("ds", bookservice.dateSelect());
+		model.addAttribute("ls",bookservice.likeSelect());
 		
 		
 		

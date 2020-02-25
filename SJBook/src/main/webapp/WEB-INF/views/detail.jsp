@@ -82,7 +82,11 @@ function starView(i){
 	var idx = $('#starVal'+i).val();
 	//alert(idx);
 	idx = parseFloat(idx);
-	idx = (idx-0.5)/0.5;
+	if(idx-0.5<0){
+		idx = 0;
+	} else{
+		idx = (idx-0.5)/0.5;	
+	}
 	//alert(idx);
 	var a = $('#likeViewSection' +i).find('#star'+idx).addClass('on').prevAll('span').addClass('on');
 	 //$('.likeViewSection').find('span').index(idx).addClass('on').prevAll('span').addClass('on');
