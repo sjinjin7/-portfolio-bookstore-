@@ -170,11 +170,11 @@
 		<div id="main_container">
 		
 			<div id="main1">
-				<div><img src="http://image.kyobobook.co.kr/ink/images/prom/2020/banner/200123/bnN_01.jpg"> </div>
-				<div><img src="http://image.kyobobook.co.kr/ink/images/prom/2020/banner/200129/bnG_w01.jpg"> </div>
-				<div><img src="http://image.kyobobook.co.kr/ink/images/prom/2020/book/200108_ebs/bnD_w01.jpg"> </div>
-				<div><img src="http://image.kyobobook.co.kr/ink/images/prom/2020/banner/200123/bnN_03.jpg"> </div>
-				<div><img src="http://image.kyobobook.co.kr/ink/images/prom/2020/banner/200123/bnN_02.jpg"> </div>
+				<div><a href="/detail?num=189"><img src="http://image.kyobobook.co.kr/ink/images/prom/2020/banner/200123/bnN_01.jpg"></a></div>
+				<div><a href="/detail?num=190"><img src="http://image.kyobobook.co.kr/ink/images/prom/2020/banner/200221/bnA_a03.jpg"></a></div>
+				<div><a href="/detail?num=191"><img src="http://image.kyobobook.co.kr/ink/images/prom/2020/banner/200221/bnA_a06.jpg"></a></div>
+				<div><a href="/detail?num=188"><img src="http://image.kyobobook.co.kr/ink/images/prom/2020/banner/200123/bnN_03.jpg"></a> </div>
+				<div><a href="/detail?num=192"><img src="http://image.kyobobook.co.kr/ink/images/prom/2020/banner/200221/bnA_a04.jpg"></a></div>
 				
 			</div>
 			

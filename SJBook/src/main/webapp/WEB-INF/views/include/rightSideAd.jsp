@@ -7,8 +7,8 @@
   crossorigin="anonymous"></script>
 <script src="resources/js/search.js" type="text/javascript"></script> -->
 				<div id="side_right_ad_1">
-					<a>
-						<img alt="" src="https://simage.kyobobook.co.kr/ink/images/prom/2020/banner/200121/bn_83.jpg">
+					<a href="/detail?num=187">
+						<img alt="" src="http://image.kyobobook.co.kr/newimages/adcenter/IMAC/creatives/2020/02/20/premium/20200220_1582179722565.jpg">
 					</a>
 				</div>
 				<div id="side_right_ad_2">
