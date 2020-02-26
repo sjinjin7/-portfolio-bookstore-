@@ -57,7 +57,7 @@ $(document).ready(function(){
         slidesToShow: 1, /* 화면에 보여질 이미지 갯수*/        
         slidesToScroll: 1,  /* 스크롤시 이동할 이미지 갯수 */         
         autoplay: true, /* 자동으로 다음이미지 보여주기 */         
-        arrows: true, /* 화살표 */         
+        arrows: false, /* 화살표 */         
         dots:true, /* 아래점 */         
         autoplaySpeed:10000,/* 다음이미지로 넘어갈 시간 */         
         speed:1000 , /* 다음이미지로 넘겨질때 걸리는 시간 */         
