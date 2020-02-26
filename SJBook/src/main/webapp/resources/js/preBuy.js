@@ -1,5 +1,22 @@
 $(document).ready(function(){
 	//alert("연결");
+	
+	//검색 종류 선택
+	$('.keyword_box>select').on("change", function(){
+		var val = $(this).val();
+		//alert(val);\
+		if(val == 0){
+			$('.keyword').attr("name","keyword");
+		} else{
+			$('.keyword').attr("name","authorName");
+		}
+			
+		
+	});
+	
+	
+	
+	
 	$('.open').on('click', function(e){
 		$('#nav_main_1').css('height','150px');
 		$('.opened').css('display','block');

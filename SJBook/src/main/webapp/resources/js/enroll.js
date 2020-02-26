@@ -25,6 +25,21 @@
 
 $(document).ready(function(){
 	
+	//검색 종류 선택
+	$('.keyword_box>select').on("change", function(){
+		var val = $(this).val();
+		//alert(val);\
+		if(val == 0){
+			$('.keyword').attr("name","keyword");
+		} else{
+			$('.keyword').attr("name","authorName");
+		}
+			
+		
+	});
+	
+	
+	
 	$("input[type='file']").change(function(e){
 		
 		var formData = new FormData();

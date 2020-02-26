@@ -128,20 +128,7 @@ function starView(i){
 			</div>
 			<div id="top_1_selection">
 				<div id="top_1_selection_1">
-					<form action="search" method="get">				
-					<div id="top_1_selection_1_search">
-						
-							<%-- <input type="hidden" name="pageNum" value="${page.cri.getPageNum()}">
-            				<input type="hidden" name="amount" value="${page.cri.getAmount()}"> --%>
-							<div class="keyword_box">
-								<input type="text" name="keyword" class="keyword">
-							</div>
-						
-							<input type="submit" value="검색" class="key_btn">
-						
-						<div class="clearfix"></div>
-					</div>
-					</form>
+					<jsp:include page="include/searchBox.jsp"></jsp:include>
 				</div>
 			</div>
 			<div id="top_1_login">

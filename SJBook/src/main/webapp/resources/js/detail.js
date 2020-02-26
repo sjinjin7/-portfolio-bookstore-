@@ -11,6 +11,21 @@ $(document).ready(function(){
 	})();
 	*/
 	
+	
+	//검색 종류 선택
+	$('.keyword_box>select').on("change", function(){
+		var val = $(this).val();
+		//alert(val);\
+		if(val == 0){
+			$('.keyword').attr("name","keyword");
+		} else{
+			$('.keyword').attr("name","authorName");
+		}
+			
+		
+	});
+	
+	
 	//파일 확대하기 클릭
 	$('#imageBig').on("click",function(e){
 		e.preventDefault();

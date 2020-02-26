@@ -6,8 +6,13 @@
 	
 
 		<div class="keyword_box">
-			<input type="text" name="keyword" class="keyword">
-		</div>
+								<select>
+									<option value="0">제목 검색</option>
+									<option value="1">작가 검색</option>
+								</select>
+								
+								<input type="text" name="keyword" class="keyword">
+							</div>
 	
 		<input type="submit" value="검색" class="key_btn">
 	

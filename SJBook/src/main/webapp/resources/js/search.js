@@ -1,4 +1,18 @@
 $(document).ready(function(){
+	
+	//검색 종류 선택
+	$('.keyword_box>select').on("change", function(){
+		var val = $(this).val();
+		//alert(val);\
+		if(val == 0){
+			$('.keyword').attr("name","keyword");
+		} else{
+			$('.keyword').attr("name","authorName");
+		}
+			
+		
+	});
+	
 	//alert("연결");
 	$('.open').on('click', function(e){
 		$('#nav_main_1').css('height','150px');
