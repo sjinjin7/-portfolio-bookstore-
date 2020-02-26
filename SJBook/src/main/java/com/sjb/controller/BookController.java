@@ -63,14 +63,86 @@ public class BookController {
 	
 	@RequestMapping("/search")
 	public void searchGET(Criteria cri, Model model) throws Exception{
-		int total = bookservice.bookCount(cri);
-		PageVO pv = new PageVO(cri, total);
-		System.out.println("keyword="+cri.getKeyword());
-		System.out.println("total = "+total);
-		System.out.println("bookservice.bookListPaging()" + bookservice.bookListPaging(cri));
-		System.out.println("bookservice.bookListPaging()" + bookservice.bookListPaging(cri));
-		model.addAttribute("list",bookservice.bookListPaging(cri));
-		model.addAttribute("page", pv);
+		if(cri.getAuthorName() != null && cri.getCateCode() == null && cri.getKeyword() == null) {
+			System.out.println("작가 키워드검색");
+			int total = bookservice.authorBookCount(cri);
+			PageVO pv = new PageVO(cri, total);
+			System.out.println("keyword="+cri.getAuthorName());
+			System.out.println("total = "+total);
+
+			//검색된것이있는지 판단
+			List<BookVO> list = bookservice.authorKeyListPaging(cri);
+			System.out.println("list사이즈 : " + list.size());
+			model.addAttribute("exist", list.size());
+			
+			// 페이징 타입 id
+				int i = 1;
+				model.addAttribute("pagingId", i);
+			
+			model.addAttribute("list",bookservice.authorKeyListPaging(cri));
+			model.addAttribute("page", pv);
+			
+			
+		} else if(cri.getKeyword() != null && cri.getCateCode() != null && cri.getAuthorName() == null) {
+			System.out.println("기본 키워드 && 카테고리 필터 검색");
+			int total = bookservice.bookCateCount(cri);
+			PageVO pv = new PageVO(cri, total);
+			System.out.println("keyword="+cri.getKeyword());
+			System.out.println("total = "+total);
+			
+			//검색된것이있는지 판단
+			List<BookVO> list = bookservice.bookListPaging(cri);
+			System.out.println("list사이즈 : " + list.size());
+			model.addAttribute("exist", list.size());
+			
+			// 페이징 타입 id
+				int i = 3;
+				model.addAttribute("pagingId", i);
+			
+			
+			model.addAttribute("list",bookservice.bookListPaging(cri));
+			model.addAttribute("page", pv);
+		}
+		else if(cri.getCateCode() != null && cri.getKeyword() == null && cri.getAuthorName() == null) {
+			System.out.println("카테고리 리스트페이징");
+			System.out.println("작가이름 : " + cri.getAuthorName());
+			int total = bookservice.cateBookCount(cri);
+			PageVO pv = new PageVO(cri, total);
+			System.out.println("keyword="+cri.getCateCode());
+			System.out.println("total = "+total);
+			//검색된것이있는지 판단
+			List<BookVO> list = bookservice.cateListPaging(cri);
+			System.out.println("list사이즈 : " + list.size());
+			model.addAttribute("exist", list.size());
+			
+			// 페이징 타입 id
+					int i = 2;
+					model.addAttribute("pagingId", i);
+			
+			model.addAttribute("list",bookservice.cateListPaging(cri));
+			model.addAttribute("page", pv);
+		} else if(cri.getKeyword() != null && cri.getCateCode() == null && cri.getAuthorName() == null ) {
+			System.out.println("기본 키워드 검색");
+			int total = bookservice.bookCount(cri);
+			PageVO pv = new PageVO(cri, total);
+			System.out.println("keyword="+cri.getKeyword());
+			System.out.println("total = "+total);
+			
+			//검색된것이있는지 판단
+			List<BookVO> list = bookservice.bookListPaging(cri);
+			System.out.println("list사이즈 : " + list.size());
+			model.addAttribute("exist", list.size());
+			
+			// 페이징 타입 id
+			int i = 0;
+			model.addAttribute("pagingId", i);
+			
+			model.addAttribute("list",bookservice.bookListPaging(cri));
+			model.addAttribute("page", pv);
+		} 
+		
+		
+		
 		
 	}
 	//게시물 첨부파일 조회 컨트롤러

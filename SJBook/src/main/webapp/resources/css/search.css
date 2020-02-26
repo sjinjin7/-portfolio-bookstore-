@@ -572,3 +572,11 @@ strong{
 .clearfix{
 	clear:both;
 }
+
+
+#exist{
+	text-align: center;
+    height: 750px;
+    line-height: 700px;
+    font-size: 30px;
+}

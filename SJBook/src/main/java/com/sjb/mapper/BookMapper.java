@@ -32,6 +32,15 @@ public interface BookMapper {
 	// 제품 갯수
 	public int bookCount(Criteria cri) throws Exception; 
 	
+	// 카테 제품 갯수
+	public int cateBookCount(Criteria cri) throws Exception;
+	
+	// 작기 키워드 제품 갯수
+	public int authorBookCount(Criteria cri) throws Exception;
+	
+	//키워드 검색 && 카테고리 필터 페
+	public int bookCateCount(Criteria cri) throws Exception;
+	
 	//작가등록
 	public void authorEnroll(AuthorVO author) throws Exception;
 	
@@ -55,5 +64,14 @@ public interface BookMapper {
 	
 	//평점순 select
 	public List<BookVO> likeSelect() throws Exception;
+	
+	// 전체 제품 리스트(페이징처리)
+	public List<BookVO> cateListPaging(Criteria cri) throws Exception;
+		
+		// 전체 제품 리스트(페이징처리)
+	public List<BookVO> authorKeyListPaging(Criteria cri) throws Exception;	
+	
+	
+	
 	
 }

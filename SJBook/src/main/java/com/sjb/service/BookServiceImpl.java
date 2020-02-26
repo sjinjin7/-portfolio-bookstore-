@@ -156,5 +156,36 @@ public class BookServiceImpl implements BookService {
 		return bookmapper.likeSelect();
 	}
 
+	@Override
+	public List<BookVO> cateListPaging(Criteria cri) throws Exception {
+		
+		return bookmapper.cateListPaging(cri);
+	}
+
+	@Override
+	public List<BookVO> authorKeyListPaging(Criteria cri) throws Exception {
+		
+		return bookmapper.authorKeyListPaging(cri);
+	}
+
+	@Override
+	public int cateBookCount(Criteria cri) throws Exception {
+		
+		return bookmapper.cateBookCount(cri);
+		
+	}
+
+	@Override
+	public int authorBookCount(Criteria cri) throws Exception {
+		// TODO Auto-generated method stub
+		return bookmapper.authorBookCount(cri);
+	}
+
+	@Override
+	public int bookCateCount(Criteria cri) throws Exception {
+		// TODO Auto-generated method stub
+		return bookmapper.bookCateCount(cri);
+	}
+
 
 }

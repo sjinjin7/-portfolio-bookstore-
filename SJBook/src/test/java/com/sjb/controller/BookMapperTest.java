@@ -10,6 +10,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.sjb.mapper.BookMapper;
 import com.sjb.model.BookVO;
+import com.sjb.model.Criteria;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
@@ -141,13 +142,71 @@ public class BookMapperTest {
 		
 	}
 	*/
-	
+	/*
 	//평점 순 select
 	@Test
 	public void likeSelectTest() throws Exception{
 		List<BookVO> list = bookMapper.likeSelect();
 	}
+	*/
+	/*
+	//카테고리 페이징 처리
+	@Test
+	public void catebookList() throws Exception{
+		Criteria cri = new Criteria();
+		cri.setCateCode("012");
+		System.out.println("aaaaa"+cri.getCateCode());
+		List<BookVO> list = bookMapper.cateListPaging(cri);
+		
+		
+	}
+	*/
 	
+	
+	/*
+	//작가 키워드 검색 페이징처리
+	
+	@Test
+	public void authorkeybookList() throws Exception{
+		Criteria cri = new Criteria();
+		cri.setAuthorName("유시민");
+		System.out.println("aaaaaa" + cri.getAuthorName());
+		
+		
+		List<BookVO> list = bookMapper.authorKeyListPaging(cri);
+		
+		
+	}
+	*/
+	//제품 갯수 테스트
+	/*
+	@Test
+	public void countTest() throws Exception{
+		Criteria cri = new Criteria();
+		//cri.setKeyword("테스트");
+		cri.setCateCode("012");
+		//cri.setAuthorName("유시민");
+		
+		//bookMapper.bookCount(cri);
+		bookMapper.cateBookCount(cri);
+		//bookMapper.authorBookCount(cri);
+	}
+	*/
+	
+	
+	//키워드 검색 && 카테고리 필터 갯수 테스트
+	@Test
+	public void bookCateCountTest() throws Exception{
+		Criteria cri = new Criteria();
+		
+		cri.setCateCode("012");
+		cri.setKeyword("테스트");
+		bookMapper.bookCateCount(cri);
+		
+		
+	}
+	
+
 	
 	
 	

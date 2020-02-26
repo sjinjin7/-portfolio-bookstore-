@@ -101,39 +101,39 @@
 				<ul class="domestic"><a href="search" >국내도서</a>
 					<div>
 						<ul class="search_1">
-							<li><a >소설</a></li>
-							<li><a >시/에세이</a></li>
-							<li><a >경제/경영</a></li>
-							<li><a >자기계발</a></li>
-							<li><a >인문</a></li>
-							<li><a >역사/문화</a></li>
-							<li><a >종교</a></li>
-							<li><a >정치/사회</a></li>
-							<li><a >예술/대중문화</a></li>
-							<li><a >과학</a></li>
-							<li><a >기술/공학</a></li>
-							<li><a >컴퓨터/IT</a></li>
+							<li><a href="/search?cateCode=001">소설</a></li>
+							<li><a href="/search?cateCode=002">시/에세이</a></li>
+							<li><a href="/search?cateCode=003">경제/경영</a></li>
+							<li><a href="/search?cateCode=004">자기계발</a></li>
+							<li><a href="/search?cateCode=005">인문</a></li>
+							<li><a href="/search?cateCode=006">역사/문화</a></li>
+							<li><a href="/search?cateCode=007">종교</a></li>
+							<li><a href="/search?cateCode=008">정치/사회</a></li>
+							<li><a href="/search?cateCode=009">예술/대중문화</a></li>
+							<li><a href="/search?cateCode=010">과학</a></li>
+							<li><a href="/search?cateCode=011">기술/공학</a></li>
+							<li><a href="/search?cateCode=012">컴퓨터/IT</a></li>
 						</ul>
 						<ul class="search_2">
-							<li><a >유아(0~7세)</a></li>
-							<li><a >어린이(초등)</a></li>
-							<li><a >어린이전집</a></li>
-							<li><a >어린이영어</a></li>
-							<li><a >청소년</a></li>
-							<li><a >초등참고서</a></li>
-							<li><a >중/고등참고서</a></li>
-							<li><a >대학교재</a></li>
-							<li><a >취업/수험서</a></li>
-							<li><a >외국어</a></li>
-							<li><a >가정/육아</a></li>
-							<li><a >건강</a></li>
+							<li><a href="/search?cateCode=013">유아(0~7세)</a></li>
+							<li><a href="/search?cateCode=014">어린이(초등)</a></li>
+							<li><a href="/search?cateCode=015">어린이전집</a></li>
+							<li><a href="/search?cateCode=016">어린이영어</a></li>
+							<li><a href="/search?cateCode=017">청소년</a></li>
+							<li><a href="/search?cateCode=018">초등참고서</a></li>
+							<li><a href="/search?cateCode=019">중/고등참고서</a></li>
+							<li><a href="/search?cateCode=020">대학교재</a></li>
+							<li><a href="/search?cateCode=021">취업/수험서</a></li>
+							<li><a href="/search?cateCode=022">외국어</a></li>
+							<li><a href="/search?cateCode=023">가정/육아</a></li>
+							<li><a href="/search?cateCode=024">건강</a></li>
 						</ul>
 						<ul class="search_3">
-							<li><a >여행</a></li>
-							<li><a >요리</a></li>
-							<li><a >취미/실용/스포츠</a></li>
-							<li><a >잡지</a></li>
-							<li><a >만화</a></li>
+							<li><a href="/search?cateCode=025">여행</a></li>
+							<li><a href="/search?cateCode=026">요리</a></li>
+							<li><a href="/search?cateCode=027">취미/실용/스포츠</a></li>
+							<li><a href="/search?cateCode=028">잡지</a></li>
+							<li><a href="/search?cateCode=029">만화</a></li>
 						</ul>
 					</div>
 				</ul>

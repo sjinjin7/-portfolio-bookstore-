@@ -7,7 +7,14 @@ public class Criteria {
 	// 한 페이지당 데이터 처리 갯수(10개)
 		private int amount;
 		
+		//검색 키워드
 		private String keyword;
+		
+		//제품 카테고리
+		private String cateCode;
+		
+		// 제품 작가 이름
+		private String authorName;
 		
 		public String getKeyword() {
 			return keyword;
@@ -42,10 +49,31 @@ public class Criteria {
 			this.amount = amount;
 		}
 
+		
+		
+		
+		public String getCateCode() {
+			return cateCode;
+		}
+
+		public void setCateCode(String cateCode) {
+			this.cateCode = cateCode;
+		}
+
+		public String getAuthorName() {
+			return authorName;
+		}
+
+		public void setAuthorName(String authorName) {
+			this.authorName = authorName;
+		}
+
 		@Override
 		public String toString() {
-			return "Criteria [pageNum=" + pageNum + ", amount=" + amount + "]";
+			return "Criteria [pageNum=" + pageNum + ", amount=" + amount + ", keyword=" + keyword + ", cateCode="
+					+ cateCode + ", authorName=" + authorName + "]";
 		}
-	
+
+		
 		
 }

@@ -24,6 +24,9 @@
 		<if test="keyword != null">
 			where title like concat ('%',#{keyword},'%') 
 		</if>
+		<if test="cateCode != null">
+			and CateCode = #{cateCode} 
+		</if>
 			order by productID desc ) sjb_book 
 		<![CDATA[	
 			where rownum >(#{pageNum}-1)*#{amount} and rownum<=#{pageNum}*#{amount} ;
@@ -31,6 +34,60 @@
 	
 
  </select>
+  <!-- 카테고리별 페이징 -->
+  <select id="cateListPaging" resultType="com.sjb.model.BookVO">
+	
+  		select * 
+		from(select @rownum:=@rownum+1 as rownum, productID, title, 
+			authorID, (select authorName from sjb_author where sjb_book.authorID=sjb_author.authorID) as authorName, 
+			publisher, cateCode, (select cateName from sjb_bcate where sjb_book.cateCode=sjb_bcate.cateCode) as cateName,
+			bookCover, publeYear, likeStar, bookReply, bookPrice, discountRate, bookInfo, contents,
+			introImage,regdate,boardRegdate,modDate,bookStock, BookPoint, DiscountPrice
+		 	from (select @rownum:=0) as rownum, sjb_book 
+		<!-- <if test="cateCode != null"> -->
+			where CateCode = #{cateCode} 
+		<!-- </if> -->
+			order by productID desc ) sjb_book 
+		<![CDATA[	
+			where rownum >(#{pageNum}-1)*#{amount} and rownum<=#{pageNum}*#{amount} ;
+		]]>
+	
+
+ </select>
+ 	<!-- 작가 키워드 궘색 -->
+ 	  <select id="authorKeyListPaging" resultType="com.sjb.model.BookVO">
+	
+  		select *
+            from 
+            (
+				select @rownum:=@rownum+1 as rownum, 
+				productID, title, 
+						authorID, (select authorName from sjb_author where sjb_book.authorID=sjb_author.authorID) as authorName, 
+						publisher, cateCode, (select cateName from sjb_bcate where sjb_book.cateCode=sjb_bcate.cateCode) as cateName,
+						bookCover, publeYear, likeStar, bookReply, bookPrice, discountRate, bookInfo, contents,
+						introImage,regdate,boardRegdate,modDate,bookStock, BookPoint, DiscountPrice 
+				from (
+						select 
+						productID, title, 
+						authorID, (select authorName from sjb_author where sjb_book.authorID=sjb_author.authorID) as authorName, 
+						publisher, cateCode, (select cateName from sjb_bcate where sjb_book.cateCode=sjb_bcate.cateCode) as cateName,
+						bookCover, publeYear, likeStar, bookReply, bookPrice, discountRate, bookInfo, contents,
+						introImage,regdate,boardRegdate,modDate,bookStock, BookPoint, DiscountPrice 
+						from sjb_book    
+				) sjb_book,(select @rownum:=0) as rownum
+				<if test="authorName != null">
+				 where authorName like concat ('%',#{authorName},'%')
+				 </if>
+				 order by productID desc
+			) sjb_book
+		<![CDATA[	
+			where rownum >(#{pageNum}-1)*#{amount} and rownum<=#{pageNum}*#{amount} 
+		]]>
+		
+
+ </select>
+  
+  
   
   
   <!-- 제품 상세 -->
@@ -86,6 +143,7 @@ insert into SJB_Book(title,publisher) values(#{title}, #{publisher});
 		delete from SJB_Book where productID = #{productID};
 	</delete>
 	<!-- 제품 갯수  -->
+	<!-- 전체제품 -->
 	<select id="bookCount" resultType="int">
 		
 			select count(*) from SJB_Book
@@ -93,7 +151,42 @@ insert into SJB_Book(title,publisher) values(#{title}, #{publisher});
 		<if test="keyword != null">
 		where title like concat('%',#{keyword},'%')
 		</if>
+		
 	</select>
+	<!-- 카테고리별 갯수 -->
+	<select id="cateBookCount" resultType="int">
+		
+			select count(*) from SJB_Book
+			where cateCode = #{cateCode}
+		
+	</select>
+	<!-- 작가 검색별  갯수-->
+	<select id="authorBookCount" resultType="int">
+			select count(*) from (
+				select 
+					productID, title, 
+					authorID, (select authorName from sjb_author where sjb_book.authorID=sjb_author.authorID) as authorName, 
+					publisher, cateCode, (select cateName from sjb_bcate where sjb_book.cateCode=sjb_bcate.cateCode) as cateName,
+					bookCover, publeYear, likeStar, bookReply, bookPrice, discountRate, bookInfo, contents,
+					introImage,regdate,boardRegdate,modDate,bookStock, BookPoint, DiscountPrice 
+					from sjb_book    
+            ) sjb_book
+             where authorName like concat ('%',#{authorName},'%')
+	</select>
+	
+	<!-- 키워드 && 카테고리 필터 갯수 -->
+	<select id="bookCateCount" resultType="int">
+			select count(*) from SJB_Book
+			where cateCode = #{cateCode}
+		<if test="keyword != null">
+		and title like concat('%',#{keyword},'%')
+		</if>				
+	
+	
+	</select>
+	
+	
+	
 	<!-- 작가등록 -->
 	<insert id="authorEnroll">
 		insert into sjb_author(AuthorName, AuthorIntro) values(#{authorName},#{authorIntro});

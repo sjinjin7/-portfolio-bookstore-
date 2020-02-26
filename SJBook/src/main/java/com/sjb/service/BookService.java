@@ -14,6 +14,12 @@ public interface BookService {
 	
 	public List<BookVO> bookListPaging(Criteria cri) throws Exception;
 	
+	//카테고리벼 리스트 페이징
+	public List<BookVO> cateListPaging(Criteria cri) throws Exception;
+	
+	//작가 키워드 리스트 페이징
+	public List<BookVO> authorKeyListPaging(Criteria cri) throws Exception;
+	
 	
 	public BookVO bookDetail(int productID) throws Exception;
 	
@@ -24,7 +30,17 @@ public interface BookService {
 	
 	public void bookDel(int productID) throws Exception;
 	
+	//(키워드 검색)제품 갯수
 	public int bookCount(Criteria cri) throws Exception;
+	
+	//카테고리별 제품 갯수
+	public int cateBookCount(Criteria cri) throws Exception;
+	
+	// 작가 키워드 검색 제품 갯수
+	public int authorBookCount(Criteria cri) throws Exception;
+	
+	// 키워드 검색 && 카테고리 필터 갯수
+	public int bookCateCount(Criteria cri) throws Exception;
 	
 	//첨부파일 productID알아내기
 	public List<BookCoverVO> getBCover(int productID);

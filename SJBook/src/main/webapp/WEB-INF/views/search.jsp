@@ -80,35 +80,35 @@
 							<a class="opened">△</a>
 						</th>
 						<td class="col2">
-							<a href="#">소설</a>
-							<a href="#">시/에세이</a>
-							<a href="#">경제/경영</a>
-							<a href="#">자기계발</a>
-							<a href="#">인문</a>
-							<a href="#">역사/문화</a>
-							<a href="#">종교</a>
-							<a href="#">정치/사회</a>
-							<a href="#">예술/대중문화</a>
-							<a href="#">과학</a>
-							<a href="#">기술/공학</a>
-							<a href="#">컴퓨터/IT</a>
-							<a href="#">유아(0~7세))</a>
-							<a href="#">어린이(초등)</a>
-							<a href="#">어린이전집</a>
-							<a href="#">어린이영어</a>
-							<a href="#">청소년</a>
-							<a href="#">초등참고서</a>
-							<a href="#">중/고등참고서</a>
-							<a href="#">대학교재</a>
-							<a href="#">취업/수험서</a>
-							<a href="#">외국어</a>
-							<a href="#">가정/육아</a>
-							<a href="#">건강</a>
-							<a href="#">여행</a>
-							<a href="#">요리</a>
-							<a href="#">취미/실용/스포츠</a>
-							<a href="#">잡지</a>
-							<a href="#">만화</a>
+							<a href="/search?keyword=${page.cri.keyword}&cateCode=001">소설</a>
+							<a href="/search?keyword=${page.cri.keyword}&cateCode=002">시/에세이${pagingId }</a>
+							<a href="/search?keyword=${page.cri.keyword}&cateCode=003">경제/경영</a>
+							<a href="/search?keyword=${page.cri.keyword}&cateCode=004">자기계발</a>
+							<a href="/search?keyword=${page.cri.keyword}&cateCode=005">인문</a>
+							<a href="/search?keyword=${page.cri.keyword}&cateCode=006">역사/문화</a>
+							<a href="/search?keyword=${page.cri.keyword}&cateCode=007">종교</a>
+							<a href="/search?keyword=${page.cri.keyword}&cateCode=008">정치/사회</a>
+							<a href="/search?keyword=${page.cri.keyword}&cateCode=009">예술/대중문화</a>
+							<a href="/search?keyword=${page.cri.keyword}&cateCode=010">과학</a>
+							<a href="/search?keyword=${page.cri.keyword}&cateCode=011">기술/공학</a>
+							<a href="/search?keyword=${page.cri.keyword}&cateCode=012">컴퓨터/IT</a>
+							<a href="/search?keyword=${page.cri.keyword}&cateCode=013">유아(0~7세))</a>
+							<a href="/search?keyword=${page.cri.keyword}&cateCode=014">어린이(초등)</a>
+							<a href="/search?keyword=${page.cri.keyword}&cateCode=015">어린이전집</a>
+							<a href="/search?keyword=${page.cri.keyword}&cateCode=016">어린이영어</a>
+							<a href="/search?keyword=${page.cri.keyword}&cateCode=017">청소년</a>
+							<a href="/search?keyword=${page.cri.keyword}&cateCode=018">초등참고서</a>
+							<a href="/search?keyword=${page.cri.keyword}&cateCode=019">중/고등참고서</a>
+							<a href="/search?keyword=${page.cri.keyword}&cateCode=020">대학교재</a>
+							<a href="/search?keyword=${page.cri.keyword}&cateCode=021">취업/수험서</a>
+							<a href="/search?keyword=${page.cri.keyword}&cateCode=022">외국어</a>
+							<a href="/search?keyword=${page.cri.keyword}&cateCode=023">가정/육아</a>
+							<a href="/search?keyword=${page.cri.keyword}&cateCode=024">건강</a>
+							<a href="/search?keyword=${page.cri.keyword}&cateCode=025">여행</a>
+							<a href="/search?keyword=${page.cri.keyword}&cateCode=026">요리</a>
+							<a href="/search?keyword=${page.cri.keyword}&cateCode=027">취미/실용/스포츠</a>
+							<a href="/search?keyword=${page.cri.keyword}&cateCode=028">잡지</a>
+							<a href="/search?keyword=${page.cri.keyword}&cateCode=029">만화</a>
 						</td>
 					</tr>
 				</table>
@@ -130,6 +130,10 @@
 		<div id="main2">
 			<div id="main2_1">
 			<!-- 테스트 -->
+						<c:if test="${exist == 0 }">
+				 			<div id="exist">검색된 제품이 없습니다.</div>
+				 		</c:if>
+				 	
 				 <table>
 				 		<c:set var="i" value="0"/>
 						<c:forEach items="${list}" var="book">
@@ -155,7 +159,14 @@
 										${book.publeYear}
 									
 									</div>
-									<div class="likeStar">평점 : ${book.cateName}</div>
+									<div class="likeStar">평점 : 
+									<c:if test="${book.likeStar == 0}">
+										<span> 평가 없음</span>
+									</c:if>
+									<c:if test="${book.likeStar != 0}">
+										<span>${book.likeStar}</span>
+									</c:if>
+									</div>
 								</td>
 								<td id="table_price">
 								
@@ -245,7 +256,8 @@
 							<c:set var="i" value="${i+1}"></c:set>
 						</c:forEach>
 							<tr>
-								<td colspan="4"> 
+								<td colspan="4">
+								<c:if test="${pagingId == 0 }">
 									<c:if test="${page.prev}">
 						                <a href="search?pageNum=${page.startPage-1}&amount=${page.cri.amount}&keyword=${page.cri.keyword}">이전</a>
 						            </c:if>
@@ -255,13 +267,48 @@
 						            <c:if test="${page.next}">
 						               <a href="search?pageNum=${page.endPage+1}&amount=${page.cri.amount}&keyword=${page.cri.keyword}">다음</a>
 						            </c:if>
+						            
+						        </c:if>
+						        <c:if test="${pagingId == 1 }">
+									<c:if test="${page.prev}">
+						                <a href="search?pageNum=${page.startPage-1}&amount=${page.cri.amount}&authorName=${page.cri.authorName}">이전</a>
+						            </c:if>
+						            <c:forEach var="num" begin="${page.startPage}" end="${page.endPage}" >
+						                  			<a href="search?pageNum=${num}&amount=${page.cri.amount}&authorName=${page.cri.authorName}">${num}</a>
+						            </c:forEach>
+						            <c:if test="${page.next}">
+						               <a href="search?pageNum=${page.endPage+1}&amount=${page.cri.amount}&authorName=${page.cri.authorName}">다음</a>
+						            </c:if>
+						            
+						        </c:if> 
+						        <c:if test="${pagingId == 2 }">
+									<c:if test="${page.prev}">
+						                <a href="search?pageNum=${page.startPage-1}&amount=${page.cri.amount}&cateCode=${page.cri.cateCode}">이전</a>
+						            </c:if>
+						            <c:forEach var="num" begin="${page.startPage}" end="${page.endPage}" >
+						                  			<a href="search?pageNum=${num}&amount=${page.cri.amount}&cateCode=${page.cri.cateCode}">${num}</a>
+						            </c:forEach>
+						            <c:if test="${page.next}">
+						               <a href="search?pageNum=${page.endPage+1}&amount=${page.cri.amount}&cateCode=${page.cri.cateCode}">다음</a>
+						            </c:if>
+						            
+						        </c:if> 
+						        <c:if test="${pagingId == 3 }">
+									<c:if test="${page.prev}">
+						                <a href="search?pageNum=${page.startPage-1}&amount=${page.cri.amount}&keyword=${page.cri.keyword}&cateCode=${page.cri.cateCode}">이전</a>
+						            </c:if>
+						            <c:forEach var="num" begin="${page.startPage}" end="${page.endPage}" >
+						                  			<a href="search?pageNum=${num}&amount=${page.cri.amount}&keyword=${page.cri.keyword}&cateCode=${page.cri.cateCode}">${num}</a>
+						            </c:forEach>
+						            <c:if test="${page.next}">
+						               <a href="search?pageNum=${page.endPage+1}&amount=${page.cri.amount}&keyword=${page.cri.keyword}&cateCode=${page.cri.cateCode}">다음</a>
+						            </c:if>
+						            
+						        </c:if>     
 								</td>
 							</tr>
 						
-							<tr>
-								<td colspan="3"><a href="enroll">제품등록</a>
-								</td>
-							</tr>
+							
 			</table> 
 			
 			
