@@ -139,43 +139,6 @@ a{
 	//background-color:#B5B2FF;
 }
 
-#top_1_selection_1{
-	width: 630px;
-	height: 65px;
-	margin:10px;
-	padding-top:15px;
-	//background-color:black;
-	
-	
-	
-}
-#top_1_selection_1_search{
-	width: 600px;
-	height:50px;
-	margin-left:15px;
-	
-	//background-color:white;
-}
-.keyword_box{
-	width: 451px;
-	height: 28px;
-	float: left;
-	border: 1px solid #d0d0d0;
-	padding: 10px 14px;
-	
-}
-.keyword_box input{
-	width:100%;
-	height:100%;
-	border:none;
-}
-
-.key_btn{
-	width: 85px;
-	height: 50px;
-	float: left;
-	
-}
 /* 상단 로그인버튼 */
 #top_1_login{
 	width: 460px;
