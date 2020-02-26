@@ -23,6 +23,11 @@ function replyListPaging(){
 		var str="";
 		var num = "";
 		
+		if(data == ""){
+			return false;
+		}
+		
+		
 		$(data).each(function(i, obj){
 			console.log("i="+i)
 			console.log(obj);
@@ -164,11 +169,24 @@ function starView(i){
 			<div id="cover">
 				<div id="image">
 					이미지
+
 				</div>
-				확대하기
+				<a href="#" id="imageBig">크게보기</a>
 			</div>
-			<div id="title"> 책제목</div>	
-			<div id="purchase">구매관련</div>
+			<div id="title">
+				<h1><strong>${bd.title}</strong></h1>
+				<div> <strong>${bd.authorName}</strong> 지음 <span>|</span> <strong>${bd.publisher}</strong> <span>|</span> ${bd.publeYear}</div>
+			</div>	
+			<div id="purchase">
+				<c:set value="${bd.bookPrice- bd.discountPrice}" var="dc"></c:set>
+				<div id="purchase_money1">정가 : <strong><fmt:formatNumber value="${bd.bookPrice }" pattern="#,###"/> 원</strong></div><br>
+				<div id="purchase_money2">판매가 : <span><fmt:formatNumber value="${bd.discountPrice }" pattern="#,###"/></span> <strong>원 [${bd.discountRate}%, ${dc }할인]</strong></div><br>
+				<div id="purchase_point">적립포인트 : <fmt:formatNumber value="${bd.bookPoint}" pattern="#,###"/> point</div><br>
+				<div id="purchase_btn">
+					<a id="cart_btn">장바구니 담기</a>
+					<a id="buy_btn">바로 구매</a> 
+				</div>
+			</div>
 			
 			<div id="side_right_ad">
 				<jsp:include page="include/rightSideAd.jsp"></jsp:include>
@@ -186,13 +204,28 @@ function starView(i){
 		
 	<div id="detail_main">
 		<div id="detail_main_container">
-			<table>
-				<tr>
-					<td>평점</td><td>리뷰</td>
-				</tr>
-			</table>
-			<div id="book_intro">책소개</div>
-			<div id="author_intro">작가소개</div>
+			<div id="book_intro_wrapper">
+				<div id="book_intro_subject">
+					<span>책소개</span>
+				</div>
+				<div id="book_intro_con">
+					${bd.contents }
+				</div>
+			</div>
+			<div id="author_intro_wrapper">
+				<div id="author_intro_subject">
+					<span>작가소개</span>
+				</div>
+				<div id="author_intro_con">
+					<div id="author_intro_con_name">
+						<span>작가 : <strong>${bd.authorName}</strong></span>
+					</div>
+					<div id="author_intro_con_intro">
+						${bd.authorIntro }
+					</div>
+					<br>
+				</div>
+			</div>
 		</div>
 	</div>
 	
@@ -202,7 +235,7 @@ function starView(i){
 			<div id="detail_reply_container_subject"><span>평점/리뷰</span></div>
 			<div id="book_reply">
 				<ul>
-				
+					<li class=emptyReply>리뷰가 없습니다.</li>
 				</ul>
 			</div>
 			<script>
@@ -268,7 +301,7 @@ function starView(i){
 						평점/리뷰 등록
 					</div>
 					<div id="replyWarning_content">
-						내용
+						로그인후 리뷰 등록 가능합니다.
 					</div>
 				</div>
 				
@@ -283,8 +316,7 @@ function starView(i){
 						<input type="hidden" name="productID" id="productID" value="${bd.productID}">
 						<form id="reply_form">
 						<div id="replyRegist_content_likeStar">
-							평점 
-							<br>
+							평점 :
 							<div id="likeStar_section">
 								<a href="#" class="mark on">0.5점</a>
 								<a href="#" class="mark2 on">1점</a>
@@ -302,14 +334,14 @@ function starView(i){
 							
 						</div>
 						<div id="replyRegist_content_text">
-							<span>리뷰</span>
+							<span>리뷰 : </span>
 							<br>
 							<textarea rows="" cols="" name="repCon" id="repCon"></textarea>
 						</div>
 						</form>
 						<div id="replyRegist_content_btn"> 
-							<span>버튼</span>
-							<a id="reply_btn">댓글/리뷰 등록</a>
+							
+							<a id="reply_btn">리뷰 등록</a>
 							
 						</div>
 						
@@ -390,14 +422,13 @@ function starView(i){
 				
 			</div>
 			<div id="replyModify_content_text">
-				<span>리뷰</span>
+				<span>리뷰 : </span>
 				<br>
 				<textarea rows="" cols="" name="repCon" id="repCon"></textarea>
 			</div>
 			
 			<div id="replyModify_content_btn"> 
-				<span>버튼</span>
-				<a id="replyModify_btn">댓글/리뷰 수정</a>
+				<a id="replyModify_btn">리뷰 수정</a>
 				<a id="modifyCancel_btn">수정 취소</a>
 				
 			</div>
@@ -457,10 +488,43 @@ function starView(i){
 		}
 		
 	});
+
+	
+	
+	//이미지 넣기
+	(function(){
+		var productID = ${bd.productID};
+		//alert(productID);
+		$.getJSON("getBcover",{productID:productID}, function(arr){
+			console.log(arr);
+			
+			var str = "";
+			$(arr).each(function(i, attach){
+			
+				var fileCallPath = encodeURIComponent(attach.uploadPath + "/"+attach.uuid + "_"+attach.fileName);
+				
+				str += "<img src='display?fileName="+fileCallPath+"' data-path='" + attach.uploadPath+"' data-uuid='"+attach.uuid+"' data-filename='"+attach.fileName+"' data-type='" + attach.image+"'>";
+				
+				return false;
+			});
+			
+			$("#image").html(str);
+			
+		});// end getJSON
+		
+	})();// end function
+	
+	
+	
 	
 	
 	
 </script>
 </div>
+<!-- 이미지확대 -->
+<div class = 'bigPictureWrapper'>
+	<div class='bigPicture'>
+	</div>
+</div>	
 </body>
 </html>

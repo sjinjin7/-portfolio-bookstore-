@@ -274,7 +274,7 @@ $(document).ready(function(){
 			
 		});
 		
-		//임지 클릭시 닫기
+		//이미지 클릭시 닫기
 		$(".bigPictureWrapper").on("click", function(e){
 			$(".bigPicture").animate({width:'0%',height:'0%'},1000);
 			setTimeout(function(){

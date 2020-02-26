@@ -346,7 +346,8 @@ left:50%;
 	
 }
 .main2_1_box:hover{
-	border: solid black 3px;
+	//border: solid black 3px;
+	background-color: #eae2e2;
 }
 .main2_1_box_img{
 	width : 320px;
@@ -534,7 +535,8 @@ left:50%;
 	
 }
 .main3_1_box:hover{
-	border: solid black 3px;
+	//border: solid black 3px;
+	background-color: #eae2e2;
 }
 .main3_1_box_img{
 	width : 320px;

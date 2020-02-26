@@ -38,6 +38,7 @@
   
  	select productID, title, 
 			authorID, (select authorName from sjb_author where sjb_book.authorID=sjb_author.authorID) as authorName, 
+			(select AuthorIntro from sjb_author where sjb_book.authorID=sjb_author.authorID) as AuthorIntro,
 			publisher, cateCode, (select cateName from sjb_bcate where sjb_book.cateCode=sjb_bcate.cateCode) as cateName,
 			bookCover, publeYear, likeStar, bookReply, bookPrice, discountRate, bookInfo, contents,
 			introImage,regdate,boardRegdate,modDate,bookStock, BookPoint, DiscountPrice

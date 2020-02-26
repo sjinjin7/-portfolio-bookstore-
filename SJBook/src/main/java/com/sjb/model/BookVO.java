@@ -13,6 +13,8 @@ public class BookVO {
 	private int authorID;
 	
 	private String authorName;
+	
+	private String authorIntro;
 		
 	private String publisher;
 	
@@ -309,20 +311,32 @@ public class BookVO {
 	}
 
 
+	public String getAuthorIntro() {
+		return authorIntro;
+	}
+
+
+	public void setAuthorIntro(String authorIntro) {
+		this.authorIntro = authorIntro;
+	}
+
+
 	@Override
 	public String toString() {
 		return "BookVO [productID=" + productID + ", title=" + title + ", authorID=" + authorID + ", authorName="
-				+ authorName + ", publisher=" + publisher + ", cateCode=" + cateCode + ", cateName=" + cateName
-				+ ", bookCover=" + bookCover + ", bCover=" + bCover + ", publeYear=" + publeYear + ", likeStar="
-				+ likeStar + ", bookReply=" + bookReply + ", bookPrice=" + bookPrice + ", discountRate=" + discountRate
-				+ ", sellprice=" + sellprice + ", bookInfo=" + bookInfo + ", contents=" + contents + ", introImage="
-				+ introImage + ", regdate=" + regdate + ", boardRegdate=" + boardRegdate + ", modDate=" + modDate
-				+ ", bookStock=" + bookStock + ", bookPoint=" + bookPoint + ", discountPrice=" + discountPrice
-				+ ", filename=" + filename + "]";
+				+ authorName + ", authorIntro=" + authorIntro + ", publisher=" + publisher + ", cateCode=" + cateCode
+				+ ", cateName=" + cateName + ", bookCover=" + bookCover + ", bCover=" + bCover + ", publeYear="
+				+ publeYear + ", likeStar=" + likeStar + ", bookReply=" + bookReply + ", bookPrice=" + bookPrice
+				+ ", discountRate=" + discountRate + ", sellprice=" + sellprice + ", bookInfo=" + bookInfo
+				+ ", contents=" + contents + ", introImage=" + introImage + ", regdate=" + regdate + ", boardRegdate="
+				+ boardRegdate + ", modDate=" + modDate + ", bookStock=" + bookStock + ", bookPoint=" + bookPoint
+				+ ", discountPrice=" + discountPrice + ", filename=" + filename + "]";
 	}
 
-	
-	
+
+
+
+
 	
 
 	

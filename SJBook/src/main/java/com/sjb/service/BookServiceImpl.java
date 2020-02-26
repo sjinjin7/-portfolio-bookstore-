@@ -62,19 +62,20 @@ public class BookServiceImpl implements BookService {
 		
 		
 	}
-
+	@Transactional
 	@Override
 	public void bookModify(BookVO book) throws Exception {
 		
 		bookmapper.bookModify(book);
 		System.out.println("aaaaaaaaaa");
-		book.getbCover().forEach(attach ->{
-			if(attach.getJudgment() == 1) {
-			attach.setProductID(book.getProductID());
-			covermapper.coverEnroll(attach);
-			}
-		});
-		
+		if(book.getbCover() !=null){
+			book.getbCover().forEach(attach ->{
+				if(attach.getJudgment() == 1) {
+				attach.setProductID(book.getProductID());
+				covermapper.coverEnroll(attach);
+				}
+			});
+		}
 	}
 	@Transactional
 	@Override

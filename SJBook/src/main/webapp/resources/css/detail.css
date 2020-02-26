@@ -6,7 +6,9 @@
 label,input,select{
 	vertical-align: middle;
 }
-
+ul,li{
+	list-style: none;
+}
 
 a{
 	text-decoration: none;
@@ -164,31 +166,102 @@ a{
 #title{
 	float:right;
 	width:900px;
-	height:180px;
-	background-color: green;
+	height:160px;
+	//background-color: green;
 }
+#title>h1{
+	margin-top: 33px;
+    margin-left: 10px;
+    color: #3a60df;
+}
+#title>div{
+	display: inline-block;
+    font-size: 22px;
+    margin-left: 12px;
+    margin-top: 20px;	
+}
+
 #cover{
 	float :left;
 	width: 300px;
 	height:400px;
-	background-color: blue;
+	//background-color: blue;
+	text-align: center;
+	
 }
-	#image{
+#image{
 		width:100%;
 		height: 90%;
-		background-color: red;
-	}
-#purchase{
-	float:right;
-	width:900px;
-	height:220px;
-	background-color: pink;	
+		//background-color: red;
+}
+#image>img{
+	width: 240px;
+    height: 360px;
+    
+}
+#cover>a{
+	display: inline-block;
+    margin-top: 10px;
 }
 
+#purchase{
+	float: right;
+    width: 900px;
+    height: 240px;
+    border-top: 1px solid #d8d2d2;
+    padding-top: 10px;	
+}
+#purchase_money1{
+	color: #757171;
+    display: inline-block;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+#purchase_money2{
+	display: inline-block;
+    //margin-top: 10px;
+    margin-left: 20px;
+    font-size: 20px;
+}
+#purchase_money2>span{
+	  font-weight: bold;
+    font-size: 47px;
+    color: red;
+}
 
+#purchase_point{
+	display: inline-block;
+    margin-top: 10px;
+    margin-left: 20px;
+}
 
-
-
+#purchase_btn{
+	text-align: center;
+	margin-top: 22px;
+}
+#cart_btn{
+	    display: inline-block;
+    background-color: #7b8ed1;
+    border: 1px solid black;
+    width: 170px;
+    height: 52px;
+    line-height: 50px;
+    font-size: 22px;
+    font-weight: bold;
+    margin-right: 30px;
+    color : white;
+}
+#buy_btn{
+	display: inline-block;
+    background-color: #2f54d8;
+    border: 1px solid black;
+    width: 170px;
+    height: 52px;
+    line-height: 50px;
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+}
 
 
 
@@ -206,23 +279,71 @@ a{
 	overflow: hidden;
 	//height:50px;
 	margin: auto;
-	background-color: grey;
-}
-#detail_main_container>table{
-	width:100%;
-	border: 1px solid black;
-}
-#book_intro{
-	widt:100%;
-	height:100px;
-	background-color: yellow;
+	//background-color: grey;
 }
 
 
-#author_intro{
+
+#book_intro_wrapper{
 	widt:100%;
-	height:100px;
-	background-color: grey;
+	
+	//background-color: yellow;
+}
+#book_intro_subject{
+	height: 50px;
+    line-height: 48px;
+    background-color: #7b8ed1;
+}
+#book_intro_subject>span{
+	font-weight: bold;
+    color: white;
+    font-size: 20px;
+    margin-left: 15px;
+}
+#book_intro_con{
+	width: 90%;
+    margin: auto;
+    padding: 40px 0;
+    line-height: 30px;
+}
+
+
+
+#author_intro_wrapper{
+	widt:100%;
+	//height:100px;
+	//background-color: grey;
+}
+#author_intro_subject{
+	height: 50px;
+    line-height: 48px;
+    background-color: #7b8ed1;
+}
+#author_intro_subject>span{
+	font-weight: bold;
+    color: white;
+    font-size: 20px;
+    margin-left: 15px;
+}
+
+#author_intro_con{
+	text-align: center;
+}
+#author_intro_con_name{
+	display: inline-block;
+    width: 1080px;
+    border: 1px solid #c5c0c0;
+    height: 50px;
+    border-radius: 7px;
+    line-height: 48px;
+    margin-top: 30px;
+}
+#author_intro_con_intro{
+	width: 90%;
+    margin: auto;
+    padding: 40px 0;
+    line-height: 30px;
+    text-align: initial;
 }
 
 
@@ -258,7 +379,66 @@ a{
 #book_reply{
 	widt:100%;
 	//height:100px;
-	background-color: yellow;
+	//background-color: yellow;
+}
+#book_reply>ul{
+	margin : 20px 0;
+}
+#book_reply>ul>li:nth-child(n+2){
+	border-top: dotted black 1px;
+    padding: 3px 0;
+}
+
+
+.userInfo{
+	height: 50px;
+    line-height: 50px;
+    display: inline-block;
+}
+.userID{
+	font-weight: bold;
+    margin-left: 30px;
+    font-size: 26px;
+}
+}
+.date{
+	margin-left: 30px;
+    font-size: 16px;
+    color: #ada69d;
+}
+.like{
+	display: inline-block;
+	margin-left: 30px;
+}
+.like>div{
+	display : inline-block;
+}
+.likeRating{
+	display: none;
+}
+.replyContent{
+	line-height: 40px;
+    display: inline-block;
+    width: 93%;
+    margin-left: 30px;
+    font-size: 25px;
+    padding: 20px 0;
+}
+.replyFooter{
+	height: 35px;
+    line-height: 35px;
+}
+.modify{
+	width: 60px;
+    margin-left: 30px;
+    height: 35px;
+    font-weight: bold;
+}
+.delete{
+	width: 60px;
+    margin-left: 3px;
+    height: 35px;
+    font-weight: bold;
 }
 
 
@@ -269,7 +449,7 @@ a{
     font-weight: bold;
     color: white;
     font-size: 20px;
-    padding-left: 17[x];
+    padding-left: 17px;
 }
 
 
@@ -283,10 +463,47 @@ a{
     font-size: 20px;
     padding-left: 35px;
 }
-
-
-
-
+#replyRegist_content_likeStar{
+	line-height: 70px;
+}
+#likeStar_section{
+	display: inline-block;
+}
+#replyRegist_content_text>textarea{
+	font-size:16px; 
+	font-family:'맑은 고딕', verdana; 
+	padding:10px; 
+	width:1050px; 
+	height:200px;
+	margin-left: 10px;
+    margin-top: 15px;
+}
+#replyRegist_content_btn{
+	text-align: center;
+}
+#replyRegist_content_btn>a{
+    background-color: #b6c2ec;
+    border-radius: 6px;
+    width: 170px;
+    display: inline-block;
+    height: 55px;
+    text-align: center;
+    font-size: 25px;
+    line-height: 50px;
+    font-weight: bold;
+    color: white;
+    margin : 30px 0;
+    cursor: pointer;
+}
+.emptyReply{
+	text-align: center;
+    font-size: 22px;
+}
+#replyWarning_content{
+	text-align: center;
+    font-size: 25px;
+    margin: 20px 0;
+}
 
 
 
@@ -450,10 +667,79 @@ a{
 position:fixed; 
 top:20%; 
 left:calc(50% - 250px); 
-width:500px; 
-height:250px; 
+width:900px; 
+height:290px; 
 padding:20px 10px; 
 background:#fff; 
 border:2px solid #666;
 }
+#replyModify_content_text>textarea{
+	font-size:16px; 
+	font-family:'맑은 고딕', verdana; 
+	padding:10px; 
+	width:855px; 
+	height:80px;
+	margin-left: 10px;
+    margin-top: 15px;
+}
+#replyModify_subject{
+	    text-align: center;
+    font-size: 30px;
+}
+#replyModify_content_btn{
+	text-align: center;
+	
+}
+#replyModify_btn{
+	background-color: #b6c2ec;
+    border-radius: 6px;
+    width: 135px;
+    display: inline-block;
+    height: 45px;
+    text-align: center;
+    font-size: 25px;
+    line-height: 45px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    margin: 10px 0;
+}
+#modifyCancel_btn{
+	background-color: #7c91da;
+    border-radius: 6px;
+    width: 135px;
+    display: inline-block;
+    height: 45px;
+    text-align: center;
+    font-size: 25px;
+    line-height: 45px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    margin: 10px 0;
+	margin-left:15px;
+}
 
+
+/* 확대 부분 */
+.bigPictureWrapper{
+	position: fixed;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    top: 0%;
+    width: 100%;
+    height: 100%;
+	background-color: gray;
+	z-index: 100;
+	background:rgba(255,255,255,0.5);
+}
+.bigPicture{
+	position: relative;
+	display:flex;
+	justify-content: center;
+	align-items: center;
+}
+.bigPicture img{
+	width:600px;
+}
