@@ -140,7 +140,26 @@ public class MemberController {
 	}
 	
 	
-	
+	//아이디 중복체크
+		@RequestMapping(value="/memberIdChk", method = RequestMethod.POST)
+		@ResponseBody
+		public String memberIdChkPOST(String memberId) throws Exception{
+			
+			System.out.println("memberId = " + memberId);
+			
+			int result = memberservice.idCheck(memberId);
+			System.out.println("결과값 = " + result);
+			if(result == 0) {
+				return "success";
+			} else {
+				return "fail";
+			}
+			
+			
+			
+			
+		}
+			
 	
 	
 	

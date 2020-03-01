@@ -22,6 +22,31 @@ function join_click(result){
 
 	
 $(document).ready(function(){
+	
+	//아이디 중복검사
+	$('#memberId').on("propertychange change keyup paste input",function(){
+		//alert("연결");
+		var memberId = $('#memberId').val();
+		var data = {memberId : memberId}
+		$.ajax({
+			type : "post",
+			url:"/member/memberIdChk",
+			data : data,
+			success : function(data){
+				//alert(data);
+				if(data == 'success'){
+					$('#top_1_id_re').css("display","inline-block");
+					$('#top_1_id_re2').css("display","none");
+				} else{
+					$('#top_1_id_re').css("display","none");
+					$('#top_1_id_re2').css("display","inline-block");
+				}
+			}
+		});
+		
+		
+	});	
+
 	// 인증번호받기
 	
 	$("#mid_mail_check_button").click(function(){
@@ -177,8 +202,8 @@ function execPostCode() {
 	
 	
 	
-	
-	
+
+
 	
 	
 	

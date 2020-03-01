@@ -30,7 +30,12 @@
  </select>
  
  
+ <!-- 아이디 중복확인 -->
+ <select id="idCheck" resultType="int">
  
+ 	select count(*) from sjb_member where memberId = #{memberId};
+ 
+ </select>
  
  
  

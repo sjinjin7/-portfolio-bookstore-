@@ -38,4 +38,10 @@ public class MemberServiceImpl implements MemberService {
 		return membermapper.reSession(memberId);
 	}
 
+	@Override
+	public int idCheck(String memberId) throws Exception {
+			
+		return membermapper.idCheck(memberId);
+	}
+
 }

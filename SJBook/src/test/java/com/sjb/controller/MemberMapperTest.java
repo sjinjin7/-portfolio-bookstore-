@@ -26,12 +26,23 @@ public class MemberMapperTest {
 		membermapper.memberEnroll(member);
 	}
 	*/
+	
+	/*
 	@Test
 	public void memberLogin() throws Exception{
 		MemberVO member = new MemberVO();
 		member.setMemberId("admin");
 		member.setMemberPw("admin");
 		membermapper.memberLogin(member);
+		
+		
+	}
+	*/
+	
+	@Test
+	public void idCheckTest() throws Exception{
+		String memberId = "test5";
+		membermapper.idCheck(memberId);
 		
 		
 	}

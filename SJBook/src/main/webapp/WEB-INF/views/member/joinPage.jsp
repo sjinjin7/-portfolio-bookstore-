@@ -25,8 +25,9 @@
 		<div id="top">
 			<div id="top_1">
 				<h3>아이디</h3>
-				<div id="top_1_id"><input type="text" name="memberId"></div>
-				<span id="top_1_id_re"></span>
+				<div id="top_1_id"><input type="text" name="memberId" id="memberId"></div>
+				<span id="top_1_id_re">사용가능한 아이디입니다.</span>
+				<span id="top_1_id_re2">중복된 아이디입니다.</span>
 			</div>
 				
 			<div id="top_2">

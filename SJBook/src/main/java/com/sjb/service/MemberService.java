@@ -13,5 +13,9 @@ public interface MemberService {
 	// 구매 완료시 session 리셋
 	public MemberVO reSession(String memberId) throws Exception;
 	
+	//아이디 중복체크
+	public int idCheck(String memberId) throws Exception;
+	
+	
 	
 }

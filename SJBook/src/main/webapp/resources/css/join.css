@@ -48,9 +48,15 @@
 	border:none;
 }
 #top_1_id_re{
-	weight:100%;
-	//background-color: purple;
+	color : green;
+	display: none;
 }
+#top_1_id_re2{
+	color : red;
+	display:none;
+}
+
+
 
 
 #top_2 h3{

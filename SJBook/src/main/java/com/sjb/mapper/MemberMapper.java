@@ -16,6 +16,8 @@ public interface MemberMapper {
 	// 구매완료시 session 리셋
 	public MemberVO reSession(String memberId);
 	
+	//아아디 중복확인
+	public int idCheck(String memberId);
 	
 	
 }
