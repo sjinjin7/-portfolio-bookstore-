@@ -139,7 +139,36 @@
 											});
 										</script>
 									</td>
-									<td id="r_cproduct_image">이미지</td>
+									<td id="r_cproduct_image${i }" class="r_cproduct_image">
+										<input type="hidden" id="bookId${i}" value="${clist.productId }">
+										
+										
+										<script type="text/javascript">
+											
+										(function(){
+											var productID = $("#bookId${i}").val();
+											//alert(productID);
+											$.getJSON("getBcover",{productID:productID}, function(arr){
+												console.log(arr);
+												
+												var str = "";
+												$(arr).each(function(i, attach){
+												
+													var fileCallPath = encodeURIComponent(attach.uploadPath + "/"+attach.uuid + "_"+attach.fileName);
+													
+													str += "<img src='display?fileName="+fileCallPath+"'>";
+													
+													return false;
+												});
+												
+												$("#r_cproduct_image${i}").html(str);
+												
+											});// end getJSON
+											
+										})();// end function										
+										
+										</script>
+									</td>
 									<td id="r_cproduct_info">
 										<div class="title">
 											<a>
@@ -158,9 +187,9 @@
 										<div class="likeStar">평점 : ${clist.cateName}</div>
 									</td>
 									<td id="r_cprice">
-										정상가 :  <fmt:formatNumber value="${clist.bookPrice}" pattern="#,###"/> 원  
+										<del>정상가 :  <fmt:formatNumber value="${clist.bookPrice}" pattern="#,###"/> 원</del>  
 										<br>
-										판매가 :	<fmt:formatNumber value="${clist.discountPrice}" pattern="#,###"/> 원    
+										판매가 :	<strong><fmt:formatNumber value="${clist.discountPrice}" pattern="#,###"/></strong> 원    
 										<br>
 										포인트 :  <fmt:formatNumber value="${clist.bookPoint}" pattern="#,###"/> 원
 									</td>
@@ -375,7 +404,7 @@
  										//alert(bookKinds);
 										//alert(bookAmount);
 										
-										$("#priceTotal").html(priceTotal);
+										$("#priceTotal").html(priceTotal.toLocaleString());
 										$("#bookKinds").html(bookKinds);
 										$("#bookAmount").html(bookAmount);
 										if(priceTotal>=10000){
@@ -386,12 +415,12 @@
 											$("#ship_price").html(0);
 										} else{
 											shipprice = 2000;
-											$("#ship_price").html(2000);	
+											$("#ship_price").html(2,000);	
 										}
 										 total = priceTotal + shipprice;
-										 $("#final_total").html(total);
+										 $("#final_total").html(total.toLocaleString());
 										 /* point = priceTotal * 0.05; */
-										 $("#expectancy_price").html(pointTotal);
+										 $("#expectancy_price").html(pointTotal.toLocaleString());
 										$("#nav_main_1_result_info_hidden").html(str);
 										
 									});		

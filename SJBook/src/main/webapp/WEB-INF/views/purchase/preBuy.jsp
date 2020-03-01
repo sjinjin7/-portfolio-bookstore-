@@ -72,7 +72,7 @@
 	</div>
 	
 	<div id="main_wrap">
-		<form method="post" action="/purchase/buy">
+		<form method="post" action="/purchase/buy" id="buy_form">
 			<div id="main_left">
 				<div id="mian_buy_info">
 					<h1>구매자 정보</h1>
@@ -167,7 +167,7 @@
 									
 									<c:set var="point" value="${list.bookPoint*list.cartStock}"/>
 									 
-									<strong>${list.discountPrice}</strong>원 <span> | </span> 수량 ${list.cartStock}개
+									<strong><fmt:formatNumber value="${list.discountPrice}" pattern="#,###"/></strong>원 <span> | </span> 수량 ${list.cartStock}개
 									<div>${list.discountPrice * list.cartStock}</div> 
 									<div>[ ${list.discountRate} %↓ + ${list.bookPoint}원<span>P</span>]</div>			
 									<c:set var="finalTotalPrice" value="${finalTotalPrice + discountPriceStock}"/>
@@ -236,7 +236,7 @@
 						</li>
 						<li class="total_li">
 							<c:set var="finalTotalPrice" value="${finalTotalPrice+shipPrice }"/>
-							<strong id="label">최종 결제금액</strong> <strong id="label_result"><span id="number">${finalTotalPrice}</span>원</strong>
+							<strong id="label">최종 결제금액</strong> <strong id="label_result"><span id="number"><fmt:formatNumber value="${finalTotalPrice}" pattern="#,###"/></span>원</strong>
 							<fmt:parseNumber value="${finalTotalPrice}" integerOnly="true" var="finalTotalPrice" />
 							
 							<div class="clearfix"></div> 
@@ -249,16 +249,10 @@
 					<input type="hidden" name="getPoint" value="${finalTotalPoint}">
 				</div>
 				<div id="final_buy_check">
-					<input type="checkbox">주문내역 확인 동의
+					<input type="checkbox">주문내역 확인 동의<strong><필수></strong>
 				</div>
 				<div id="final_buy_button">
 					<input type="hidden" name="memberId" value="${member.memberId }">
-					<input type="hidden" name="" value="">
-					<input type="hidden" name="" value="">
-					<input type="hidden" name="" value="">
-					<input type="hidden" name="" value="">
-					<input type="hidden" name="" value="">
-					<input type="hidden" name="" value="">	
 					<button>결제하기</button>
 				</div>
 			</div>

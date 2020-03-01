@@ -224,8 +224,12 @@ a{
 #r_cproduct_check{
 	width: 6%;
 }
-#r_cproduct_image{
+.r_cproduct_image{
 	width: 12%;
+}
+.r_cproduct_image>img{
+	width: 80%;
+    margin: 15px 0;
 }
 /* 책제목 부분 */
 #r_cproduct_info{
@@ -248,6 +252,15 @@ a{
 .likeStar{
 	margin-top: 10px;
     font-size: 14px;	
+}
+/* 가격부분 */
+#r_cprice{
+	text-align: center;
+}
+#r_cprice>strong{
+		color : red;
+		font-size: 22px;
+
 }
 /* 수량변경 */
 #r_camount{

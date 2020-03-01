@@ -1,15 +1,31 @@
 
 $(document).ready(function(){
 //alert("연결");
-//var productID ='<c:out value="${bd.productID}"/>';
-//var productID = $(".uploadResult input").val();
-//alert(productID);
 
-/*	
-	(function(){
-		alert("연결확인")
-	})();
-	*/
+	
+	
+	//수량 증가
+	$("#btn_plus").on('click', function(e){
+		var value = parseInt($('#qty').val());
+		value = value + 1;
+		$('#qty').val(value);
+
+
+	});
+	//수량 감소
+	$("#btn_minus").on('click', function(e){
+		var value = parseInt($('#qty').val());
+		value = value - 1;
+		if(value <= 0){
+			return;
+		}
+		
+		$('#qty').val(value);
+
+
+	});		
+	
+	
 	
 	
 	//검색 종류 선택
@@ -225,8 +241,50 @@ function reply_reset(){
 }
 
 
+//카트 등록하기
+function cartEnroll(){
+	var productId = $("#productID").val()
+	//alert("productId = " + productId)
+	//id="table_image${i}"
+	var cartStock = $('#qty').val();
+	//id="qty${i}"
+		//alert(i);
+		//alert(pid);
+		//alert(cartStock);
+	var data = { 
+			productId : productId,
+			cartStock : cartStock
+			}
+	$.ajax({
+		url : "/addEnroll",
+		type : "post",
+		data : data,
+		success : function(result){
+			if(result == 'true'){
+				alert("카트 담기 성공");
+				$('#qty').val(1);	
+			} else{
+				alert("회원만 사용할 수 있습니다.");
+			}
+			
+		}, error : function(){
+			alert("카트 담기 실패");
+		}
+	}); // End ajax
+	
+	
+}
 
 
+
+
+//바로 구매하기
+//$('#buy_btn').on("click", function(){
+	function buyBtn(){	
+	$('#buyForm').attr("action","/purchase/preOneBuy");
+	$('#buyForm').submit();
+	}
+//});
 
 
 

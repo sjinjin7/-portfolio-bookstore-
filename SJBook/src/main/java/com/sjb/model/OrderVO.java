@@ -56,6 +56,9 @@ public class OrderVO {
 	//제품상세
 	private List<OrderDetailVO> oDetail;
 	
+	//제품 개숫
+	private int amount;
+	
 	
 	
 	public int getOrderId() {
@@ -195,17 +198,25 @@ public class OrderVO {
 		this.getPoint = getPoint;
 	}
 
+	public int getAmount() {
+		return amount;
+	}
+
+	public void setAmount(int amount) {
+		this.amount = amount;
+	}
+
 	@Override
 	public String toString() {
 		return "OrderVO [orderId=" + orderId + ", memberId=" + memberId + ", orderRec=" + orderRec + ", memberAddr1="
 				+ memberAddr1 + ", memberAddr2=" + memberAddr2 + ", memberAddr3=" + memberAddr3 + ", orderPhone="
 				+ orderPhone + ", orderDate=" + orderDate + ", shipPrice=" + shipPrice + ", totalPrice=" + totalPrice
 				+ ", usePoint=" + usePoint + ", getPoint=" + getPoint + ", orderState=" + orderState + ", shipDate="
-				+ shipDate + ", clearDate=" + clearDate + ", cartId=" + cartId + ", oDetail=" + oDetail + "]";
+				+ shipDate + ", clearDate=" + clearDate + ", cartId=" + cartId + ", oDetail=" + oDetail + ", amount="
+				+ amount + "]";
 	}
 
 	
-
 	
 	
 	

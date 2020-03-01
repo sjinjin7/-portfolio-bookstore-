@@ -70,7 +70,7 @@
 						<li id="main_nav_2"><a href="/admin/bookEnroll">상품 등록</a></li>
 						<li id="main_nav_3"><a href="/admin/authorList">작가 목록</a></li>
 						<li id="main_nav_3"><a href="/admin/authorEnroll">작가 등록</a></li>
-						<li id="main_nav_4"><a href="/admin/authorEnroll">주문 목록</a></li>
+						<li id="main_nav_5"><a href="/admin/orderList">주문 목록</a></li>
 					</ul>
 				</div>
 			</div>

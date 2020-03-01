@@ -390,6 +390,33 @@ main_list_head_col2{
     background-color: #fbfbfb;	
 }
 
+/* 마일리지 모두사용/ 취소버튼 */
+#point_btn1{
+	display: inline-block;
+    width: 85px;
+    border: 1.5px solid black;
+    height: 30px;
+    text-align: center;
+    line-height: 28px;
+    font-weight: 900;
+    border-radius: 4px;
+    background-color: #eae2e2;
+    cursor: pointer;
+}
+#point_btn2{
+	display: inline-block;
+    width: 85px;
+    border: 1.5px solid black;
+    height: 30px;
+    text-align: center;
+    line-height: 28px;
+    font-weight: 900;
+    border-radius: 4px;
+    background-color: #eae2e2;
+    cursor: pointer;
+}
+
+
 /* 결제수탄 선택 */
 #main_buy{
 	margin-top : 50px;
@@ -449,6 +476,15 @@ main_list_head_col2{
 #final_buy_check{
 	padding: 20px 20px;
 	border-top: 1px solid #ddd;
+}
+#final_buy_check>input[type="checkbox"] {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+#final_buy_check>strong{
+	color: #c33838;
+	font-size: 25px;
 }
 #final_buy_button{
 	padding: 20px 20px;

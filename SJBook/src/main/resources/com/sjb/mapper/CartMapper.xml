@@ -8,6 +8,9 @@
  <!-- 테스트 -->
  <insert id="cartEnroll">
 	insert into sjb_cart(productId, memberId, cartStock, addDate ) values(#{productId}, #{memberId}, #{cartStock}, sysdate());
+	<selectKey resultType="int" keyProperty="cartId" order="AFTER">
+        SELECT LAST_INSERT_ID()        
+    </selectKey> 	
  </insert>
 
 

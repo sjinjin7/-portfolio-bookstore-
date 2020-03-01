@@ -15,6 +15,9 @@ a{
 	text-decoration: none;
 	clolr: #666;
 }
+ a:link { color: black; text-decoration: none;}
+ a:visited { color: black; text-decoration: none;}
+ a:hover { color: black; text-decoration: underline;}
 
 /* 1920 1200 1024 968 */
 #wrap{
@@ -194,10 +197,12 @@ a{
 }
 .col2{
 	padding: 10px 10px;
+	
 }
 .col2>a{
-	line-height: 30px;
-	
+	line-height: 35px;
+	margin-right: 40px;
+	display : inline-block;
 }
 .open{
 	position: absolute;

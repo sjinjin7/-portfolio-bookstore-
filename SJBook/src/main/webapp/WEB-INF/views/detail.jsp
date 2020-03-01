@@ -170,8 +170,19 @@ function starView(i){
 				<div id="purchase_money2">판매가 : <span><fmt:formatNumber value="${bd.discountPrice }" pattern="#,###"/></span> <strong>원 [${bd.discountRate}%, ${dc }할인]</strong></div><br>
 				<div id="purchase_point">적립포인트 : <fmt:formatNumber value="${bd.bookPoint}" pattern="#,###"/> point</div><br>
 				<div id="purchase_btn">
-					<a id="cart_btn">장바구니 담기</a>
-					<a id="buy_btn">바로 구매</a> 
+					<form method="post" id="buyForm">
+					<span class="btn_count">
+						<input type="hidden" name="productId" id="productID" value="${bd.productID}">
+						<label><strong>수량</strong>  
+							<input type="text" value="1" maxlength="3" id="qty" class="input_style02" name="cartStock" readonly="readonly">
+						</label>
+						<a class="btn_plus" id="btn_plus">수량 더하기</a>
+						<a class="btn_minus" id="btn_minus">수량 빼기</a>
+						
+					</span>
+					<a id="cart_btn" href="javascript:cartEnroll()">장바구니 담기</a>
+					<a id="buy_btn" href="javascript:buyBtn()">바로 구매</a>
+					</form> 
 				</div>
 			</div>
 			
@@ -502,7 +513,28 @@ function starView(i){
 	})();// end function
 	
 	
-	
+	//구매하기 실패시
+	$(function(){
+		
+			var buyResult = ${buyFail};
+			//alert(buyResult);
+			//alert(typeof(buyResult));
+			//buyResult = String(buyResult);
+			//alert(buyResult);
+			//alert(typeof(buyResult));
+		 
+			
+			
+	        if(buyResult == 1){
+	            alert("로그인 후 구매가능합니다.");
+	        }	
+			
+		
+		
+    }); 
+
+
+
 	
 	
 	

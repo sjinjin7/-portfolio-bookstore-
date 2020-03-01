@@ -93,7 +93,7 @@ $(document).ready(function(){
 		
 	}
 	
-	
+	//카트등록
 	function cartEnroll(i){
 		var productId = $("#productId"+i).val()
 		//id="table_image${i}"
@@ -125,6 +125,19 @@ $(document).ready(function(){
 		
 		
 	}
+	
+	
+	//바로구매
+	function preBuy(i){
+		//alert("연결"+i);
+		$('#buy_form'+i).attr("action","/purchase/preOneBuy");
+		$('#buy_form'+i).submit();
+		
+		
+	}
+	
+	
+	
 	
 	
 /*스크롤 최상단*/	

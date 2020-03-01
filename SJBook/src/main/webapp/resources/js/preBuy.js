@@ -1,6 +1,31 @@
 $(document).ready(function(){
 	//alert("연결");
 	
+	
+	//구매버튼 
+	$("#final_buy_button button").on("click",function(e){
+		e.preventDefault()
+		//alert("연결");
+		$(this).css("disabled", "false");
+		
+		var finalck = false;
+		
+		
+		var check = $('#final_buy_check>input').prop("checked");
+		//alert(check);
+		if(check){
+			$('#buy_form').submit();
+		} else {
+			alert("주문내역 확인 동의를 체크해주세요.")
+		}
+		
+		
+	});
+	
+
+	
+	
+	
 	//검색 종류 선택
 	$('.keyword_box>select').on("change", function(){
 		var val = $(this).val();
@@ -147,10 +172,16 @@ $(document).ready(function(){
 			$(".sale_price>input").val(inValue);
 			
 			var totalPrice = $("#titalPriceInput").val();
-			
+			totalPrice = parseInt(totalPrice);
+			//alert("기존가격" + totalPrice);
 			var shipPrice = $(".shipPrice input").val();
+			shipPrice = parseInt(shipPrice);
+			//alert("배송가격" + shipPrice);
 			var sale_price = $(".sale_price input").val();
+			sale_price = parseInt(sale_price);
+			//alert("할인가격" + sale_price);
 			var finalTotalPrice = totalPrice + shipPrice - sale_price;
+			//alert("마지막 가격" + finalTotalPrice);
 			var IntegerTotalPrice = parseInt(finalTotalPrice)
 			//alert("totalPrice :"+ totalPrice);
 			//alert("shipPrice : " + shipPrice);
@@ -165,17 +196,26 @@ $(document).ready(function(){
 		//모두사용버튼
 		$('#point_btn1').on('click',function(){
 			var inValue = $("#point_input").val();
+			var ownValue = $("#ownPoint").val();
 			$('#point_btn1').css("display", "none");
 			$('#point_btn2').css("display","inline-block");
-			$("#point_input").val($('#ownPoint').val());
-			$(".sale_price>#label_result>#number").html(inValue);
-			$(".sale_price>input").val(inValue);
+			$("#point_input").val(ownValue);
+			$(".sale_price>#label_result>#number").html(ownValue);
+			$(".sale_price>input").val(ownValue);
 			
 			var totalPrice = $("#titalPriceInput").val();
 			
+			var totalPrice = $("#titalPriceInput").val();
+			totalPrice = parseInt(totalPrice);
+			//alert("기존가격" + totalPrice);
 			var shipPrice = $(".shipPrice input").val();
+			shipPrice = parseInt(shipPrice);
+			//alert("배송가격" + shipPrice);
 			var sale_price = $(".sale_price input").val();
+			sale_price = parseInt(sale_price);
+			//alert("할인가격" + sale_price);
 			var finalTotalPrice = totalPrice + shipPrice - sale_price;
+			//alert("마지막 가격" + finalTotalPrice);
 			var IntegerTotalPrice = parseInt(finalTotalPrice)
 			//alert("totalPrice :"+ totalPrice);
 			//alert("shipPrice : " + shipPrice);
@@ -191,14 +231,22 @@ $(document).ready(function(){
 			$('#point_btn1').css("display", "inline-block");
 			$('#point_btn2').css("display","none");
 			$("#point_input").val(0);
-			$(".sale_price>#label_result>#number").html(inValue);
-			$(".sale_price>input").val(inValue);
+			$(".sale_price>#label_result>#number").html(0);
+			$(".sale_price>input").val(0);
 			
 			var totalPrice = $("#titalPriceInput").val();
 			
+			var totalPrice = $("#titalPriceInput").val();
+			totalPrice = parseInt(totalPrice);
+			//alert("기존가격" + totalPrice);
 			var shipPrice = $(".shipPrice input").val();
+			shipPrice = parseInt(shipPrice);
+			//alert("배송가격" + shipPrice);
 			var sale_price = $(".sale_price input").val();
+			sale_price = parseInt(sale_price);
+			//alert("할인가격" + sale_price);
 			var finalTotalPrice = totalPrice + shipPrice - sale_price;
+			//alert("마지막 가격" + finalTotalPrice);
 			var IntegerTotalPrice = parseInt(finalTotalPrice)
 			//alert("totalPrice :"+ totalPrice);
 			//alert("shipPrice : " + shipPrice);

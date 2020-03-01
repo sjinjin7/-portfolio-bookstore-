@@ -264,6 +264,55 @@ a{
 }
 
 
+/* 수량조절 */
+.btn_count{
+	display : inline-block;
+	vertical-align:middle;
+	height:29px;
+	position : relative;
+	font-size: 14px;
+	padding-right: 15px;
+	padding-left: 10px;
+	margin-right : 50px;
+}
+.btn_count>label>input{
+	text-align : center;
+	font-size:11px;
+	//border-color : #c6c6c6;
+	height : 27px;
+	width: 60px;
+	border : 1px solid #c6c6c6;
+	margin-left: 10px;
+	
+}
+.btn_count .btn_plus{
+	position : absolute;
+	top : 0;
+	right:0;
+	border : 1px solid #c6c6c6;
+	width:13px;
+	height:13px;
+	font-size:0;
+	color:transparent;
+	background: url(https://simage.kyobobook.co.kr/ink/images/common/icon_quantity_up.gif) no-repeat;
+	padding-left: 1px;
+	cursor: pointer;
+}
+
+.btn_count .btn_minus{
+	position : absolute;
+	bottom : 0;
+	right:0;
+	border : 1px solid #c6c6c6;
+	width:13px;
+	height:13px;
+	font-size:0;
+	color:transparent;
+	background: url(https://simage.kyobobook.co.kr/ink/images/common/icon_quantity_down.gif) no-repeat;
+	padding-left: 1px;
+	cursor: pointer;
+}
+
 
 
 

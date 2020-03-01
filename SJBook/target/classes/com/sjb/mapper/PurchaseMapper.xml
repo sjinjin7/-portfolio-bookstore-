@@ -33,6 +33,12 @@
 <update id="deductionMoney">
 	update sjb_member set money = money - #{totalPrice} - #{shipPrice}
 	
+	<if test="usePoint != null">
+	
+		+ #{usePoint}
+		
+	</if>
+	
 	, point = point  + #{getPoint}
 	 
 	<if test="usePoint != null">

@@ -4,7 +4,9 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.List;
+import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.support.RequestContextUtils;
 
 import com.sjb.model.BookCoverVO;
 import com.sjb.model.BookVO;
@@ -188,9 +191,23 @@ public class BookController {
 	}
 	
 	@RequestMapping("detail")
-	public String detailGET(int num, Model model) throws Exception{
+	public String detailGET(int num, Model model, HttpServletRequest request) throws Exception{
+		
+		 Map<String, ?> redirectMap = RequestContextUtils.getInputFlashMap(request);
+		 String result = "0";
+		 if(redirectMap != null) {
+			 System.out.println(redirectMap.get("buyFail"));
+			 result = (String)redirectMap.get("buyFail");
+			 System.out.println("result : " + result);
+			model.addAttribute("buyFail", result);
+		 } else {
+			 
+			 model.addAttribute("buyFail", result);
+		 }
+		
 		System.out.println("제품 상세(detailGET....) 실행");
 		model.addAttribute("bd", bookservice.bookDetail(num));
+		
 		return "detail";
 	}
 	//상품 상세 리뷰(댓글 및 평점)

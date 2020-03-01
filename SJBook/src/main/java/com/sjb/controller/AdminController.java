@@ -593,5 +593,14 @@ public class AdminController {
 			return "redirect:/admin/authorList";
 		}
 		
+		
+	//주문 목록 페이지
+	@RequestMapping(value="/orderList", method=RequestMethod.GET)
+	public void orderListGET() throws Exception{
+		
+	}
+		
+		
+		
 	
 }

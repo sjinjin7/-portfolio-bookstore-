@@ -69,7 +69,7 @@
 						</th>
 						<td class="col2">
 							<a href="/search?keyword=${page.cri.keyword}&cateCode=001">소설</a>
-							<a href="/search?keyword=${page.cri.keyword}&cateCode=002">시/에세이${pagingId }</a>
+							<a href="/search?keyword=${page.cri.keyword}&cateCode=002">시/에세이</a>
 							<a href="/search?keyword=${page.cri.keyword}&cateCode=003">경제/경영</a>
 							<a href="/search?keyword=${page.cri.keyword}&cateCode=004">자기계발</a>
 							<a href="/search?keyword=${page.cri.keyword}&cateCode=005">인문</a>
@@ -170,24 +170,26 @@
 									
 								</td>
 								<td id="table_info3">
-									<div class="check">
-										<!-- <input type="checkbox" name="indexCnt" value="1" class="checkbox" title="이 상품을 선택"> -->
-										<span class="btn_count">
-											<label><strong>수량</strong>  
-												<input type="text" name="qty" value="1" maxlength="3" id="qty${i}" class="input_style02" name="cartStock" readonly="readonly">
-											</label>
-											<a class="btn_plus" id="btn_plus${i}">수량 더하기</a>
-											<a class="btn_minus" id="btn_minus${i}">수량 빼기</a>
-											
-										</span>
-									</div>
-									
-									<div class="button">
-										<input type="hidden" id="productId${i}" class="productID" value="${book.productID}">
-										<a href="javascript:cartEnroll('${i}');" class="btn_blue">장바구니 담기</a>
-										<a href="javascript:goDirectOrder(document.searchFrm5, 0);" class="btn_blue2">바로구매</a>
-										<!-- <a href="javascript:goAddWishOneSrc(document.searchFrm5,0);" class="btn_small">보관함 담기</a> -->
-									</div>
+									<form id="buy_form${i}" method="post">
+										<div class="check">
+											<!-- <input type="checkbox" name="indexCnt" value="1" class="checkbox" title="이 상품을 선택"> -->
+											<span class="btn_count">
+												<label><strong>수량</strong>  
+													<input type="text" value="1" maxlength="3" id="qty${i}" class="input_style02" name="cartStock" readonly="readonly">
+												</label>
+												<a class="btn_plus" id="btn_plus${i}">수량 더하기</a>
+												<a class="btn_minus" id="btn_minus${i}">수량 빼기</a>
+												
+											</span>
+										</div>
+										
+										<div class="button">
+											<input type="hidden" id="productId${i}" class="productID" value="${book.productID}">
+											<a href="javascript:cartEnroll('${i}');" class="btn_blue">장바구니 담기</a>
+											<%-- <a href="javascript:preBuy('${i}');" class="btn_blue2">바로구매</a> --%>
+											<!-- <a href="javascript:goAddWishOneSrc(document.searchFrm5,0);" class="btn_small">보관함 담기</a> -->
+										</div>
+									</form>
 								</td>
 							</tr>
 							<script>

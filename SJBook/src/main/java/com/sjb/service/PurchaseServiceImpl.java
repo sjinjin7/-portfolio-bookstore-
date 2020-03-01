@@ -30,11 +30,20 @@ public class PurchaseServiceImpl implements PurchaseService{
 		System.out.println("cartId  :   "+ order.getCartId().get(0));
 		/* System.out.println("cartId  :   "+ order.getCartId().get(1)); */
 		System.out.println("memberId  :   "+ order.getmemberId());
+		
+		
 		// 장바구니 삭제
-		order.getCartId().forEach(cartId ->{
-			buymapper.cartDelete(cartId); 
-			System.out.println("forEach" + cartId);
-		});
+		List<Integer> cart = order.getCartId();
+		System.out.println("cartID존재? : " + cart);
+		if(!cart.isEmpty()) {
+		
+			order.getCartId().forEach(cartId ->{
+				buymapper.cartDelete(cartId); 
+				System.out.println("forEach" + cartId);
+			});
+		
+		}
+		
 		// 주문제품 구입비용 차감
 		System.out.println("구입 비용" + order.getTotalPrice());
 		buymapper.deductionMoney(order);
