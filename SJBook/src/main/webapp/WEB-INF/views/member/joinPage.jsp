@@ -28,15 +28,19 @@
 				<div id="top_1_id"><input type="text" name="memberId" id="memberId"></div>
 				<span id="top_1_id_re">사용가능한 아이디입니다.</span>
 				<span id="top_1_id_re2">중복된 아이디입니다.</span>
+				<span id="final_id_ck">아이디를 입력해주세요.</span>
 			</div>
 				
 			<div id="top_2">
 				<h3>비밀번호</h3>
-				<div id="top_2_pw"><input type="text" name="memberPw"></div>
+				<div id="top_2_pw"><input type="password" name="memberPw" id="memberPw"></div>
 				<span id="top_2_pw_re"></span>
+				<span id="final_pw_ck">비멀번호를 입력해주세요.</span>
 				<h3>비밀번호 재확인</h3>
-				<div id="top_2_pwc"><input type="text"></div>
-				<span id="top_2_pwc_re"></span>
+				<div id="top_2_pwc"><input type="password" id="memberPw2"></div>
+				<span id="top_2_pwc_re">비밀번호가 일치합니다.</span>
+				<span id="top_2_pwc_re2">비밀번호가 일치하지 않습니다.</span>
+				<span id="final_pwck_ck">비멀번호 제확인을 입력해주세요.</span>
 			</div>
 			
 		</div>
@@ -44,8 +48,9 @@
 		<div id="mid">
 			<div id="mid_name">
 				<h3>이름</h3>
-				<div id="top_1_id"><input type="text" name="memberName"></div>
+				<div id="top_1_id"><input type="text" name="memberName" id="memberName"></div>
 				<span id="top_1_id_re"></span>
+				<span id="final_name_ck">이름을 입력해주세요.</span>
 			</div>
 			<div id="mid_birth">
 				<h3>생년월일</h3>
@@ -68,23 +73,34 @@
 							<option value="11">11</option>
 							<option value="12">12</option>
 						</select>
+						
 					</div>
 					<div id="mid_birth_in_dd">
 						<input type="text" id="birth3" name="birthD" value="">
-						
 					</div>
 				</div>
+				<span id="final_birth_ck">생년월일을 입력해주세요.</span>
 			</div>
 			<div id="mid_gender">
 				<h3>성별</h3>
-				<div id="mid_gender_in"><input type="text" name="memberGender"></div>
+				<select name="memberGender" id="mid_gender_select">
+					<option value="남">남</option>
+					<option value="여">여</option>
+				</select>
+				<!-- 
+				<div id="mid_gender_in">
+				
+				<input type="text" name="memberGender">
+				</div>
+				 -->
 			</div>
 			<div id="mid_phon">
 				<h3>휴대전화번호</h3>
 				<div id="mid_phon_in">
-					<input type="text" name="memberPhone">
+					<input type="text" name="memberPhone" id="memberPhone" placeholder="'-'없이 입력해주세요.">
 					
 				</div>
+				<span id="final_phone_ck">휴대폰번호를 입력해주세요.</span>
 			</div>
 	
 	
@@ -102,6 +118,8 @@
 			<span id="mail_err" style="display:none;"> </span>
 			<span id="mail_msg" style="display:none;"></span>
 			<span id="code" style="display:none;"></span>
+			<input id="mail_result" type="hidden">
+			<span id="final_mail_ck">이메일 인증을 진행해주세요.</span>
 		</div>
 		<!-- 주소 ,api랑 함게하기-->
 		<div id="bot">
@@ -113,12 +131,13 @@
 				</div>
 				<div id="clearfix"></div>
 				<div id="bot_add_in2">
-					<input type="text" name="memberAddr2" readonly="readonly">				
+					<input type="text" name="memberAddr2" id="memberAddr2" readonly="readonly">				
 				</div>
 				<div id="bot_add_in3">
-					<input type="text" name="memberAddr3">
+					<input type="text" name="memberAddr3" id="memberAddr3">
 				</div>
 			</div>
+			<span id="final_addr_ck">주소를 입력해주세요.</span>
 		</div>
 		<input type="hidden" id="memberBith" name="memberBith">
 	</form>

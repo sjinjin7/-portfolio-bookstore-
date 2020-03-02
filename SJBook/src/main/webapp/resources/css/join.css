@@ -55,6 +55,10 @@
 	color : red;
 	display:none;
 }
+#final_id_ck{
+	color : red;
+	display:none;
+}
 
 
 
@@ -78,6 +82,11 @@
 	weight:100%;
 	//background-color: purple;
 }
+#final_pw_ck{
+	color : red;
+	display:none;	
+}
+
 #top_2_pwc{
 	
 	border: 1px solid black;
@@ -90,9 +99,18 @@
 	border:none;
 }
 #top_2_pwc_re{
-	weight:100%;
-	//background-color: purple;
+	color : green;
+	display: none;
 }
+#top_2_pwc_re2{
+	color : red;
+	display:none;
+}
+#final_pwck_ck{
+	color : red;
+	display:none;	
+}
+
 
 
 #top_2{
@@ -114,6 +132,12 @@
 #mid_name h3{
 	margin-top: 10px;
 }
+#final_name_ck{
+	color : red;
+	display: none;
+}
+
+
 #mid_birth{
 	
 }
@@ -163,6 +187,11 @@
 	height:100%;
 	border:none;
 }
+#final_birth_ck{
+	color : red;
+	display : none;
+}
+
 
 #mid_gender{
 	height: 75px;
@@ -170,6 +199,15 @@
 #mid_gender h3{
 	margin-top: 10px;
 }
+#mid_gender_select{
+	border: 1px solid black;
+    height: 53px;
+    width: 600px;
+    margin-top: 10px;
+    font-size: 20px;
+    padding-left: 10px;
+}
+
 #mid_gender_in{
 	border: 1px solid black;
 	height: 31px;
@@ -200,7 +238,14 @@
 	width:100%;
 	height:100%;
 	border:none;
+	font-size : 20px;
 }
+
+#final_phone_ck{
+	color : red;
+	display : none;
+}
+
 
 /* #mid_phon_in_a{
 	border: 1px solid black;
@@ -301,6 +346,10 @@
 #mid_mail_clear{
 	clear:both;
 }
+#final_mail_ck{
+	color : red;
+	display : none;
+}
 
 #join_button{
 	margin-top:30px;
@@ -398,10 +447,14 @@ join_button:active{
 	border:none;
 }
 
-#{
-	
-	
+#final_addr_ck{
+	color : red;
+	display : none;
 }
+
+
+
+
 #clearfix{
 	clear:both;
 	

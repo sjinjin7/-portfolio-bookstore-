@@ -11,14 +11,7 @@ function join_click(result){
 	
 }
 */
-	var idcheck = false;
-	var pwcheck = false;
-	var pwckcheck = false;
-	var namecheck = false;
-	var birthcheck = false;
-	var gendercheck = false;
-	var emailcheck = false;
-	var addresscheck = false;
+
 
 	
 $(document).ready(function(){
@@ -47,6 +40,28 @@ $(document).ready(function(){
 		
 	});	
 
+	//비밀번호 재확인 유효성검사
+	$('#memberPw2').on("propertychange change keyup paste input",function(){
+	
+			var originPw = $('#memberPw').val();
+			var checkPw = $('#memberPw2').val();
+			
+			if(originPw == checkPw){
+				$('#top_2_pwc_re').css("display","inline-block");
+				$('#top_2_pwc_re2').css("display","none");
+			} else{
+				$('#top_2_pwc_re').css("display","none");
+				$('#top_2_pwc_re2').css("display","inline-block");
+			}
+		
+		
+	});
+	
+	
+	
+	
+	
+	
 	// 인증번호받기
 	
 	$("#mid_mail_check_button").click(function(){
@@ -106,9 +121,11 @@ $(document).ready(function(){
 		if(incode == checkcode){
 			mailMsg.html("인증이 완료되었습니다.");
 			mailMsg.attr("class","correct");
+			$('#mail_result').val("true");
 		} else{
 			mailMsg.html("인증번호를 다시 확인해주세요.")
 			mailMsg.attr("class","incorrect");
+			$('#mail_result').val("false");
 		}
 		
 		
@@ -135,14 +152,125 @@ $(document).ready(function(){
 	//가입하기 버튼 빈칸 유효성검사(최종)
 	
 	//alert("연결");
+	/*
 	$("button[type='submit']").click(function(){
-	//alert("클릭");
-	$("form[id='form1']").attr("action","/member/join");
-	$("form[id='form1']").submit();
-});
+		//alert("클릭");
+		$("form[id='form1']").attr("action","/member/join");
+		$("form[id='form1']").submit();
+	});
+	*/
 	
-	
-	
+	//가입하기 최종 유효성검사
+	$("button[type='submit']").on("click",function(){
+		//e.prevnetDefault();
+		
+		//유효성과 검사 통과유뮤
+		var idcheck = false;
+		var pwcheck = false;
+		var pwckcheck = false;
+		var namecheck = false;
+		var birthcheck = false;
+		var phonecheck = false;
+		var emailcheck = false;
+		var addresscheck = false;
+		
+		//alert("연결");
+		var id = $('#memberId').val();
+		var pw = $('#memberPw').val();
+		var pwck = $('#memberPw2').val();
+		var name = $('#memberName').val();
+		var birth1 = $('#birth1').val();
+		var birth3 = $('#birth3').val();
+		var phone = $('#memberPhone').val();
+		var email = $('#mail_result').val();
+		var memberAddr2 = $('#memberAddr2').val();
+		var memberAddr3 = $('#memberAddr3').val();
+		
+		$("form[id='form1']").css('disabled','false');
+		
+		//아이디 유효성검사
+		if(id == ""){
+			$('#final_id_ck').css('display','block');
+		} else{
+			$('#id_check').css('display','none');
+			idcheck = true;
+		}
+		
+		//비번 유효성검사
+		if(pw == ""){
+			$('#final_pw_ck').css('display','block');
+		} else {
+			$('#final_pw_ck').css('display','none');
+			pwcheck = true;
+		}
+		
+		//비번 재확인 유효성검사
+		if(pw == ""){
+			$('#final_pwck_ck').css('display','block');
+		} else {
+			$('#final_pwck_ck').css('display','none');
+			pwckcheck = true;
+		}
+		
+		
+		//이름 유효성 검사
+		if(name == ""){
+			$('#final_name_ck').css('display','block');
+		} else {
+			$('#final_name_ck').css('display','none');
+			namecheck = true;
+		}
+		
+		// 생년월일 유효성검사
+		if(birth1 != "" && birth3 != ""){
+			$('#final_birth_ck').css('display','none');
+			birthcheck = true;
+		} else {
+			$('#final_birth_ck').css('display','block');
+		}
+		
+		// 휴대전화번호
+		if(phone == ""){
+			$('#final_phone_ck').css('display','block');
+		} else {
+			$('#final_phone_ck').css('display','none');
+			phonecheck = true;
+		}
+		
+		//이메일 인증 유효성검사
+		if(email == "true"){
+			$('#final_mail_ck').css('display','none');
+			emailcheck = true;
+		} else {
+			$('#final_mail_ck').css('display','block');
+		}
+		
+		
+		//주소록 유효성검사
+		if(memberAddr2 != "" && memberAddr3 != ""){
+			$('#final_addr_ck').css('display','none');
+			addresscheck = true;
+		} else {
+			$('#final_addr_ck').css('display','block');
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		if(idcheck&&pwcheck&&pwckcheck&&namecheck&&birthcheck&&phonecheck&&emailcheck&&addresscheck){
+			//유효성 검사 통과 및 실행
+			$("form[id='form1']").attr("action","/member/join");
+			$("form[id='form1']").submit();		
+		}
+		 
+		$("form[id='form1']").css('disabled','true');
+		return false;
+
+	});
 	
 	
 });
