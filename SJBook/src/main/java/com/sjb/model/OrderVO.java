@@ -41,8 +41,11 @@ public class OrderVO {
 	//구매로 인한 획득 포인트
 	private int getPoint;
 	
-	//주문 상태
+	//주문 상태(번호)
 	private int orderState;
+	
+	//주문 상태
+	private String state;
 	
 	//배송날자
 	private String shipDate;
@@ -58,6 +61,9 @@ public class OrderVO {
 	
 	//제품 개숫
 	private int amount;
+	
+	//제품 종류
+	private int kinds;
 	
 	
 	
@@ -205,16 +211,39 @@ public class OrderVO {
 	public void setAmount(int amount) {
 		this.amount = amount;
 	}
+	
+	
+
+	public int getKinds() {
+		return kinds;
+	}
+
+	public void setKinds(int kinds) {
+		this.kinds = kinds;
+	}
+
+	
+	
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
 
 	@Override
 	public String toString() {
 		return "OrderVO [orderId=" + orderId + ", memberId=" + memberId + ", orderRec=" + orderRec + ", memberAddr1="
 				+ memberAddr1 + ", memberAddr2=" + memberAddr2 + ", memberAddr3=" + memberAddr3 + ", orderPhone="
 				+ orderPhone + ", orderDate=" + orderDate + ", shipPrice=" + shipPrice + ", totalPrice=" + totalPrice
-				+ ", usePoint=" + usePoint + ", getPoint=" + getPoint + ", orderState=" + orderState + ", shipDate="
-				+ shipDate + ", clearDate=" + clearDate + ", cartId=" + cartId + ", oDetail=" + oDetail + ", amount="
-				+ amount + "]";
+				+ ", usePoint=" + usePoint + ", getPoint=" + getPoint + ", orderState=" + orderState + ", state="
+				+ state + ", shipDate=" + shipDate + ", clearDate=" + clearDate + ", cartId=" + cartId + ", oDetail="
+				+ oDetail + ", amount=" + amount + ", kinds=" + kinds + "]";
 	}
+
+	
+
 
 	
 	

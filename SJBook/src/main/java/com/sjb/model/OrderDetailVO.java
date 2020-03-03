@@ -11,6 +11,10 @@ public class OrderDetailVO {
 	// 제품 번호
 	private int productId;
 	
+	// 제품이름
+	private String productName;
+	
+	
 	// 수량
 	private int amount;
 
@@ -46,11 +50,20 @@ public class OrderDetailVO {
 		this.amount = amount;
 	}
 
+	public String getProductName() {
+		return productName;
+	}
+
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+
 	@Override
 	public String toString() {
 		return "OrderDetailVO [orderDetailId=" + orderDetailId + ", orderId=" + orderId + ", productId=" + productId
-				+ ", amount=" + amount + "]";
+				+ ", productName=" + productName + ", amount=" + amount + "]";
 	}
+
 	
 	
 }

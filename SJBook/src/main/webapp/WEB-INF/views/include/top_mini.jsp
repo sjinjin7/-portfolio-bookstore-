@@ -26,7 +26,7 @@
 								});//function 끝
 							});
 					</script>
-					<li><a href="myRoom/main">마이룸</a></li>
+					<li><a href="myRoom/mainPaging">마이룸</a></li>
 					<li><a href="cart">장바구니</a></li>
 				</c:if>
 				

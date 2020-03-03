@@ -16,6 +16,9 @@ public class Criteria {
 		// 제품 작가 이름
 		private String authorName;
 		
+		// 회원 아이디
+		private String memberId;
+		
 		public String getKeyword() {
 			return keyword;
 		}
@@ -68,11 +71,20 @@ public class Criteria {
 			this.authorName = authorName;
 		}
 
+		public String getMemberId() {
+			return memberId;
+		}
+
+		public void setMemberId(String memberId) {
+			this.memberId = memberId;
+		}
+
 		@Override
 		public String toString() {
 			return "Criteria [pageNum=" + pageNum + ", amount=" + amount + ", keyword=" + keyword + ", cateCode="
-					+ cateCode + ", authorName=" + authorName + "]";
+					+ cateCode + ", authorName=" + authorName + ", memberId=" + memberId + "]";
 		}
+
 
 		
 		
