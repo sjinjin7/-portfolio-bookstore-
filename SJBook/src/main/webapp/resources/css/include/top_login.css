@@ -9,10 +9,17 @@
 	background-color:#b76c8f;
 	text-align: center;
 	border-radius:10px;
+	position : relative;
 }
 #top_1_login_button a{
 	width:100%;
 	height:100%;
+}
+#join_buttion{
+	position: absolute;
+    top: 59px;
+    left: 2px;
+
 }
 #top_1_login_info{
     width: 420px;

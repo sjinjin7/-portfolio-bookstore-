@@ -35,7 +35,7 @@
 			<c:if test="${result == 0}">
 			<div id="loginWarn"><strong>사용자 ID</strong> 또는 <strong>비밀번호</strong>를 잘못 입력하셨습니다.</div>
 			</c:if>
-			<div id="main_check"><p>로그인상태유지</p> </div>
+			<!-- <div id="main_check"><p>로그인상태유지</p> </div> -->
 		</div>
 	</div>
 	</form>
@@ -43,8 +43,8 @@
 		<div id="main_link">
 			<ul>
 				<li><a href="member/joinPage">회원가입</a></li>
-				<li>아이디찾기</li>
-				<li>비밀번호 찾기</li>
+				<!-- <li>아이디찾기</li>
+				<li>비밀번호 찾기</li> -->
 			</ul>
 		</div>
 		<div id="main_bottom_1">

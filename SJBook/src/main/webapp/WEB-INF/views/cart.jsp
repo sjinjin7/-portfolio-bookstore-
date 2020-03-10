@@ -77,7 +77,7 @@
 					</script>
 				</div>
 				<div id="del_btn">
-					<button type="button" class="selectDelete_btn">전체삭제</button>
+					<button type="button" class="selectDelete_btn">선택삭제</button>
 					<script>
 						$(".selectDelete_btn").click(function(){
 							var confirm_val = confirm("전체 삭제하시겠습니까?");
@@ -415,7 +415,7 @@
 											$("#ship_price").html(0);
 										} else{
 											shipprice = 2000;
-											$("#ship_price").html(2,000);	
+											$("#ship_price").html("2,000");	
 										}
 										 total = priceTotal + shipprice;
 										 $("#final_total").html(total.toLocaleString());

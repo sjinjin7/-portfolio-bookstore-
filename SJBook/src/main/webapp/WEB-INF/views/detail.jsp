@@ -257,11 +257,12 @@ function starView(i){
 							type : "post",
 							data : data,
 							success : function(result){
-								alert(typeof(result));
-								alert("result = " + result);
+								//alert(typeof(result));
+								//alert("result = " + result);
 								if(result == 'success'){
+									alert("댓글이 삭제되었습니다.");
 									replyListPaging();
-									
+									window.location.reload();
 									console(result);
 								} else if(result == 'fail'){
 									alert("작성자 본인만  삭제 할 수 있습니다.");

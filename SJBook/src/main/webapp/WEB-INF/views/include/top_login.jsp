@@ -4,7 +4,10 @@
     <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
     <link rel="stylesheet" href="../resources/css/include/top_login.css">
 				<c:if test="${member == null}">
-					<div id="top_1_login_button"><a href="loginMain"><h1>SJB로그인</h1></a></div>
+					<div id="top_1_login_button"><a href="loginMain"><h1>SJB로그인</h1></a>
+					<br>
+					<a href="member/joinPage" id="join_buttion">회원가입</a>
+					</div>
 				</c:if>
 				<c:if test="${member != null}">
 					<div id="top_1_login_info">

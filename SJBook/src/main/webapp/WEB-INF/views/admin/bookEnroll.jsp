@@ -126,12 +126,15 @@
 								<option value="028">잡지</option>
 								<option value="029">만화</option>
 							</select>
+							
 							<br>
 							<span id="main_content_1_1">출판일</span> <strong>:</strong>   
 							<input type="text" name="publeYear">
 							<br>
-							<p>! 책가격과 할인율 순서로 입력하여주세요.</p>
+							<p>"oooo-oo-oo 형식으로 입력 해주십시오.</p>
 							<br>
+							<br>
+							<p>! 책가격과 할인율 순서로 입력 해주십시오(할인가격과 적립포인트는 자동 입력됩니다.)</p>
 							<span id="main_content_1_1">책가격</span> <strong>:</strong>   
 							<input type="text" name="bookPrice" id="bookPrice" value="0"> 원 
 							
