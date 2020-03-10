@@ -28,25 +28,7 @@ $(document).ready(function(){
 		$('.open').css('display','block');
 		
 	});
-/*	
-	//수량업
-	
-		$("#btn_plus${i}").on('click', function(e){
-			var value = parseInt($('#qty${i}').val());
-			value = value + 1;
-			$('#qty${i}').val(value);
 
-
-		});
-
-	//수량 down
-	$(".btn_minus").on('click', function(e){
-		var value = $('input_style02').val();
-	});
-	
-	*/
-	
-	
 	
 	
 	
@@ -150,14 +132,4 @@ function scroll_Bottom(){
 };
 
 
-	
 
-
-/*
-		function valueUp(i){
-			//$("#qty"+i).val();
-			var value = parseInt($("#qty"+i).val())+1;
-			alert($("#qty"+i).val());
-		}
-
-*/

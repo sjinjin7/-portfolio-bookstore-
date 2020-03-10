@@ -139,6 +139,7 @@ a{
 	//background-color:#B5B2FF;
 }
 
+
 /* 상단 로그인버튼 */
 #top_1_login{
 	width: 460px;
@@ -207,15 +208,9 @@ a{
     height: 100%;
     display: inline-block;
 }
-#main_nav_5{
+#main_nav_3{
 	background-color: #ccc;
 }
-
-
-
-
-
-
 
 
 
@@ -248,13 +243,7 @@ a{
     margin-left: 30px;
 }
 
-#main_content_1{
-	width : 1000px;
-	//height : 980px;
-	//background-color: orange;
-	margin : auto;
-}
-
+/* 메인 테이블 */
 table{
     width: 1050px;
     margin: auto;
@@ -262,7 +251,6 @@ table{
     border-collapse: collapse;	
     margin-top : 20px;
 }
-
 thead{
 	border: 1px solid black;
 }
@@ -272,65 +260,67 @@ thead>tr {
     font-weight: bold;
     border-bottom: 1px solid black;
 }
-thead>tr>td{
-	border: 1px solid black;
+#th_td_year{
+	border-right: 1px solid black;
+    width: 14%;
+    border: 1px solid black;
 }
-#th_orderNum{
-	width : 10%;
+#th_td_info{
+	border-right: 1px solid black;
+    width: 45%;
+    
 }
-#th_orderYear{
-	width : 12%;
+#th_td_year{
+	
 }
-#th_orderName{
-	width : 20%;
+#th_td_btn{
+	
 }
-#th_orderInfo{
-	width : 35%;
+thead tr, td {
+    border: 1px solid black;
 }
-#th_orderState{
-	width : 12%;
-}
-
-
 tbody{
-	border : 1px solid #e0dada;
+	border: 1px solid #d0d0d0;
+}
+
+
+.tb_td_year{
 	text-align: center;
+    font-weight: bold;
+    border: 1px solid #d0d0d0;
 }
-tbody tr,td{
-	border : 1px solid #e0dada;
+.tb_td_info{
+	padding-left: 20px;
+	border: 1px solid #d0d0d0;
+	line-height: 30px;
+
 }
-tbody>tr{
-	height : 110px;
+.tb_td_state{
+	text-align : center;
+	border: 1px solid #d0d0d0;
+}
+.tb_td_btn{
+	text-align : center;
+	border: 1px solid #d0d0d0;
 }
 
-.tb_orderNum{
-	
-}
-.tb_orderYear{
-	
-}
-.tb_orderName{
-	
-}
-.tb_orderInfo{
-	
-}
-.tb_orderState{
-	
-}
-.tb_orderBtn{
-	
+
+tr{
+	height: 130px;
+    border: 1px solid #d0d0d0;
 }
 
 
 
 
-#main_content_2{
-	width: 1000px;
-    height: 100px;
+
+/* 제품 검색 */
+#book_searchBox{
+    width: 1050px;
     margin: auto;
+    height: 60px;
+    line-height: 58px;
     text-align: center;
-    line-height: 90px;
     font-size: 30px;
 }
 

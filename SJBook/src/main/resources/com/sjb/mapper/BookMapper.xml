@@ -234,33 +234,84 @@ insert into SJB_Book(title,publisher) values(#{title}, #{publisher});
 	
 	</update>
 	
+	
 	<!-- 작가 삭제 -->
 	<delete id="authorDel">
+	
 		delete from SJB_author where authorID = #{authorID};
+		
 	</delete>
+	
 	
 	<!-- 출간일 순 select -->
 	<select id="dateSelect" resultType="com.sjb.model.BookVO">
+	
 		select productID, title, 
 			authorID, (select authorName from sjb_author where sjb_book.authorID=sjb_author.authorID) as authorName, 
 			publisher, cateCode, (select cateName from sjb_bcate where sjb_book.cateCode=sjb_bcate.cateCode) as cateName,
 			bookCover, publeYear, likeStar, bookReply, bookPrice, discountRate, bookInfo, contents,
 			introImage,regdate,boardRegdate,modDate,bookStock, BookPoint, DiscountPrice
-		from sjb_book order by PubleYear desc limit 12; 
+		from sjb_book order by PubleYear desc limit 12;
+		 
 	</select>
+	
 	
 	<!-- 평점순 select -->
 	<select id="likeSelect" resultType="com.sjb.model.BookVO">
+	
 		select productID, title, 
 			authorID, (select authorName from sjb_author where sjb_book.authorID=sjb_author.authorID) as authorName, 
 			publisher, cateCode, (select cateName from sjb_bcate where sjb_book.cateCode=sjb_bcate.cateCode) as cateName,
 			bookCover, publeYear, likeStar, bookReply, bookPrice, discountRate, bookInfo, contents,
 			introImage,regdate,boardRegdate,modDate,bookStock, BookPoint, DiscountPrice
-		from sjb_book order by likeStar desc limit 12; 
+		from sjb_book order by likeStar desc limit 12;
+		 
 	</select>
 	
 	
 	
+	<!-- 관리자 페이지 주문목록 리스트 페이징 -->
+	<select id="orderList" resultType="com.sjb.model.OrderVO">
+	
+	
+	select * from
+	(select @rownum:=@rownum+1 as rownum, orderId, memberId, orderRec, memberAddr1, memberAddr2, memberAddr3, orderPhone, orderDate, shipPrice, totalPrice, 
+	(select definition from sjb_order_state where sjb_order_state.orderState = sjb_order.orderState) as state
+	,shipDate, clearDate 
+	from (select @rownum:=0) as rownum, sjb_order 
+	order by orderDate desc) sjb_order
+	<![CDATA[	
+			where rownum >(#{pageNum}-1)*#{amount} and rownum<=#{pageNum}*#{amount} ;
+		]]>
+	
+	
+	</select>
+	
+	
+	<!-- 관리자페이지 주문 목록 count -->
+	
+	<select id="orderCount" resultType="int">
+	
+		select count(*) from sjb_order;
+	
+	</select>
+	
+	
+	<!-- 배송출발 버튼 -->
+	
+	<update id="shipStart">
+	
+		update sjb_order set orderState = 1 where orderId = #{orderId}
+	
+	</update>
+	
+	<!-- 배송도착 버튼 -->
+	
+	<update id="shipArrive">
+	
+		update sjb_order set orderState = 2 where orderId = #{orderId}
+	
+	</update>	
 	
   
   </mapper>

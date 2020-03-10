@@ -1,45 +1,35 @@
-//alert("연결");
 
-/*
-function join_click(result){
-	if(result == 'join'){
-			alert("클릭");
-			form1.action="/member/join";
-			form1.submit();
-	}
-	
-	
-}
-*/
-
-
-	
 $(document).ready(function(){
 	
-	//아이디 중복검사
+	// 아이디 중복검사
 	$('#memberId').on("propertychange change keyup paste input",function(){
-		//alert("연결");
+		
 		var memberId = $('#memberId').val();
 		var data = {memberId : memberId}
+		
 		$.ajax({
 			type : "post",
 			url:"/member/memberIdChk",
 			data : data,
 			success : function(data){
-				//alert(data);
+				
+				// 중복아이디 없을시 초록색 글자
 				if(data == 'success'){
 					$('#top_1_id_re').css("display","inline-block");
 					$('#top_1_id_re2').css("display","none");
 				} else{
+				// 중복된 아이디 있을시 빨감색 글자 	
 					$('#top_1_id_re').css("display","none");
 					$('#top_1_id_re2').css("display","inline-block");
 				}
-			}
-		});
+			}//success 종료
+	
+		});//ajax 종료
 		
-		
-	});	
+	});// function 종료	
 
+	
+	
 	//비밀번호 재확인 유효성검사
 	$('#memberPw2').on("propertychange change keyup paste input",function(){
 	
@@ -63,10 +53,8 @@ $(document).ready(function(){
 	
 	
 	// 인증번호받기
-	
 	$("#mid_mail_check_button").click(function(){
 		
-		//alert("버튼 연결")
 		var email=$("#memberEmail").val();
 		var errorMsg = $("#mail_err");
 		var mailMsg = $("#mail_msg");
@@ -88,26 +76,23 @@ $(document).ready(function(){
 			mailMsg.html("이메일을 보냈습니다. 메일을 확인해주세요.")
 			mailMsg.show();
 		}
-			alert("ajax시작")
+			
 		$.ajax({
 			type:"GET",
 			url : "mailCheck?email=" + email,
 			success:function(data){
-				console.log(typeof(data));
-				console.log("data : " + data);
+				//console.log(typeof(data));
+				//console.log("data : " + data);
 				checkCode.attr("disabled",false);
 				var box = $("#mid_mail_check")
 				box.attr("class", "ps_box");
-				//var num = data;
-				//var num = data.checkNum;
-				//console.log(num)
 				
-				//받은 난수 저장아직 안함
 				$("#code").html(data)
 			}
-		});
+		}); // ajax 종료
 		return false;
-	});
+	}); // function 종료
+	
 	
 	//인증번호 비교
 	$("#checkCode").blur(function(){
@@ -116,7 +101,7 @@ $(document).ready(function(){
 		var incode = $("#checkCode").val();
 		var checkcode = $("#code").html();
 		//alert(incode);
-		alert(checkcode);
+		//alert(checkcode);
 		
 		if(incode == checkcode){
 			mailMsg.html("인증이 완료되었습니다.");
@@ -149,17 +134,7 @@ $(document).ready(function(){
 	
 	
 	
-	//가입하기 버튼 빈칸 유효성검사(최종)
-	
-	//alert("연결");
-	/*
-	$("button[type='submit']").click(function(){
-		//alert("클릭");
-		$("form[id='form1']").attr("action","/member/join");
-		$("form[id='form1']").submit();
-	});
-	*/
-	
+
 	//가입하기 최종 유효성검사
 	$("button[type='submit']").on("click",function(){
 		//e.prevnetDefault();
@@ -253,12 +228,6 @@ $(document).ready(function(){
 		} else {
 			$('#final_addr_ck').css('display','block');
 		}
-		
-		
-		
-		
-		
-		
 		
 		
 		if(idcheck&&pwcheck&&pwckcheck&&namecheck&&birthcheck&&phonecheck&&emailcheck&&addresscheck){

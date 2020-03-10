@@ -146,20 +146,16 @@ public class PurchaseController {
 	public void bookBuy(OrderVO order,Model model) throws Exception{
 		System.out.println("데이터진입");
 		System.out.println(order);
-		//System.out.println(order.getoDetail().get(0));
 		String memberId;
 		
 		if(order.getoDetail() != null) {
 			order.getoDetail().forEach(attach -> logger.info(""+attach));
 			order.getCartId().forEach(cart -> logger.info(""+ cart));
-			//logger.info("book.getbCover()"+book.getbCover());
-			//System.out.println("book.getbCover()"+book.getbCover());
 			buyservice.bookBuy(order);
 			memberId = order.getmemberId();
 			model.addAttribute("memberId", memberId);
 		}
 		
-		/* return "redirect:/main"; */
 	}
 	
 	

@@ -7,12 +7,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Welcome! SJBook Store!</title>
-<link rel="stylesheet" href="../resources/css/myRoom/main.css">
+<link rel="stylesheet" href="../resources/css/myRoom/exit.css">
 <script
   src="https://code.jquery.com/jquery-3.4.1.js"
   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
   crossorigin="anonymous"></script>
-<script src="../resources/js/myRoom/main.js" type="text/javascript"></script>
+<script src="../resources/js/myRoom/exit.js" type="text/javascript"></script>
 <script src="../resources/ckeditor/ckeditor.js"></script>
 
 
@@ -61,7 +61,7 @@
 	<div id="main">
 		<div id="main_wrap">
 		<div id="main_subject">
-			<p>마이룸</p>
+			<p>관리자페이지</p>
 		</div>
 			<!-- 메인 네비게이션 -->
 			<div id="main_nav_wrap">
@@ -69,7 +69,7 @@
 					<ul>
 						<li id="main_nav_1"><a href="/myRoom/main">주문/배송조회</a></li>
 						<li id="main_nav_2"><a href="/myRoom/modify">비밀번호 수정</a></li>
-						<!-- <li id="main_nav_3"><a href="/myRoom/exit">회원 탈퇴</a></li> -->
+						<li id="main_nav_3"><a href="/myRoom/exit">회원 탈퇴</a></li>
 					</ul>
 				</div>
 			</div>

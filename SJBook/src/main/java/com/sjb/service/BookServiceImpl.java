@@ -15,6 +15,7 @@ import com.sjb.model.AuthorVO;
 import com.sjb.model.BookCoverVO;
 import com.sjb.model.BookVO;
 import com.sjb.model.Criteria;
+import com.sjb.model.OrderVO;
 
 @Service
 public class BookServiceImpl implements BookService {
@@ -49,40 +50,62 @@ public class BookServiceImpl implements BookService {
 	@Transactional
 	@Override
 	public void bookEnroll(BookVO book) throws Exception {
+		
 		bookmapper.bookEnroll(book);
+		
 		if(book.getbCover() == null || book.getbCover().size() <=0) {
+			
 			return;
+			
 		}
+		
 		logger.info("등록(service단계)"+book);
 		logger.info("등록(service단계)"+book.getProductID());
+		
 		book.getbCover().forEach(attach ->{
+			
 			attach.setProductID(book.getProductID());
 			covermapper.coverEnroll(attach);
+			
 		});
 		
 		
 	}
+	
+	
+	// 제품 정보 수정
 	@Transactional
 	@Override
 	public void bookModify(BookVO book) throws Exception {
 		
 		bookmapper.bookModify(book);
-		System.out.println("aaaaaaaaaa");
+		
 		if(book.getbCover() !=null){
+			
 			book.getbCover().forEach(attach ->{
+				
+				// 1일 경우 새로운 파일 따라서 데이터베이스에 등록 실행
 				if(attach.getJudgment() == 1) {
+					
 				attach.setProductID(book.getProductID());
+				
 				covermapper.coverEnroll(attach);
+				
 				}
-			});
-		}
+				
+			}); // forEach문 종료
+			
+		} // if 문 종료
+		
 	}
+	
 	@Transactional
 	@Override
 	public void bookDel(int productID) throws Exception {
-		bookmapper.bookDel(productID); 
-		covermapper.deleteAll(productID);
 		
+		bookmapper.bookDel(productID);
+		
+		covermapper.deleteAll(productID);
 		
 	}
 
@@ -92,10 +115,14 @@ public class BookServiceImpl implements BookService {
 		return bookmapper.bookCount(cri);
 	}
 
+	// 이미지 정보 가져오기
 	@Override
 	public List<BookCoverVO> getBCover(int productID) {
+		
 		logger.info("get BCover list by productID : " + productID);
+		
 		return covermapper.findByProductID(productID);
+		
 	}
 
 	@Override
@@ -111,6 +138,7 @@ public class BookServiceImpl implements BookService {
 		return bookmapper.authorCount(cri);
 	}
 
+	// 작가목록 리스트페이징 팝업창
 	@Override
 	public List<AuthorVO> authorListPaging(Criteria cri) throws Exception {
 		
@@ -120,6 +148,7 @@ public class BookServiceImpl implements BookService {
 	//수정페이지 업로드물 삭제
 	@Override
 	public void modifyDeleteFile(String uuid) {
+		
 		covermapper.coverDelete(uuid);
 		
 	}
@@ -185,6 +214,31 @@ public class BookServiceImpl implements BookService {
 	public int bookCateCount(Criteria cri) throws Exception {
 		// TODO Auto-generated method stub
 		return bookmapper.bookCateCount(cri);
+	}
+
+	@Override
+	public List<OrderVO> orderList(Criteria cri) throws Exception {
+		
+		return bookmapper.orderList(cri);
+	}
+
+	@Override
+	public int orderCount(Criteria cri) throws Exception {
+		 
+		return bookmapper.orderCount();
+	}
+
+	@Override
+	public void shipStart(String orderId) throws Exception {
+		
+		bookmapper.shipStart(orderId);
+		
+	}
+
+	@Override
+	public void shipArrive(String orderId) throws Exception {
+		bookmapper.shipArrive(orderId);
+		
 	}
 
 

@@ -5,6 +5,7 @@ import java.util.List;
 import com.sjb.model.AuthorVO;
 import com.sjb.model.BookVO;
 import com.sjb.model.Criteria;
+import com.sjb.model.OrderVO;
 
 public interface BookMapper {
 
@@ -68,10 +69,18 @@ public interface BookMapper {
 	// 전체 제품 리스트(페이징처리)
 	public List<BookVO> cateListPaging(Criteria cri) throws Exception;
 		
-		// 전체 제품 리스트(페이징처리)
+	// 전체 제품 리스트(페이징처리)
 	public List<BookVO> authorKeyListPaging(Criteria cri) throws Exception;	
 	
+	// 관리자페이지 주문 목록 리스트
+	public List<OrderVO> orderList(Criteria cri) throws Exception;
 	
+	//관리자페이지 주문 개숫
+	public int orderCount() throws Exception;
 	
-	
+	// 배송출발 버튼
+	public void shipStart(String orderId) throws Exception;
+
+	// 배송ehckr 버튼
+	public void shipArrive(String orderId) throws Exception;
 }

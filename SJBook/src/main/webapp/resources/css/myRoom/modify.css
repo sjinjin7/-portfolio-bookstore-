@@ -139,6 +139,7 @@ a{
 	//background-color:#B5B2FF;
 }
 
+
 /* 상단 로그인버튼 */
 #top_1_login{
 	width: 460px;
@@ -207,15 +208,9 @@ a{
     height: 100%;
     display: inline-block;
 }
-#main_nav_5{
+#main_nav_2{
 	background-color: #ccc;
 }
-
-
-
-
-
-
 
 
 
@@ -249,90 +244,77 @@ a{
 }
 
 #main_content_1{
-	width : 1000px;
-	//height : 980px;
-	//background-color: orange;
-	margin : auto;
+	height : 800px;
+	
+}
+#main_content_1_1{
+	display : inline-block;
+	width : 410px;
+	margin-left: 350px;
+    margin-top: 180px;
 }
 
-table{
-    width: 1050px;
-    margin: auto;
-    //border: 1px solid black;
-    border-collapse: collapse;	
-    margin-top : 20px;
+#modify_btn{
+	display: inline-block;
+    width: 110px;
+    height: 50px;
+    font-size: 16px;
+    margin-left: 150px;
+    margin-top: 30px;
 }
 
-thead{
+#top_2 h3{
+	margin-top: 20px;
+}
+#top_2_pw{
+	//display : inline-block;
 	border: 1px solid black;
+	height:31px;
+	padding: 10px 14px;
 }
-thead>tr {
-    height: 65px;
-    text-align: center;
-    font-weight: bold;
-    border-bottom: 1px solid black;
+#top_2_pw input{
+	width:100%;
+	height:100%;
+	border:none;
 }
-thead>tr>td{
+
+#top_2_pw_re{
+	weight:100%;
+	//background-color: purple;
+}
+#final_pw_ck{
+	color : red;
+	display:none;	
+}
+
+#top_2_pwc{
+	//display : inline-block;
 	border: 1px solid black;
+	height:31px;
+	padding: 10px 14px;
 }
-#th_orderNum{
-	width : 10%;
+#top_2_pwc input{
+	width:100%;
+	height:100%;
+	border:none;
 }
-#th_orderYear{
-	width : 12%;
+#top_2_pwc_re{
+	color : green;
+	display: none;
 }
-#th_orderName{
-	width : 20%;
+#top_2_pwc_re2{
+	color : red;
+	display:none;
 }
-#th_orderInfo{
-	width : 35%;
-}
-#th_orderState{
-	width : 12%;
-}
-
-
-tbody{
-	border : 1px solid #e0dada;
-	text-align: center;
-}
-tbody tr,td{
-	border : 1px solid #e0dada;
-}
-tbody>tr{
-	height : 110px;
-}
-
-.tb_orderNum{
-	
-}
-.tb_orderYear{
-	
-}
-.tb_orderName{
-	
-}
-.tb_orderInfo{
-	
-}
-.tb_orderState{
-	
-}
-.tb_orderBtn{
-	
+#final_pwck_ck{
+	color : red;
+	display:none;	
 }
 
 
 
 
-#main_content_2{
-	width: 1000px;
-    height: 100px;
-    margin: auto;
-    text-align: center;
-    line-height: 90px;
-    font-size: 30px;
-}
+
 
 
 

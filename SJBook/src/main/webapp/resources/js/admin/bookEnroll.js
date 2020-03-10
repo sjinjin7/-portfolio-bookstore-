@@ -114,8 +114,10 @@ $(document).ready(function(){
 		//alert("ajax끝")
 	});
 	
-	///////////////////////////
 	
+	
+	
+	/*이미지 미리보기 실행*/
 	function showUploadedFile(uploadResultArr){
 		 
 		if(!uploadResultArr || uploadResultArr.length == 0){return;}
@@ -125,6 +127,7 @@ $(document).ready(function(){
 		var str = "";
 		 
 		 $(uploadResultArr).each(function(i, obj){
+			 
 			 //image type
 			 if(obj.image){
 				 
@@ -139,7 +142,6 @@ $(document).ready(function(){
 				 str += "</div>";
 				 str += "</li>";
 				 
-				 	
 				 console.dir(obj);
 				 
 				 str += "<input type='hidden' name='bCover[" + i + "].fileName' value='" +obj.fileName +"'>";
@@ -162,17 +164,12 @@ $(document).ready(function(){
 				 str += "</div>";
 				 str += "</li>";
 				 
-				 
-				
 				 console.dir(obj);
 				 
 				 str += "<input type='hidden' name='bCover[" + i + "].fileName' value='" +obj.fileName +"'>";
 				 str += "<input type='hidden' name='bCover[" + i + "].uuid' value='" + obj.uuid +"'>";
 				 str += "<input type='hidden' name='bCover[" + i + "].uploadPath' value='" +obj.uploadPath+"'>";
 				 str += "<input type='hidden' name='bCover[" + i + "].image' value='" +obj.image+"'>";
-				 
-				 
-				 
 				 
 				 
 			 }
@@ -193,11 +190,11 @@ $(document).ready(function(){
 	
 	  //업로드 파일 삭제 메서드
 	  $(".uploadResult").on("click", "button", function(e){
+		  
 		 console.log("delete file"); 
 		 
 			var targetFile = $(this).data("file");
 			var type = $(this).data("type");
-			
 			var targetLi = $(this).closest("li");
 			
 			$.ajax({
@@ -206,12 +203,12 @@ $(document).ready(function(){
 				dataType:'text',
 				type:'POST',
 					success: function(result){
-						alert(result);
+						
 						targetLi.remove();
+						
 					}
 				
-				
-				
+			
 			});//$.ajax
 		 
 		 
@@ -219,8 +216,11 @@ $(document).ready(function(){
 	
 	
 
+	  
+	  
+	  
 	
-});
+}); //$(document).ready 종료
 
 
 

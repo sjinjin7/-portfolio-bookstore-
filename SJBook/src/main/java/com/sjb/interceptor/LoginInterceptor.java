@@ -27,7 +27,9 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 	
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception{
-		System.out.println("post handle...........");
+		
+		logger.info("post handle...........");
+		
 		FlashMap flashMap = new FlashMap();
 		FlashMapManager flashMapManager = RequestContextUtils.getFlashMapManager(request);
 		flashMapManager.saveOutputFlashMap(flashMap, request, response);
@@ -55,16 +57,6 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 		}
 		
 		
-		
-		
-		
-		
-		/*
-		 * if(lvo != null) {//사용자가 회원가입을 했으면 logger.info("new login success");
-		 * System.out.println("new login success"); session.setAttribute(LOGIN,
-		 * userVO);//로그인 처리(session 회원정보 저장)
-		 * response.sendRedirect("/controller/board/list");//로그인 성공한 후 메인페이지로 이동. }
-		 */
 	}
 	
 	@Override
@@ -72,14 +64,14 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 		System.out.println("pre handle...........");
 		
 		HttpSession session = request.getSession();
+		
 		if(session.getAttribute(LOGIN) != null) {
+			
 			logger.info("clear login data before");
-			System.out.println("clear login data before");
+			
 			session.removeAttribute(LOGIN);
 			
 		}
-		
-		
 		
 		
 		return true;

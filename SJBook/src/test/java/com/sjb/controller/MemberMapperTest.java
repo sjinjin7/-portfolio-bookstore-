@@ -7,6 +7,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.sjb.mapper.MemberMapper;
+import com.sjb.mapper.MyRoomMapper;
 import com.sjb.model.MemberVO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -15,6 +16,8 @@ public class MemberMapperTest {
 
 	@Autowired
 	private MemberMapper membermapper;
+	
+	private MyRoomMapper roommapper;
 	
 	/*
 	@Test
@@ -39,6 +42,7 @@ public class MemberMapperTest {
 	}
 	*/
 	
+	/*
 	@Test
 	public void idCheckTest() throws Exception{
 		String memberId = "test5";
@@ -46,6 +50,9 @@ public class MemberMapperTest {
 		
 		
 	}
+	*/
+	
+	
 	
 	
 }

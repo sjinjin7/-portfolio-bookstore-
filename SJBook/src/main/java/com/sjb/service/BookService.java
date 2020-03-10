@@ -6,28 +6,32 @@ import com.sjb.model.AuthorVO;
 import com.sjb.model.BookCoverVO;
 import com.sjb.model.BookVO;
 import com.sjb.model.Criteria;
+import com.sjb.model.OrderVO;
 
 public interface BookService {
 
 	
 	public List<BookVO> bookList() throws Exception;
 	
+	// 책제목 키워드 검색 리스트 페이징
 	public List<BookVO> bookListPaging(Criteria cri) throws Exception;
 	
-	//카테고리벼 리스트 페이징
+	// 카테고리별 검색 리스트 페이징
 	public List<BookVO> cateListPaging(Criteria cri) throws Exception;
 	
 	//작가 키워드 리스트 페이징
 	public List<BookVO> authorKeyListPaging(Criteria cri) throws Exception;
 	
-	
+	// 제품(책) 상세 페이지
 	public BookVO bookDetail(int productID) throws Exception;
 	
-	
+	// 제품(책)등록 
 	public void bookEnroll(BookVO book) throws Exception;
 	
+	// 제품(책) 정보 수정
 	public void bookModify(BookVO book) throws Exception;
 	
+	// 제품(책) 삭제
 	public void bookDel(int productID) throws Exception;
 	
 	//(키워드 검색)제품 갯수
@@ -72,6 +76,15 @@ public interface BookService {
 	//평점 순 select
 	public List<BookVO> likeSelect() throws Exception;
 	
+	// 주문 목록 리스트
+	public List<OrderVO> orderList(Criteria cri) throws Exception;
 	
+	// 주문 목록 갯수
+	public int orderCount(Criteria cri) throws Exception;
 	
+	// 배송 출발 버튼
+	public void shipStart(String orderId) throws Exception;
+
+	// 배송 ehckr 버튼
+	public void shipArrive(String orderId) throws Exception;
 }

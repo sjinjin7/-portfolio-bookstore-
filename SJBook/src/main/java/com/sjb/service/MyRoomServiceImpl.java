@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.sjb.mapper.MyRoomMapper;
 import com.sjb.model.Criteria;
+import com.sjb.model.MemberVO;
 import com.sjb.model.OrderDetailVO;
 import com.sjb.model.OrderVO;
 
@@ -39,6 +40,28 @@ public class MyRoomServiceImpl implements MyRoomService {
 	public int orderCount(String memberId) throws Exception {
 		 
 		return mapper.orderCount(memberId);
+	}
+
+	@Override
+	public void shipClear(String orderId) throws Exception {
+		mapper.shipClear(orderId);
+		
+	}
+
+	
+	//비밀번호 수정
+	@Override
+	public void modifyPw(MemberVO member) throws Exception {
+		
+		mapper.modifyPw(member);
+		
+	}
+
+	@Override
+	public void deleteID(String memberId) throws Exception {
+		
+		mapper.deleteID(memberId);
+		
 	}
 
 	

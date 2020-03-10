@@ -10,6 +10,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.sjb.mapper.MyRoomMapper;
 import com.sjb.model.Criteria;
+import com.sjb.model.MemberVO;
 import com.sjb.model.OrderVO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -51,7 +52,7 @@ public class MyRoomMapperTest {
 		
 	}
 	*/
-	
+	/*
 	@Test
 	public void orderListPagingTest() throws Exception{
 		
@@ -62,7 +63,20 @@ public class MyRoomMapperTest {
 		List<OrderVO> list = mapper.orderListPaging(cri);
 		
 	}
+	*/
 	
+	//비밀번호 수정
+		@Test
+		public void modifyPs() throws Exception{
+			MemberVO vo = new MemberVO();
+			vo.setMemberId("test5");
+			vo.setMemberPw("test6");
+			
+			mapper.modifyPw(vo);
+			
+			
+			
+		}
 	
 	
 	

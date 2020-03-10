@@ -6,50 +6,70 @@
 
   
   
-<!-- 회원 주문 목록 리스트 -->
-<select id="orderList" resultType="com.sjb.model.OrderVO">
+	<!-- 회원 주문 목록 리스트 -->
+	<select id="orderList" resultType="com.sjb.model.OrderVO">
+	
+		select orderId, memberId, orderRec, memberAddr1, memberAddr2, memberAddr3, orderPhone, orderDate, shipPrice, totalPrice, 
+		(select definition from sjb_order_state where sjb_order_state.orderState = sjb_order.orderState) as state
+		,shipDate, clearDate 
+		from sjb_order where memberId = #{memberId};
+	
+	</select>
 
-	select orderId, memberId, orderRec, memberAddr1, memberAddr2, memberAddr3, orderPhone, orderDate, shipPrice, totalPrice, 
-	(select definition from sjb_order_state where sjb_order_state.orderState = sjb_order.orderState) as state
-	,shipDate, clearDate 
-	from sjb_order where memberId = #{memberId};
+	<!-- 회원 주문 목록 리스트 페이징-->
+	<select id="orderListPaging" resultType="com.sjb.model.OrderVO">
+		select * from
+		(select @rownum:=@rownum+1 as rownum, orderId, memberId, orderRec, memberAddr1, memberAddr2, memberAddr3, orderPhone, orderDate, shipPrice, totalPrice, 
+		(select definition from sjb_order_state where sjb_order_state.orderState = sjb_order.orderState) as state
+		,shipDate, clearDate 
+		from (select @rownum:=0) as rownum, sjb_order 
+		where memberId = #{memberId}
+		order by orderDate desc) sjb_order
+		<![CDATA[	
+				where rownum >(#{pageNum}-1)*#{amount} and rownum<=#{pageNum}*#{amount} ;
+			]]>
+	
+	</select>	
 
-</select>
+	<!-- 주문 상세 -->
+	<select id="selectDetail" resultType="com.sjb.model.OrderDetailVO">
+	
+		select orderId, orderDetailId, productId, 
+		(select title from sjb_book where sjb_book.productId = sjb_order_detail.productId) as productName, 
+		amount 
+		from sjb_order_detail 
+		where orderId = #{orderId}
+	
+	</select>
 
-<!-- 회원 주문 목록 리스트 페이징-->
-<select id="orderListPaging" resultType="com.sjb.model.OrderVO">
-	select * from
-	(select @rownum:=@rownum+1 as rownum, orderId, memberId, orderRec, memberAddr1, memberAddr2, memberAddr3, orderPhone, orderDate, shipPrice, totalPrice, 
-	(select definition from sjb_order_state where sjb_order_state.orderState = sjb_order.orderState) as state
-	,shipDate, clearDate 
-	from (select @rownum:=0) as rownum, sjb_order 
-	where memberId = #{memberId}
-	order by rownum desc) sjb_order
-	<![CDATA[	
-			where rownum >(#{pageNum}-1)*#{amount} and rownum<=#{pageNum}*#{amount} ;
-		]]>
-
-</select>
-
-<!-- 주문 상세 -->
-<select id="selectDetail" resultType="com.sjb.model.OrderDetailVO">
-
-	select orderId, orderDetailId, productId, 
-	(select title from sjb_book where sjb_book.productId = sjb_order_detail.productId) as productName, 
-	amount 
-	from sjb_order_detail 
-	where orderId = #{orderId}
-
-</select>
-
-<!-- 주문 갯수 -->
-<select id="orderCount" resultType="int">
-
-select count(*) from sjb_order where memberId = #{memberId}
-
-</select>
+	<!-- 주문 갯수 -->
+	<select id="orderCount" resultType="int">
+	
+	select count(*) from sjb_order where memberId = #{memberId}
+	
+	</select>
 
 
+	<!-- 구매확정 버튼 -->
+	
+	<update id="shipClear">
+	
+		update sjb_order set orderState = 3 where orderId = #{orderId}
+	
+	</update>	
 
+	<!-- 비밀번호 수정 -->
+	<update id="modifyPw">
+	
+		update sjb_member set memberPs = #{memberPs} where memberId = #{memberId};
+		
+	</update>
+	
+	<!-- 회원탈퇴 -->
+	<delete id="deleteID">
+	
+		delete from sjb_member where memberId = #{memberId};
+	
+	</delete>
 
   </mapper>

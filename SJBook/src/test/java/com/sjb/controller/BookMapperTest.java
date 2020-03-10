@@ -9,8 +9,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.sjb.mapper.BookMapper;
-import com.sjb.model.BookVO;
 import com.sjb.model.Criteria;
+import com.sjb.model.OrderVO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
@@ -195,6 +195,7 @@ public class BookMapperTest {
 	
 	
 	//키워드 검색 && 카테고리 필터 갯수 테스트
+	/*
 	@Test
 	public void bookCateCountTest() throws Exception{
 		Criteria cri = new Criteria();
@@ -205,8 +206,25 @@ public class BookMapperTest {
 		
 		
 	}
+	*/
 	
-
+	//관리자페이지 주문 목록 리스트
+	/*
+	@Test
+	public void orderList() throws Exception {
+		Criteria cri = new Criteria();
+		System.out.println("aaa" + cri);
+		List<OrderVO> list = bookMapper.orderList(cri);
+	}
+*/
+	
+	// 관리자페이지 주문 목록 리스트
+	@Test
+	public void orderCount() throws Exception{
+		
+		
+		int count = bookMapper.orderCount();
+	}
 	
 	
 	

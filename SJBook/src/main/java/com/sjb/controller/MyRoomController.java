@@ -104,5 +104,72 @@ public class MyRoomController {
 	}
 	
 	
+	// 구매확정 버튼
+	@RequestMapping(value="/shipClear", method=RequestMethod.POST)
+	@ResponseBody
+	public String shipClearPOST(String orderId) throws Exception{
+		String result = "false";
+		System.out.println("orderId : " + orderId);
+		if(orderId != null) {
+			
+			service.shipClear(orderId);
+			
+			
+			result = "true";
+		}
+		
+		
+		
+		return result;
+	}
+	
+	
+	
+	// 비밀번호 수정 페이지
+	@RequestMapping(value="/modify", method = RequestMethod.GET)
+	public void modifyGET() throws Exception{
+		System.out.println("modifyGET실행");
+	}
+	
+	
+	
+	// 비밀번호 수정
+	@RequestMapping(value="/modify", method = RequestMethod.POST)
+	public String modifyPOST(String password, HttpServletRequest request) throws Exception{
+		
+		System.out.println("modifyPOST실행");
+		
+		HttpSession session = request.getSession();
+		MemberVO member = (MemberVO) session.getAttribute("member");
+		String memberId = member.getMemberId();
+		
+		if(memberId != null) {
+			
+			member.setMemberPw(password);
+			
+			service.modifyPw(member);
+			
+		}
+		
+		return "redirect:/member/logoutMain";
+		
+	}
+	
+	
+	// 회원 탈퇴 페이지
+	@RequestMapping(value="/exit", method = RequestMethod.GET)
+	public void exitGET() throws Exception{
+		
+	}
+	
+	// 회원 탈퇴 페이지
+		@RequestMapping(value="/exit", method = RequestMethod.POST)
+		public void exitGET(String memberId) throws Exception{
+			
+			
+			
+			
+		}
+	
 	
 }

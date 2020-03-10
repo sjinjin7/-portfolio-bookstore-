@@ -88,12 +88,14 @@ public class AdminController {
 		
 	}
 
+	// 제품 등록 페이지
 	@RequestMapping(value = "/enroll", method=RequestMethod.GET)
 	public void enrollGET(BookVO book) throws Exception{
 		
 		
 	}	
 	
+	// 제품 등록
 	@RequestMapping(value = "/enroll", method=RequestMethod.POST)
 	public String enrollPOST(BookVO book) throws Exception{
 		
@@ -103,27 +105,25 @@ public class AdminController {
 		logger.info("등록(enrollPOST)"+book);
 		
 		if(book.getbCover() != null) {
-			System.out.println("aaaaaa");
+			
 			book.getbCover().forEach(attach -> logger.info(""+attach));
-			//logger.info("book.getbCover()"+book.getbCover());
-			//System.out.println("book.getbCover()"+book.getbCover());
 			
 		}
 				
 		bookservice.bookEnroll(book);
 		
 		
-		
 		return "redirect:/admin/main";
-		//return null;
+		
 	}
 	
+	// 제품 수정페이지
 	@RequestMapping(value = "/modify", method=RequestMethod.GET)
 	public void modifyGET(@RequestParam("num")int num,Model model) throws Exception{
 		model.addAttribute("bd", bookservice.bookDetail(num));
 	}
 	
-	
+	// 제품 삭제 
 	@RequestMapping(value = "/delete", method=RequestMethod.GET)
 	public String deleteGET(@RequestParam("num")int num) throws Exception{
 		logger.info("deleteGET......");
@@ -131,10 +131,12 @@ public class AdminController {
 		return "redirect:list";
 	}
 	
+	// ajax url 테스트
 	@RequestMapping(value = "/uploadAjax", method=RequestMethod.GET)
 	public void uploadAjax() {
 		logger.info("upload ajax");
 	}
+	
 	
 	//폴더의 경로설정하는 메서드
 	private String getFolder() {
@@ -162,7 +164,7 @@ public class AdminController {
 		
 	}
 	
-	
+	// 업로드
 	@RequestMapping(value = "/uploadAjaxAction", method = RequestMethod.POST
 			, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	@ResponseBody
@@ -241,12 +243,9 @@ public class AdminController {
 		System.out.println("등록완료");
 		return new ResponseEntity<>(list, HttpStatus.OK);
 		
-		
-		
-		
 	}
 	
-	
+	// 화면 띄우기
 	@RequestMapping("/display")
 	@ResponseBody
 	public ResponseEntity<byte[]> getFile(String fileName){
@@ -276,106 +275,9 @@ public class AdminController {
 	}
 	
 	
-	//구글 크롬을 통해서만 다운로드할 경우
-	/*
-	  
-	@RequestMapping(value="/download", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
-	@ResponseBody
-	public ResponseEntity<Resource> downloadFile(String fileName){
+		
 	
-		logger.info("download file : " + fileName);
-	
-		Resource resource = new FileSystemResource("C:\\upload\\"+fileName);
-		
-		logger.info("resource : " + resource);
-		
-		String resourceName = resource.getFilename();
-		
-		HttpHeaders headers = new HttpHeaders();
-		
-		try {
-			
-			headers.add("Content-Disposition", "attachment; filename="+new String(resourceName.getBytes("UTF-8"), "ISO-8859-1"));
-			
-		}catch(UnsupportedEncodingException e){
-			e.printStackTrace();
-		}
-		
-		
-		
-		
-		return new ResponseEntity<Resource>(resource, headers, HttpStatus.OK);
-		
-	}*/
-	
-	
-	@RequestMapping(value="/download", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
-	@ResponseBody
-	public ResponseEntity<Resource> downloadFile(@RequestHeader("User-Agent") String userAgent, String fileName){
-	
-		logger.info("download file : " + fileName);
-	
-		Resource resource = new FileSystemResource("C:\\upload\\"+fileName);
-		
-		if(resource.exists() == false) {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		}
-		
-		logger.info("resource : " + resource);
-		
-		String resourceName = resource.getFilename();
-		
-		//UUID 제거
-		String resourceOrignalName = resourceName.substring(resourceName.indexOf("_") +1);
-		
-		
-		
-		HttpHeaders headers = new HttpHeaders();
-		
-		try {
-			
-			String downloadName = null;
-			if(userAgent.contains("Trident")) {
-				
-				logger.info("IE browser");
-				
-				downloadName = URLEncoder.encode(resourceOrignalName, "UTF-8").replaceAll("\\+", " ");
-				
-			}else if(userAgent.contains("Edge")) {
-				
-				logger.info("edge browser");
-				
-				downloadName = URLEncoder.encode(resourceOrignalName, "UTF-8");
-				
-				logger.info("Edge name : " + downloadName);
-				
-			}else {
-				
-				logger.info("Chrome browser");
-			
-				downloadName = new String(resourceOrignalName.getBytes("UTF-8"), "ISO-8859-1");
-				
-				
-			}
-			
-			headers.add("Content-Disposition", "attachment; filename="+downloadName);
-			
-			
-			
-		}catch(UnsupportedEncodingException e){
-			e.printStackTrace();
-		}
-		
-		
-		
-		
-		return new ResponseEntity<Resource>(resource, headers, HttpStatus.OK);
-	
-	
-	}
-	
-	
-	// 업로드 파일 삭제 처리
+	// 업로드 파일 삭제 처리(데이터베이스 등록 전)
 	@RequestMapping(value="/deleteFile", method=RequestMethod.POST)
 	@ResponseBody
 	public ResponseEntity<String> deleteFile(String fileName, String type){
@@ -385,11 +287,13 @@ public class AdminController {
 		File file;
 		
 		try {
+			
 			file = new File("C:\\upload\\" + URLDecoder.decode(fileName, "UTF-8"));
 			
 			file.delete();
 			
 			if(type.contentEquals("image")) {
+				
 				String largeFileName = file.getAbsolutePath().replace("s_", "");
 				
 				logger.info("largeFileName: " + largeFileName);
@@ -400,20 +304,21 @@ public class AdminController {
 			}
 			
 			
-			
-			
-			
 		}catch(UnsupportedEncodingException e) {
+			
 			e.printStackTrace();
+			
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			
 		}
 		
-		
-		
 		return new ResponseEntity<String>("deleted", HttpStatus.OK);
+		
 	}
 	
-	//게시물 첨부파일 조회 컨트롤러
+	
+	
+	/* 게시물 첨부파일 조회 컨트롤러 */
 	@RequestMapping(value="/getBcoverList", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	@ResponseBody
 	public ResponseEntity<List<BookCoverVO>> getBcover(int productID){
@@ -422,9 +327,9 @@ public class AdminController {
 		
 		return new ResponseEntity<>(bookservice.getBCover(productID), HttpStatus.OK);
 		
-		
 	}
 	
+	/* 관리자 페이지 첫화면(상품목록 페이지) */
 	@RequestMapping(value="/main", method=RequestMethod.GET)
 	public void mainGET(Criteria cri, Model model) throws Exception{
 		int total = bookservice.bookCount(cri);
@@ -436,15 +341,19 @@ public class AdminController {
 		model.addAttribute("page",pv);
 	}
 
+	
 	/* 작가등록 */
 	@RequestMapping(value="/authorEnroll", method=RequestMethod.GET)
 	public void authorEnrollGET() throws Exception{
 		
 	}
+	
+	
 	@RequestMapping(value="/authorEnroll", method=RequestMethod.POST)
 	public void authorEnrollPOST(AuthorVO author) throws Exception{
 		bookservice.authrEnroll(author);
 	}
+	
 	
 	/* 제품 등록 */
 	@RequestMapping(value="/bookEnroll", method=RequestMethod.GET)
@@ -452,9 +361,11 @@ public class AdminController {
 		
 	}
 	
+	
 	/* 작가등록 팝업창 페이지 */
 	@RequestMapping(value="/authorSearch", method=RequestMethod.GET)
 	public void authorSearchGET(Criteria cri, Model model) throws Exception{
+		
 		int total = bookservice.authorCount(cri);
 		PageVO pv = new PageVO(cri, total);
 		logger.info("keyword = : " + cri.getKeyword());
@@ -471,8 +382,11 @@ public class AdminController {
 	public void bookModifyPOST(BookVO vo, Model model) throws Exception{
 		
 		int productID = vo.getProductID();
-		System.out.println("id = " + productID);
+		
+		logger.info("id = " + productID);
+		
 		model.addAttribute("bm", bookservice.bookDetail(productID));
+		
 	}
 	
 	
@@ -480,11 +394,16 @@ public class AdminController {
 	@RequestMapping(value="/modifyDeleteFile", method=RequestMethod.POST)
 	@ResponseBody
 	public ResponseEntity<String> modifyDeleteFile(String fileName, String type, String uuid){
-		System.out.println("uuid = " + uuid);
+		
+		logger.info("uuid = " + uuid);
+		
 		//기존 저장되어있던 업로드물
 		if(uuid !=null) {
-			System.out.println("쿼리실행");
+			
+			logger.info("쿼리실행");
+			
 			bookservice.modifyDeleteFile(uuid);
+			
 		}
 		
 		
@@ -493,11 +412,13 @@ public class AdminController {
 		File file;
 		
 		try {
+			
 			file = new File("C:\\upload\\" + URLDecoder.decode(fileName, "UTF-8"));
 			
 			file.delete();
 			
 			if(type.contentEquals("image")) {
+				
 				String largeFileName = file.getAbsolutePath().replace("s_", "");
 				
 				logger.info("largeFileName: " + largeFileName);
@@ -505,38 +426,42 @@ public class AdminController {
 				file = new File(largeFileName);
 				
 				file.delete();
+				
 			}
 			
-			
-			
-			
-			
 		}catch(UnsupportedEncodingException e) {
+			
 			e.printStackTrace();
+			
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			
 		}
 		
-		
-		
 		return new ResponseEntity<String>("deleted", HttpStatus.OK);
+		
 	}
+	
 	
 	//제품 정보 수정
 	@RequestMapping(value = "/modify", method=RequestMethod.POST)
 	public String modifyPOST(BookVO book) throws Exception{
-		System.out.println(book);
+		
+		logger.info(""+book);
 		
 		if(book.getbCover() != null) {
-			System.out.println("aaaaaa");
+			
+			logger.info("수정페이지 새로운 업로드");
+			
 			book.getbCover().forEach(attach -> logger.info(""+attach));
-			//logger.info("book.getbCover()"+book.getbCover());
-			//System.out.println("book.getbCover()"+book.getbCover());
 			
 		}
 		
 		bookservice.bookModify(book);
+		
 		return "redirect:/admin/main";
+		
 	}
+	
 	
 	//작가목록
 	@RequestMapping(value="/authorList", method=RequestMethod.GET)
@@ -550,19 +475,24 @@ public class AdminController {
 		model.addAttribute("page",pv);
 	}
 	
+	
 	//작가 상세
 	@RequestMapping(value="/authorDetail", method=RequestMethod.GET)
 	public void authorDetailGET(int authorID, Model model) throws Exception{
 		model.addAttribute("author", bookservice.authorDetail(authorID));
 	}
 	
+	
 	//작가 수정페이지
 	@RequestMapping(value="/authorModify", method=RequestMethod.GET)
 	public void authorModifyGET(AuthorVO vo, Model model) throws Exception{
+		
 		int authorID = vo.getAuthorID();
 		model.addAttribute("author", bookservice.authorDetail(authorID));
 		
 	}
+	
+	
 	//작가 수정
 	@RequestMapping(value="/authorModify", method=RequestMethod.POST)
 	public String authorModifyPOST(AuthorVO vo, Model model) throws Exception{
@@ -572,14 +502,17 @@ public class AdminController {
 		return "redirect:/admin/authorList";
 	}
 	
+	
 	//제품 삭제
 	@RequestMapping(value="/bookDelete", method=RequestMethod.POST)
 	public String bookDeletePOST(BookVO vo) throws Exception{
 		
 		int productID = vo.getProductID();
+		
 		bookservice.bookDel(productID);
 		
 		return "redirect:/admin/main";
+		
 	}
 	
 	
@@ -596,10 +529,53 @@ public class AdminController {
 		
 	//주문 목록 페이지
 	@RequestMapping(value="/orderList", method=RequestMethod.GET)
-	public void orderListGET() throws Exception{
+	public void orderListGET(Criteria cri, Model model) throws Exception{
+		int total = bookservice.orderCount(cri);
+		PageVO pv = new PageVO(cri, total);
+		
+		model.addAttribute("list", bookservice.orderList(cri));
+		model.addAttribute("page", pv);
 		
 	}
+	
+	
+	// 배송 출발 버튼
+	@RequestMapping(value="/shipStart", method=RequestMethod.POST)
+	@ResponseBody
+	public String shipStartPOST(String orderId) throws Exception{
 		
+		String result = "false";
+		System.out.println("orderId : " + orderId);
+		if(orderId != null) {
+			
+			bookservice.shipStart(orderId);
+			
+			result = "true";
+			
+		}
+		
+		return result;
+		
+	}
+
+	
+	// 배송 도착 버튼
+	@RequestMapping(value="/shipArrive", method=RequestMethod.POST)
+	@ResponseBody
+	public String shipArrivePOST(String orderId) throws Exception{
+		
+		String result = "false";
+		System.out.println("orderId : " + orderId);
+		if(orderId != null) {
+			
+			bookservice.shipArrive(orderId);
+			
+			result = "true";
+			
+		}
+		
+		return result;
+	}
 		
 		
 	

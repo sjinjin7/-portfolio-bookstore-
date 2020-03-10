@@ -5,29 +5,35 @@
   <mapper namespace="com.sjb.mapper.CoverMapper">
   
   
-<!-- 이미지넣기 -->
+	<!-- 이미지넣기 -->
 	<insert id="coverEnroll">
+	
 		insert into sjb_bookcover (productID, fileName, image, uploadPath, uuid) 
-		values (#{productID} ,#{fileName},#{image} ,#{uploadPath},#{uuid});
+		values (#{productID} ,#{fileName},#{image} ,#{uploadPath},#{uuid})
 	
 	</insert>
+	
+	
 	<!-- 이미지 삭제 -->
 	<delete id="coverDelete">
 	
 	delete from sjb_bookcover where uuid = #{uuid}
 	
 	</delete>
+	
+	
 	<!-- 이미지 조회 -->
 	<select id="findByProductID" resultType="com.sjb.model.BookCoverVO">
 	
 	select * from sjb_bookcover where productID = #{productID}
 	
 	</select>
+	
+	<!-- 해당 제품 이미지 전체 삭제 -->
 	<delete id="deleteAll">
 	
 		delete from sjb_bookcover where productID = #{productID}
 		
-	
 	</delete>
 	
 	

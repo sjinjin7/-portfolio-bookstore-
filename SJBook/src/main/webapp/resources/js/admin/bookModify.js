@@ -193,12 +193,12 @@ $(document).ready(function(){
 	
 	  //업로드 파일 삭제 메서드
 	  $(".uploadResult").on("click", "button", function(e){
+		  
 		 console.log("delete file"); 
 		 
 			var targetFile = $(this).data("file");
 			var type = $(this).data("type");
 			var uuid = $(this).data("uuid");
-			
 			var targetLi = $(this).closest("li");
 			
 			$.ajax({
@@ -207,14 +207,12 @@ $(document).ready(function(){
 				dataType:'text',
 				type:'POST',
 					success: function(result){
-						alert(result);
+						
 						targetLi.remove();
+						
 					}
 				
-				
-				
 			});//$.ajax
-		 
 		 
 	  });	
 	

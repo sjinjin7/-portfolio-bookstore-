@@ -186,8 +186,6 @@
 										<div class="button">
 											<input type="hidden" id="productId${i}" class="productID" value="${book.productID}">
 											<a href="javascript:cartEnroll('${i}');" class="btn_blue">장바구니 담기</a>
-											<%-- <a href="javascript:preBuy('${i}');" class="btn_blue2">바로구매</a> --%>
-											<!-- <a href="javascript:goAddWishOneSrc(document.searchFrm5,0);" class="btn_small">보관함 담기</a> -->
 										</div>
 									</form>
 								</td>

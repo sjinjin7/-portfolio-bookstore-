@@ -9,6 +9,8 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -49,21 +51,31 @@ public class BookController {
 
 	@Autowired
 	private ReplyService replyservice;
-	//private static final Logger log = LoggerFactory.getLogger(BookController.class);
 	
+	private static final Logger log = LoggerFactory.getLogger(BookController.class);
+	
+	
+	// 메인페이지 이동
 	@RequestMapping("/main")
 	public void mainGET(Model model) throws Exception{
+		
+		// 신간 순서 
 		model.addAttribute("ds", bookservice.dateSelect());
+		
+		// 평점 순서
 		model.addAttribute("ls",bookservice.likeSelect());
 		
-		
-		
-	}
-	@RequestMapping("/loginMain")
-	public void loginGET() throws Exception{
-		System.out.println("loginMain");
 	}
 	
+	
+	// 로그인 페이지 이동
+	@RequestMapping("/loginMain")
+	public void loginGET() throws Exception{
+		
+	}
+	
+	
+	// 검색&검색페이지(페이징)
 	@RequestMapping("/search")
 	public void searchGET(Criteria cri, Model model) throws Exception{
 		if(cri.getAuthorName() != null && cri.getCateCode() == null && cri.getKeyword() == null) {
@@ -210,6 +222,8 @@ public class BookController {
 		
 		return "detail";
 	}
+	
+	
 	//상품 상세 리뷰(댓글 및 평점)
 	@RequestMapping(value="detail/replyList", method = RequestMethod.GET)
 	@ResponseBody
@@ -225,7 +239,7 @@ public class BookController {
 	
 	
 	
-
+	// 장바구니 등록
 	@RequestMapping(value = "addEnroll", method = RequestMethod.POST)
 	@ResponseBody 
 	public String  addCartPOST(CartVO cart, HttpSession session) throws Exception{
@@ -242,14 +256,7 @@ public class BookController {
 			cartservice.cartenroll(cart); 
 			result = "true"; 
 		}
-		/*
-		 * 
-		 * 
-		 * MemberVO member = (MemberVO)session.getAttribute("member");
-		 * 
-		 * 
-		 * 
-		 */
+		
 		System.out.println(result);
 		return result;
 	}
@@ -294,6 +301,8 @@ public class BookController {
 		return result;
 	}
 	
+	
+	// 장바구니 수량 변경
 	@RequestMapping(value="stockChange", method=RequestMethod.POST)
 	@ResponseBody
 	public String stockChange(HttpSession session,CartVO cart) throws Exception{

@@ -7,7 +7,7 @@ public interface MemberMapper {
 	// 회원가입
 	public void memberEnroll(MemberVO member);
 	
-	//로그인
+	// 로그인
 	public MemberVO memberLogin(MemberVO member);
 	
 	// 회원정보 가져오기
@@ -16,7 +16,7 @@ public interface MemberMapper {
 	// 구매완료시 session 리셋
 	public MemberVO reSession(String memberId);
 	
-	//아아디 중복확인
+	// 아아디 중복확인
 	public int idCheck(String memberId);
 	
 	

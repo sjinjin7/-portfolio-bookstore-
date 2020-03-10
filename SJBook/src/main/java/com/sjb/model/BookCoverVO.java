@@ -4,16 +4,22 @@ public class BookCoverVO {
 
 	//파일이름
 	private String fileName;
+	
 	//파일 업로드 겨올
 	private String uploadPath;
+	
 	//uuid
 	private String uuid;
+	
 	// 이미지 유무
 	private boolean image;
+	
 	// 제품번호
 	private int productID;
+	
 	// 기존저장되어있는 저장물인지 판단 (1 기존 0 새로운)
 	private int judgment;
+	
 	
 	public String getFileName() {
 		return fileName;

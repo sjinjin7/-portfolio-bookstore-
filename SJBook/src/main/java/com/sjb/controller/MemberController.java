@@ -32,6 +32,7 @@ public class MemberController {
 
 	@Autowired
 	private MemberService memberservice;
+	
 	@Autowired
 	private JavaMailSender mailSender;	
 	
@@ -41,23 +42,34 @@ public class MemberController {
 		
 	}
 	
+	//회원가입 
 	@RequestMapping(value = "/join", method=RequestMethod.POST)
 	public String joinPOST(MemberVO member) throws Exception{
-		System.out.println("join진입성공");
+	
+		logger.info("join 진입");
+		
+		//서비스 단계 실행
 		memberservice.enrollMember(member);
-		System.out.println("insert완료");
+		
+		logger.info("joni Service 성공");
+		
 		return "redirect:/main";
 	}
 	
+	
+	// 이메일 인증
 	@RequestMapping(value="/mailCheck", method=RequestMethod.GET)
 	@ResponseBody
 	public String mailCheckGET(String email) throws Exception{
-		System.out.println(email);
-		//난수만들기
+		
+		logger.info("입력된 이메일 : " + email);
+		
+		// 인증번호(난수) 만들기
 		Random random = new Random();
         int checkNum = random.nextInt(4589362) + 49311;
         
-        System.out.println("인증번호 : "+ checkNum);
+        logger.info("인증번호 : "+ checkNum);
+        
 		//이메일 보내기
         String setfrom = "sjinjin7@naver.com";
         String tomail = email;
@@ -73,13 +85,10 @@ public class MemberController {
         		System.getProperty("line.separator") + 
         		System.getProperty("line.separator") +
         		"해당 인증번호를 인증번호 확인란에 기입하여 주세요.";
-        System.out.println("setfrom"+setfrom);
-        System.out.println("tomail"+tomail);
-        System.out.println("title"+title);
-        System.out.println("content"+content);
         
         
         try {
+        	
 			MimeMessage message = mailSender.createMimeMessage();
 			MimeMessageHelper helper = new MimeMessageHelper(message, true, "utf-8");
 			helper.setFrom(setfrom);				//보내는 사람(생략하면 정상적으로 작동.)
@@ -90,12 +99,13 @@ public class MemberController {
 			System.out.println("보내는사람"+tomail);
 			System.out.println("제목"+title);
 			System.out.println("내용"+content);
-			
 			mailSender.send(message);
+			
 		}catch(Exception e) {
+			
 			e.printStackTrace();
+			
 		}
-        
         
         String num = Integer.toString(checkNum);
 		
@@ -103,16 +113,21 @@ public class MemberController {
 	}
 	
 	
+	// 로그인 
 	@RequestMapping(value="login", method=RequestMethod.POST)
 	public void loginPOST(MemberVO vo, Model model)throws Exception{
 		
-		System.out.println("vo작동" + vo);
+		logger.info("vo작동" + vo);
+		
 		MemberVO lvo = memberservice.memberLogin(vo);
-		System.out.println("로그인vo"+lvo);
+		
+		logger.info("로그인vo"+lvo);
 		
 		model.addAttribute("memberVO", lvo);
 		
 	}
+	
+	
 	
 	@RequestMapping(value="login", method=RequestMethod.GET)
 	public String loginGET()throws Exception{
@@ -120,46 +135,69 @@ public class MemberController {
 		return "redirect:/main";
 	}
 	
+	
+	
+	// 로그아웃 메인
+		@RequestMapping(value="logoutMain", method=RequestMethod.GET)
+		public String logoutMainGET(HttpServletRequest request)throws Exception{
+			HttpSession session = request.getSession();
+			
+			logger.info("logout실행");
+			
+			//세션에 저장된 값제거
+			logger.info("session제거");
+			session.removeAttribute(LOGIN);
+			
+			//서버에서 현재 세션을 제거
+			logger.info("서버에서 session제거");
+			session.invalidate();
+			
+			return "redirect:/main";
+			
+		}
+	
+	// 로그아웃
 	@RequestMapping(value="logout", method=RequestMethod.POST)
 	@ResponseBody
-	public void logoutGET(HttpServletRequest request)throws Exception{
+	public void logoutPOST(HttpServletRequest request)throws Exception{
 		HttpSession session = request.getSession();
 		
 		logger.info("logout실행");
+		
 		//세션에 저장된 값제거
 		logger.info("session제거");
 		session.removeAttribute(LOGIN);
+		
 		//서버에서 현재 세션을 제거
 		logger.info("서버에서 session제거");
 		session.invalidate();
 		
-		
-		
-		
-		
 	}
 	
 	
-	//아이디 중복체크
-		@RequestMapping(value="/memberIdChk", method = RequestMethod.POST)
-		@ResponseBody
-		public String memberIdChkPOST(String memberId) throws Exception{
+	// 아이디 중복체크
+	@RequestMapping(value="/memberIdChk", method = RequestMethod.POST)
+	@ResponseBody
+	public String memberIdChkPOST(String memberId) throws Exception{
+		
+		logger.info("memberId = " + memberId);
+		
+		int result = memberservice.idCheck(memberId);
+		
+		logger.info("결과값 = " + result);
+		
+		if(result == 0) {
 			
-			System.out.println("memberId = " + memberId);
+			return "success";
 			
-			int result = memberservice.idCheck(memberId);
-			System.out.println("결과값 = " + result);
-			if(result == 0) {
-				return "success";
-			} else {
-				return "fail";
-			}
+		} else {
 			
-			
-			
+			return "fail";
 			
 		}
-			
+		
+	}
+		
 	
 	
 	
