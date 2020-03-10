@@ -301,7 +301,7 @@ insert into SJB_Book(title,publisher) values(#{title}, #{publisher});
 	
 	<update id="shipStart">
 	
-		update sjb_order set orderState = 1 where orderId = #{orderId}
+		update sjb_order set orderState = 1, shipDate = sysdate() where orderId = #{orderId}
 	
 	</update>
 	
@@ -309,7 +309,7 @@ insert into SJB_Book(title,publisher) values(#{title}, #{publisher});
 	
 	<update id="shipArrive">
 	
-		update sjb_order set orderState = 2 where orderId = #{orderId}
+		update sjb_order set orderState = 2, clearDate = sysdate() where orderId = #{orderId}
 	
 	</update>	
 	
